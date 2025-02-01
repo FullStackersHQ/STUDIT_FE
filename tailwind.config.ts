@@ -9,7 +9,9 @@ const config: Config = {
     extend: {
       colors: {
         main: '#0074D9',
+        'main-hover': '#008CFF',
         sub: '#FFFACD',
+        'sub-hover': '#fff5b0',
         third: '#FFFCE1',
         white: '#FFFFFF',
         'white-gray': '#E0E0E0',
