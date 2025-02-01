@@ -1,5 +1,5 @@
 import './App.css';
-import HomeIcon from './assets/icons/home.svg';
+import HomeIcon from '@/assets/icons/home.svg';
 
 function App() {
   return (

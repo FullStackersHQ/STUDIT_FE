@@ -21,4 +21,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['msw'],
   },
+  resolve: {
+    alias: [{ find: '@', replacement: '/src' }],
+  },
 });
