@@ -7,9 +7,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        minSans: ["MinSans", "sans-serif"],
-      },
       colors: {
         main: "#0074D9",
         sub: "#FFFACD",

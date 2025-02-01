@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: 'MinSans';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
@@ -15,16 +15,7 @@
 @font-face {
   font-family: 'MinSans';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-}
-
-
-
-@font-face {
-  font-family: 'MinSans';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -34,4 +25,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "MinSans", sans-serif;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  font-size: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
 }
