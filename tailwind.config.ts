@@ -10,10 +10,6 @@ const config: Config = {
       fontFamily: {
         minSans: ["MinSans", "sans-serif"],
       },
-      fontWeight: {
-        medium: 500, // Medium
-        semibold: 600, // SemiBold
-      },
       colors: {
         main: "#0074D9",
         sub: "#FFFACD",
