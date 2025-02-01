@@ -20,8 +20,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"],
-  "server": {
-    "port": 3000
-  }
+  "include": ["vite.config.ts"]
 }
