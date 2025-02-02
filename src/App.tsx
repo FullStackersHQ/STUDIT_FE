@@ -1,17 +1,24 @@
 import './App.css';
-import HomeIcon from '@/assets/icons/home.svg';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './routes/routes';
 
 function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        staleTime: 5 * 60 * 1000,
+        retry: 1,
+      },
+    },
+  });
   return (
-    <>
-      <p className="">일반: MinSans Regular 폰트입니다.</p>
-      <p className="font-minSans font-normal">이것은 MinSans Regular 폰트입니다.</p>
-      <p className="font-minSans font-medium">이것은 MinSans Medium 폰트입니다.</p>
-      <p className="font-minSans font-semibold">이것은 MinSans SemiBold 폰트입니다.</p>
-      <p className="font-minSans font-bold">이것은 MinSans Bold 폰트입니다.</p>
-      <p className="font-bold">일반 MinSans Bold 폰트입니다.</p>
-      <HomeIcon className="text-main" />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
