@@ -19,34 +19,37 @@
   font-style: normal;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "MinSans", sans-serif;
-}
+@layer base {
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "MinSans", sans-serif;
+  }
 
-body {
-  font-size: 100%;
-}
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
 
-ol,
-ul {
-  list-style: none;
+  body {
+    font-size: 100%;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
 }
