@@ -15,12 +15,16 @@ export default function StudyFnb({ nav, setNav }: { nav: string; setNav: Dispatc
         {navList.map((navItem) => (
           <li
             key={navItem.text}
-            className={`flex flex-col justify-center gap-y-1 w-12 items-center transition-colors cursor-pointer hover:text-main ${nav === navItem.text && 'text-main'}`}
+            className={`w-[38px] flex justify-center transition-colors hover:text-main ${nav === navItem.text && 'text-main'}`}
           >
-            <button onClick={() => setNav(navItem.text)} aria-label={navItem.ariaLabel}>
+            <button
+              onClick={() => setNav(navItem.text)}
+              aria-label={navItem.ariaLabel}
+              className="cursor-pointer flex flex-col items-center"
+            >
               <navItem.icon alt={navItem.text} />
+              <span className="mt-1">{navItem.text}</span>
             </button>
-            <span>{navItem.text}</span>
           </li>
         ))}
       </ol>
