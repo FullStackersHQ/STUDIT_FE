@@ -28,7 +28,7 @@ export default function HeaderWithBack({
         <button
           onClick={action.onClick}
           aria-label={action.ariaLabel}
-          className="ml-auto hover:text-white-gray transition-colors"
+          className="ml-auto hover:text-white-gray transition-colors cursor-pointer"
         >
           <action.icon alt={action.ariaLabel} />
         </button>
