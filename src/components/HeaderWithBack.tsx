@@ -21,7 +21,7 @@ export default function HeaderWithBack({
 
   return (
     <header
-      className={`fixed z-[999] top-0 flex items-center w-full h-[52px] px-2 ${isStudyPage ? 'bg-main text-white' : 'text-main border-b border-b-main'}`}
+      className={`fixed z-[999] top-0 flex items-center w-full h-[52px] pl-2 pr-4 ${isStudyPage ? 'bg-main text-white' : 'text-main border-b border-b-main'}`}
     >
       <button onClick={handleGoBack} aria-label="뒤로 가기">
         <ChevronLeftIcon alt="뒤로 가기" className="cursor-pointer" />
