@@ -10,7 +10,7 @@ function App() {
       <p className="font-minSans font-semibold">이것은 MinSans SemiBold 폰트입니다.</p>
       <p className="font-minSans font-bold">이것은 MinSans Bold 폰트입니다.</p>
       <p className="font-bold">일반 MinSans Bold 폰트입니다.</p>
-      <HomeIcon className="text-red-300" />
+      <HomeIcon className="text-main" />
     </>
   );
 }
