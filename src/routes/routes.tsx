@@ -20,13 +20,13 @@ const Router = (): JSX.Element => {
           <Route path="/" element={<Home />} />
           <Route path="/group" element={<Group />} />
           <Route path="/my-page" element={<MyPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-study" element={<CreateStudy />} />
+          <Route path="/study-info/:studyId" element={<StudyInfo />} />
+          <Route path="/points" element={<Points />} />
+          <Route path="/study" element={<Study />} />
+          <Route path="/edit-study/:studyId" element={<EditStudy />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/create-study" element={<CreateStudy />} />
-        <Route path="/study-info/:studyId" element={<StudyInfo />} />
-        <Route path="/points" element={<Points />} />
-        <Route path="/study" element={<Study />} />
-        <Route path="/edit-study/:studyId" element={<EditStudy />} />
       </Routes>
     </Suspense>
   );

@@ -10,7 +10,7 @@ export default function StudyFnb({ nav, setNav }: { nav: string; setNav: Dispatc
     { icon: StatIcon, text: '통계', ariaLabel: '통계 페이지로 이동' },
   ];
   return (
-    <footer className="fixed bottom-0 w-full h-[60px] text-gray text-sm">
+    <footer className="fixed bottom-0 w-full max-w-3xl h-[60px] text-gray text-sm">
       <ol className="flex items-center justify-around border-t border-t-main w-full h-full">
         {navList.map((navItem) => (
           <li
