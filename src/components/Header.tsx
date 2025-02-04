@@ -4,11 +4,11 @@ import Bell from '@/assets/icons/bell.svg';
 
 export default function Header() {
   return (
-    <header className="w-[100%] h-[52px] z-[999] fixed top-0 left-0 px-4 flex items-center justify-between">
+    <header className="md:border-white-gray fixed top-0 z-[999] mx-auto flex h-13 w-full max-w-3xl items-center justify-between bg-white px-4 md:border-x">
       <Link to={'/'} aria-label="홈으로">
-        <img src={Logo} alt="Logo" className="w-20 h-[30px]" />
+        <img src={Logo} alt="Logo" className="h-[30px] w-20" />
       </Link>
-      <Bell />
+      <Bell alt="알림" />
     </header>
   );
 }
