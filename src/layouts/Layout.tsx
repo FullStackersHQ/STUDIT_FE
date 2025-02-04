@@ -6,11 +6,8 @@ export default function Layout() {
   const url = location.pathname;
 
   return (
-    <main
-      className="w-full min-h-screen pt-[52px] max-w-3xl mx-auto flex flex-col justify-between relative
-    after:content-[''] after:h-[calc(100%-52px)] after:bg-white-gray after:w-[1px] after:absolute after:left-0 after:bottom-0 before:content-[''] before:h-[calc(100%-52px)] before:bg-white-gray before:w-[1px] before:absolute before:right-0 before:bottom-0"
-    >
-      {url === '/' && <Header />}
+    <main className="after:bg-white-gray before:bg-white-gray relative mx-auto flex min-h-screen w-full max-w-3xl flex-col justify-between pt-[52px] before:absolute before:right-0 before:bottom-0 before:h-[calc(100%-52px)] before:w-[1px] before:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[calc(100%-52px)] after:w-[1px] after:content-['']">
+      {(url === '/' || url === '/my-page') && <Header />}
       {url === 'my-page' && <Header />}
       <Outlet key={url} />
     </main>
