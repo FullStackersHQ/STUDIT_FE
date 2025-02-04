@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchStore } from '../store/searchStore';
 
 export default function RangeSlider({
   min,
@@ -13,6 +14,7 @@ export default function RangeSlider({
   const [maxValue, setMaxValue] = useState<number>(max);
   const [rangeMinPercent, setRangeMinPercent] = useState<number>(0);
   const [rangeMaxPercent, setRangeMaxPercent] = useState<number>(100);
+  const { filteringInfo, setFilteringInfo } = useSearchStore();
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMinValue(parseInt(e.target.value));
@@ -34,10 +36,11 @@ export default function RangeSlider({
   };
 
   useEffect(() => {
-    updateRangePercent();
-  }, [minValue, maxValue]);
-
-  console.log('left', rangeMinPercent, 'right', rangeMaxPercent);
+    setFilteringInfo({
+      ...filteringInfo,
+      point: [min, max],
+    });
+  }, []);
 
   return (
     <>
@@ -60,6 +63,11 @@ export default function RangeSlider({
           value={minValue}
           onChange={(e) => {
             handleMinChange(e);
+            setFilteringInfo({
+              ...filteringInfo,
+              point: [Number(e.target.value), filteringInfo.point[1]],
+            });
+            updateRangePercent();
           }}
         />
         <input
@@ -71,6 +79,11 @@ export default function RangeSlider({
           value={maxValue}
           onChange={(e) => {
             handleMaxChange(e);
+            setFilteringInfo({
+              ...filteringInfo,
+              point: [filteringInfo.point[0], Number(e.target.value)],
+            });
+            updateRangePercent();
           }}
         />
       </div>

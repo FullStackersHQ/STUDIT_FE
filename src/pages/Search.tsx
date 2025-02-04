@@ -1,20 +1,30 @@
-import { useState } from 'react';
 import RangeSlider from '../components/RangeSlider';
 import HeaderWithBack from '../components/HeaderWithBack';
+import { useSearchStore } from '../store/searchStore';
+import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
-  const [studyTimeRange, setStudyTimeRange] = useState([0, 0]);
   const action = { icon: undefined, ariaLabel: '검색창', onClick: () => {} };
   const categories: string[] = ['공무원', '대학 입시', '시험', '어학', '입용', '취업', '코딩', '기타'];
+  const { filteringInfo, setFilteringInfo } = useSearchStore();
+  const navigate = useNavigate();
 
-  const onClickSearchBtn = () => {};
+  const onClickSearchBtn = () => {
+    // 검색 api 연동
+    console.log(filteringInfo);
+    navigate('/');
+  };
 
   return (
     <>
       <HeaderWithBack title={'Search'} action={action} isStudyPage />
       <div className="px-4">
         <div className="mt-5 relative">
-          <input placeholder="검색어를 입력하세요." className="search-input" />
+          <input
+            placeholder="검색어를 입력하세요."
+            className="search-input"
+            onChange={(e) => setFilteringInfo({ ...filteringInfo, search: e.target.value })}
+          />
         </div>
 
         <div className="mt-3">
@@ -25,15 +35,25 @@ export default function Search() {
               <input
                 type="number"
                 className="input w-12 text-center border-b border-black"
-                value={studyTimeRange[0]}
-                onChange={(e) => setStudyTimeRange([Number(e.target.value), studyTimeRange[1]])}
+                value={filteringInfo.studyTimeRange[0]}
+                onChange={(e) => {
+                  setFilteringInfo({
+                    ...filteringInfo,
+                    studyTimeRange: [Number(e.target.value), filteringInfo.studyTimeRange[1]],
+                  });
+                }}
               />
               ~
               <input
                 type="number"
                 className="input w-12 text-center border-b border-black"
-                value={studyTimeRange[1]}
-                onChange={(e) => setStudyTimeRange([studyTimeRange[0], Number(e.target.value)])}
+                value={filteringInfo.studyTimeRange[1]}
+                onChange={(e) => {
+                  setFilteringInfo({
+                    ...filteringInfo,
+                    studyTimeRange: [filteringInfo.studyTimeRange[0], Number(e.target.value)],
+                  });
+                }}
               />
               <span>시간</span>
             </div>
@@ -49,7 +69,12 @@ export default function Search() {
                   type="radio"
                   name="category"
                   value={category}
-                  onClick={(e) => console.log('카테고리 ', e.target.value)}
+                  onChange={(e) =>
+                    setFilteringInfo({
+                      ...filteringInfo,
+                      category: e.target.value,
+                    })
+                  }
                 />
                 <span className="text-[12px] sm:text-[16px] md:text-[18px]">{category}</span>
               </label>
