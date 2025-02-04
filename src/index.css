@@ -20,14 +20,13 @@
 }
 
 @layer base {
-
   *,
   *::before,
   *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "MinSans", sans-serif;
+    font-family: 'MinSans', sans-serif;
   }
 
   article,
@@ -46,6 +45,7 @@
 
   body {
     font-size: 100%;
+    color: #333333;
   }
 
   ol,
