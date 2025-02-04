@@ -11,6 +11,7 @@ const Points = lazy(() => import('../pages/Points'));
 const Study = lazy(() => import('../pages/Study'));
 const EditStudy = lazy(() => import('../pages/EditStudy'));
 const Group = lazy(() => import('../pages/Group'));
+const Search = lazy(() => import('../pages/Search'));
 
 const Router = (): JSX.Element => {
   return (
@@ -26,6 +27,7 @@ const Router = (): JSX.Element => {
           <Route path="/points" element={<Points />} />
           <Route path="/study" element={<Study />} />
           <Route path="/edit-study/:studyId" element={<EditStudy />} />
+          <Route path="/search" element={<Search />} />
         </Route>
       </Routes>
     </Suspense>
