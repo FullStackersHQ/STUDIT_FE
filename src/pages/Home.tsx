@@ -44,18 +44,14 @@ export default function Home() {
   return (
     <div className="h-[100vh] px-4">
       <Link to={'/search'}>
-        <input
-          className="w-full h-[23px] sm:h-[30px] md:h-[40px] mb-3 border rounded-[10px] border-main text-black text-sm placeholder:pl-2"
-          type="text"
-          placeholder="검색어를 입력하세요."
-        />
+        <input className="search-input" type="text" placeholder="검색어를 입력하세요." />
       </Link>
 
       <div className="w-full h-[24px] mb-3 flex items-center gap-[5px] overflow-y-auto scrollbar-hide">
-        <div className="px-[8px] py-[3px] rounded-[10px] text-sm bg-white-gray flex-shrink-0 whitespace-nowrap min-w-max">
+        <div className="px-[8px] py-[3px] rounded-[10px] text-sm bg-white-gray shrink-0 whitespace-nowrap min-w-max">
           # 코딩 X
         </div>
-        <div className="px-[8px] py-[5px] rounded-[10px] text-sm bg-white-gray flex-shrink-0 whitespace-nowrap min-w-max">
+        <div className="px-[8px] py-[5px] rounded-[10px] text-sm bg-white-gray shrink-0 whitespace-nowrap min-w-max">
           # 10 ~ 40시간 X
         </div>
       </div>
