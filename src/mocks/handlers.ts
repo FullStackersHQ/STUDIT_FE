@@ -1,7 +1,3 @@
-import { http, delay } from 'msw';
+import { studyRoomHandlers } from './studyRoomHandlers';
 
-export const handlers = [
-  http.all('*', async () => {
-    await delay(100);
-  }),
-];
+export const handlers = [...studyRoomHandlers];

@@ -16,3 +16,16 @@
 	--color-withdraw: #00CC99;
 	--color-deduct: #FF6B6B;
 }
+
+/* Tailwind의 @layer 사용 */
+@layer utilities {
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+
+	.scrollbar-hide {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+}
