@@ -7,7 +7,7 @@ import WeekStudyTime from '../components/search/WeekStudyTime';
 import Category from '../components/search/Category';
 
 export default function Search() {
-  const action = { icon: undefined, ariaLabel: '검색창', onClick: () => {} };
+  const action = { icon: undefined, ariaLabel: '', onClick: () => {} };
   const { filteringInfo, setFilteringInfo } = useSearchStore();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ export default function Search() {
     <>
       <HeaderWithBack title={'Search'} action={action} isStudyPage={false} />
       <div className="px-4">
-        <div className="mt-5 relative">
+        <div className="relative mt-5">
           <input
             placeholder="검색어를 입력하세요."
             className="search-input"
@@ -35,7 +35,7 @@ export default function Search() {
         </div>
 
         <div className="mt-5">
-          <Category/>
+          <Category />
         </div>
 
         <div className="mt-5">
@@ -46,7 +46,7 @@ export default function Search() {
         </div>
 
         <div className="mt-8">
-          <Button text={"검색하기"} onClick={onClickSearchBtn} ariaLabel={"검색하기 버튼"}/>
+          <Button text={'검색하기'} onClick={onClickSearchBtn} ariaLabel={'검색하기 버튼'} />
         </div>
       </div>
     </>
