@@ -9,7 +9,7 @@ export default function HeaderWithBack({
   title: string;
   isStudyPage?: boolean;
   action?: {
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { alt?: string }>;
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement> & { alt?: string }>;
     onClick: () => void;
     ariaLabel: string;
   };
@@ -30,7 +30,7 @@ export default function HeaderWithBack({
           aria-label={action.ariaLabel}
           className="ml-auto hover:text-white-gray transition-colors cursor-pointer"
         >
-          <action.icon alt={action.ariaLabel} />
+          {action?.icon && <action.icon alt="icon description" />}
         </button>
       )}
     </header>
