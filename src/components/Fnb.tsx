@@ -1,14 +1,15 @@
-import StudyIcon from '../assets/icons/study.svg';
-import ChatIcon from '../assets/icons/chatting.svg';
-import StatIcon from '../assets/icons/statistics.svg';
-import { Dispatch, SetStateAction } from 'react';
+import Home from '../assets/icons/home.svg';
+import Group from '../assets/icons/group.svg';
+import User from '../assets/icons/user.svg';
+import { useNavigate } from 'react-router-dom';
 
-export default function StudyFnb({ nav, setNav }: { nav: string; setNav: Dispatch<SetStateAction<string>> }) {
+export default function Fnb({ nav }: { nav: string; }) {
   const navList = [
-    { icon: StudyIcon, text: '스터디', ariaLabel: '스터디 페이지로 이동' },
-    { icon: ChatIcon, text: '채팅', ariaLabel: '채팅 페이지로 이동' },
-    { icon: StatIcon, text: '통계', ariaLabel: '통계 페이지로 이동' },
+    { icon: Home, text: '홈', ariaLabel: '메인 페이지로 이동', path:"/"},
+    { icon: Group, text: '그룹', ariaLabel: '그룹 페이지로 이동', path:"/group"},
+    { icon: User, text: '마이', ariaLabel: '마이 페이지로 이동', path:"/my-page"},
   ];
+	const navigate = useNavigate();
   return (
     <footer className="fixed bottom-0 w-full max-w-3xl h-[60px] text-gray text-sm bg-white">
       <ol className="flex items-center justify-around border-t border-t-main w-full h-full">
@@ -18,7 +19,9 @@ export default function StudyFnb({ nav, setNav }: { nav: string; setNav: Dispatc
             className={`w-[38px] flex justify-center transition-colors hover:text-main ${nav === navItem.text && 'text-main'}`}
           >
             <button
-              onClick={() => setNav(navItem.text)}
+              onClick={() => {
+								navigate(navItem.path)
+							}}
               aria-label={navItem.ariaLabel}
               className="cursor-pointer flex flex-col items-center"
             >
