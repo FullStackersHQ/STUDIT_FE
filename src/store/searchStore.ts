@@ -1,18 +1,9 @@
 import { create } from 'zustand';
+import { FilterType } from '../types/interface';
 
 interface SearchStoreType {
-  filteringInfo: {
-    category: string;
-    search: string;
-    studyTimeRange: [number, number];
-    point: [number, number];
-  };
-  setFilteringInfo: (data: {
-    category: string;
-    search: string;
-    studyTimeRange: [number, number];
-    point: [number, number];
-  }) => void;
+  filteringInfo: FilterType;
+  setFilteringInfo: (data: FilterType) => void;
 }
 
 export const useSearchStore = create<SearchStoreType>((set) => ({
