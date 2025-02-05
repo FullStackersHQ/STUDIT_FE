@@ -52,11 +52,11 @@
  */
 
 import { http, HttpResponse } from 'msw';
-import { mockStudyRoomList } from './MockData';
+import { mockStudyRoomList } from './data/dummy';
 
 export const studyRoomHandlers = [
   // 스터디룸 목록 조회
-  http.get(`/api/study-room`, async ({ request }) => {
+  http.get(`/api/study-room`, async () => {
     console.log('스터디 목록 조회');
     return HttpResponse.json({
       status: 'OK',

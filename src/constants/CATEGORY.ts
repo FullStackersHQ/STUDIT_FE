@@ -1,0 +1,1 @@
+export const CATEGORY = ['공무원', '대학 입시', '시험', '어학', '입용', '취업', '코딩', '기타'] as const;

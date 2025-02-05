@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchStore } from '../store/searchStore';
+import { useSearchStore } from '../../store/searchStore';
 
 export default function RangeSlider({
   min,
