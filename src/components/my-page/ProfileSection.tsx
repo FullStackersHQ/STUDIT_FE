@@ -1,9 +1,23 @@
 import EditIcon from '../../assets/icons/edit.svg';
 import PointIcon from '../../assets/icons/point.svg';
 import { UserProfile } from '../../types/interface';
+import { overlay } from 'overlay-kit';
+import ProfileModifyModal from './ProfileModifyModal';
 
 export default function ProfileSection({ userData }: { userData: UserProfile }) {
   const { nickName, points, applied, in_progress, completed, profileImage } = userData;
+  const openOverlay = () => {
+    overlay.open(({ isOpen, close }) => {
+      return (
+        <ProfileModifyModal
+          userImg={userData.profileImage}
+          nickName={userData.nickName}
+          isOpen={isOpen}
+          close={close}
+        />
+      );
+    });
+  };
 
   return (
     <div className="h-full w-full">
@@ -15,6 +29,7 @@ export default function ProfileSection({ userData }: { userData: UserProfile }) 
             <button
               aria-label="프로필 변경"
               className="text-dark-gray hover:text-gray cursor-pointer rounded-full p-1 transition-colors"
+              onClick={openOverlay}
             >
               <EditIcon alt="프로필 변경" className="h-4 w-4" />
             </button>
