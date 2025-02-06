@@ -11,7 +11,7 @@ export default function Fnb({ nav }: { nav: string }) {
   ];
   const navigate = useNavigate();
   return (
-    <footer className="text-gray fixed bottom-0 h-[60px] w-full max-w-3xl bg-white text-sm">
+    <footer className="text-gray md:border-white-gray fixed bottom-0 left-1/2 h-[60px] w-full max-w-3xl -translate-x-1/2 bg-white text-sm md:border-x">
       <ol className="border-t-main flex h-full w-full items-center justify-around border-t">
         {navList.map((navItem) => (
           <li

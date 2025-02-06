@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router-dom';
 function MyPage() {
   const { userData, isUserDataLoading, averageStats, isAvgLoading } = useMyPage();
   const navigate = useNavigate();
-  if (!userData || isUserDataLoading || !averageStats || isAvgLoading) return <div />;
+  if (!userData || isUserDataLoading || !averageStats || isAvgLoading) return;
+
   return (
     <div className="px-4 pt-7">
       <ProfileSection userData={userData} />
