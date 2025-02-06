@@ -3,7 +3,7 @@ import ModalOverlay from '../ModalOverlay';
 import EditIcon from '../../assets/icons/edit.svg';
 import CloseIcon from '../../assets/icons/close.svg';
 import Button from '../Button';
-import { handleMaxLengthChange } from '../../utils/commonUtils';
+import { handleMaxLengthChange, handleKeyDown } from '../../utils/commonUtils';
 
 export default function ProfileModifyModal({
   userImg,
@@ -39,6 +39,7 @@ export default function ProfileModifyModal({
         </div>
         <div className="mb-4 flex flex-col gap-y-1">
           <input
+            onKeyDown={(e) => handleKeyDown(e, () => handleModifyProfile(close))}
             type="text"
             onChange={(e) => handleMaxLengthChange(e, 10, onNickNameChange)}
             className="mt-6 w-[140px] border-b border-black py-1 pl-1.5 text-sm transition-colors"
