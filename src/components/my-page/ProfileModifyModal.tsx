@@ -41,7 +41,7 @@ export default function ProfileModifyModal({
           <input
             type="text"
             onChange={(e) => handleMaxLengthChange(e, 10, onNickNameChange)}
-            className="outline-main mt-6 w-[140px] border-b border-black py-1 pl-1.5 text-sm transition-colors"
+            className="mt-6 w-[140px] border-b border-black py-1 pl-1.5 text-sm transition-colors"
             value={profile.nickName}
           />
           {error ? (
