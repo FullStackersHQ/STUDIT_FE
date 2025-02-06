@@ -2845,6 +2845,13 @@ outvariant@^1.4.0, outvariant@^1.4.3:
   resolved "https://registry.yarnpkg.com/outvariant/-/outvariant-1.4.3.tgz#221c1bfc093e8fec7075497e7799fdbf43d14873"
   integrity sha512-+Sl2UErvtsoajRDKCE5/dBz4DIvHXQQnAxtQTF04OJxY0+DyZXSo5P5Bb7XYWOh81syohlYL24hbDwxedPUJCA==
 
+overlay-kit@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/overlay-kit/-/overlay-kit-1.6.0.tgz#0c3bf434cab78894c5afbf13afa0c03316a6632b"
+  integrity sha512-lCangdiAcQYq3yqC7nj2fv5pxXuI8zXj5aW9hZnNvhVa0F2Gz3M4muqC4phoXhEWRhhWU7sFtPXGWYLRZZmc0w==
+  dependencies:
+    use-sync-external-store "^1.4.0"
+
 own-keys@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/own-keys/-/own-keys-1.0.1.tgz#e4006910a2bf913585289676eebd6f390cf51358"
@@ -3596,6 +3603,11 @@ url-parse@^1.5.3:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
+
+use-sync-external-store@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.4.0.tgz#adbc795d8eeb47029963016cefdf89dc799fcebc"
+  integrity sha512-9WXSPC5fMv61vaupRkCKCxsPxBocVnwakBEkMIHHpkTTg6icbJtg6jzgtLDm4bl3cSHAca52rYWih0k4K3PfHw==
 
 victory-vendor@^36.6.8:
   version "36.9.2"

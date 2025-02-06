@@ -2,7 +2,7 @@ import './App.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
 import Router from './routes/routes';
-
+import { OverlayProvider } from 'overlay-kit';
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -15,9 +15,11 @@ function App() {
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <OverlayProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </OverlayProvider>
     </QueryClientProvider>
   );
 }
