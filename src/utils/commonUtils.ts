@@ -8,3 +8,11 @@ export function convertToHHMM(minutes: number) {
   const mins = minutes % 60;
   return `${hours}시간 ${mins}분`;
 }
+export function handleMaxLengthChange(
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  maxLength: number,
+  onChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>,
+) {
+  const newValue = e.target.value;
+  if (newValue.length <= maxLength) onChange(e);
+}
