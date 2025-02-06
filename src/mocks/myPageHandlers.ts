@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { ProfileData, AvgStatsData } from './data/dummy';
+import { ProfileData, AvgStatsData, upcomingStudies, ongoingStudies, completedStudies } from './data/dummy';
 
 interface ModifyNicknameRequest {
   nickName: string;
@@ -30,6 +30,18 @@ const myPageHandlers = [
       message: '닉네임이 성공적으로 수정되었습니다.',
       nickname: nickName,
     });
+  }),
+  http.get('/study-status/registered/', () => {
+    if (upcomingStudies) return HttpResponse.json(upcomingStudies);
+    return HttpResponse.error();
+  }),
+  http.get('/study-status/ongoing/', () => {
+    if (ongoingStudies) return HttpResponse.json(ongoingStudies);
+    return HttpResponse.error();
+  }),
+  http.get('/study-status/completed/', () => {
+    if (completedStudies) return HttpResponse.json(completedStudies);
+    return HttpResponse.error();
   }),
 ];
 export default myPageHandlers;
