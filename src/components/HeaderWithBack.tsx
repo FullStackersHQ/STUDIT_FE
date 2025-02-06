@@ -18,17 +18,17 @@ export default function HeaderWithBack({
 
   return (
     <header
-      className={`fixed z-[999] top-0 flex items-center w-full h-[52px] pl-2 pr-4 max-w-3xl ${isStudyPage ? 'bg-main text-white' : 'text-main border-b border-b-main'}`}
+      className={`fixed top-0 z-[999] flex h-[52px] w-full max-w-3xl items-center pr-4 pl-2 ${isStudyPage ? 'bg-main text-white' : 'text-main border-b-main border-b bg-white'}`}
     >
       <button onClick={() => navigate(-1)} aria-label="뒤로 가기">
-        <ChevronLeftIcon alt="뒤로 가기" className="cursor-pointer transition-colors hover:text-white-gray" />
+        <ChevronLeftIcon alt="뒤로 가기" className="hover:text-white-gray cursor-pointer transition-colors" />
       </button>
       <h1 className="absolute left-1/2 -translate-x-1/2 font-bold">{title}</h1>
       {action && (
         <button
           onClick={action.onClick}
           aria-label={action.ariaLabel}
-          className="ml-auto hover:text-white-gray transition-colors cursor-pointer"
+          className="hover:text-white-gray ml-auto cursor-pointer transition-colors"
         >
           {action?.icon && <action.icon alt="icon description" />}
         </button>
