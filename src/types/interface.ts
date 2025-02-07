@@ -32,3 +32,23 @@ export interface FilterType {
   studyTimeRange: [number, number];
   point: [number, number];
 }
+export interface UpcomingStudyItem extends StudyItem {
+  recruit_id: number;
+}
+export interface OnGoingStudyItem extends StudyItem {
+  registerId: number;
+}
+export interface CompletedStudyItem extends StudyItem {
+  studyId: number;
+  deductedPoint: number;
+  obtainedPoint: number;
+}
+export interface StudyItem {
+  gatherDate: string;
+  title: string;
+  enterPoint: number;
+  tag: string;
+  weeklyStudyTime: number;
+}
+export type StudyItemType = UpcomingStudyItem | OnGoingStudyItem | CompletedStudyItem;
+export type StudyStatusType = 'ongoing' | 'upcoming' | 'completed';

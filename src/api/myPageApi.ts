@@ -27,5 +27,17 @@ const myPageApi = {
     );
     return response;
   },
+  getUpcomingList: async () => {
+    const { data: response } = await client.get(`/study-status/registered/`);
+    return response;
+  },
+  getOngoingList: async () => {
+    const { data: response } = await client.get(`/study-status/ongoing/`);
+    return response;
+  },
+  getCompletedList: async () => {
+    const { data: response } = await client.get(`/study-status/completed/`);
+    return response;
+  },
 };
 export default myPageApi;

@@ -12,6 +12,7 @@ const Study = lazy(() => import('../pages/Study'));
 const EditStudy = lazy(() => import('../pages/EditStudy'));
 const Group = lazy(() => import('../pages/Group'));
 const Search = lazy(() => import('../pages/Search'));
+const StudyList = lazy(() => import('../pages/StudyList'));
 
 const Router = (): JSX.Element => {
   return (
@@ -28,6 +29,7 @@ const Router = (): JSX.Element => {
           <Route path="/study" element={<Study />} />
           <Route path="/edit-study/:studyId" element={<EditStudy />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/study-list" element={<StudyList />} />
         </Route>
       </Routes>
     </Suspense>
