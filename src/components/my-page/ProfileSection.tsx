@@ -3,6 +3,7 @@ import PointIcon from '../../assets/icons/point.svg';
 import { UserProfile } from '../../types/interface';
 import { overlay } from 'overlay-kit';
 import ProfileModifyModal from './ProfileModifyModal';
+import { Link } from 'react-router-dom';
 
 export default function ProfileSection({ userData }: { userData: UserProfile }) {
   const { nickName, points, applied, in_progress, completed, profileImage } = userData;
@@ -20,7 +21,7 @@ export default function ProfileSection({ userData }: { userData: UserProfile }) 
   };
 
   return (
-    <div className="h-full w-full">
+    <div>
       <section className="flex gap-x-4">
         <img src={profileImage} alt={nickName} className="h-12 w-12 rounded-full" />
         <div className="flex flex-col gap-y-0.5">
@@ -44,19 +45,19 @@ export default function ProfileSection({ userData }: { userData: UserProfile }) 
       </section>
       <section className="my-4 text-sm">
         <p className="mb-2.5 font-medium">스터디 현황</p>
-        <div className="bg-third flex w-full justify-around rounded-md py-2">
-          <button className="flex cursor-pointer flex-col items-center font-medium">
+        <div className="border-white-gray flex w-full justify-around rounded-md border py-2">
+          <Link className="flex cursor-pointer flex-col items-center font-medium" to="/study-list?status=upcoming">
             <span className="text-main">시작 전</span>
             <span>{applied}</span>
-          </button>
-          <button className="flex cursor-pointer flex-col items-center font-medium">
+          </Link>
+          <Link className="flex cursor-pointer flex-col items-center font-medium" to="/study-list?status=ongoing">
             <span className="text-main">진행 중</span>
             <span>{in_progress}</span>
-          </button>
-          <button className="flex cursor-pointer flex-col items-center font-medium">
+          </Link>
+          <Link className="flex cursor-pointer flex-col items-center font-medium" to="/study-list?status=completed">
             <span className="text-main">완료</span>
             <span>{completed}</span>
-          </button>
+          </Link>
         </div>
       </section>
     </div>
