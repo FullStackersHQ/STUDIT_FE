@@ -20,7 +20,7 @@ export default function ProfileSection({ userData }: { userData: UserProfile }) 
   };
 
   return (
-    <div className="h-full w-full">
+    <div>
       <section className="flex gap-x-4">
         <img src={profileImage} alt={nickName} className="h-12 w-12 rounded-full" />
         <div className="flex flex-col gap-y-0.5">
