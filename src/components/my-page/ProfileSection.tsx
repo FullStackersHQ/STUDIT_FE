@@ -45,7 +45,7 @@ export default function ProfileSection({ userData }: { userData: UserProfile }) 
       </section>
       <section className="my-4 text-sm">
         <p className="mb-2.5 font-medium">스터디 현황</p>
-        <div className="bg-third flex w-full justify-around rounded-md py-2">
+        <div className="border-white-gray flex w-full justify-around rounded-md border py-2">
           <Link className="flex cursor-pointer flex-col items-center font-medium" to="/study-list?status=upcoming">
             <span className="text-main">시작 전</span>
             <span>{applied}</span>
