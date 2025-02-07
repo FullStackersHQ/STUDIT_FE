@@ -66,7 +66,7 @@ export const mockStudyRoomList: StudyRoomType[] = [
 export const upcomingStudies: UpcomingStudyItem[] = [
   {
     recruit_id: 1,
-    gatherDate: '2025-03-01 ~ 2025-08-01',
+    gatherDate: '2025.03.01 ~ 2025.08.01',
     title: '8월 CPA 준비 스터디',
     enterPoint: 3000,
     tag: 'CPA',
@@ -74,7 +74,7 @@ export const upcomingStudies: UpcomingStudyItem[] = [
   },
   {
     recruit_id: 2,
-    gatherDate: '2025-05-15 ~ 2025-11-15',
+    gatherDate: '2025.05.15 ~ 2025.11.15',
     title: '프론트엔드 개발 스터디',
     enterPoint: 2000,
     tag: '프론트엔드',
@@ -85,7 +85,7 @@ export const upcomingStudies: UpcomingStudyItem[] = [
 export const ongoingStudies: OnGoingStudyItem[] = [
   {
     registerId: 1,
-    gatherDate: '2024-11-01 ~ 2025-05-01',
+    gatherDate: '2024.11.01 ~ 2025.05.01',
     title: 'SAT 준비 스터디',
     enterPoint: 5000,
     tag: 'SAT',
@@ -93,7 +93,7 @@ export const ongoingStudies: OnGoingStudyItem[] = [
   },
   {
     registerId: 2,
-    gatherDate: '2024-10-01 ~ 2025-04-01',
+    gatherDate: '2024.10.01 ~ 2025.04.01',
     title: '영어 회화 스터디',
     enterPoint: 3000,
     tag: '영어',
@@ -106,7 +106,7 @@ export const completedStudies: CompletedStudyItem[] = [
     studyId: 1,
     deductedPoint: 100,
     obtainedPoint: 200,
-    gatherDate: '2024-12-15 ~ 2025-01-15',
+    gatherDate: '2024.12.15 ~ 2025.01.15',
     title: 'C++ 프로그래밍 스터디',
     enterPoint: 5000,
     tag: 'C++',
@@ -116,7 +116,7 @@ export const completedStudies: CompletedStudyItem[] = [
     studyId: 2,
     deductedPoint: 50,
     obtainedPoint: 1500,
-    gatherDate: '2024-11-10 ~ 2024-12-10',
+    gatherDate: '2024.11.10 ~ 2024.12.10',
     title: '웹 개발 프로젝트 스터디',
     enterPoint: 3000,
     tag: '웹 개발',
@@ -126,7 +126,7 @@ export const completedStudies: CompletedStudyItem[] = [
     studyId: 3,
     deductedPoint: 2000,
     obtainedPoint: 350,
-    gatherDate: '2024-10-05 ~ 2024-11-05',
+    gatherDate: '2024.10.05 ~ 2024.11.05',
     title: 'Java 알고리즘 스터디',
     enterPoint: 4000,
     tag: 'Java',
