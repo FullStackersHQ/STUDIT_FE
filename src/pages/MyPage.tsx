@@ -16,7 +16,7 @@ function MyPage() {
         <ProfileSection userData={userData} />
         <AverageStats averageStats={averageStats} nickName={userData.nickName} />
       </div>
-      <Button text="포인트 출금하고 내역을 볼 수 있어요" onClick={() => navigate('/points')} />
+      <Button text="포인트 출금하고 내역을 볼 수 있어요" onClick={() => navigate('/point')} />
     </div>
   );
 }
