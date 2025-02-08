@@ -7,7 +7,7 @@ const Home = lazy(() => import('../pages/Home'));
 const CreateStudy = lazy(() => import('../pages/CreateStudy'));
 const StudyInfo = lazy(() => import('../pages/StudyInfo'));
 const MyPage = lazy(() => import('../pages/MyPage'));
-const Points = lazy(() => import('../pages/Points'));
+const Point = lazy(() => import('../pages/Point'));
 const Study = lazy(() => import('../pages/Study'));
 const EditStudy = lazy(() => import('../pages/EditStudy'));
 const Group = lazy(() => import('../pages/Group'));
@@ -25,7 +25,7 @@ const Router = (): JSX.Element => {
           <Route path="/login" element={<Login />} />
           <Route path="/create-study" element={<CreateStudy />} />
           <Route path="/study-info/:studyId" element={<StudyInfo />} />
-          <Route path="/points" element={<Points />} />
+          <Route path="/point" element={<Point />} />
           <Route path="/study" element={<Study />} />
           <Route path="/edit-study/:studyId" element={<EditStudy />} />
           <Route path="/search" element={<Search />} />
