@@ -15,7 +15,7 @@ export default function PointHistory({ selectedFilter }: { selectedFilter: Point
             <p className="mb-1.5 text-xs">{toMonthDay(date)}</p>
             <ul>
               {records.map((pointRecord: PointRecord) => {
-                return <PointRecordItem record={pointRecord} />;
+                return <PointRecordItem record={pointRecord} key={pointRecord.id} />;
               })}
             </ul>
           </div>
