@@ -25,8 +25,8 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
   return (
     <section className="text-sm">
       <p className="mb-2.5 font-medium">지난 일주일 동안 {nickName}님은 다른 사용자들보다</p>
-      <div className="mx-auto flex w-[324px] gap-x-5">
-        <div className="border-white-gray relative flex h-[152px] w-[152px] flex-col items-center justify-center rounded-lg border">
+      <div className="flex gap-x-5">
+        <div className="border-white-gray relative flex h-[152px] w-[152px] grow flex-col items-center justify-center rounded-lg border">
           <BarChart data={todoData} width={52} height={100}>
             <Bar dataKey="value1" className="fill-white-gray" radius={[2, 2, 0, 0]} />
             <Bar dataKey="value2" className="fill-main" radius={[2, 2, 0, 0]} />
@@ -37,7 +37,7 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
             <br /> 투두를 완료했어요
           </p>
         </div>
-        <div className="border-white-gray relative flex h-[152px] w-[152px] flex-col items-center justify-center rounded-lg border">
+        <div className="border-white-gray relative flex h-[152px] w-[152px] grow flex-col items-center justify-center rounded-lg border">
           <BarChart data={studyTimeData} width={52} height={100}>
             <Bar dataKey="value1" className="fill-white-gray" radius={[2, 2, 0, 0]} />
             <Bar dataKey="value2" className="fill-main" radius={[2, 2, 0, 0]} />
