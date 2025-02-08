@@ -62,6 +62,30 @@ export const mockStudyRoomList: StudyRoomType[] = [
     max_members: 6,
     status: '진행중',
   },
+  {
+    recruitId: 4,
+    title: '단기 토익 공부방',
+    category: '어학',
+    tags: ['토익', '영어'],
+    study_start_at: '2025-02-11T00:00:00',
+    study_end_at: '2025-03-01T00:00:00',
+    recruit_end_date: '2025-02-1T23:59:59',
+    current_members: 2,
+    max_members: 6,
+    status: '진행중',
+  },
+  {
+    recruitId: 5,
+    title: '단기 토익 공부방',
+    category: '어학',
+    tags: ['토익', '영어'],
+    study_start_at: '2025-02-11T00:00:00',
+    study_end_at: '2025-03-01T00:00:00',
+    recruit_end_date: '2025-02-1T23:59:59',
+    current_members: 2,
+    max_members: 6,
+    status: '진행중',
+  },
 ];
 export const upcomingStudies: UpcomingStudyItem[] = [
   {
