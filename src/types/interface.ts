@@ -18,13 +18,16 @@ export interface StudyRoomType {
   recruitId: number;
   title: string;
   category: string;
-  max_members: number;
+  max_members?: number;
   current_members: number;
   tags: string[];
   study_start_at: string;
-  recruit_end_date: string;
+  recruit_end_at: string;
   study_end_at: string;
   status: string;
+  description?: string;
+  deposit?: string;
+  goal_time?: string;
 }
 export interface FilterType {
   category: string;
