@@ -52,3 +52,20 @@ export interface StudyItem {
 }
 export type StudyItemType = UpcomingStudyItem | OnGoingStudyItem | CompletedStudyItem;
 export type StudyStatusType = 'ongoing' | 'upcoming' | 'completed';
+export interface IUserPoints {
+  totalPoints: number;
+  totalChargedPoints: number;
+  totalDeductedPoints: number;
+  totalWithdrawnPoints: number;
+}
+export interface PointRecord {
+  id: number;
+  type: PointFilterType;
+  amount: number;
+  total_after: number;
+  time: string;
+}
+export interface GroupedByDate {
+  [date: string]: PointRecord[];
+}
+export type PointFilterType = '전체' | '충전' | '차감' | '출금';

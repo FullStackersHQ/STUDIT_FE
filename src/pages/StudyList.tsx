@@ -1,8 +1,9 @@
+import React from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
 import useStudyList from '../hooks/my-page/useStudyList';
 import StudyItem from '../components/my-page/StudyItem';
 
-export default function StudyList() {
+function StudyList() {
   const { studyType, title, studyList, isLoading } = useStudyList();
   if (!studyList || isLoading) return;
 
@@ -17,3 +18,4 @@ export default function StudyList() {
     </div>
   );
 }
+export default React.memo(StudyList);

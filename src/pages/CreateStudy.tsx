@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
-import { CATEGORY } from '../constants/CATEGORY';
+import { CATEGORY } from '../constants/constants';
 import CreatableSelect from 'react-select/creatable';
 import Button from '../components/Button';
 import { MultiValue } from 'react-select';
