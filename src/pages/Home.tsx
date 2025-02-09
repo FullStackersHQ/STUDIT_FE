@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
       </div>
       <Link
         to={isLogin ? '/create-study' : '/login'}
-        className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white sm:h-[40px] md:h-[50px]"
+        className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
       >
         <span className="text-sm">{isLogin ? '+ 스터디 만들기' : '로그인'}</span>
       </Link>

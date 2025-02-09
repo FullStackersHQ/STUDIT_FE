@@ -8,12 +8,14 @@ import Calendar from '../components/create-study/Calendar';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import client from '../utils/client';
+import { useNavigate } from 'react-router-dom';
 
 const studySchema = z.object({
-  title: z.string().max(14, '최대 14자까지 입력 가능합니다.'),
-  content: z.string(),
-  points: z.number().min(1000).max(50000),
-  weeklyGoal: z.number().min(1, '최소 1시간 이상 설정해주세요.'),
+  title: z.string().max(10, '최대 10자까지 입력 가능합니다.'),
+  description: z.string(),
+  deposit: z.string().min(1000, '1000보다 작은 값은 불가능합니다.').max(50000, '50000보다 큰 값은 불가능합니다.'),
+  goal_time: z.string().min(1, '최소 1시간 이상 설정해주세요.'),
   studyStartDate: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, '올바른 날짜 형식이 아닙니다. (yyyy-mm-dd)')
@@ -23,7 +25,7 @@ const studySchema = z.object({
     .regex(/^\d{4}-\d{2}-\d{2}$/, '올바른 날짜 형식이 아닙니다. (yyyy-mm-dd)')
     .refine((date) => !isNaN(new Date(date).getTime()), '유효한 날짜가 아닙니다.'),
   duration: z.number().min(1).max(35),
-  members: z.number().min(2).max(10),
+  max_members: z.number().min(2).max(10),
   category: z.string(),
   tags: z.string(),
 });
@@ -36,13 +38,13 @@ export default function CreateStudy(): JSX.Element {
     resolver: zodResolver(studySchema),
     defaultValues: {
       title: '',
-      content: '',
-      points: 1000,
-      weeklyGoal: 1,
+      description: '',
+      deposit: '1000',
+      goal_time: '1',
       studyStartDate: new Date().toISOString().split('T')[0],
       recruitEndDate: '',
       duration: 1,
-      members: 2,
+      max_members: 2,
       category: '',
       tags: '',
     },
@@ -51,6 +53,23 @@ export default function CreateStudy(): JSX.Element {
   const startDate = watch('studyStartDate');
   const duration = watch('duration');
   const formValues = watch();
+  const navigate = useNavigate();
+
+  const handleOnClickBtn = async () => {
+    const { data: response } = await client.post('/api/recruits', {
+      title: formValues.title,
+      description: formValues.description,
+      deposit: formValues.deposit,
+      goal_time: formValues.goal_time,
+      study_start_at: formValues.studyStartDate,
+      recruit_end_at: formValues.recruitEndDate,
+      study_end_at: endDate?.toISOString().split('T')[0],
+      max_members: formValues.max_members,
+      category: formValues.category,
+      tags: formValues.tags.split(' '),
+    });
+    if (response.status === 200) navigate('/', { replace: true });
+  };
 
   const handleOnItemAdded = (newValue: MultiValue<{ label: string; value: string }>) => {
     const newTags = newValue
@@ -72,18 +91,18 @@ export default function CreateStudy(): JSX.Element {
     }
   };
 
-  const handlePointsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDepositChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value = Number(event.target.value);
     if (value < 1000) value = 1000;
     if (value > 50000) value = 50000;
-    setValue('points', value);
+    setValue('deposit', String(value));
   };
 
   const handleDurationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value = Number(event.target.value);
     if (value < 1) value = 1;
     if (value > 35) value = 35;
-    setValue('points', value);
+    setValue('deposit', String(value));
   };
 
   return (
@@ -108,7 +127,7 @@ export default function CreateStudy(): JSX.Element {
           </label>
           <textarea
             aria-label="스터디 내용 입력"
-            {...register('content')}
+            {...register('description')}
             className="border-light-gray mt-1 h-50 w-full rounded-[10px] border px-2 py-1 text-sm"
           />
         </div>
@@ -119,8 +138,8 @@ export default function CreateStudy(): JSX.Element {
           <input
             type="number"
             aria-label="스터디 참여 포인트 입력창"
-            {...register('points', { valueAsNumber: true })}
-            onChange={handlePointsChange}
+            {...register('deposit', { valueAsNumber: true })}
+            onChange={handleDepositChange}
             className="border-light-gray mt-1 w-12 border-b text-center text-sm"
           />
           점
@@ -132,7 +151,7 @@ export default function CreateStudy(): JSX.Element {
           <input
             type="number"
             aria-label="스터디 주당 목표 시간 입력창"
-            {...register('weeklyGoal', { valueAsNumber: true })}
+            {...register('goal_time', { valueAsNumber: true })}
             onChange={handleDurationChange}
             className="border-light-gray mt-1 w-12 border-b text-center text-sm"
           />
@@ -187,7 +206,7 @@ export default function CreateStudy(): JSX.Element {
           <h2 className="mr-2 flex text-[16px] font-bold">
             <p className="text-deduct">*</p>모집 인원
           </h2>
-          <select {...register('members')} className="border-light-gray mt-1 w-12 border text-center text-sm">
+          <select {...register('max_members')} className="border-light-gray mt-1 w-12 border text-center text-sm">
             {[...Array(9)].map((_, i) => (
               <option key={i} value={i + 2}>
                 {i + 2}명
@@ -225,14 +244,8 @@ export default function CreateStudy(): JSX.Element {
           />
         </div>
       </div>
-      <div className="fixed bottom-8 left-0 w-full px-4">
-        <Button
-          text={'생성하기'}
-          onClick={() => {
-            console.log(formValues);
-          }}
-          ariaLabel={'생성하기 버튼'}
-        />
+      <div className="fixed bottom-8 left-1/2 w-full max-w-[768px] -translate-x-[50%] px-4">
+        <Button text={'생성하기'} onClick={handleOnClickBtn} ariaLabel={'생성하기 버튼'} />
       </div>
     </>
   );
