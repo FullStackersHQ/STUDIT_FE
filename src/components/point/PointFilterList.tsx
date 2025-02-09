@@ -1,4 +1,4 @@
-import { POINTFILTERS } from '../../constants/CATEGORY';
+import { POINTFILTERS } from '../../constants/constants';
 import { PointFilterType } from '../../types/interface';
 
 export default function PointFilterList({
