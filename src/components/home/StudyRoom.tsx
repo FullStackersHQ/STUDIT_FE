@@ -4,13 +4,13 @@ import StudyRoomList from './StudyRoomList';
 import { useEffect, useRef } from 'react';
 
 const fetchStudies = async (pageParam = 1) => {
-  const { data } = await client.get(`/api/study-room?page=${pageParam}`);
-  return data.result.study_rooms;
+  const { data } = await client.get(`/api/recruits?page=${pageParam}`);
+  return data.result.recruits;
 };
 
 export default function StudyRoom(): JSX.Element {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['study-rooms'],
+    queryKey: ['recruits'],
     queryFn: ({ pageParam = 1 }) => fetchStudies(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

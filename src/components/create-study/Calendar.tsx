@@ -113,7 +113,7 @@ export default function Calendar({ date, setDate }: CalendarProps) {
         value={date}
         readOnly
         onFocus={() => setShow(true)}
-        className="border-light-gray w-32 cursor-pointer border-b text-sm"
+        className="border-light-gray w-24 cursor-pointer border-b text-center text-sm"
       />
       {show && (
         <div className="absolute top-full left-0 z-10 w-60 rounded-lg border bg-white shadow-lg">
