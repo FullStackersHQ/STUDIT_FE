@@ -41,7 +41,7 @@ export default function WithdrawModal({
             className="border-light-gray rounded border p-2"
             onKeyDown={(e) => handleKeyDown(e, () => handleInput())}
           />
-          <p className={`text-deduct text-xs ${shaking ? 'shake' : ''}`}>{notification}</p>
+          <p className={`text-deduct text-xs font-medium ${shaking ? 'shake' : ''}`}>{notification}</p>
         </div>
         <Button text="출금하기" onClick={handleInput} />
         <button aria-label="포인트 출금 모달 닫기" className="close-position" onClick={() => close()}>
