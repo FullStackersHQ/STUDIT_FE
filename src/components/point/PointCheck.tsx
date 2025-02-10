@@ -1,11 +1,17 @@
 import PointIcon from '../../assets/icons/point.svg';
 import useGetUserPoints from '../../hooks/point/useGetUserPoints';
+import { overlay } from 'overlay-kit';
+import WithdrawModal from './WithdrawModal';
 
 export default function PointCheck() {
   const { userPoints, isLoading } = useGetUserPoints();
   if (!userPoints || isLoading) return;
   const { totalPoints, totalChargedPoints, totalDeductedPoints, totalWithdrawnPoints } = userPoints;
-
+  const openOverlay = () => {
+    overlay.open(({ isOpen, close }) => {
+      return <WithdrawModal isOpen={isOpen} close={close} currentPoint={totalPoints} />;
+    });
+  };
   return (
     <section>
       <div className="mb-4 flex items-center justify-between">
@@ -16,7 +22,7 @@ export default function PointCheck() {
           </div>
           <h2 className="ml-7 text-xl font-bold">{totalPoints.toLocaleString()} P</h2>
         </div>
-        <button className="bg-white-gray hover:text-color-gray hover:bg-light-gray cursor-pointer rounded-full px-2 py-1.5 text-sm font-medium transition-colors">
+        <button onClick={openOverlay} className="btn-sm">
           출금하기
         </button>
       </div>
