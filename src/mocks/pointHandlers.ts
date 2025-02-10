@@ -32,13 +32,12 @@ const pointHandlers = [
           status: 400,
         });
       }
+
       UserPoints.totalPoints -= amount;
       UserPoints.totalWithdrawnPoints += amount;
 
       const today = new Date();
       const formattedDate = today.toISOString().split('T')[0].replace(/-/g, '.');
-
-      // AllPointRecords는 GroupedByDate 타입으로 가정
       const existingDateIndex = AllPointRecords.findIndex((record) => record.date === formattedDate);
 
       const newRecord = {
