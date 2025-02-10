@@ -21,5 +21,9 @@ const pointApi = {
     const { data: response } = await client.get('/point/withdraw');
     return response;
   },
+  withdrawPoint: async (withdrawPoint: number) => {
+    const { data: response } = await client.post('/point/withdraw', { amount: withdrawPoint });
+    return response;
+  },
 };
 export default pointApi;
