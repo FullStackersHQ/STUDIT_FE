@@ -24,8 +24,8 @@ export default function ProfileModifyModal({
   if (!isOpen) return;
   return (
     <ModalOverlay>
-      <section className="relative flex h-[289px] w-[343px] flex-col items-center rounded-md bg-white py-4">
-        <h1 className="text-main text-center font-bold">프로필을 수정해요</h1>
+      <section className="modal-container h-[289px]">
+        <h1 className="text-main font-bold">프로필을 수정해요</h1>
         <div className="relative mt-5">
           <img src={profile.userImg} alt={profile.nickName + '프로필'} className="h-20 w-20 rounded-full" />
           <button
@@ -51,15 +51,8 @@ export default function ProfileModifyModal({
             <span className="self-end text-xs">{profile.nickName.length} /10</span>
           )}
         </div>
-        <button
-          aria-label="프로필 수정 모달 닫기"
-          className="absolute -top-[26px] right-0 cursor-pointer"
-          onClick={() => close()}
-        >
-          <CloseIcon
-            className="hover:text-white-gray h-3.5 w-3.5 text-white transition-colors"
-            alt="프로필 수정 모달 닫기"
-          />
+        <button aria-label="프로필 수정 모달 닫기" className="close-position" onClick={() => close()}>
+          <CloseIcon className="close-btn" alt="프로필 수정 모달 닫기" />
         </button>
         <Button text="수정하기" onClick={() => handleModifyProfile(close)} isSmall />
       </section>

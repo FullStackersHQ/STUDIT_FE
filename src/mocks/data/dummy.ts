@@ -191,193 +191,254 @@ export const UserPoints: IUserPoints = {
   totalWithdrawnPoints: 5000,
 };
 
-export const AllPointRecords: GroupedByDate = {
-  '2024.02.12': [
-    {
-      id: 5,
-      type: '차감',
-      amount: 15000,
-      total_after: 35000,
-      time: '11:20:00',
-    },
-  ],
-  '2024.02.11': [
-    {
-      id: 4,
-      type: '출금',
-      amount: 20000,
-      total_after: 50000,
-      time: '16:45:00',
-    },
-  ],
-  '2024.02.10': [
-    {
-      id: 3,
-      type: '충전',
-      amount: 30000,
-      total_after: 70000,
-      time: '09:00:00',
-    },
-  ],
-  '2024.02.09': [
-    {
-      id: 2,
-      type: '차감',
-      amount: 10000,
-      total_after: 40000,
-      time: '14:15:00',
-    },
-  ],
-  '2024.02.08': [
-    {
-      id: 1,
-      type: '충전',
-      amount: 50000,
-      total_after: 50000,
-      time: '10:30:00',
-    },
-  ],
-};
+export const AllPointRecords: GroupedByDate[] = [
+  {
+    date: '2024.02.09',
+    records: [
+      {
+        id: 5,
+        type: '차감',
+        amount: 15000,
+        total_after: 35000,
+        time: '11:20:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.08',
+    records: [
+      {
+        id: 4,
+        type: '출금',
+        amount: 20000,
+        total_after: 50000,
+        time: '16:45:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.30',
+    records: [
+      {
+        id: 3,
+        type: '충전',
+        amount: 30000,
+        total_after: 70000,
+        time: '09:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.09',
+    records: [
+      {
+        id: 2,
+        type: '차감',
+        amount: 10000,
+        total_after: 40000,
+        time: '14:15:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.08',
+    records: [
+      {
+        id: 1,
+        type: '충전',
+        amount: 50000,
+        total_after: 50000,
+        time: '10:30:00',
+      },
+    ],
+  },
+];
 
-export const ToppedUpPoints: GroupedByDate = {
-  '2024.02.12': [
-    {
-      id: 5,
-      type: '충전',
-      amount: 15000,
-      total_after: 35000,
-      time: '11:20:00',
-    },
-  ],
-  '2024.02.11': [
-    {
-      id: 4,
-      type: '충전',
-      amount: 20000,
-      total_after: 50000,
-      time: '16:45:00',
-    },
-  ],
-  '2024.02.10': [
-    {
-      id: 3,
-      type: '충전',
-      amount: 30000,
-      total_after: 70000,
-      time: '09:00:00',
-    },
-  ],
-  '2024.02.09': [
-    {
-      id: 2,
-      type: '충전',
-      amount: 10000,
-      total_after: 40000,
-      time: '14:15:00',
-    },
-  ],
-  '2024.02.08': [
-    {
-      id: 1,
-      type: '충전',
-      amount: 50000,
-      total_after: 50000,
-      time: '10:30:00',
-    },
-  ],
-};
-export const DeductedPoints: GroupedByDate = {
-  '2024.02.12': [
-    {
-      id: 5,
-      type: '차감',
-      amount: 15000,
-      total_after: 35000,
-      time: '11:20:00',
-    },
-  ],
-  '2024.02.11': [
-    {
-      id: 4,
-      type: '차감',
-      amount: 20000,
-      total_after: 50000,
-      time: '16:45:00',
-    },
-  ],
-  '2024.02.10': [
-    {
-      id: 3,
-      type: '차감',
-      amount: 30000,
-      total_after: 70000,
-      time: '09:00:00',
-    },
-  ],
-  '2024.02.09': [
-    {
-      id: 2,
-      type: '차감',
-      amount: 10000,
-      total_after: 40000,
-      time: '14:15:00',
-    },
-  ],
-  '2024.02.08': [
-    {
-      id: 1,
-      type: '차감',
-      amount: 50000,
-      total_after: 50000,
-      time: '10:30:00',
-    },
-  ],
-};
+export const ToppedUpPoints: GroupedByDate[] = [
+  {
+    date: '2024.02.12',
+    records: [
+      {
+        id: 5,
+        type: '충전',
+        amount: 15000,
+        total_after: 35000,
+        time: '11:20:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.11',
+    records: [
+      {
+        id: 4,
+        type: '충전',
+        amount: 20000,
+        total_after: 50000,
+        time: '16:45:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.10',
+    records: [
+      {
+        id: 3,
+        type: '충전',
+        amount: 30000,
+        total_after: 70000,
+        time: '09:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.09',
+    records: [
+      {
+        id: 2,
+        type: '충전',
+        amount: 10000,
+        total_after: 40000,
+        time: '14:15:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.08',
+    records: [
+      {
+        id: 1,
+        type: '충전',
+        amount: 50000,
+        total_after: 50000,
+        time: '10:30:00',
+      },
+    ],
+  },
+];
 
-export const WithDrawnPoints: GroupedByDate = {
-  '2024.02.12': [
-    {
-      id: 5,
-      type: '출금',
-      amount: 15000,
-      total_after: 35000,
-      time: '11:20:00',
-    },
-  ],
-  '2024.02.11': [
-    {
-      id: 4,
-      type: '출금',
-      amount: 20000,
-      total_after: 50000,
-      time: '16:45:00',
-    },
-  ],
-  '2024.02.10': [
-    {
-      id: 3,
-      type: '출금',
-      amount: 30000,
-      total_after: 70000,
-      time: '09:00:00',
-    },
-  ],
-  '2024.02.09': [
-    {
-      id: 2,
-      type: '출금',
-      amount: 10000,
-      total_after: 40000,
-      time: '14:15:00',
-    },
-  ],
-  '2024.02.08': [
-    {
-      id: 1,
-      type: '출금',
-      amount: 50000,
-      total_after: 50000,
-      time: '10:30:00',
-    },
-  ],
-};
+export const DeductedPoints: GroupedByDate[] = [
+  {
+    date: '2024.02.12',
+    records: [
+      {
+        id: 5,
+        type: '차감',
+        amount: 15000,
+        total_after: 35000,
+        time: '11:20:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.11',
+    records: [
+      {
+        id: 4,
+        type: '차감',
+        amount: 20000,
+        total_after: 50000,
+        time: '16:45:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.10',
+    records: [
+      {
+        id: 3,
+        type: '차감',
+        amount: 30000,
+        total_after: 70000,
+        time: '09:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.09',
+    records: [
+      {
+        id: 2,
+        type: '차감',
+        amount: 10000,
+        total_after: 40000,
+        time: '14:15:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.08',
+    records: [
+      {
+        id: 1,
+        type: '차감',
+        amount: 50000,
+        total_after: 50000,
+        time: '10:30:00',
+      },
+    ],
+  },
+];
+
+export const WithDrawnPoints: GroupedByDate[] = [
+  {
+    date: '2024.02.12',
+    records: [
+      {
+        id: 5,
+        type: '출금',
+        amount: 15000,
+        total_after: 35000,
+        time: '11:20:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.11',
+    records: [
+      {
+        id: 4,
+        type: '출금',
+        amount: 20000,
+        total_after: 50000,
+        time: '16:45:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.10',
+    records: [
+      {
+        id: 3,
+        type: '출금',
+        amount: 30000,
+        total_after: 70000,
+        time: '09:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.09',
+    records: [
+      {
+        id: 2,
+        type: '출금',
+        amount: 10000,
+        total_after: 40000,
+        time: '14:15:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.08',
+    records: [
+      {
+        id: 1,
+        type: '출금',
+        amount: 50000,
+        total_after: 50000,
+        time: '10:30:00',
+      },
+    ],
+  },
+];
