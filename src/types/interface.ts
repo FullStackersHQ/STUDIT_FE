@@ -18,17 +18,25 @@ export interface StudyRoomType {
   recruitId: number;
   title: string;
   category: string;
-  max_members?: number;
-  current_members: number;
+  maxMembers?: number;
+  currentMembers?: number;
   tags: string[];
-  study_start_at: string;
-  recruit_end_at: string;
-  study_end_at: string;
+  studyStartAt: string;
+  recruitEndAt: string;
+  studyEndAt: string;
   status: string;
   description?: string;
   deposit?: string;
-  goal_time?: string;
+  goalTime?: string;
 }
+
+export interface StudyRecruitType extends StudyRoomType {
+  leader: {
+    userId: number;
+    username: string;
+  };
+}
+
 export interface FilterType {
   category: string;
   search: string;
@@ -69,10 +77,6 @@ export interface PointRecord {
   time: string;
 }
 export interface GroupedByDate {
-  date: string;
-  records: PointRecord[];
+  [date: string]: PointRecord[];
 }
 export type PointFilterType = '전체' | '충전' | '차감' | '출금';
-export interface WithdrawRequest extends Record<string, unknown> {
-  amount: number;
-}

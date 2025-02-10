@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw';
 import { mockStudyRoomList } from './data/dummy';
+import { StudyRoomType } from '../types/interface';
 
 export const studyRoomHandlers = [
   // 스터디룸 목록 조회
@@ -25,22 +26,17 @@ export const studyRoomHandlers = [
 
   // 스터디 생성
   http.post(`/api/recruits`, async ({ request }) => {
-    console.log('스터디 생성');
-    const body = await request.json();
+    const body = (await request.json()) as StudyRoomType;
 
-    console.log('스터디 생성 요청', body);
-    mockStudyRoomList.push({
-      recruitId: mockStudyRoomList.length + 1,
-      ...body,
-    });
+    console.log('스터디 생성', body);
 
     return HttpResponse.json({
       status: 'OK',
       code: 200,
       message: '스터디가 생성되었습니다.',
       result: {
-        recruitId: mockStudyRoomList.length + 1,
         ...body,
+        recruitId: mockStudyRoomList.length + 1,
       },
     });
   }),
