@@ -16,7 +16,9 @@ const myPageHandlers = [
   }),
   http.put('/user/profile-image/', async ({ request }) => {
     const formData = await request.formData();
-    const img = formData.get('image');
+    const img = formData.get('image') as string;
+    ProfileData.profileImage = img;
+
     return HttpResponse.json({
       success: true,
       message: '프로필 사진이 성공적으로 수정되었습니다.',
@@ -25,6 +27,7 @@ const myPageHandlers = [
   }),
   http.put('/user/nickname/', async ({ request }) => {
     const { nickName } = (await request.json()) as ModifyNicknameRequest;
+    ProfileData.nickName = nickName;
     return HttpResponse.json({
       success: true,
       message: '닉네임이 성공적으로 수정되었습니다.',
