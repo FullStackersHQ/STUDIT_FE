@@ -85,4 +85,12 @@
 			pointer-events: auto;
 		}
 	}
+
+	.create-study-label {
+		font-weight: bold;
+		margin-right: 8px;
+		font-size: 16px;
+		display: flex;
+		flex-direction: row;
+	}
 }
