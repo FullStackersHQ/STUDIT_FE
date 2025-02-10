@@ -29,6 +29,10 @@ export const studyRoomHandlers = [
     const body = await request.json();
 
     console.log('스터디 생성 요청', body);
+    mockStudyRoomList.push({
+      recruitId: mockStudyRoomList.length + 1,
+      ...body,
+    });
 
     return HttpResponse.json({
       status: 'OK',
