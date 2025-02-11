@@ -1,6 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import client from '../../utils/client';
-// import StudyRoomList from './StudyRoomList';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +10,7 @@ const fetchStudies = async (pageParam = 1) => {
 
 export default function StudyRoom(): JSX.Element {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['study-rooms'],
+    queryKey: ['study-recruit-list'],
     queryFn: ({ pageParam = 1 }) => fetchStudies(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
