@@ -1,6 +1,7 @@
 import { http, HttpResponse } from 'msw';
 import { UserPoints, AllPointRecords, ToppedUpPoints, DeductedPoints, WithDrawnPoints } from './data/dummy';
-import { PointFilterType, WithdrawRequest } from '../types/interface';
+import { PointFilterType } from '../types/interface';
+import { WithdrawRequest } from '../types/request';
 
 const pointHandlers = [
   http.get('/point', () => {

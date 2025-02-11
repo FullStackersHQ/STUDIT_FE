@@ -86,9 +86,10 @@ export interface GroupedByDate {
   records: PointRecord[];
 }
 export type PointFilterType = '전체' | '충전' | '차감' | '출금';
-
-export interface WithdrawRequest extends Record<string, unknown> {
-  amount: number;
+export interface StudyDetail {
+  title: string;
+  description: string;
+  tags: string[];
 }
 export interface ModifyNickNameProps {
   currentNickName: string;
