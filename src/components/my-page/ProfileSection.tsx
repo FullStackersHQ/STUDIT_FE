@@ -48,16 +48,16 @@ export default function ProfileSection({ userData, userId }: { userData: UserPro
         <p className="mb-2.5 font-medium">스터디 현황</p>
         <div className="border-white-gray flex w-full justify-around rounded-md border py-2">
           <Link className="flex cursor-pointer flex-col items-center" to="/study-list?status=upcoming">
-            <span>시작 전</span>
-            <span className="text-main-text font-bold">{applied}</span>
+            <span className="text-main-text font-medium">시작 전</span>
+            <span>{applied}</span>
           </Link>
           <Link className="flex cursor-pointer flex-col items-center" to="/study-list?status=ongoing">
-            <span>진행 중</span>
-            <span className="text-main-text font-bold">{in_progress}</span>
+            <span className="text-main-text font-medium">진행 중</span>
+            <span>{in_progress}</span>
           </Link>
           <Link className="flex cursor-pointer flex-col items-center" to="/study-list?status=completed">
-            <span>완료</span>
-            <span className="text-main-text font-bold">{completed}</span>
+            <span className="text-main-text font-medium">완료</span>
+            <span>{completed}</span>
           </Link>
         </div>
       </section>
