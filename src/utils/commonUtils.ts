@@ -17,18 +17,21 @@ export function handleMaxLengthChange(
   const newValue = e.target.value;
   if (newValue.length <= maxLength) onChange(e);
 }
+
 export function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>, onButtonClick: () => void) {
   if (e.key === 'Enter') {
     e.preventDefault();
     onButtonClick();
   }
 }
+
 export function toMonthDay(date: string): string {
   const [, month, day] = date.split('.');
   const monthNumber = parseInt(month);
   const dayNumber = parseInt(day);
   return `${monthNumber}월 ${dayNumber}일`;
 }
+
 export function formatTimeToAMPM(time: string) {
   const [hour, minute] = time.split(':').map(Number);
   const period = hour >= 12 ? '오후' : '오전';

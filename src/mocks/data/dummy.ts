@@ -7,6 +7,7 @@ import {
   IUserPoints,
   GroupedByDate,
   StudyRecruitType,
+  StudyDetail,
 } from '../../types/interface';
 
 export const ProfileData: UserProfile = {
@@ -460,3 +461,8 @@ export const WithDrawnPoints: GroupedByDate[] = [
     ],
   },
 ];
+export const StudyDetailData: StudyDetail = {
+  title: 'CPA 자격증 준비 스터디',
+  description: 'CPA(공인회계사) 자격증 취득을 위한 이론 공부와 문제 풀이를 진행하는 스터디입니다.',
+  tags: ['CPA', '회계', '재무관리', '회계학'],
+};
