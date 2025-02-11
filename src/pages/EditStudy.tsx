@@ -31,6 +31,7 @@ function EditStudy() {
           </label>
           <input
             id="studyTitle"
+            placeholder="스터디 제목을 입력해주세요"
             type="text"
             value={editInfo.title}
             onChange={(e) =>
@@ -45,6 +46,7 @@ function EditStudy() {
             스터디 설명
           </label>
           <textarea
+            placeholder="스터디 설명을 입력해주세요"
             id="studyDescription"
             value={editInfo.description}
             onChange={(e) => setEditInfo((prev) => ({ ...prev, description: e.target.value }))}

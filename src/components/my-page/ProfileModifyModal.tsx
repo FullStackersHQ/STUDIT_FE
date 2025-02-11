@@ -43,6 +43,7 @@ export default function ProfileModifyModal({
         <div className="mb-4 flex flex-col gap-y-1">
           <input
             onKeyDown={(e) => handleKeyDown(e, () => handleModifyProfile(close))}
+            placeholder="변경할 닉네임 입력"
             type="text"
             onChange={(e) => handleMaxLengthChange(e, 10, onNickNameChange)}
             className="mt-6 w-[140px] border-b border-black py-1 pl-1.5 text-sm"
