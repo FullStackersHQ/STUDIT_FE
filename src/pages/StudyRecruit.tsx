@@ -2,10 +2,11 @@ import { useCallback } from 'react';
 import Button from '../components/Button';
 import HeaderWithBack from '../components/HeaderWithBack';
 import { overlay } from 'overlay-kit';
-import PontShortageModal from '../components/recruit/PontShortageModal';
+import PointShortageModal from '../components/recruit/PointShortageModal';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { recruitApi } from '../api/recruitApi';
+import DeleteModal from '../components/recruit/DeleteModal';
 
 export default function StudyRecruit(): JSX.Element {
   const userId: number = 1002;
@@ -20,16 +21,16 @@ export default function StudyRecruit(): JSX.Element {
   });
 
   const navigate = useNavigate();
-
+  console.log(data);
   const onClickJoinBtn = useCallback(async () => {
     // 유저 deposit이 적다면
-    if (userDeposit < Number(data.deposit)) {
+    if (userDeposit < Number(data.result.deposit)) {
       overlay.open(({ isOpen, close }) => {
         return (
-          <PontShortageModal
+          <PointShortageModal
             currentPoint={{
               now: userDeposit,
-              need: Number(data.deposit),
+              need: Number(data.result.deposit),
             }}
             navigate={navigate}
             isOpen={isOpen}
@@ -40,14 +41,19 @@ export default function StudyRecruit(): JSX.Element {
       });
     }
 
-    const { data: response } = await recruitApi.joinRecruit(recruitId, { deposit: data.deposit });
+    const { data: response } = await recruitApi.joinRecruit(recruitId, { deposit: data.result.deposit });
 
     console.log(response);
-  }, []);
+  }, [data.result.deposit, recruitId]);
 
   // 스터디장이면 수정, 삭제 기능 추가
   const deleteStudy = useCallback(async () => {
-    const { data: response } = await recruitApi.deleteRecruitInfo(recruitId);
+    const response = await recruitApi.deleteRecruitInfo(recruitId);
+    if (response.code === 200) {
+      overlay.open(({ isOpen, close }) => {
+        return <DeleteModal navigate={navigate} isOpen={isOpen} close={close} text={response.message} />;
+      });
+    }
   }, []);
 
   const editStudy = useCallback(async () => {
