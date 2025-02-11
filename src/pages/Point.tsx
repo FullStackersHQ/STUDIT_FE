@@ -13,7 +13,7 @@ function Point() {
       <HeaderWithBack title="포인트 출금 및 내역" />
       <div className="relative px-4">
         <PointCheck />
-        <div className="bg-white-gray absolute top-[140px] right-0 left-0 h-2 w-full" />
+        <div className="bg-main absolute top-[140px] right-0 left-0 h-1.5 w-full" />
         <section className="flex flex-col py-8">
           <PointFilterList selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} />
           <PointHistory selectedFilter={selectedFilter} />

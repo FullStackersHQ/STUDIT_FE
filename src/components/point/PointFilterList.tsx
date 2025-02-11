@@ -15,7 +15,7 @@ export default function PointFilterList({
           <button
             key={pointFilter}
             onClick={() => setSelectedFilter(pointFilter)}
-            className={`border-white-gray hover:bg-white-gray rounded-full border px-2 py-[2px] transition-colors ${selectedFilter === pointFilter && 'bg-light-gray'}`}
+            className={`rounded-full border px-2 py-[2px] transition-colors ${selectedFilter === pointFilter ? 'bg-main border-main text-white' : 'border-white-gray hover:bg-white-gray'}`}
           >
             {pointFilter}
           </button>
