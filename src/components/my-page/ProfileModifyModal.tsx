@@ -45,7 +45,7 @@ export default function ProfileModifyModal({
             onKeyDown={(e) => handleKeyDown(e, () => handleModifyProfile(close))}
             type="text"
             onChange={(e) => handleMaxLengthChange(e, 10, onNickNameChange)}
-            className="mt-6 w-[140px] border-b border-black py-1 pl-1.5 text-sm transition-colors"
+            className="mt-6 w-[140px] border-b border-black py-1 pl-1.5 text-sm"
             value={profile.nickName}
           />
           {error ? (
