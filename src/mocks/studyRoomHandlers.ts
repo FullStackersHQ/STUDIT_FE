@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 import { mockStudyRoomList } from './data/dummy';
-import { StudyRoomPostType } from '../types/interface';
+import { StudyRoomPostType, StudyRoomPutType } from '../types/interface';
 
 export const studyRoomHandlers = [
   // 모집 중인 스터디룸 목록 조회
@@ -56,7 +56,7 @@ export const studyRoomHandlers = [
     });
   }),
 
-  // 스터디 모집 글 삭제 삭제
+  // 스터디 모집 글 삭제
   http.delete(`/api/recruits/:recruitId`, ({ params }) => {
     const recruitId = params.recruitId;
     const index = mockStudyRoomList.findIndex((room) => room.recruitId === Number(recruitId));
@@ -69,5 +69,25 @@ export const studyRoomHandlers = [
         message: '스터디 모집 글이 삭제되었습니다.',
       });
     }
+  }),
+
+  // 스터디 모집 글 수정
+  http.put(`/api/recruits/:recruitId`, async ({ request, params }) => {
+    const body = (await request.json()) as StudyRoomPutType;
+    const recruitId = params.recruitId;
+    const index = mockStudyRoomList.findIndex((room) => room.recruitId === Number(recruitId));
+
+    mockStudyRoomList[index] = {
+      ...mockStudyRoomList[index],
+      ...body,
+    };
+
+    console.log('스터디 모집 글 수정', body);
+
+    return HttpResponse.json({
+      status: 'OK',
+      code: 200,
+      message: '글을 수정했습니다.',
+    });
   }),
 ];

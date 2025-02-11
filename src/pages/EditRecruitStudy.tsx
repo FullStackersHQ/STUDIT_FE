@@ -81,7 +81,6 @@ export default function EditRecruitStudy(): JSX.Element {
       category: formValues.category,
       tags: formValues.tags.split(' '),
     });
-    console.log(response.code);
     if (response.code === 200) navigate('/', { replace: true });
   };
 
@@ -98,13 +97,6 @@ export default function EditRecruitStudy(): JSX.Element {
     if (event.target.value.length <= 14) {
       setValue('title', event.target.value);
     }
-  };
-
-  const handleDepositChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let value = Number(event.target.value);
-    if (value < 1000) value = 1000;
-    if (value > 50000) value = 50000;
-    setValue('deposit', String(value));
   };
 
   return (
@@ -141,9 +133,8 @@ export default function EditRecruitStudy(): JSX.Element {
             type="number"
             aria-label="스터디 참여 포인트 입력창"
             {...register('deposit', { valueAsNumber: true })}
-            onChange={handleDepositChange}
             disabled
-            className="border-light-gray w-12 border-b text-center text-sm"
+            className="border-light-gray w-12 text-center text-sm"
           />
           점
         </div>
@@ -156,7 +147,7 @@ export default function EditRecruitStudy(): JSX.Element {
             aria-label="스터디 주당 목표 시간 입력창"
             disabled
             {...register('goalTime', { valueAsNumber: true })}
-            className="border-light-gray w-8 border-b text-center text-sm"
+            className="border-light-gray w-8 text-center text-sm"
           />
           시간
         </div>
@@ -168,7 +159,7 @@ export default function EditRecruitStudy(): JSX.Element {
             <input
               type="text"
               value={post.studyStartAt.split('T')[0]}
-              className="border-light-gray w-24 border-b text-center text-sm"
+              className="border-light-gray w-24 text-center text-sm"
               disabled
             />
             일
@@ -177,7 +168,7 @@ export default function EditRecruitStudy(): JSX.Element {
               aria-label="스터디 시작 시간 입력창"
               {...register('hour')}
               disabled
-              className="border-light-gray w-8 border-b text-center text-sm"
+              className="border-light-gray w-8 text-center text-sm"
             />
             시
           </div>
@@ -191,7 +182,7 @@ export default function EditRecruitStudy(): JSX.Element {
             aria-label="스터디 진행 기간 입력창 - 주단위"
             {...register('duration', { valueAsNumber: true })}
             disabled
-            className="border-light-gray w-8 border-b text-center text-sm"
+            className="border-light-gray w-8 text-center text-sm"
           />
           주
         </div>
@@ -199,20 +190,9 @@ export default function EditRecruitStudy(): JSX.Element {
           <label className="create-study-label">
             <p className="text-deduct">*</p>스터디 종료 날짜
           </label>
-          <input
-            type="text"
-            value={post.studyEndAt.split('T')[0]}
-            className="border-light-gray w-24 border-b text-center text-sm"
-            disabled
-          />
+          <input type="text" value={post.studyEndAt.split('T')[0]} className="w-24 text-center text-sm" disabled />
           일
-          <input
-            type="number"
-            disabled
-            {...register('hour')}
-            className="border-light-gray w-8 border-b text-center text-sm"
-          />
-          시
+          <input type="number" disabled {...register('hour')} className="border-light-gray w-8 text-center text-sm" />시
         </div>
         <div className="mt-5 flex">
           <h2 className="create-study-label">
