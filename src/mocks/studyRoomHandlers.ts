@@ -4,7 +4,7 @@ import { StudyRoomPostType } from '../types/interface';
 
 export const studyRoomHandlers = [
   // 모집 중인 스터디룸 목록 조회
-  http.get(`/api/recruits`, async ({ request }) => {
+  http.get(`/api/recruits`, ({ request }) => {
     console.log('스터디 목록 조회');
     const url = new URL(request.url);
     const page = parseInt(url.searchParams.get('page') || '1', 10);
@@ -42,7 +42,7 @@ export const studyRoomHandlers = [
   }),
 
   // 스터디 모집 글 상세 조회
-  http.get(`/api/recruits/:recruitId`, async ({ params }) => {
+  http.get(`/api/recruits/:recruitId`, ({ params }) => {
     const recruitId = params.recruitId;
     const studyRoom = mockStudyRoomList.find((room) => room.recruitId === Number(recruitId));
     console.log('스터디 모집 글 상세 조회', studyRoom);
@@ -57,18 +57,17 @@ export const studyRoomHandlers = [
   }),
 
   // 스터디 모집 글 삭제 삭제
-  http.delete(`/api/recruits/:recruitId`, async ({ params }) => {
+  http.delete(`/api/recruits/:recruitId`, ({ params }) => {
     const recruitId = params.recruitId;
-    console.log('스터디 모집 글 삭제', recruitId);
     const index = mockStudyRoomList.findIndex((room) => room.recruitId === Number(recruitId));
     if (index !== -1) {
       mockStudyRoomList.splice(index, 1);
+
       return HttpResponse.json({
         status: 'OK',
         code: 200,
-        message: '스터디 모집 글 삭제되었습니다.',
+        message: '스터디 모집 글이 삭제되었습니다.',
       });
     }
-    return HttpResponse.error();
   }),
 ];

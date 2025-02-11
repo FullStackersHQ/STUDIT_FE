@@ -3,9 +3,13 @@ import client from '../utils/client';
 
 export const recruitApi = {
   postRecruitInfo: async (info: StudyRoomPostType) => {
-    const { data: response } = await client.post(`/api/recruits`, {
-      ...info,
-    });
+    const { data: response } = await client.post(
+      `/api/recruits`,
+      {
+        ...info,
+      },
+      { headers: { 'Content-Type': 'application/json' } },
+    );
     return response;
   },
   getRecruitInfo: async (recruitId: string | undefined) => {

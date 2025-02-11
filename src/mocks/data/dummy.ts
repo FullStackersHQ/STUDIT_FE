@@ -30,7 +30,7 @@ export const AvgStatsData: AvgStats = {
 export const mockStudyRoomList: StudyRecruitType[] = [
   {
     recruitId: 1,
-    title: 'Spring Boot 스터디',
+    title: 'Spring Boot',
     category: '코딩',
     tags: ['Spring', 'Java'],
     studyStartAt: '2025-02-11T17',
@@ -47,7 +47,7 @@ export const mockStudyRoomList: StudyRecruitType[] = [
   },
   {
     recruitId: 2,
-    title: '공무원 시험 준비 스터디',
+    title: '공무원 시험 준비',
     category: '공무원',
     tags: ['국어', '영어', '한국사'],
     studyStartAt: '2025-03-01T17',
@@ -64,7 +64,7 @@ export const mockStudyRoomList: StudyRecruitType[] = [
   },
   {
     recruitId: 3,
-    title: '단기 토익 공부방',
+    title: '단기 토익',
     category: '어학',
     tags: ['토익', '영어'],
     studyStartAt: '2025-02-11T16',
