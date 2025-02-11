@@ -28,8 +28,8 @@ const pointHandlers = [
     try {
       const body = (await request.json()) as WithdrawRequest;
       const { amount } = body;
-      if (!body || typeof amount !== 'number') {
-        return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 amount가 없습니다.' }), {
+      if (!body) {
+        return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
           status: 400,
         });
       }
