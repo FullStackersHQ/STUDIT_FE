@@ -29,8 +29,9 @@ export default function WithdrawModal({
           </button>
         </div>
         <div className="mb-3 flex w-full flex-col gap-y-2">
-          <p>출금할 포인트</p>
+          <label htmlFor="withdrawPoint">출금할 포인트</label>
           <input
+            id="withdrawPoint"
             type="text"
             placeholder="출금할 포인트"
             value={inputPoint.toLocaleString()}
@@ -38,7 +39,7 @@ export default function WithdrawModal({
               const rawValue = e.target.value.replace(/,/g, '');
               setInputPoint(Number(rawValue) || 0);
             }}
-            className="border-light-gray rounded border p-2"
+            className="text-input"
             onKeyDown={(e) => handleKeyDown(e, () => handleInput())}
           />
           <p className={`text-deduct text-xs font-medium ${shaking ? 'shake' : ''}`}>{notification}</p>

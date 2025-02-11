@@ -5,7 +5,7 @@ import StudyItem from '../components/my-page/StudyItem';
 
 function StudyList() {
   const { studyType, title, studyList, isLoading } = useStudyList();
-  if (!studyList || isLoading) return;
+  if (!studyList || isLoading) return null;
 
   return (
     <div>
