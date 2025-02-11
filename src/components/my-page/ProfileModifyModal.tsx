@@ -21,7 +21,7 @@ export default function ProfileModifyModal({
       userImg,
       nickName,
     });
-  if (!isOpen) return;
+  if (!isOpen) return null;
   return (
     <ModalOverlay>
       <section className="modal-container h-[289px]">

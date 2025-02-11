@@ -5,7 +5,7 @@ import WithdrawModal from './WithdrawModal';
 
 export default function PointCheck() {
   const { userPoints, isLoading } = useGetUserPoints();
-  if (!userPoints || isLoading) return;
+  if (!userPoints || isLoading) return null;
   const { totalPoints, totalChargedPoints, totalDeductedPoints, totalWithdrawnPoints } = userPoints;
   const openOverlay = () => {
     overlay.open(({ isOpen, close }) => {

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function MyPage() {
   const { userData, isUserDataLoading, averageStats, isAvgLoading } = useMyPage();
   const navigate = useNavigate();
-  if (!userData || isUserDataLoading || !averageStats || isAvgLoading) return;
+  if (!userData || isUserDataLoading || !averageStats || isAvgLoading) return null;
 
   return (
     <div className="flex h-[calc(100%-60px)] flex-col justify-between px-4 py-7">

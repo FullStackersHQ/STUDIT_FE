@@ -5,7 +5,7 @@ import PointRecordItem from './PointRecordItem';
 
 export default function PointHistory({ selectedFilter }: { selectedFilter: PointFilterType }) {
   const { pointHistory, isLoading } = useGetPointHistory(selectedFilter);
-  if (!pointHistory || isLoading) return;
+  if (!pointHistory || isLoading) return null;
 
   return (
     <ul>
