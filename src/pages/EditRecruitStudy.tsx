@@ -2,14 +2,14 @@ import { useState } from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
 import { CATEGORY } from '../constants/constants';
 import Button from '../components/Button';
-import Calendar from '../components/create-study/Calendar';
 import CreatableSelect from 'react-select/creatable';
 import { MultiValue } from 'react-select';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { recruitApi } from '../api/recruitApi';
+import { StudyRecruitType } from '../types/interface';
 
 const studySchema = z.object({
   title: z.string().max(10, '최대 10자까지 입력 가능합니다.'),
@@ -20,46 +20,63 @@ const studySchema = z.object({
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}T\d{2}$/, '올바른 날짜 형식이 아닙니다. (yyyy-mm-dd)')
     .refine((date) => !isNaN(new Date(date).getTime()), '유효한 날짜가 아닙니다.'),
-  duration: z.number().min(1).max(35),
   maxMembers: z.number().min(2).max(10),
+  duration: z.number().min(1).max(35),
   category: z.string(),
   tags: z.string(),
   hour: z.string().min(0).max(24),
 });
 
+function getTotalWeeks(start: string, end: string): number {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+
+  let weeks = 0;
+  const currentWeekStart = new Date(startDate);
+
+  while (currentWeekStart <= endDate) {
+    weeks++;
+    currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+  }
+
+  return weeks;
+}
+
 type StudyFormData = z.infer<typeof studySchema>;
 
-export default function CreateStudy(): JSX.Element {
+export default function EditRecruitStudy(): JSX.Element {
   const action = { icon: undefined, ariaLabel: '', onClick: () => {} };
-  const { register, control, watch, setValue } = useForm<StudyFormData>({
+  const post: StudyRecruitType = useLocation().state;
+  console.log(post);
+
+  const { register, watch, setValue } = useForm<StudyFormData>({
     resolver: zodResolver(studySchema),
     defaultValues: {
-      title: '',
-      description: '',
-      deposit: '1000',
-      goalTime: '1',
-      studyStartDate: new Date().toISOString().split('T')[0],
-      duration: 1,
-      maxMembers: 2,
-      category: '',
-      tags: '',
-      hour: '9',
+      title: post.title,
+      description: post.description,
+      deposit: post.deposit,
+      goalTime: post.goalTime,
+      studyStartDate: post.studyStartAt.split('T')[0],
+      maxMembers: post.maxMembers,
+      duration: getTotalWeeks(post.studyStartAt.split('T')[0], post.studyEndAt.split('T')[0]),
+      category: post.category,
+      tags: post.tags.join(' '),
+      hour: post.studyStartAt.split('T')[1],
     },
   });
-  const [tags, setTags] = useState<string>('');
-  const startDate = watch('studyStartDate');
-  const duration = watch('duration');
+
+  const [tags, setTags] = useState<string>(watch('tags'));
   const formValues = watch();
+  const { recruitId } = useParams<{
+    recruitId: string;
+  }>();
   const navigate = useNavigate();
 
+  // 제목, 내용, 카데고리, 태그, 인원만 변경 가능
   const handleOnClickBtn = async () => {
-    const response = await recruitApi.postRecruitInfo({
+    const response = await recruitApi.putRecruitInfo(recruitId, {
       title: formValues.title,
       description: formValues.description,
-      deposit: formValues.deposit,
-      goalTime: formValues.goalTime,
-      recruitEndAt: formValues.studyStartDate + 'T' + formValues.hour.padStart(2, '0'),
-      studyEndAt: endDate?.toISOString().split('T')[0] + 'T' + formValues.hour.padStart(2, '0'),
       maxMembers: formValues.maxMembers,
       category: formValues.category,
       tags: formValues.tags.split(' '),
@@ -77,11 +94,6 @@ export default function CreateStudy(): JSX.Element {
     setValue('tags', newTags);
   };
 
-  const endDate = startDate && duration ? new Date(startDate) : null;
-  if (endDate) {
-    endDate.setDate(endDate.getDate() + duration * 7);
-  }
-
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length <= 14) {
       setValue('title', event.target.value);
@@ -93,20 +105,6 @@ export default function CreateStudy(): JSX.Element {
     if (value < 1000) value = 1000;
     if (value > 50000) value = 50000;
     setValue('deposit', String(value));
-  };
-
-  const handleDurationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let value = Number(event.target.value);
-    if (value < 1) value = 1;
-    if (value > 35) value = 35;
-    setValue('duration', value);
-  };
-
-  const handleHourChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let value = Number(event.target.value);
-    if (value < 0) value = 0;
-    if (value > 23) value = 23;
-    setValue('hour', String(value));
   };
 
   return (
@@ -144,6 +142,7 @@ export default function CreateStudy(): JSX.Element {
             aria-label="스터디 참여 포인트 입력창"
             {...register('deposit', { valueAsNumber: true })}
             onChange={handleDepositChange}
+            disabled
             className="border-light-gray w-12 border-b text-center text-sm"
           />
           점
@@ -155,6 +154,7 @@ export default function CreateStudy(): JSX.Element {
           <input
             type="number"
             aria-label="스터디 주당 목표 시간 입력창"
+            disabled
             {...register('goalTime', { valueAsNumber: true })}
             className="border-light-gray w-8 border-b text-center text-sm"
           />
@@ -165,18 +165,18 @@ export default function CreateStudy(): JSX.Element {
             <p className="text-deduct">*</p>스터디 시작 날짜(모집 마감 날짜)
           </label>
           <div className="flex">
-            <Controller
-              aria-label="스터디 시작 날짜 선택창"
-              control={control}
-              name="studyStartDate"
-              render={({ field }) => <Calendar date={field.value} setDate={field.onChange} />}
+            <input
+              type="text"
+              value={post.studyStartAt.split('T')[0]}
+              className="border-light-gray w-24 border-b text-center text-sm"
+              disabled
             />
             일
             <input
               type="number"
               aria-label="스터디 시작 시간 입력창"
               {...register('hour')}
-              onChange={handleHourChange}
+              disabled
               className="border-light-gray w-8 border-b text-center text-sm"
             />
             시
@@ -190,7 +190,7 @@ export default function CreateStudy(): JSX.Element {
             type="number"
             aria-label="스터디 진행 기간 입력창 - 주단위"
             {...register('duration', { valueAsNumber: true })}
-            onChange={handleDurationChange}
+            disabled
             className="border-light-gray w-8 border-b text-center text-sm"
           />
           주
@@ -201,7 +201,7 @@ export default function CreateStudy(): JSX.Element {
           </label>
           <input
             type="text"
-            value={endDate ? endDate.toISOString().split('T')[0] : ''}
+            value={post.studyEndAt.split('T')[0]}
             className="border-light-gray w-24 border-b text-center text-sm"
             disabled
           />
@@ -210,7 +210,6 @@ export default function CreateStudy(): JSX.Element {
             type="number"
             disabled
             {...register('hour')}
-            onChange={handleHourChange}
             className="border-light-gray w-8 border-b text-center text-sm"
           />
           시
@@ -258,7 +257,7 @@ export default function CreateStudy(): JSX.Element {
         </div>
       </div>
       <div className="fixed bottom-8 left-1/2 w-full max-w-[768px] -translate-x-[50%] px-4">
-        <Button text={'생성하기'} onClick={handleOnClickBtn} ariaLabel={'생성하기 버튼'} />
+        <Button text={'수정하기'} onClick={handleOnClickBtn} ariaLabel={'수정하기 버튼'} />
       </div>
     </>
   );

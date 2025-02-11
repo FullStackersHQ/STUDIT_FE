@@ -56,9 +56,9 @@ export default function StudyRecruit(): JSX.Element {
     }
   }, []);
 
-  const editStudy = useCallback(async () => {
-    await console.log('editStudy'); // 수정하기 페이지로 이동 -> 기존 데이터로 같이 넘겨서 disabled만 다르게
-  }, []);
+  const editStudy = () => {
+    navigate(`/edit-recruit/${recruitId}`, { replace: true, state: { ...data.result } });
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
