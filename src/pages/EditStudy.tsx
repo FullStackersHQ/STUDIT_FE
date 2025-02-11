@@ -74,7 +74,7 @@ function EditStudy() {
             {editInfo.tags?.map((tag) => (
               <span
                 key={tag}
-                className="group bg-main hover:bg-main-hover flex items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium text-white transition-colors"
+                className="bg-main hover:bg-main-hover flex items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium text-white transition-colors"
               >
                 #{tag}
                 <button
