@@ -77,6 +77,11 @@ export interface PointRecord {
   time: string;
 }
 export interface GroupedByDate {
-  [date: string]: PointRecord[];
+    date: string;
+  records: PointRecord[];
 }
 export type PointFilterType = '전체' | '충전' | '차감' | '출금';
+
+export interface WithdrawRequest extends Record<string, unknown> {
+  amount: number;
+}
