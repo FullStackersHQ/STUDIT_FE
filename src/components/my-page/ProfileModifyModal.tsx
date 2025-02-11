@@ -10,16 +10,19 @@ export default function ProfileModifyModal({
   nickName,
   isOpen,
   close,
+  userId,
 }: {
   userImg: string;
   nickName: string;
   isOpen: boolean;
   close: () => void;
+  userId: number;
 }) {
   const { profile, handleImgUpload, handleClick, fileInputRef, onNickNameChange, handleModifyProfile, error } =
     useModifyProfile({
       userImg,
       nickName,
+      userId,
     });
   if (!isOpen) return;
   return (

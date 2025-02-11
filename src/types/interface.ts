@@ -76,3 +76,8 @@ export type PointFilterType = '전체' | '충전' | '차감' | '출금';
 export interface WithdrawRequest extends Record<string, unknown> {
   amount: number;
 }
+export interface ModifyNickNameProps {
+  currentNickName: string;
+  setError: (error: string) => void;
+  userId: number;
+}

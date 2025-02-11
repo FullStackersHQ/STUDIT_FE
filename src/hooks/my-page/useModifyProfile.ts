@@ -3,16 +3,31 @@ import { ChangeEvent } from 'react';
 import useModifyNickName from './useModifyNickName';
 import useModifyProfileImg from './useModifyProfileImg';
 
-export default function useModifyProfile({ userImg, nickName }: { userImg: string; nickName: string }) {
+export default function useModifyProfile({
+  userImg,
+  nickName,
+  userId,
+}: {
+  userImg: string;
+  nickName: string;
+  userId: number;
+}) {
   const [profile, setProfile] = useState({ userImg: userImg, nickName: nickName });
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [error, setError] = useState('');
-  const { modifyNickName } = useModifyNickName(nickName, profile.nickName, setError);
-  const { modifyProfileImg } = useModifyProfileImg(userImg, profile.userImg);
+  const { modifyNickName } = useModifyNickName({
+    currentNickName: profile.nickName,
+    setError: setError,
+    userId,
+  });
+  const { modifyProfileImg } = useModifyProfileImg({ currentImg: profile.userImg, userId });
 
   const handleModifyProfile = async (close: () => void) => {
     try {
-      await Promise.all([modifyNickName(), modifyProfileImg()]);
+      const promises = [];
+      if (nickName !== profile.nickName && profile.nickName) promises.push(modifyNickName());
+      if (userImg !== profile.userImg && profile.userImg) promises.push(modifyProfileImg());
+      await Promise.all(promises);
       close();
     } catch (error) {
       console.error('Error modifying profile:', error);

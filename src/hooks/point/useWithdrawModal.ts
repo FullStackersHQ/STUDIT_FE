@@ -1,16 +1,11 @@
 import { useState } from 'react';
-import useGetUserPoints from './useGetUserPoints';
 import useWithdrawPoint from './useWithdrawPoint';
-import useGetPointHistory from './useGetPointHistory';
 
 export default function useWithdrawModal(close: () => void, currentPoint: number) {
   const [inputPoint, setInputPoint] = useState(0);
   const [shaking, setShaking] = useState(false);
-  const { refetchUserPoints } = useGetUserPoints();
-  const { refetch: refetchAll } = useGetPointHistory('전체');
-  const { refetch: refetchWithdraw } = useGetPointHistory('출금');
 
-  const { withdrawPoint } = useWithdrawPoint(inputPoint, refetchUserPoints, refetchAll, refetchWithdraw);
+  const { withdrawPoint } = useWithdrawPoint(inputPoint);
   const isInputInValid = inputPoint < 1000 || (inputPoint !== 0 && inputPoint % 1000 !== 0);
   const [notification, setNotification] = useState('*출금은 1,000P 단위로 가능해요');
 
