@@ -64,7 +64,41 @@
       /* md:h-[40px] */
     }
   }
+  
+.modal-container {
+  @apply relative flex w-[343px] flex-col items-center rounded-md bg-white p-4;
+}
+.btn-sm {
+  @apply bg-white-gray hover:bg-light-gray hover:text-dark-gray cursor-pointer rounded-full px-2 py-1.5 text-sm font-medium transition-colors;
+}
+.close-position {
+  @apply absolute -top-[26px] right-0 cursor-pointer;
+}
+.close-btn {
+  @apply hover:text-white-gray h-3.5 w-3.5 text-white transition-colors;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+.shake {
+  animation: shake 0.3s ease-in-out 1;
+}
+  
   .range {
     position: absolute;
     top: 0px;
