@@ -134,13 +134,6 @@
     flex-direction: row;
   }
 
-  .create-study-label {
-    font-weight: bold;
-    margin-right: 8px;
-    font-size: 16px;
-    display: flex;
-    flex-direction: row;
-  }
   .text-input {
     @apply border-light-gray rounded border p-2;
   }
