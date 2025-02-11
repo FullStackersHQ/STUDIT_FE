@@ -14,21 +14,34 @@ export interface AvgStats {
   userStudyTime: number;
   averageStudyTime: number;
 }
-export interface StudyRoomType {
-  recruitId: number;
+
+export interface StudyRoomPutType {
   title: string;
+  description: string;
   category: string;
-  max_members?: number;
-  current_members: number;
   tags: string[];
-  study_start_at: string;
-  recruit_end_at: string;
-  study_end_at: string;
-  status: string;
-  description?: string;
-  deposit?: string;
-  goal_time?: string;
+  maxMembers: number;
 }
+
+export interface StudyRoomPostType extends StudyRoomPutType {
+  deposit: string;
+  goalTime: string;
+  recruitEndAt: string;
+  studyEndAt: string;
+}
+
+export interface StudyRoomGetType extends StudyRoomPostType {
+  recruitId: number;
+  currentMembers: number;
+  studyStartAt: string;
+  status: string;
+}
+
+export interface StudyRecruitType extends StudyRoomGetType {
+  leaderId: number;
+  leaderNickName: string;
+}
+
 export interface FilterType {
   category: string;
   search: string;
@@ -73,6 +86,7 @@ export interface GroupedByDate {
   records: PointRecord[];
 }
 export type PointFilterType = '전체' | '충전' | '차감' | '출금';
+
 export interface WithdrawRequest extends Record<string, unknown> {
   amount: number;
 }

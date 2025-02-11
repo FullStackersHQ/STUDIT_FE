@@ -3,13 +3,13 @@ import HeaderWithBack from '../components/HeaderWithBack';
 import { CATEGORY } from '../constants/constants';
 import Button from '../components/Button';
 import Calendar from '../components/create-study/Calendar';
-import client from '../utils/client';
 import CreatableSelect from 'react-select/creatable';
 import { MultiValue } from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
+import { recruitApi } from '../api/recruitApi';
 
 const studySchema = z.object({
   title: z.string().max(10, '최대 10자까지 입력 가능합니다.'),
@@ -53,7 +53,7 @@ export default function CreateStudy(): JSX.Element {
   const navigate = useNavigate();
 
   const handleOnClickBtn = async () => {
-    const { data: response } = await client.post('/api/recruits', {
+    const response = await recruitApi.postRecruitInfo({
       title: formValues.title,
       description: formValues.description,
       deposit: formValues.deposit,
