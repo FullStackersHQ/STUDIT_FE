@@ -6,5 +6,5 @@ export default function useMyPage() {
   const { userData, isUserDataLoading } = useProfile(userId);
   const { averageStats, isAvgLoading } = useAverageStats(userId);
 
-  return { userData, isUserDataLoading, averageStats, isAvgLoading };
+  return { userData, isUserDataLoading, averageStats, isAvgLoading, userId };
 }

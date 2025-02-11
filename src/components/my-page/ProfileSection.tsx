@@ -5,7 +5,7 @@ import { overlay } from 'overlay-kit';
 import ProfileModifyModal from './ProfileModifyModal';
 import { Link } from 'react-router-dom';
 
-export default function ProfileSection({ userData }: { userData: UserProfile }) {
+export default function ProfileSection({ userData, userId }: { userData: UserProfile; userId: number }) {
   const { nickName, points, applied, in_progress, completed, profileImage } = userData;
   const openOverlay = () => {
     overlay.open(({ isOpen, close }) => {
@@ -15,6 +15,7 @@ export default function ProfileSection({ userData }: { userData: UserProfile }) 
           nickName={userData.nickName}
           isOpen={isOpen}
           close={close}
+          userId={userId}
         />
       );
     });
