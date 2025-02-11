@@ -1,31 +1,23 @@
 import { useCallback } from 'react';
 import Button from '../components/Button';
 import HeaderWithBack from '../components/HeaderWithBack';
-import { StudyRecruitType } from '../types/interface';
-import client from '../utils/client';
 import { overlay } from 'overlay-kit';
-import LinkModal from '../components/recuit/LinkModal';
-import { useNavigate } from 'react-router-dom';
+import PontShortageModal from '../components/recruit/PontShortageModal';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { recruitApi } from '../api/recruitApi';
 
 export default function StudyRecruit(): JSX.Element {
   const userId: number = 1002;
   const userDeposit: number = 7000;
-  const data: StudyRecruitType = {
-    recruitId: 1,
-    leader: { userId: 1001, username: '스터디장_닉네임' },
-    title: 'SpringBoot 스터디',
-    description: 'Spring Boot를 활용하여 개인 프로젝트 만들어보기',
-    category: '코딩',
-    tags: ['Spring', 'Java'],
-    goalTime: '100',
-    deposit: '10000',
-    studyStartAt: '2025-02-11T00',
-    studyEndAt: '2025-04-11T00',
-    recruitEndAt: '2025-02-11T00',
-    currentMembers: 3,
-    maxMembers: 5,
-    status: 'ACTIVE',
-  };
+  const { recruitId } = useParams<{
+    recruitId: string;
+  }>();
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['recruitStudy', recruitId],
+    queryFn: async () => await recruitApi.getRecruitInfo(recruitId),
+  });
 
   const navigate = useNavigate();
 
@@ -34,7 +26,7 @@ export default function StudyRecruit(): JSX.Element {
     if (userDeposit < Number(data.deposit)) {
       overlay.open(({ isOpen, close }) => {
         return (
-          <LinkModal
+          <PontShortageModal
             currentPoint={{
               now: userDeposit,
               need: Number(data.deposit),
@@ -42,79 +34,86 @@ export default function StudyRecruit(): JSX.Element {
             navigate={navigate}
             isOpen={isOpen}
             close={close}
-            text={'포인트가 부족합니다. 충전 페이지로 이동합니다.'}
+            text={'포인트가 부족합니다.'}
           />
         );
       });
     }
 
-    const { data: response } = await client.post('/api/recruits/{recruitId}/registers', {
-      deposit: data.deposit,
-    });
+    const { data: response } = await recruitApi.joinRecruit(recruitId, { deposit: data.deposit });
 
     console.log(response);
   }, []);
 
   // 스터디장이면 수정, 삭제 기능 추가
   const deleteStudy = useCallback(async () => {
-    await console.log('delete');
+    const { data: response } = await recruitApi.deleteRecruitInfo(recruitId);
   }, []);
 
   const editStudy = useCallback(async () => {
-    await console.log('editStudy');
+    await console.log('editStudy'); // 수정하기 페이지로 이동 -> 기존 데이터로 같이 넘겨서 disabled만 다르게
   }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      <HeaderWithBack title={data.title + ' (' + data.category + ')'} isStudyPage={false} />
-      <div className="overflow-y-auto px-4" style={{ height: `calc(100vh - 52px - 48px - 50px)` }}>
-        {/* description */}
-        <textarea className="textarea" value={data.description} disabled />
-
+      <HeaderWithBack title={data.result.title + ' (' + data.result.category + ')'} isStudyPage={false} />
+      <ul className="overflow-y-auto px-4" style={{ height: `calc(100vh - 52px - 48px - 50px)` }}>
         {/* tags */}
         <div className="scrollbar-hide tag-container mt-2">
-          {data.tags.map((tag: string) => (
+          {data.result.tags.map((tag: string) => (
             <div key={tag} className="tag">
               # {tag}
             </div>
           ))}
         </div>
+        {/* description */}
+        <textarea className="textarea" value={data.result.description} disabled />
 
         {/* 인원 */}
-        <div className="mt-2">
-          현재 스터디원 ( {data.currentMembers} / {data.maxMembers} ) 명
-        </div>
+        <li className="recruit-info-list">
+          현재 스터디원 ( {data.result.currentMembers} / {data.result.maxMembers} ) 명
+        </li>
 
         {/* 날짜 */}
-        <div className="mt-2">
-          <p>스터디 시작</p>
-          {data.studyStartAt.split('T')[0]}일 {data.studyStartAt.split('T')[1]}시
-        </div>
-        <div className="mt-2">
-          <p>스터디 마감</p>
-          {data.studyEndAt.split('T')[0]}일 {data.studyEndAt.split('T')[0]}시
-        </div>
-        <div className="mt-2">
-          <p>모집 기간</p>
-          {data.recruitEndAt.split('T')[0]}일 {data.recruitEndAt.split('T')[0]}시까지
-        </div>
+        <li className="recruit-info-list">
+          스터디 시작
+          <p>
+            {data.result.studyStartAt.split('T')[0]}일 {data.result.studyStartAt.split('T')[1]}시
+          </p>
+        </li>
+        <li className="recruit-info-list">
+          스터디 마감
+          <p>
+            {data.result.studyEndAt.split('T')[0]}일 {data.result.studyEndAt.split('T')[1]}시
+          </p>
+        </li>
+        <li className="recruit-info-list">
+          모집 기간
+          <p>
+            ~ {data.result.recruitEndAt.split('T')[0]}일 {data.result.recruitEndAt.split('T')[1]}시
+          </p>
+        </li>
 
         {/* leader */}
-        <div className="mt-2">스터디장: {data.leader.username}</div>
+        <li className="recruit-info-list">스터디장: {data.result.leaderNickName}</li>
 
         {/* deposit */}
-        <div className="mt-2">스터디장: {data.deposit}</div>
+        <li className="recruit-info-list">포인트: {data.result.deposit}</li>
 
         {/* goalTime */}
-        <div className="mt-2">스터디장: {data.goalTime}</div>
+        <li className="recruit-info-list">주당 목표 시간: {data.result.goalTime}</li>
 
-        {userId === data.leader.userId && (
-          <Button text={'글 삭제하기'} ariaLabel={'삭제하기 버튼'} onClick={deleteStudy} />
+        {userId === data.result.leaderId && (
+          <Button text={'글 삭제하기'} extraClass={'mt-2'} ariaLabel={'삭제하기 버튼'} onClick={deleteStudy} />
         )}
-        {userId === data.leader.userId && (
-          <Button text={'글 수정하기'} ariaLabel={'수정하기 버튼'} onClick={editStudy} />
+        {userId === data.result.leaderId && (
+          <Button text={'글 수정하기'} extraClass={'mt-2'} ariaLabel={'수정하기 버튼'} onClick={editStudy} />
         )}
-      </div>
+      </ul>
 
       <div className="fixed bottom-8 left-1/2 w-full max-w-[768px] -translate-x-[50%] px-4">
         <Button text={'가입하기'} onClick={onClickJoinBtn} ariaLabel={'가입하기 버튼'} />

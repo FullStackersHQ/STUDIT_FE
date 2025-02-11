@@ -2,7 +2,7 @@ import ModalOverlay from '../ModalOverlay';
 import CloseIcon from '../../assets/icons/close.svg';
 import Button from '../Button';
 
-export default function LinkModal({
+export default function PontShortageModal({
   isOpen,
   close,
   currentPoint,
@@ -22,9 +22,9 @@ export default function LinkModal({
 
   return (
     <ModalOverlay>
-      <section className="modal-container h-[267px]">
+      <section className="modal-container h-[267px] justify-evenly">
         <p className="text-main mb-4 font-bold">{text} </p>
-        <div className="mb-1 flex w-full items-center justify-between">
+        <div className="mb-1 flex w-full flex-col items-center">
           <p>
             현재 보유한 포인트<span className="text-main ml-1 font-medium">{currentPoint.now.toLocaleString()} P</span>
           </p>
@@ -39,15 +39,17 @@ export default function LinkModal({
             </span>
           </p>
         </div>
+        <p>버튼 클릭 시 충전 페이지로 이동합니다.</p>
+
         <Button
-          text="확인"
+          text="이동하기"
           onClick={() => {
             close();
             navigate('/');
           }}
         />
-        <button aria-label="포인트 출금 모달 닫기" className="close-position" onClick={() => close()}>
-          <CloseIcon className="close-btn" alt="포인트 출금 모달 닫기" />
+        <button aria-label="모달 닫기" className="close-position" onClick={() => close()}>
+          <CloseIcon className="close-btn" alt="모달 닫기" />
         </button>
       </section>
     </ModalOverlay>
