@@ -12,21 +12,21 @@ export const recruitApi = {
     );
     return response;
   },
-  getRecruitInfo: async (recruitId: string | undefined) => {
+  getRecruitInfo: async (recruitId: number) => {
     const { data: response } = await client.get(`/api/recruits/${recruitId}`);
     return response;
   },
-  putRecruitInfo: async (recruitId: string | undefined, info: StudyRoomPutType) => {
+  updateRecruitInfo: async (recruitId: number, info: StudyRoomPutType) => {
     const { data: response } = await client.put(`/api/recruits/${recruitId}`, {
       ...info,
     });
     return response;
   },
-  deleteRecruitInfo: async (recruitId: string | undefined) => {
+  deleteRecruitInfo: async (recruitId: number) => {
     const { data: response } = await client.delete(`/api/recruits/${recruitId}`);
     return response;
   },
-  joinRecruit: async (recruitId: string | undefined, info: { deposit: number }) => {
+  joinRecruit: async (recruitId: number, info: { deposit: number }) => {
     const { data: response } = await client.post(`/api/recruits/${recruitId}/registers`, {
       deposit: info.deposit,
     });
