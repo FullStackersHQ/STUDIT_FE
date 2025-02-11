@@ -44,7 +44,7 @@ export default function StudyRecruit(): JSX.Element {
     const { data: response } = await recruitApi.joinRecruit(recruitId, { deposit: data.result.deposit });
 
     console.log(response);
-  }, [data.result.deposit, recruitId]);
+  }, [data, recruitId]);
 
   // 스터디장이면 수정, 삭제 기능 추가
   const deleteStudy = useCallback(async () => {
