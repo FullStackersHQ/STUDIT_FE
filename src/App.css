@@ -67,7 +67,7 @@
   }
 
   .btn-sm {
-    @apply bg-white-gray hover:bg-light-gray hover:text-dark-gray cursor-pointer rounded-full px-2 py-1.5 text-sm font-medium transition-colors;
+    @apply bg-main hover:bg-main-hover cursor-pointer rounded-full px-2 py-1.5 text-sm font-medium text-white transition-colors;
   }
 
   .close-position {
