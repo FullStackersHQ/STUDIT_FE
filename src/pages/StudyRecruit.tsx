@@ -114,10 +114,22 @@ export default function StudyRecruit(): JSX.Element {
         <li className="recruit-info-list">주당 목표 시간: {data.result.goalTime}</li>
 
         {userId === data.result.leaderId && (
-          <Button text={'글 삭제하기'} extraClass={'mt-2'} ariaLabel={'삭제하기 버튼'} onClick={deleteStudy} />
-        )}
-        {userId === data.result.leaderId && (
-          <Button text={'글 수정하기'} extraClass={'mt-2'} ariaLabel={'수정하기 버튼'} onClick={editStudy} />
+          <div className="mt-2 flex w-full justify-evenly">
+            <button
+              className={`bg-sub text-main hover:bg-sub-hover hover:text-main-hover h-12 w-[45%] rounded-[5px] text-sm font-bold transition-colors`}
+              aria-label={'삭제하기 버튼'}
+              onClick={deleteStudy}
+            >
+              글 삭제하기
+            </button>
+            <button
+              className={`bg-sub text-main hover:bg-sub-hover hover:text-main-hover h-12 w-[45%] rounded-[5px] text-sm font-bold transition-colors`}
+              aria-label={'수정하기 버튼'}
+              onClick={editStudy}
+            >
+              글 수정하기
+            </button>
+          </div>
         )}
       </ul>
 
