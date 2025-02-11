@@ -101,7 +101,7 @@ export default function EditRecruitStudy(): JSX.Element {
 
   return (
     <>
-      <HeaderWithBack title={'스터디 생성하기'} action={action} isStudyPage={false} />
+      <HeaderWithBack title={'스터디 수정하기'} action={action} isStudyPage={false} />
       <div className="overflow-y-auto px-4" style={{ height: `calc(100vh - 52px - 48px - 50px)` }}>
         <div className="mt-5">
           <label className="align-center flex text-[16px] font-bold" aria-label="스터디 제목">
