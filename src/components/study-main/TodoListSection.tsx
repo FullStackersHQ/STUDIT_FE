@@ -41,7 +41,7 @@ export default function TodoListSection({ studyId }: { studyId: number }) {
               <input
                 type="text"
                 value={newTodo}
-                placeholder="생성할 투두 입력해주세요."
+                placeholder="생성할 투두 입력"
                 onChange={(e) => setNewTodo(e.target.value)}
                 onKeyDown={handleKeyDown}
                 autoFocus
