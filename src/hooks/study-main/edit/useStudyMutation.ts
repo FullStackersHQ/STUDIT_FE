@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import studyApi from '../../../api/studyDefaultApi';
+import studyApi from '../../../api/studyMainApi';
 import { StudyDetail } from '../../../types/interface';
 import { useNavigate } from 'react-router-dom';
 
