@@ -96,3 +96,13 @@ export interface ModifyNickNameProps {
   setError: (error: string) => void;
   userId: number;
 }
+export interface TodoListType {
+  studyTotalTime: string;
+  todos: TodoType[];
+}
+export interface TodoType {
+  todoId: number;
+  todoName: string;
+  isCompleted: boolean;
+  totalStudyTime: string;
+}

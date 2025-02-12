@@ -8,6 +8,7 @@ import {
   GroupedByDate,
   StudyRecruitType,
   StudyDetail,
+  TodoListType,
 } from '../../types/interface';
 
 export const ProfileData: UserProfile = {
@@ -132,6 +133,7 @@ export const mockStudyRoomList: StudyRecruitType[] = [
     description: '123',
   },
 ];
+
 export const upcomingStudies: UpcomingStudyItem[] = [
   {
     recruit_id: 1,
@@ -461,8 +463,27 @@ export const WithDrawnPoints: GroupedByDate[] = [
     ],
   },
 ];
+
 export const StudyDetailData: StudyDetail = {
   title: 'CPA 자격증 준비 스터디',
   description: 'CPA(공인회계사) 자격증 취득을 위한 이론 공부와 문제 풀이를 진행하는 스터디입니다.',
   tags: ['CPA', '회계', '재무관리', '회계학'],
+};
+
+export const TodoListData: TodoListType = {
+  studyTotalTime: '27:51:12',
+  todos: [
+    {
+      todoId: 10,
+      todoName: 'JAVA 공부하기',
+      isCompleted: true,
+      totalStudyTime: '123:52:20',
+    },
+    {
+      todoId: 12,
+      todoName: '알고리즘 공부하기',
+      isCompleted: false,
+      totalStudyTime: '3:58:52',
+    },
+  ],
 };
