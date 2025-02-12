@@ -18,7 +18,7 @@ export default function HeaderWithBack({
 
   return (
     <header
-      className={`md:border-x-white-gray fixed top-0 z-[999] flex h-[52px] w-full max-w-3xl items-center pr-4 pl-2 md:border-x ${isStudyPage ? 'bg-main text-white' : 'text-main border-b-main border-b bg-white'}`}
+      className={`md:border-x-white-gray fixed top-0 z-[999] flex h-[52px] w-full max-w-3xl items-center pr-4 pl-2 md:border-x ${isStudyPage ? 'bg-main text-white' : 'text-main-text border-b-main border-b bg-white'}`}
     >
       <button onClick={() => navigate(-1)} aria-label="뒤로 가기">
         <ChevronLeftIcon alt="뒤로 가기" className="hover:text-white-gray cursor-pointer transition-colors" />

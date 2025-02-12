@@ -32,7 +32,7 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
             <Bar dataKey="value2" className="fill-main" radius={[2, 2, 0, 0]} />
           </BarChart>
           <p className="text-center">
-            <span className="text-main font-bold">{todoDiff}% </span>
+            <span className="text-main-text font-bold">{todoDiff}% </span>
             {todoComparison < 0 ? '더 많은' : '더 적은'}
             <br /> 투두를 완료했어요
           </p>
@@ -43,7 +43,7 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
             <Bar dataKey="value2" className="fill-main" radius={[2, 2, 0, 0]} />
           </BarChart>
           <p className="text-center">
-            <span className="text-main font-bold">{studyTimeDiff} </span> <br />
+            <span className="text-main-text font-bold">{studyTimeDiff} </span> <br />
             {studyTimeComparison < 0 ? '더 많이 ' : '더 적게 '}
             스터디 했어요
           </p>

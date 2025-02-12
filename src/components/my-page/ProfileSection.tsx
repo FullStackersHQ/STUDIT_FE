@@ -39,7 +39,7 @@ export default function ProfileSection({ userData, userId }: { userData: UserPro
           <div className="flex items-center gap-x-1">
             <PointIcon alt="포인트" />
             <p>
-              보유한 포인트: <span className="text-main font-bold">{points.toLocaleString()} P</span>
+              보유한 포인트: <span className="text-main-text font-bold">{points.toLocaleString()} P</span>
             </p>
           </div>
         </div>
@@ -47,16 +47,16 @@ export default function ProfileSection({ userData, userId }: { userData: UserPro
       <section className="my-4 text-sm">
         <p className="mb-2.5 font-medium">스터디 현황</p>
         <div className="border-white-gray flex w-full justify-around rounded-md border py-2">
-          <Link className="flex cursor-pointer flex-col items-center font-medium" to="/study-list?status=upcoming">
-            <span className="text-main">시작 전</span>
+          <Link className="flex cursor-pointer flex-col items-center" to="/study-list?status=upcoming">
+            <span className="text-main-text font-medium">시작 전</span>
             <span>{applied}</span>
           </Link>
-          <Link className="flex cursor-pointer flex-col items-center font-medium" to="/study-list?status=ongoing">
-            <span className="text-main">진행 중</span>
+          <Link className="flex cursor-pointer flex-col items-center" to="/study-list?status=ongoing">
+            <span className="text-main-text font-medium">진행 중</span>
             <span>{in_progress}</span>
           </Link>
-          <Link className="flex cursor-pointer flex-col items-center font-medium" to="/study-list?status=completed">
-            <span className="text-main">완료</span>
+          <Link className="flex cursor-pointer flex-col items-center" to="/study-list?status=completed">
+            <span className="text-main-text font-medium">완료</span>
             <span>{completed}</span>
           </Link>
         </div>

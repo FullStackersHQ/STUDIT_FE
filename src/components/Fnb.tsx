@@ -16,7 +16,7 @@ export default function Fnb({ nav }: { nav: string }) {
         {navList.map((navItem) => (
           <li
             key={navItem.text}
-            className={`hover:text-main flex w-[38px] justify-center transition-colors ${nav === navItem.text && 'text-main'}`}
+            className={`hover:text-main-hover flex w-[38px] justify-center transition-colors ${nav === navItem.text && 'text-main-text'}`}
           >
             <button
               onClick={() => {

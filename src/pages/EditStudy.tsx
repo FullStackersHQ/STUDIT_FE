@@ -74,11 +74,11 @@ function EditStudy() {
             {editInfo.tags?.map((tag) => (
               <span
                 key={tag}
-                className="group text-main bg-sub hover:text-main-hover hover:bg-sub-hover flex items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium transition-colors"
+                className="bg-main hover:bg-main-hover flex items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium text-white transition-colors"
               >
                 #{tag}
                 <button
-                  className="text-dark-gray group-hover:text-gray text-xs transition-colors"
+                  className="text-xs text-white transition-colors"
                   onClick={() => handleRemoveTag(tag)}
                   aria-label="태그 제거"
                 >
