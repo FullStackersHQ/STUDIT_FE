@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { recruitApi } from '../api/recruitApi';
 
 const studySchema = z.object({
-  title: z.string().max(10, '최대 10자까지 입력 가능합니다.'),
+  title: z.string().max(10, '최대 14자까지 입력 가능합니다.'),
   description: z.string(),
   deposit: z.string().min(1000, '1000보다 작은 값은 불가능합니다.').max(50000, '50000보다 큰 값은 불가능합니다.'),
   goalTime: z.string().min(1, '최소 1시간 이상 설정해주세요.'),
