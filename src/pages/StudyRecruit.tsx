@@ -4,25 +4,21 @@ import HeaderWithBack from '../components/HeaderWithBack';
 import { overlay } from 'overlay-kit';
 import PointShortageModal from '../components/recruit/PointShortageModal';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import { recruitApi } from '../api/recruitApi';
 import DeleteModal from '../components/recruit/DeleteModal';
+import useGetRecruitInfo from '../hooks/study-recruit/useGetRecruitInfo';
 
 export default function StudyRecruit(): JSX.Element {
   const userId: number = 1002;
-  const userDeposit: number = 7000;
-  const { recruitId } = useParams<{
-    recruitId: string;
-  }>();
+  const userDeposit: number = 17000;
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['recruitStudy', recruitId],
-    queryFn: async () => await recruitApi.getRecruitInfo(recruitId),
-  });
-
+  const params = useParams();
   const navigate = useNavigate();
-  console.log(data);
-  const onClickJoinBtn = useCallback(async () => {
+  const recruitId = Number(params.recruitId);
+
+  const { recruitInfo: data, isLoading } = useGetRecruitInfo(recruitId);
+
+  const onClickJoinBtn = async () => {
     // 유저 deposit이 적다면
     if (userDeposit < Number(data.result.deposit)) {
       overlay.open(({ isOpen, close }) => {
@@ -39,12 +35,11 @@ export default function StudyRecruit(): JSX.Element {
           />
         );
       });
+    } else {
+      const { data: response } = await recruitApi.joinRecruit(recruitId, { deposit: data.result.deposit });
+      console.log(response);
     }
-
-    const { data: response } = await recruitApi.joinRecruit(recruitId, { deposit: data.result.deposit });
-
-    console.log(response);
-  }, [data, recruitId]);
+  };
 
   // 스터디장이면 수정, 삭제 기능 추가
   const deleteStudy = useCallback(async () => {
@@ -77,7 +72,7 @@ export default function StudyRecruit(): JSX.Element {
           ))}
         </div>
         {/* description */}
-        <textarea className="textarea" value={data.result.description} disabled />
+        <textarea className="textarea h-[200px]" value={data.result.description} disabled />
 
         {/* 인원 */}
         <li className="recruit-info-list">
@@ -114,10 +109,22 @@ export default function StudyRecruit(): JSX.Element {
         <li className="recruit-info-list">주당 목표 시간: {data.result.goalTime}</li>
 
         {userId === data.result.leaderId && (
-          <Button text={'글 삭제하기'} extraClass={'mt-2'} ariaLabel={'삭제하기 버튼'} onClick={deleteStudy} />
-        )}
-        {userId === data.result.leaderId && (
-          <Button text={'글 수정하기'} extraClass={'mt-2'} ariaLabel={'수정하기 버튼'} onClick={editStudy} />
+          <div className="mt-2 flex w-full justify-evenly">
+            <button
+              className={`bg-sub text-main hover:bg-sub-hover hover:text-main-hover h-12 w-[45%] rounded-[5px] text-sm font-bold transition-colors`}
+              aria-label={'삭제하기 버튼'}
+              onClick={deleteStudy}
+            >
+              글 삭제하기
+            </button>
+            <button
+              className={`bg-sub text-main hover:bg-sub-hover hover:text-main-hover h-12 w-[45%] rounded-[5px] text-sm font-bold transition-colors`}
+              aria-label={'수정하기 버튼'}
+              onClick={editStudy}
+            >
+              글 수정하기
+            </button>
+          </div>
         )}
       </ul>
 
