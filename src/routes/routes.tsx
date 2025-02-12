@@ -11,7 +11,7 @@ const MyPage = lazy(() => import('../pages/MyPage'));
 const Point = lazy(() => import('../pages/Point'));
 const Study = lazy(() => import('../pages/Study'));
 const EditStudy = lazy(() => import('../pages/EditStudy'));
-const Group = lazy(() => import('../pages/Group'));
+const StudyRoom = lazy(() => import('../pages/StudyRoom'));
 const Search = lazy(() => import('../pages/Search'));
 const StudyList = lazy(() => import('../pages/StudyList'));
 
@@ -21,12 +21,14 @@ const Router = (): JSX.Element => {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/group" element={<Group />} />
-          <Route path="/my-page" element={<MyPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/my-page" element={<MyPage />} />
           <Route path="/create-study" element={<CreateStudy />} />
           <Route path="/study-recruit/:recruitId" element={<StudyRecruit />} />
           <Route path="/edit-recruit/:recruitId" element={<EditStudyRecruit />} />
+          <Route path="/study" element={<StudyRoom />} />
+          {/* <Route path="/study/:studyId:" element={<StudyRoom />} /> */}
+
           <Route path="/point" element={<Point />} />
           <Route path="/study" element={<Study />} />
           <Route path="/edit-study/:studyId" element={<EditStudy />} />

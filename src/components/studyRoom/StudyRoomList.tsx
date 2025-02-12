@@ -4,13 +4,13 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const fetchStudies = async (pageParam = 1) => {
-  const { data } = await client.get(`/api/recruits?page=${pageParam}`);
-  return data.result.recruits;
+  const { data } = await client.get(`/api/rooms?page=${pageParam}`);
+  return data.result.rooms;
 };
 
-export default function StudyRoom(): JSX.Element {
+export default function StudyRoomList(): JSX.Element {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['study-recruit-list'],
+    queryKey: ['study-room-list'],
     queryFn: ({ pageParam = 1 }) => fetchStudies(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
@@ -48,7 +48,7 @@ export default function StudyRoom(): JSX.Element {
         .map((study) => (
           <Link
             key={study.recruitId}
-            to={`/study-recruit/${study.recruitId}`}
+            to={`/study/${study.recruitId}`}
             className="border-white-gray w-full rounded-[10px] border bg-white p-3"
           >
             <div className="mb-2">
@@ -61,8 +61,7 @@ export default function StudyRoom(): JSX.Element {
               <p>
                 스터디 기간: {study.studyStartAt.split('T')[0]} ~ {study.studyEndAt.split('T')[0]}
               </p>
-              <p>모집 기간 ~{study.recruitEndAt.split('T')[0]}</p>
-              <p>{study.status}</p>
+              <p>진행중</p>
             </div>
             <div className="mt-2 flex gap-2">
               {study.tags.map((tag: string) => (

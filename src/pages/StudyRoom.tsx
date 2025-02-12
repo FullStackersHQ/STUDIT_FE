@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useSearchStore } from '../store/searchStore';
 import FilterList from '../components/home/FilterList';
-import StudyRecruitList from '../components/home/StudyRecruitList';
+import StudyRoomList from '../components/studyRoom/StudyRoomList';
 
-export default function Home(): JSX.Element {
+export default function StudyRoom(): JSX.Element {
   const { filteringInfo } = useSearchStore();
   const isLogin = true;
 
@@ -20,7 +20,7 @@ export default function Home(): JSX.Element {
           />
         </Link>
         <FilterList />
-        <StudyRecruitList />
+        <StudyRoomList />
       </div>
       <Link
         to={isLogin ? '/create-study' : '/login'}
