@@ -5,11 +5,11 @@ interface InputType {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  style?: string;
+  tag?: boolean;
   disabled?: boolean;
 }
 
-export default function Input({ id, placeholder, value, onChange, style, onKeyDown, disabled }: InputType) {
+export default function Input({ id, placeholder, value, onChange, tag, onKeyDown, disabled }: InputType) {
   return (
     <input
       id={id}
@@ -17,7 +17,7 @@ export default function Input({ id, placeholder, value, onChange, style, onKeyDo
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={style}
+      className={tag ? 'w-full border-b border-black py-1 pl-4 text-sm' : 'text-input'}
       onKeyDown={onKeyDown ? onKeyDown : undefined}
       disabled={disabled}
     />

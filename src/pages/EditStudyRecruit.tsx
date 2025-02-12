@@ -30,7 +30,7 @@ export default function EditStudyRecruit(): JSX.Element {
               handleMaxLengthChange(e, 14, () => setEditInfo((prev) => ({ ...prev, title: e.target.value })))
             }
             value={editInfo.title}
-            style={'text-input'}
+            tag={false}
           />
           <span className="self-end text-xs">{editInfo.title?.length}/14</span>
         </div>
@@ -91,7 +91,7 @@ export default function EditStudyRecruit(): JSX.Element {
               value={tagInput}
               placeholder="태그 입력 후 Enter"
               onChange={(e) => setTagInput(e.target.value)}
-              style="w-full border-b border-black py-1 pl-4 text-sm"
+              tag={true}
               onKeyDown={(e) => handleAddTag(e)}
               disabled={editInfo.tags.length > 4}
             />
