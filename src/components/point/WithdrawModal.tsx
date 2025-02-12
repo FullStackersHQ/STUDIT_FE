@@ -42,6 +42,17 @@ export default function WithdrawModal({
             className="text-input"
             onKeyDown={(e) => handleKeyDown(e, () => handleInput())}
           />
+          {/*          <Input
+            id="withdrawPoint"
+            value={inputPoint.toLocaleString()}
+            placeholder="태그 입력 후 Enter"
+            onChange={(e) => {
+              const rawValue = e.target.value.replace(/,/g, '');
+              setInputPoint(Number(rawValue) || 0);
+            }}
+            style="text-input"
+            onKeyDown={(e) => handleKeyDown(e, () => handleInput())}
+          /> */}
           <p className={`text-deduct text-xs font-medium ${shaking ? 'shake' : ''}`}>{notification}</p>
         </div>
         <Button text="출금하기" onClick={handleInput} />

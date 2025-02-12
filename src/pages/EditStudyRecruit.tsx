@@ -6,6 +6,7 @@ import { StudyRecruitType } from '../types/interface';
 import { handleMaxLengthChange } from '../utils/commonUtils';
 import useEditRecruit from '../hooks/study-recruit/useEditRecruit';
 import useRecruitMutation from '../hooks/study-recruit/useRecruitMutation';
+import Input from '../components/Input';
 
 export default function EditStudyRecruit(): JSX.Element {
   const post: StudyRecruitType = useLocation().state;
@@ -16,21 +17,20 @@ export default function EditStudyRecruit(): JSX.Element {
 
   return (
     <div className="h-full w-full">
-      <HeaderWithBack title={'스터디 수정하기'} />
+      <HeaderWithBack title={'스터디 모집 수정'} />
       <section className="mt-7 flex h-[calc(100%-120px)] flex-col gap-y-3 overflow-y-auto px-4 text-sm">
         <div className="flex flex-col gap-y-1">
           <label htmlFor="studyTitle" className="font-medium">
             스터디 제목
           </label>
-          <input
-            id="studyTitle"
-            placeholder="스터디 제목을 입력해주세요"
-            type="text"
-            value={editInfo.title}
+          <Input
+            id={'studyTitle'}
+            placeholder={'스터디 제목을 입력해주세요'}
             onChange={(e) =>
               handleMaxLengthChange(e, 14, () => setEditInfo((prev) => ({ ...prev, title: e.target.value })))
             }
-            className="text-input"
+            value={editInfo.title}
+            style={'text-input'}
           />
           <span className="self-end text-xs">{editInfo.title?.length}/14</span>
         </div>
@@ -86,13 +86,12 @@ export default function EditStudyRecruit(): JSX.Element {
           </label>
           <div className="relative w-[200px]">
             <span className="text-dark-gray absolute top-1/2 left-1 -translate-y-1/2 text-sm">#</span>
-            <input
+            <Input
               id="studyTags"
-              type="text"
               value={tagInput}
               placeholder="태그 입력 후 Enter"
               onChange={(e) => setTagInput(e.target.value)}
-              className="w-full border-b border-black py-1 pl-4 text-sm"
+              style="w-full border-b border-black py-1 pl-4 text-sm"
               onKeyDown={(e) => handleAddTag(e)}
               disabled={editInfo.tags.length > 4}
             />

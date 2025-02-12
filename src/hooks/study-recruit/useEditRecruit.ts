@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { StudyRoomPutType } from '../../types/interface';
-import useEditStudy from '../study-default/useEditStudy';
 
 export default function useEditRecruit(post: StudyRoomPutType) {
   const [editInfo, setEditInfo] = useState({
@@ -10,7 +9,27 @@ export default function useEditRecruit(post: StudyRoomPutType) {
     category: post.category,
     maxMembers: post.maxMembers,
   });
-  const { handleAddTag, handleRemoveTag, tagInput, setTagInput } = useEditStudy();
+  const [tagInput, setTagInput] = useState('');
+
+  const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && tagInput.trim() !== '') {
+      e.preventDefault();
+      if (!editInfo.tags.includes(tagInput.trim())) {
+        setEditInfo((prev) => ({
+          ...prev,
+          tags: [...prev.tags, tagInput.trim()],
+        }));
+      }
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove: string) => {
+    setEditInfo((prev) => ({
+      ...prev,
+      tags: prev.tags.filter((tag) => tag !== tagToRemove),
+    }));
+  };
 
   return {
     editInfo,
