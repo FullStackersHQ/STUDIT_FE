@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useGetStudyDetail from './useGetStudyDetail';
+import useGetStudyDetail from '../useGetStudyDetail';
 import React, { useState, useEffect } from 'react';
 
 export default function useEditStudy() {
