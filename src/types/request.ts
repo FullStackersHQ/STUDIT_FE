@@ -19,3 +19,6 @@ export interface ToggleTodoRequest extends Record<string, unknown> {
   studyId: number;
   isCompleted: boolean;
 }
+export interface NoticeRequest extends Record<string, unknown> {
+  content: string;
+}

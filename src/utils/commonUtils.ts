@@ -18,7 +18,10 @@ export function handleMaxLengthChange(
   if (newValue.length <= maxLength) onChange(e);
 }
 
-export function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>, onButtonClick: () => void) {
+export function handleKeyDown(
+  e: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement | HTMLTextAreaElement>,
+  onButtonClick: () => void,
+) {
   if (e.key === 'Enter') {
     e.preventDefault();
     onButtonClick();

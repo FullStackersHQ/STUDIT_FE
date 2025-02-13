@@ -1,25 +1,35 @@
 import { http, HttpResponse } from 'msw';
-import { StudyDetailData, TodoListData } from './data/dummy';
-import { CreateTodoRequest, UpdateStudyRequest, EditTodoRequest, ToggleTodoRequest } from '../types/request';
+import { TodoListData, dummyStudyList, dummyNotices } from './data/dummy';
+import {
+  CreateTodoRequest,
+  UpdateStudyRequest,
+  EditTodoRequest,
+  ToggleTodoRequest,
+  NoticeRequest,
+} from '../types/request';
 import { TodoType } from '../types/interface';
 
 const studyMainHandlers = [
-  http.get(`/rooms/1`, () => {
-    if (StudyDetailData) return HttpResponse.json(StudyDetailData);
+  http.get(`/rooms/:studyId`, ({ params }) => {
+    const studyId = params.studyId;
+    const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === Number(studyId));
+    if (dummyStudyList && targetStudy) return HttpResponse.json(targetStudy);
     return HttpResponse.error();
   }),
-  http.put(`/rooms/1`, async ({ request }) => {
+  http.put(`/rooms/:studyId`, async ({ params, request }) => {
     try {
+      const studyId = params.studyId;
       const body = (await request.json()) as UpdateStudyRequest;
-      if (!body) {
+      const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === Number(studyId));
+      if (!body || !targetStudy) {
         return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
           status: 400,
         });
       }
       const { title, tags, description } = body;
-      StudyDetailData.description = description;
-      StudyDetailData.tags = tags;
-      StudyDetailData.title = title;
+      targetStudy.description = description;
+      targetStudy.tags = tags;
+      targetStudy.title = title;
       return new HttpResponse(
         JSON.stringify({
           message: '스터디가 수정되었습니다.',
@@ -113,6 +123,66 @@ const studyMainHandlers = [
       return new HttpResponse(JSON.stringify({ message: '투두가 수정되었습니다.' }), {
         status: 200,
       });
+    } catch {
+      return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
+    }
+  }),
+  http.get(`/rooms/:studyId/notices`, ({ params }) => {
+    const studyId = params.studyId;
+    const notice = dummyNotices[Number(studyId)];
+    if (notice && studyId) return HttpResponse.json(notice);
+    return HttpResponse.error();
+  }),
+  http.put('/rooms/:studyId/notices', async ({ params, request }) => {
+    try {
+      const studyId = params.studyId;
+      const body = (await request.json()) as NoticeRequest;
+      const notice = dummyNotices[Number(studyId)];
+
+      if (!body || !studyId || !notice) {
+        return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
+          status: 400,
+        });
+      }
+      const { content } = body;
+      notice.content = content;
+
+      return new HttpResponse(
+        JSON.stringify({
+          message: '공지가 수정되었습니다.',
+        }),
+        { status: 200 },
+      );
+    } catch {
+      return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
+    }
+  }),
+  http.post('/rooms/:studyId/notices', async ({ params, request }) => {
+    try {
+      const studyId = Number(params.studyId);
+      const body = (await request.json()) as NoticeRequest;
+      const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === studyId);
+      const { content } = body;
+
+      if (!body || !studyId || !targetStudy) {
+        return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
+          status: 400,
+        });
+      }
+      const newNotice = {
+        noticeId: 3,
+        content: content,
+        created: '2025-02-06T12:00:00',
+      };
+      targetStudy.hasNotice = true;
+      dummyNotices[studyId] = newNotice;
+
+      return new HttpResponse(
+        JSON.stringify({
+          message: '공지가 등록되었습니다.',
+        }),
+        { status: 200 },
+      );
     } catch {
       return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
     }
