@@ -1,11 +1,11 @@
 import React from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
-import useStudyDefault from '../hooks/study-main/useStudyMain';
+import useStudyMain from '../hooks/study-main/useStudyMain';
 import TodoListSection from '../components/study-main/TodoListSection';
 import StudyMenuList from '../components/study-main/StudyMenuList';
 
 function StudyMain() {
-  const { studyDetail, isLoading, studyId, action, isMenuOpen, userId } = useStudyDefault();
+  const { studyDetail, isLoading, studyId, action, isMenuOpen, userId } = useStudyMain();
   if (!studyDetail || isLoading) return null;
   const { title, leaderId, hasNotice } = studyDetail;
   const isLeader = leaderId === userId;

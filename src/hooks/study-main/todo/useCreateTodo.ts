@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import studyDefaultApi from '../../../api/studyMainApi';
+import studyMainApi from '../../../api/studyMainApi';
 import useGetTodoList from './useGetTodoList';
 
 export default function useCreateTodo({
@@ -15,7 +15,7 @@ export default function useCreateTodo({
 }) {
   const { refetchTodoList } = useGetTodoList(studyId);
   const mutation = useMutation({
-    mutationFn: async () => await studyDefaultApi.createTodo(studyId, newTodo),
+    mutationFn: async () => await studyMainApi.createTodo(studyId, newTodo),
     onSuccess: () => {
       refetchTodoList();
       setIsAdding(false);

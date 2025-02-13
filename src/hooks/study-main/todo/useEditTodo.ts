@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import studyDefaultApi from '../../../api/studyMainApi';
+import studyMainApi from '../../../api/studyMainApi';
 import useGetTodoList from './useGetTodoList';
 
 export default function useEditTodo({
@@ -17,7 +17,7 @@ export default function useEditTodo({
 }) {
   const { refetchTodoList } = useGetTodoList(studyId);
   const mutation = useMutation({
-    mutationFn: () => studyDefaultApi.editTodo(studyId, todoName, todoId),
+    mutationFn: () => studyMainApi.editTodo(studyId, todoName, todoId),
     onSuccess: () => {
       refetchTodoList();
       setIsEditing(false);
