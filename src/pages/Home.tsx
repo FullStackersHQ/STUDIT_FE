@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useSearchStore } from '../store/searchStore';
+import { useSearchStore } from '../store/useSearchStore';
 import FilterList from '../components/home/FilterList';
 import StudyRecruitList from '../components/home/StudyRecruitList';
+import { useAuthStore } from '../store/useAuthStore';
 
 export default function Home(): JSX.Element {
   const { filteringInfo } = useSearchStore();
-  const isLogin = true;
+  const { id } = useAuthStore();
 
   return (
     <div className="px-4">
@@ -23,10 +24,10 @@ export default function Home(): JSX.Element {
         <StudyRecruitList />
       </div>
       <Link
-        to={isLogin ? '/create-study' : '/login'}
+        to={id !== -1 ? '/create-study' : '/login'}
         className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
       >
-        <span className="text-sm">{isLogin ? '+ 스터디 만들기' : '로그인'}</span>
+        <span className="text-sm">{id !== -1 ? '+ 스터디 만들기' : '로그인'}</span>
       </Link>
     </div>
   );
