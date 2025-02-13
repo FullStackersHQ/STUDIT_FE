@@ -1,5 +1,5 @@
 import { CATEGORY } from '../../constants/constants';
-import { useSearchStore } from '../../store/searchStore';
+import { useSearchStore } from '../../store/useSearchStore';
 
 export default function Category(): JSX.Element {
   const { filteringInfo, setFilteringInfo } = useSearchStore();
