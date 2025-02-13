@@ -6,3 +6,16 @@ export interface UpdateStudyRequest extends Record<string, unknown> {
   tags: string[];
   description: string;
 }
+export interface CreateTodoRequest extends Record<string, unknown> {
+  studyId: number;
+  todoName: string;
+}
+export interface EditTodoRequest extends Record<string, unknown> {
+  studyId: number;
+  todoId: number;
+  todoName: string;
+}
+export interface ToggleTodoRequest extends Record<string, unknown> {
+  studyId: number;
+  isCompleted: boolean;
+}

@@ -1,6 +1,6 @@
 import myPageHandlers from './myPageHandlers';
 import pointHandlers from './pointHandlers';
 import recruitHandlers from './recruitHandlers';
-import studyHandlers from './studyHandlers';
+import studyMainHandlers from './studyMainHandlers';
 
-export const handlers = [...recruitHandlers, ...myPageHandlers, ...pointHandlers, ...studyHandlers];
+export const handlers = [...recruitHandlers, ...myPageHandlers, ...pointHandlers, ...studyMainHandlers];
