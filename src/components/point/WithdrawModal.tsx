@@ -18,11 +18,11 @@ export default function WithdrawModal({
 
   return (
     <ModalOverlay>
-      <section className="modal-container h-[267px]">
-        <p className="text-main mb-4 font-bold">포인트를 출금해요</p>
+      <section className="modal-container">
+        <p className="text-main-text mb-3.5 font-bold">포인트를 출금해요</p>
         <div className="mb-1 flex w-full items-center justify-between">
           <p>
-            현재 보유한 포인트<span className="text-main ml-1 font-medium">{currentPoint.toLocaleString()} P</span>
+            현재 보유한 포인트<span className="text-main-text ml-1 font-medium">{currentPoint.toLocaleString()} P</span>
           </p>
           <button className="btn-sm" onClick={() => setInputPoint(currentPoint)}>
             전체 적용

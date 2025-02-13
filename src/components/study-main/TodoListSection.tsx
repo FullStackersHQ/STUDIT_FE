@@ -1,4 +1,4 @@
-import useTodoList from '../../hooks/study-main/useTodoList';
+import useTodoList from '../../hooks/study-main/todo/useTodoList';
 import PlayIcon from '../../assets/icons/play.svg';
 import CloseIcon from '../../assets/icons/close.svg';
 

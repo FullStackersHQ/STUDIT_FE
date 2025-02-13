@@ -42,6 +42,23 @@ export interface StudyRecruitType extends StudyRoomGetType {
   leaderNickName: string;
 }
 
+export interface StudyOngoingType {
+  roomId: number;
+  leaderId: number;
+  leaderNickname: string;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  goalTime: number;
+  deposit: number;
+  studyStartAt: string;
+  studyEndAt: string;
+  currentMembers: number;
+  status: string;
+  hasNotice: boolean;
+}
+
 export interface FilterType {
   category: string;
   search: string;
@@ -105,4 +122,9 @@ export interface TodoType {
   todoName: string;
   isCompleted: boolean;
   totalStudyTime: string;
+}
+export interface NoticeType {
+  noticeId: number;
+  content: string;
+  created: string;
 }

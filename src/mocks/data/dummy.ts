@@ -9,6 +9,8 @@ import {
   StudyRecruitType,
   StudyDetail,
   TodoListType,
+  StudyOngoingType,
+  NoticeType,
 } from '../../types/interface';
 
 export const ProfileData: UserProfile = {
@@ -486,4 +488,45 @@ export const TodoListData: TodoListType = {
       totalStudyTime: '3:58:52',
     },
   ],
+};
+export const dummyStudyList: StudyOngoingType[] = [
+  {
+    roomId: 1,
+    leaderId: 1,
+    leaderNickname: '코딩마스터',
+    title: '알고리즘 스터디',
+    description: '매일 한 문제씩 풀며 알고리즘 실력을 키웁니다.',
+    category: '코딩',
+    tags: ['Python', 'Java', '코딩테스트'],
+    goalTime: 90,
+    deposit: 30000,
+    studyStartAt: '2024-02-10T10:00:00Z',
+    studyEndAt: '2024-05-10T20:00:00Z',
+    currentMembers: 8,
+    status: 'ACTIVE',
+    hasNotice: false,
+  },
+  {
+    roomId: 2,
+    leaderId: 102,
+    leaderNickname: '디자이너김',
+    title: 'UI/UX 디자인 스터디',
+    description: '매주 트렌드를 분석하고 피드백을 주고받는 디자인 스터디입니다.',
+    category: '취업',
+    tags: ['Figma', 'UX', 'UI'],
+    goalTime: 60,
+    deposit: 20000,
+    studyStartAt: '2024-03-01T14:00:00Z',
+    studyEndAt: '2024-06-01T17:00:00Z',
+    currentMembers: 6,
+    status: 'ACTIVE',
+    hasNotice: true,
+  },
+];
+export const dummyNotices: { [studyId: number]: NoticeType } = {
+  2: {
+    noticeId: 1,
+    content: '이번 주는 팀 프로젝트 발표가 있습니다. 발표 준비를 철저히 해 주세요.',
+    created: '2025-02-05T12:00:00',
+  },
 };
