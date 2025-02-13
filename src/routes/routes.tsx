@@ -27,8 +27,6 @@ const Router = (): JSX.Element => {
           <Route path="/study-recruit/:recruitId" element={<StudyRecruit />} />
           <Route path="/edit-recruit/:recruitId" element={<EditStudyRecruit />} />
           <Route path="/study" element={<StudyRoom />} />
-          {/* <Route path="/study/:studyId:" element={<StudyRoom />} /> */}
-
           <Route path="/point" element={<Point />} />
           <Route path="/study/:studyId" element={<StudyMain />} />
           <Route path="/edit-study/:studyId" element={<EditStudy />} />
