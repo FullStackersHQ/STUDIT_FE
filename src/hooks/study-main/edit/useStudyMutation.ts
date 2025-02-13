@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import studyApi from '../../api/studyApi';
-import { StudyDetail } from '../../types/interface';
+import studyApi from '../../../api/studyMainApi';
+import { StudyDetail } from '../../../types/interface';
 import { useNavigate } from 'react-router-dom';
 
 export default function useStudyMutation(editInfo: StudyDetail, studyId: number) {
