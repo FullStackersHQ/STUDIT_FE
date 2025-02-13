@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import studyDefaultApi from '../../api/studyMainApi';
+import studyDefaultApi from '../../../api/studyMainApi';
 import useGetTodoList from './useGetTodoList';
 
 export default function useEditTodo({

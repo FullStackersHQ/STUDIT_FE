@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from 'react';
-import { TodoListType } from '../../types/interface';
+import { TodoListType } from '../../../types/interface';
 
 export default function useTodoState(todoList: TodoListType | undefined) {
   const todos = useMemo(() => todoList?.todos ?? [], [todoList?.todos]);
