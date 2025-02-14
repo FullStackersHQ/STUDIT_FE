@@ -2,7 +2,6 @@ import ModalOverlay from '../ModalOverlay';
 import Button from '../Button';
 import CloseIcon from '../../assets/icons/close.svg';
 import { handleMaxLengthChange } from '../../utils/commonUtils';
-import useManageModal from '../../hooks/study-main/useManageModal';
 import NoticeIcon from '../../assets/icons/notice.svg';
 
 export default function ManageNoticeModal({

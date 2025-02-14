@@ -1,11 +1,11 @@
 import React from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
-import useStudyMain from '../hooks/study-main/useStudyMain';
-import TodoListSection from '../components/study-main/TodoListSection';
-import StudyMenuList from '../components/study-main/StudyMenuList';
-import Notice from '../components/study-main/Notice';
+import useStudyMain from '../hooks/study-detail/useStudyMain';
+import TodoListSection from '../components/study-detail/TodoListSection';
+import StudyMenuList from '../components/study-detail/StudyMenuList';
+import Notice from '../components/study-detail/Notice';
 
-function StudyMain() {
+function StudyDetail() {
   const { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId, toggleMenu } = useStudyMain();
   if (!studyDetail || isDetailLoading) return null;
 
@@ -31,4 +31,4 @@ function StudyMain() {
   );
 }
 
-export default React.memo(StudyMain);
+export default React.memo(StudyDetail);

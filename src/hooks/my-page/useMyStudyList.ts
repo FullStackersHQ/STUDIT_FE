@@ -1,8 +1,8 @@
 import { useLocation } from 'react-router-dom';
-import useFetchStudyList from './useFetchStudyList';
 import { StudyStatusType } from '../../types/interface';
+import useFetchMyStudyList from './useFetchMyStudyList';
 
-export default function useStudyList() {
+export default function useMyStudyList() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const studyType: StudyStatusType = (queryParams.get('status') as StudyStatusType) || 'upcoming';
@@ -14,6 +14,6 @@ export default function useStudyList() {
         : studyType === 'completed'
           ? '완료한 스터디 목록'
           : '';
-  const { studyList, isLoading } = useFetchStudyList(studyType);
+  const { studyList, isLoading } = useFetchMyStudyList(studyType);
   return { studyType, title, studyList, isLoading };
 }
