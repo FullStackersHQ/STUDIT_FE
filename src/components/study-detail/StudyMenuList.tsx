@@ -32,7 +32,7 @@ export default function StudyMenuList({
 
   return (
     <section
-      className={`${isMenuOpen ? 'slide-down visible opacity-100' : 'slide-up invisible opacity-0'} border-light-gray fixed top-0 left-0 z-40 mt-[52px] box-border w-full transform rounded-b-md border-x-2 border-b-2 bg-white drop-shadow-sm transition-all duration-300 ease-in-out md:left-1/2 md:w-[766px] md:-translate-x-1/2 md:border-x-0`}
+      className={`${isMenuOpen ? 'slide-down visible opacity-100 transition-all duration-300 ease-in-out' : 'invisible opacity-0'} border-light-gray fixed top-0 left-0 z-40 mt-[52px] box-border w-full transform rounded-b-md border-x-2 border-b-2 bg-white drop-shadow-sm md:left-1/2 md:w-[766px] md:-translate-x-1/2 md:border-x-0`}
     >
       <ul>
         <li className="border-light-gray cursor-pointer border-b py-2 pl-4" onClick={openLeaveModal}>
