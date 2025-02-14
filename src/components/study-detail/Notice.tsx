@@ -1,6 +1,6 @@
 import { overlay } from 'overlay-kit';
 import NoticeModal from './NoticeModal';
-import useGetNotice from '../../hooks/study-main/useGetNotice';
+import useGetNotice from '../../hooks/study-detail/useGetNotice';
 import NoticeIcon from '../../assets/icons/notice.svg';
 
 export default function Notice({ studyId, hasNotice }: { studyId: number; hasNotice: boolean }) {
