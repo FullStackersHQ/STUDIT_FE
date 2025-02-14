@@ -4,7 +4,7 @@ import CloseIcon from '../../assets/icons/close.svg';
 import { handleKeyDown, handleMaxLengthChange } from '../../utils/commonUtils';
 import useNoticeModal from '../../hooks/study-main/useNoticeModal';
 
-export default function NoticeModal({
+export default function ManageNoticeModal({
   isOpen,
   close,
   studyId,

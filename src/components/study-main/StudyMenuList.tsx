@@ -1,6 +1,6 @@
 import { overlay } from 'overlay-kit';
 import LeaveStudyModal from './LeaveStudyModal';
-import NoticeModal from './NoticeModal';
+import ManageNoticeModal from './ManageNoticeModal';
 
 export default function StudyMenuList({
   isMenuOpen,
@@ -20,7 +20,7 @@ export default function StudyMenuList({
   };
   const openNoticeModal = () => {
     overlay.open(({ isOpen, close }) => {
-      return <NoticeModal isOpen={isOpen} close={close} studyId={studyId} hasNotice={hasNotice} />;
+      return <ManageNoticeModal isOpen={isOpen} close={close} studyId={studyId} hasNotice={hasNotice} />;
     });
   };
 
