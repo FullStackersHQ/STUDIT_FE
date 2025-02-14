@@ -153,6 +153,30 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     tag: '프론트엔드',
     weeklyStudyTime: 8,
   },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
 ];
 
 export const ongoingStudies: OnGoingStudyItem[] = [

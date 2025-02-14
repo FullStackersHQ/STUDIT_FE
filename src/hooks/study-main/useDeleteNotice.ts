@@ -1,23 +1,21 @@
 import { useMutation } from '@tanstack/react-query';
 import studyMainApi from '../../api/studyMainApi';
 
-export default function useEditNotice({
+export default function useDeleteNotice({
   studyId,
-  content,
   close,
-  refetchNotice,
+  refetchDetail,
 }: {
   studyId: number;
-  content: string;
   close: () => void;
-  refetchNotice: () => void;
+  refetchDetail: () => void;
 }) {
   const mutation = useMutation({
-    mutationFn: () => studyMainApi.editNotice(studyId, content),
+    mutationFn: () => studyMainApi.deleteNotice(studyId),
     onSuccess: () => {
-      refetchNotice();
+      refetchDetail();
       close();
     },
   });
-  return { editNotice: mutation.mutate };
+  return { deleteNotice: mutation.mutate };
 }

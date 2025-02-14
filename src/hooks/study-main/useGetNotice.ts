@@ -2,10 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import studyMainApi from '../../api/studyMainApi';
 
 export default function useGetNotice(studyId: number, hasNotice: boolean) {
-  const { data: notice, isLoading } = useQuery({
+  const {
+    data: notice,
+    isLoading,
+    refetch: refetchNotice,
+  } = useQuery({
     queryKey: ['getNotice'],
     queryFn: () => studyMainApi.getNotice(studyId),
     enabled: hasNotice,
   });
-  return { notice, isLoading };
+  return { notice, isLoading, refetchNotice };
 }

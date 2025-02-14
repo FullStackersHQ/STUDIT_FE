@@ -18,7 +18,7 @@ export default function StudyMenuList({
       return <LeaveStudyModal isOpen={isOpen} close={close} />;
     });
   };
-  const openNoticeModal = () => {
+  const openManageModal = () => {
     overlay.open(({ isOpen, close }) => {
       return <ManageNoticeModal isOpen={isOpen} close={close} studyId={studyId} hasNotice={hasNotice} />;
     });
@@ -34,13 +34,14 @@ export default function StudyMenuList({
         </li>
         <li
           className="border-light-gray flex cursor-pointer items-center justify-between border-b px-4 py-2"
-          onClick={openNoticeModal}
+          onClick={openManageModal}
         >
           <button disabled={!isLeader} className={`${!isLeader && 'text-light-gray'} cursor-pointer`}>
-            공지 {hasNotice ? '수정' : '등록'}하기
+            공지 {hasNotice ? '수정 및 삭제' : '등록'}하기
           </button>
           <span className="rounded-full bg-black px-1.5 py-1 text-xs text-white">스터디장</span>
         </li>
+
         <li className="border-light-gray flex cursor-pointer items-center justify-between gap-x-1.5 border-b px-4 py-2">
           <button disabled={!isLeader} className={`${!isLeader && 'text-light-gray'}`}>
             스터디 정보 수정

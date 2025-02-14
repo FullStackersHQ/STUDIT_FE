@@ -5,11 +5,11 @@ import { StudyOngoingType } from '../../types/interface';
 export default function useGetStudyDetail(studyId: number) {
   const {
     data: studyDetail,
-    isLoading,
+    isLoading: isDetailLoading,
     refetch: refetchDetail,
   } = useQuery<StudyOngoingType>({
     queryKey: ['getStudyDetail'],
     queryFn: () => studyApi.getStudyDetail(studyId),
   });
-  return { studyDetail, isLoading, refetchDetail };
+  return { studyDetail, isDetailLoading, refetchDetail };
 }
