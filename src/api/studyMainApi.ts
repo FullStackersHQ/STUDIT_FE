@@ -52,5 +52,9 @@ const studyMainApi = {
     const { data: response } = await client.put(`/rooms/${studyId}/notices`, { content: content });
     return response;
   },
+  deleteNotice: async (studyId: number) => {
+    const { data: response } = await client.delete(`/rooms/${studyId}/notices`);
+    return response;
+  },
 };
 export default studyMainApi;

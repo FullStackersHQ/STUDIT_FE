@@ -41,3 +41,17 @@ export function formatTimeToAMPM(time: string) {
   const hour12 = hour % 12 === 0 ? 12 : hour % 12;
   return `${period} ${hour12}:${minute < 10 ? '0' + minute : minute}`;
 }
+export function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  };
+
+  return date.toLocaleString('ko-KR', options);
+}

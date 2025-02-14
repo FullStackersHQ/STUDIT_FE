@@ -6,11 +6,11 @@ import { useState } from 'react';
 export default function useStudyMain() {
   const params = useParams();
   const studyId = Number(params.studyId);
-  const { studyDetail, isLoading } = useGetStudyDetail(studyId);
+  const { studyDetail, isDetailLoading } = useGetStudyDetail(studyId);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const userId = 1;
   const action = { icon: MenuIcon, onClick: toggleMenu, ariaLabel: '스터디 메뉴 보기' };
 
-  return { studyDetail, isLoading, studyId, action, isMenuOpen, userId };
+  return { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId, toggleMenu };
 }

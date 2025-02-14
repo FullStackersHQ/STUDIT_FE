@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import studyApi from '../../../api/studyMainApi';
+import studyMainApi from '../../../api/studyMainApi';
 import { TodoListType } from '../../../types/interface';
 
 export default function useGetTodoList(studyId: number) {
@@ -9,7 +9,7 @@ export default function useGetTodoList(studyId: number) {
     refetch: refetchTodoList,
   } = useQuery<TodoListType>({
     queryKey: ['getTodoList'],
-    queryFn: () => studyApi.getTodoList(studyId),
+    queryFn: () => studyMainApi.getTodoList(studyId),
   });
   return { todoList, todoListLoading, refetchTodoList };
 }
