@@ -1,9 +1,9 @@
 import React from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
-import useEditStudy from '../hooks/study-main/edit/useEditStudy';
+import useEditStudy from '../hooks/study-detail/edit/useEditStudy';
 import { handleMaxLengthChange } from '../utils/commonUtils';
 import Button from '../components/Button';
-import useStudyMutation from '../hooks/study-main/edit/useStudyMutation';
+import useStudyMutation from '../hooks/study-detail/edit/useStudyMutation';
 
 function EditStudy() {
   const {
