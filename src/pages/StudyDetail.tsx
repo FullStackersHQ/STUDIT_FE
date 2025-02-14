@@ -1,10 +1,10 @@
 import React from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
-import useStudyMain from '../hooks/study-main/useStudyMain';
-import TodoListSection from '../components/study-main/TodoListSection';
-import StudyMenuList from '../components/study-main/StudyMenuList';
+import useStudyMain from '../hooks/study-detail/useStudyMain';
+import TodoListSection from '../components/study-detail/TodoListSection';
+import StudyMenuList from '../components/study-detail/StudyMenuList';
 
-function StudyMain() {
+function StudyDetail() {
   const { studyDetail, isLoading, studyId, action, isMenuOpen, userId } = useStudyMain();
   if (!studyDetail || isLoading) return null;
   const { title, leaderId, hasNotice } = studyDetail;
@@ -22,4 +22,4 @@ function StudyMain() {
   );
 }
 
-export default React.memo(StudyMain);
+export default React.memo(StudyDetail);

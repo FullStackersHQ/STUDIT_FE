@@ -1,21 +1,33 @@
-import React from 'react';
-import HeaderWithBack from '../components/HeaderWithBack';
-import useStudyList from '../hooks/my-page/useStudyList';
-import StudyItem from '../components/my-page/StudyItem';
+import { Link } from 'react-router-dom';
+import { useSearchStore } from '../store/useSearchStore';
+import FilterList from '../components/recruitList/FilterList';
+import StudyRoomList from '../components/Study-list/StudyRoomList';
 
-function StudyList() {
-  const { studyType, title, studyList, isLoading } = useStudyList();
-  if (!studyList || isLoading) return null;
+export default function StudyList(): JSX.Element {
+  const { filteringInfo } = useSearchStore();
+  const isLogin = true;
 
   return (
-    <div>
-      <HeaderWithBack title={title} />
-      <section className="flex flex-col gap-y-2 px-4 pt-3 pb-7">
-        {studyList.map((studyItem, index) => (
-          <StudyItem study={studyItem} studyType={studyType} key={index} />
-        ))}
-      </section>
+    <div className="px-4">
+      <div style={{ height: `calc(100vh - 52px - 48px - 50px)` }}>
+        <Link to={'/search'}>
+          <input
+            className="search-input"
+            type="text"
+            placeholder="검색어를 입력하세요."
+            value={filteringInfo.search}
+            readOnly
+          />
+        </Link>
+        <FilterList />
+        <StudyRoomList />
+      </div>
+      <Link
+        to={isLogin ? '/create-study' : '/login'}
+        className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
+      >
+        <span className="text-sm">{isLogin ? '+ 스터디 만들기' : '로그인'}</span>
+      </Link>
     </div>
   );
 }
-export default React.memo(StudyList);

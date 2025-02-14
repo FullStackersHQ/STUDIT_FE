@@ -3,7 +3,7 @@ import { StudyStatusType, StudyItemType } from '../../types/interface';
 import myPageApi from '../../api/myPageApi';
 import { useMemo } from 'react';
 
-export default function useFetchStudyList(studyType: StudyStatusType) {
+export default function useFetchMyStudyList(studyType: StudyStatusType) {
   const apiFunctions: Record<StudyStatusType, () => Promise<StudyItemType[]>> = {
     upcoming: myPageApi.getUpcomingList,
     ongoing: myPageApi.getOngoingList,

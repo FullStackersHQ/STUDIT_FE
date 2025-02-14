@@ -2,7 +2,7 @@ import ModalOverlay from '../ModalOverlay';
 import Button from '../Button';
 import CloseIcon from '../../assets/icons/close.svg';
 import { handleKeyDown, handleMaxLengthChange } from '../../utils/commonUtils';
-import useNoticeModal from '../../hooks/study-main/useNoticeModal';
+import useNoticeModal from '../../hooks/study-detail/useNoticeModal';
 
 export default function ManageNoticeModal({
   isOpen,

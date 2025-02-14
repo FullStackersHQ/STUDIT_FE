@@ -6,9 +6,9 @@ import PointShortageModal from '../components/recruit/PointShortageModal';
 import { useNavigate, useParams } from 'react-router-dom';
 import { recruitApi } from '../api/recruitApi';
 import DeleteModal from '../components/recruit/DeleteModal';
-import useGetRecruitInfo from '../hooks/study-recruit/useGetRecruitInfo';
+import useGetRecruitInfo from '../hooks/recruit/useGetRecruitInfo';
 
-export default function StudyRecruit(): JSX.Element {
+export default function RecruitDetail(): JSX.Element {
   const userId: number = 1002;
   const userDeposit: number = 17000;
 

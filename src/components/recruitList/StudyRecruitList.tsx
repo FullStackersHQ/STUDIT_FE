@@ -10,7 +10,7 @@ const fetchStudies = async (pageParam = 1) => {
 
 export default function StudyRecruitList(): JSX.Element {
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['study-recruit-list'],
+    queryKey: ['recruit-list'],
     queryFn: ({ pageParam = 1 }) => fetchStudies(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
@@ -32,7 +32,7 @@ export default function StudyRecruitList(): JSX.Element {
         .map((study) => (
           <Link
             key={study.recruitId}
-            to={`/study-recruit/${study.recruitId}`}
+            to={`/recruit/${study.recruitId}`}
             className="border-white-gray w-full rounded-[10px] border bg-white p-3"
           >
             <div className="mb-2">

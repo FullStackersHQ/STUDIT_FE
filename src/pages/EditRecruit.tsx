@@ -4,11 +4,11 @@ import Button from '../components/Button';
 import { useLocation, useParams } from 'react-router-dom';
 import { StudyRecruitType } from '../types/interface';
 import { handleMaxLengthChange } from '../utils/commonUtils';
-import useEditRecruit from '../hooks/study-recruit/useEditRecruit';
-import useRecruitMutation from '../hooks/study-recruit/useRecruitMutation';
+import useEditRecruit from '../hooks/recruit/useEditRecruit';
+import useRecruitMutation from '../hooks/recruit/useRecruitMutation';
 import Input from '../components/Input';
 
-export default function EditStudyRecruit(): JSX.Element {
+export default function EditRecruit(): JSX.Element {
   const post: StudyRecruitType = useLocation().state;
   const params = useParams();
   const recruitId = Number(params.recruitId);
