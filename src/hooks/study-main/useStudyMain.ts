@@ -12,5 +12,5 @@ export default function useStudyMain() {
   const userId = 1;
   const action = { icon: MenuIcon, onClick: toggleMenu, ariaLabel: '스터디 메뉴 보기' };
 
-  return { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId };
+  return { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId, toggleMenu };
 }

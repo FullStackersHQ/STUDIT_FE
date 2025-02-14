@@ -7,18 +7,22 @@ export default function StudyMenuList({
   isLeader,
   studyId,
   hasNotice,
+  toggleMenu,
 }: {
   isMenuOpen: boolean;
   isLeader: boolean;
   studyId: number;
   hasNotice: boolean;
+  toggleMenu: () => void;
 }) {
   const openLeaveModal = () => {
+    toggleMenu();
     overlay.open(({ isOpen, close }) => {
       return <LeaveStudyModal isOpen={isOpen} close={close} />;
     });
   };
   const openManageModal = () => {
+    toggleMenu();
     overlay.open(({ isOpen, close }) => {
       return <ManageNoticeModal isOpen={isOpen} close={close} studyId={studyId} hasNotice={hasNotice} />;
     });

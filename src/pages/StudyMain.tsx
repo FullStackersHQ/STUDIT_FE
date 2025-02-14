@@ -6,7 +6,7 @@ import StudyMenuList from '../components/study-main/StudyMenuList';
 import Notice from '../components/study-main/Notice';
 
 function StudyMain() {
-  const { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId } = useStudyMain();
+  const { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId, toggleMenu } = useStudyMain();
   if (!studyDetail || isDetailLoading) return null;
 
   const { title, leaderId, hasNotice } = studyDetail;
@@ -20,7 +20,13 @@ function StudyMain() {
         <div className="bg-main mt-[302px] h-1.5 w-full" />
         <TodoListSection studyId={studyId} />
       </div>
-      <StudyMenuList isMenuOpen={isMenuOpen} isLeader={isLeader} studyId={studyId} hasNotice={hasNotice} />
+      <StudyMenuList
+        isMenuOpen={isMenuOpen}
+        isLeader={isLeader}
+        studyId={studyId}
+        hasNotice={hasNotice}
+        toggleMenu={toggleMenu}
+      />
     </div>
   );
 }
