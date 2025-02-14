@@ -27,9 +27,9 @@ export default function ProfileModifyModal({
   if (!isOpen) return null;
   return (
     <ModalOverlay>
-      <section className="modal-container h-[289px]">
+      <section className="modal-container">
         <h1 className="text-main-text font-bold">프로필을 수정해요</h1>
-        <div className="relative mt-5">
+        <div className="relative mt-3.5">
           <img src={profile.userImg} alt={profile.nickName + '프로필'} className="h-20 w-20 rounded-full" />
           <button
             className="bg-main hover:bg-main-hover absolute right-0 -bottom-1 cursor-pointer rounded-full p-1 text-white transition-colors"

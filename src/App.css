@@ -47,7 +47,6 @@
   }
 
   @media (min-width: 640px) {
-
     /* sm */
     .search-input {
       height: 30px;
@@ -56,7 +55,6 @@
   }
 
   @media (min-width: 768px) {
-
     /* md */
     .search-input {
       height: 40px;
@@ -150,7 +148,7 @@
   }
 
   .tag {
-    @apply bg-white-gray min-w-max shrink-0 rounded-[10px] px-[8px] py-[3px] text-sm whitespace-nowrap
+    @apply bg-white-gray min-w-max shrink-0 rounded-[10px] px-[8px] py-[3px] text-sm whitespace-nowrap;
   }
 
   .textarea {
@@ -166,4 +164,36 @@
     margin-top: 8px;
     list-style: square inside url('https://www.finney-taylor.com/App_Themes/FTaylor/images/bullets/listBullet.gif');
   }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.2s ease-out;
+}
+
+.slide-down {
+  animation: slideDown 0.2s ease-in-out;
 }

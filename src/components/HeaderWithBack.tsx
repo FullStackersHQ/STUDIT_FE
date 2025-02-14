@@ -30,7 +30,7 @@ export default function HeaderWithBack({
           aria-label={action.ariaLabel}
           className="hover:text-white-gray ml-auto cursor-pointer transition-colors"
         >
-          {action?.icon && <action.icon alt="icon description" />}
+          {action?.icon && <action.icon alt={action.ariaLabel} />}
         </button>
       )}
     </header>

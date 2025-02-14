@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import studyApi from '../../api/studyMainApi';
-import { TodoListType } from '../../types/interface';
+import studyApi from '../../../api/studyMainApi';
+import { TodoListType } from '../../../types/interface';
 
 export default function useGetTodoList(studyId: number) {
   const {

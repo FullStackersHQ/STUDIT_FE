@@ -40,5 +40,17 @@ const studyMainApi = {
     });
     return response;
   },
+  createNotice: async (studyId: number, content: string) => {
+    const { data: response } = await client.post(`/rooms/${studyId}/notices`, { content: content });
+    return response;
+  },
+  getNotice: async (studyId: number) => {
+    const { data: response } = await client.get(`/rooms/${studyId}/notices`);
+    return response;
+  },
+  editNotice: async (studyId: number, content: string) => {
+    const { data: response } = await client.put(`/rooms/${studyId}/notices`, { content: content });
+    return response;
+  },
 };
 export default studyMainApi;
