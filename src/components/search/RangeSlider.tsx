@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchStore } from '../../store/searchStore';
+import { useSearchStore } from '../../store/useSearchStore';
 
 export default function RangeSlider({
   min,
@@ -44,10 +44,10 @@ export default function RangeSlider({
 
   return (
     <>
-      <div className="relative h-[8px] bg-light-gray rounded-[10px]">
+      <div className="bg-light-gray relative h-[8px] rounded-[10px]">
         {/* 슬라이더 */}
         <div
-          className="absolute h-[8px] bg-main rounded-[10px]"
+          className="bg-main absolute h-[8px] rounded-[10px]"
           style={{
             left: `${rangeMinPercent}%`,
             right: `${100 - rangeMaxPercent}%`,
@@ -88,13 +88,13 @@ export default function RangeSlider({
         />
       </div>
       {/* 값 보여주기 */}
-      <div className="w-full mt-2 flex items-center justify-evenly text-gray">
-        <div className="w-[40%] p-2 border rounded-[10px]">
-          <p className="text-[12px] items-start">최저 포인트</p>
+      <div className="text-gray mt-2 flex w-full items-center justify-evenly">
+        <div className="w-[40%] rounded-[10px] border p-2">
+          <p className="items-start text-[12px]">최저 포인트</p>
           <span className="text-[14px] text-black">{minValue.toLocaleString()}점</span>
         </div>
         <p className="text-[18px]">~</p>
-        <div className="w-[40%] p-2 border rounded-[10px]">
+        <div className="w-[40%] rounded-[10px] border p-2">
           <p className="text-[12px]">최대 포인트</p>
           <span className="text-[14px] text-black">{maxValue.toLocaleString()}점</span>
         </div>

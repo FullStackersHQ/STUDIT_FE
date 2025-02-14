@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useSearchStore } from '../store/searchStore';
+import { useSearchStore } from '../store/useSearchStore';
 import FilterList from '../components/home/FilterList';
 import StudyRoomList from '../components/studyRoom/StudyRoomList';
 

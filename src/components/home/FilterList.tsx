@@ -1,4 +1,4 @@
-import { useSearchStore } from '../../store/searchStore';
+import { useSearchStore } from '../../store/useSearchStore';
 
 export default function FilterList(): JSX.Element {
   const { filteringInfo } = useSearchStore();

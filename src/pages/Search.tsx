@@ -1,6 +1,6 @@
 import RangeSlider from '../components/search/RangeSlider';
 import HeaderWithBack from '../components/HeaderWithBack';
-import { useSearchStore } from '../store/searchStore';
+import { useSearchStore } from '../store/useSearchStore';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import WeekStudyTime from '../components/search/WeekStudyTime';
