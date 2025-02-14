@@ -10,7 +10,7 @@ function EditStudy() {
     editInfo,
     setEditInfo,
     studyDetail,
-    isLoading,
+    isDetailLoading,
     handleAddTag,
     handleRemoveTag,
     tagInput,
@@ -19,7 +19,7 @@ function EditStudy() {
     isModified,
   } = useEditStudy();
   const { editStudy } = useStudyMutation(editInfo, studyId);
-  if (!studyDetail || isLoading) return null;
+  if (!studyDetail || isDetailLoading) return null;
 
   return (
     <div className="h-full w-full">

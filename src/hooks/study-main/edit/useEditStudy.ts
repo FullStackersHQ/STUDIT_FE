@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 export default function useEditStudy() {
   const params = useParams();
   const studyId = Number(params.studyId);
-  const { studyDetail, isLoading } = useGetStudyDetail(studyId);
+  const { studyDetail, isDetailLoading } = useGetStudyDetail(studyId);
   const [editInfo, setEditInfo] = useState({
     title: '',
     description: '',
@@ -57,7 +57,7 @@ export default function useEditStudy() {
     editInfo,
     setEditInfo,
     studyDetail,
-    isLoading,
+    isDetailLoading,
     handleAddTag,
     handleRemoveTag,
     tagInput,

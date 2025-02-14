@@ -1,6 +1,7 @@
 import { overlay } from 'overlay-kit';
 import LeaveStudyModal from './LeaveStudyModal';
 import ManageNoticeModal from './ManageNoticeModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function StudyMenuList({
   isMenuOpen,
@@ -15,6 +16,7 @@ export default function StudyMenuList({
   hasNotice: boolean;
   toggleMenu: () => void;
 }) {
+  const navigate = useNavigate();
   const openLeaveModal = () => {
     toggleMenu();
     overlay.open(({ isOpen, close }) => {
@@ -47,7 +49,11 @@ export default function StudyMenuList({
         </li>
 
         <li className="border-light-gray flex cursor-pointer items-center justify-between gap-x-1.5 border-b px-4 py-2">
-          <button disabled={!isLeader} className={`${!isLeader && 'text-light-gray'}`}>
+          <button
+            disabled={!isLeader}
+            className={`${!isLeader && 'text-light-gray'}`}
+            onClick={() => navigate(`/edit-study/${studyId}`)}
+          >
             스터디 정보 수정
           </button>
           <span className="rounded-full bg-black px-1.5 py-1 text-xs text-white">스터디장</span>
