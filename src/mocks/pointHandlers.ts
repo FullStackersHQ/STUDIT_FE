@@ -1,5 +1,13 @@
 import { http, HttpResponse } from 'msw';
-import { UserPoints, AllPointRecords, ToppedUpPoints, DeductedPoints, WithDrawnPoints } from './data/dummy';
+import {
+  UserPoints,
+  AllPointRecords,
+  ToppedUpPoints,
+  DeductedPoints,
+  WithDrawnPoints,
+  RefundPoints,
+  RewardPoints,
+} from './data/dummy';
 import { PointFilterType } from '../types/interface';
 import { WithdrawRequest } from '../types/request';
 
@@ -22,6 +30,14 @@ const pointHandlers = [
   }),
   http.get('/point/withdraw', () => {
     if (WithDrawnPoints) return HttpResponse.json(WithDrawnPoints);
+    return HttpResponse.error();
+  }),
+  http.get('/point/reward', () => {
+    if (RewardPoints) return HttpResponse.json(RewardPoints);
+    return HttpResponse.error();
+  }),
+  http.get('/point/refund', () => {
+    if (RefundPoints) return HttpResponse.json(RefundPoints);
     return HttpResponse.error();
   }),
   http.post('/point/withdraw', async ({ request }) => {

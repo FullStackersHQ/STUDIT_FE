@@ -1,19 +1,27 @@
 import { PointRecord } from '../../types/interface';
-import TopUpIcon from '../../assets/icons/topup.svg';
-import DeductIcon from '../../assets/icons/deduct.svg';
-import WithdrawIcon from '../../assets/icons/withdraw.svg';
+import PlusIcon from '../../assets/icons/plus.svg';
+import MinusIcon from '../../assets/icons/minus.svg';
 import { formatTimeToAMPM } from '../../utils/commonUtils';
 
 export default function PointRecordItem({ record }: { record: PointRecord }) {
   const { id, type, time, amount, total_after } = record;
 
-  const Icon = type === '충전' ? TopUpIcon : type === '차감' ? DeductIcon : WithdrawIcon;
-  const sign = type === '충전' ? '+' : '-';
-  const typeClass = type === '충전' ? 'text-topup' : type === '차감' ? 'text-deduct' : 'text-withdraw';
+  const Icon = ['충전', '환불', '보상'].includes(type) ? PlusIcon : MinusIcon;
+  const typeClass =
+    type === '충전'
+      ? 'text-topup'
+      : type === '환불'
+        ? 'text-black'
+        : type === '보상'
+          ? 'text-main-text'
+          : type === '차감'
+            ? 'text-deduct'
+            : 'text-withdraw';
+  const sign = ['충전', '환불', '보상'].includes(type) ? '+' : '-';
 
   return (
     <li key={id} className="flex items-center text-sm">
-      <Icon alt={type} className="h-6 w-6" />
+      <Icon alt={type} className={`h-6 w-6 ${typeClass}`} />
       <div className="ml-2 flex flex-col">
         <span className="font-medium">
           {amount.toLocaleString()} P {type}

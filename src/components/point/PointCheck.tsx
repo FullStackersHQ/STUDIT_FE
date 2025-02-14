@@ -6,7 +6,7 @@ import WithdrawModal from './WithdrawModal';
 export default function PointCheck() {
   const { userPoints, isLoading } = useGetUserPoints();
   if (!userPoints || isLoading) return null;
-  const { totalPoints, totalChargedPoints, totalDeductedPoints, totalWithdrawnPoints } = userPoints;
+  const { totalPoints, totalRewardPoints, totalDeductedPoints, totalWithdrawnPoints } = userPoints;
   const openOverlay = () => {
     overlay.open(({ isOpen, close }) => {
       return <WithdrawModal isOpen={isOpen} close={close} currentPoint={totalPoints} />;
@@ -28,8 +28,8 @@ export default function PointCheck() {
       </div>
       <ul className="flex h-14 w-full items-center justify-between text-sm">
         <li className="flex grow flex-col items-center gap-y-1.5 border-r border-black">
-          <span>총 충전 포인트</span>
-          <span className="font-medium">{totalChargedPoints.toLocaleString()} P</span>
+          <span>총 보상 포인트</span>
+          <span className="font-medium">{totalRewardPoints.toLocaleString()} P</span>
         </li>
         <li className="flex grow flex-col items-center gap-y-1.5 border-r border-black">
           <span>총 차감 포인트</span>

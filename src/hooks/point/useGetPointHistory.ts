@@ -9,6 +9,8 @@ export default function useGetPointHistory(selectedFilter: PointFilterType) {
     충전: pointApi.getToppedUpPoints,
     차감: pointApi.getDeductedPoints,
     출금: pointApi.getWithdrawnPoints,
+    보상: pointApi.getRewardPoints,
+    환불: pointApi.getRefundPoints,
   };
 
   const { data, isLoading, refetch } = useQuery<GroupedByDate[]>({

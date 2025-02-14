@@ -87,7 +87,7 @@ export type StudyItemType = UpcomingStudyItem | OnGoingStudyItem | CompletedStud
 export type StudyStatusType = 'ongoing' | 'upcoming' | 'completed';
 export interface IUserPoints {
   totalPoints: number;
-  totalChargedPoints: number;
+  totalRewardPoints: number;
   totalDeductedPoints: number;
   totalWithdrawnPoints: number;
 }
@@ -102,7 +102,7 @@ export interface GroupedByDate {
   date: string;
   records: PointRecord[];
 }
-export type PointFilterType = '전체' | '충전' | '차감' | '출금';
+export type PointFilterType = '전체' | '충전' | '차감' | '출금' | '보상' | '환불';
 export interface StudyDetail {
   title: string;
   description: string;

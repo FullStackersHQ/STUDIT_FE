@@ -209,7 +209,7 @@ export const completedStudies: CompletedStudyItem[] = [
 
 export const UserPoints: IUserPoints = {
   totalPoints: 50000,
-  totalChargedPoints: 70000,
+  totalRewardPoints: 70000,
   totalDeductedPoints: 15000,
   totalWithdrawnPoints: 5000,
 };
@@ -460,6 +460,131 @@ export const WithDrawnPoints: GroupedByDate[] = [
         type: '출금',
         amount: 50000,
         total_after: 50000,
+        time: '10:30:00',
+      },
+    ],
+  },
+];
+export const RewardPoints: GroupedByDate[] = [
+  {
+    date: '2024.02.12',
+    records: [
+      {
+        id: 5,
+        type: '보상',
+        amount: 15000,
+        total_after: 85000,
+        time: '11:20:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.11',
+    records: [
+      {
+        id: 4,
+        type: '보상',
+        amount: 20000,
+        total_after: 70000,
+        time: '16:45:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.10',
+    records: [
+      {
+        id: 3,
+        type: '보상',
+        amount: 30000,
+        total_after: 50000,
+        time: '09:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.09',
+    records: [
+      {
+        id: 2,
+        type: '보상',
+        amount: 10000,
+        total_after: 20000,
+        time: '14:15:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.08',
+    records: [
+      {
+        id: 1,
+        type: '보상',
+        amount: 10000,
+        total_after: 10000,
+        time: '10:30:00',
+      },
+    ],
+  },
+];
+
+export const RefundPoints: GroupedByDate[] = [
+  {
+    date: '2024.02.12',
+    records: [
+      {
+        id: 5,
+        type: '환불',
+        amount: 15000,
+        total_after: 20000,
+        time: '11:20:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.11',
+    records: [
+      {
+        id: 4,
+        type: '환불',
+        amount: 20000,
+        total_after: 35000,
+        time: '16:45:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.10',
+    records: [
+      {
+        id: 3,
+        type: '환불',
+        amount: 30000,
+        total_after: 55000,
+        time: '09:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.09',
+    records: [
+      {
+        id: 2,
+        type: '환불',
+        amount: 10000,
+        total_after: 85000,
+        time: '14:15:00',
+      },
+    ],
+  },
+  {
+    date: '2024.02.08',
+    records: [
+      {
+        id: 1,
+        type: '환불',
+        amount: 50000,
+        total_after: 95000,
         time: '10:30:00',
       },
     ],
