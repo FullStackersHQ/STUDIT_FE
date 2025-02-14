@@ -15,10 +15,13 @@ export default function Notice({ studyId, hasNotice }: { studyId: number; hasNot
     <section className="mt-2 px-4">
       <button
         onClick={openNoticeModal}
-        className="flex w-full cursor-pointer items-center gap-x-1 truncate rounded-sm bg-black p-1.5 text-sm overflow-ellipsis text-white"
+        className="flex w-full cursor-pointer items-center gap-x-1 rounded-sm bg-black p-1.5 text-sm text-white"
       >
-        <NoticeIcon alt="공지" />
-        <span className="font-medium">공지:</span> {notice.content}
+        <NoticeIcon alt="공지" className="flex-shrink-0" />
+        <div className="flex w-full gap-x-1 truncate overflow-hidden">
+          <span className="flex-shrink-0 font-medium">공지:</span>
+          <span className="truncate">{notice.content}</span>
+        </div>
       </button>
     </section>
   );
