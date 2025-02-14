@@ -4,6 +4,7 @@ import useEditStudy from '../hooks/study-detail/edit/useEditStudy';
 import { handleMaxLengthChange } from '../utils/commonUtils';
 import Button from '../components/Button';
 import useStudyMutation from '../hooks/study-detail/edit/useStudyMutation';
+import useGetStudyDetail from '../hooks/study-detail/useGetStudyDetail';
 
 function EditStudy() {
   const {
@@ -18,7 +19,8 @@ function EditStudy() {
     studyId,
     isModified,
   } = useEditStudy();
-  const { editStudy } = useStudyMutation(editInfo, studyId);
+  const { refetchDetail } = useGetStudyDetail(studyId);
+  const { editStudy } = useStudyMutation(editInfo, studyId, refetchDetail);
   if (!studyDetail || isDetailLoading) return null;
 
   return (

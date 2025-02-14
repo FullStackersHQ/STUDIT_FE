@@ -48,7 +48,10 @@ export default function StudyMenuList({
           <span className="rounded-full bg-black px-1.5 py-1 text-xs text-white">스터디장</span>
         </li>
 
-        <li className="border-light-gray flex cursor-pointer items-center justify-between gap-x-1.5 border-b px-4 py-2">
+        <li
+          className="border-light-gray flex cursor-pointer items-center justify-between gap-x-1.5 border-b px-4 py-2"
+          onClick={() => navigate(`/edit-study/${studyId}`)}
+        >
           <button
             disabled={!isLeader}
             className={`${!isLeader && 'text-light-gray'}`}

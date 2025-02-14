@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import studyApi from '../../api/studyMainApi';
+import studyMainApi from '../../api/studyMainApi';
 import { StudyOngoingType } from '../../types/interface';
 
 export default function useGetStudyDetail(studyId: number) {
@@ -9,7 +9,7 @@ export default function useGetStudyDetail(studyId: number) {
     refetch: refetchDetail,
   } = useQuery<StudyOngoingType>({
     queryKey: ['getStudyDetail'],
-    queryFn: () => studyApi.getStudyDetail(studyId),
+    queryFn: () => studyMainApi.getStudyDetail(studyId),
   });
   return { studyDetail, isDetailLoading, refetchDetail };
 }
