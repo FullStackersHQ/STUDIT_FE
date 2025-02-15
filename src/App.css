@@ -14,6 +14,7 @@
   --color-topup: #03a6ff;
   --color-withdraw: #00cc99;
   --color-deduct: #ff6b6b;
+  --color-refund: #ff6b6b;
 }
 
 /* Tailwind의 @layer 사용 */
