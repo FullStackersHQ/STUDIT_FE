@@ -2,8 +2,9 @@ import { PointRecord } from '../../types/interface';
 import PlusIcon from '../../assets/icons/plus.svg';
 import MinusIcon from '../../assets/icons/minus.svg';
 import { formatTimeToAMPM } from '../../utils/commonUtils';
+import React, { forwardRef } from 'react';
 
-export default function PointRecordItem({ record }: { record: PointRecord }) {
+const PointRecordItem = forwardRef<HTMLLIElement, { record: PointRecord }>(({ record }, ref) => {
   const { id, type, time, amount, total_after } = record;
 
   const Icon = ['충전', '환불', '보상'].includes(type) ? PlusIcon : MinusIcon;
@@ -20,7 +21,7 @@ export default function PointRecordItem({ record }: { record: PointRecord }) {
   const sign = ['충전', '환불', '보상'].includes(type) ? '+' : '-';
 
   return (
-    <li key={id} className="flex items-center text-sm">
+    <li ref={ref} key={id} className="flex items-center text-sm">
       <Icon alt={type} className={`h-6 w-6 ${typeClass}`} />
       <div className="ml-2 flex flex-col">
         <span className="font-medium">
@@ -36,4 +37,5 @@ export default function PointRecordItem({ record }: { record: PointRecord }) {
       </div>
     </li>
   );
-}
+});
+export default React.memo(PointRecordItem);

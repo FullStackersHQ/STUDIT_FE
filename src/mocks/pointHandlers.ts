@@ -16,29 +16,89 @@ const pointHandlers = [
     if (UserPoints) return HttpResponse.json(UserPoints);
     return HttpResponse.error();
   }),
-  http.get('/point/all', () => {
-    if (AllPointRecords) return HttpResponse.json(AllPointRecords);
-    return HttpResponse.error();
+  http.get('/point/all', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page')) || 1;
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    AllPointRecords.slice(startIndex, startIndex + pageSize);
+    const paginatedData = AllPointRecords.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = paginatedData.length === pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage,
+    });
   }),
-  http.get('/point/topup', () => {
-    if (ToppedUpPoints) return HttpResponse.json(ToppedUpPoints);
-    return HttpResponse.error();
+  http.get('/point/topup', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    ToppedUpPoints.slice(startIndex, startIndex + pageSize);
+    const paginatedData = ToppedUpPoints.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = paginatedData.length === pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage,
+    });
   }),
-  http.get('/point/deduct', () => {
-    if (DeductedPoints) return HttpResponse.json(DeductedPoints);
-    return HttpResponse.error();
+  http.get('/point/deduct', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    DeductedPoints.slice(startIndex, startIndex + pageSize);
+    const paginatedData = DeductedPoints.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = paginatedData.length === pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage,
+    });
   }),
-  http.get('/point/withdraw', () => {
-    if (WithDrawnPoints) return HttpResponse.json(WithDrawnPoints);
-    return HttpResponse.error();
+  http.get('/point/withdraw', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    DeductedPoints.slice(startIndex, startIndex + pageSize);
+    const paginatedData = WithDrawnPoints.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = paginatedData.length === pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage,
+    });
   }),
-  http.get('/point/reward', () => {
-    if (RewardPoints) return HttpResponse.json(RewardPoints);
-    return HttpResponse.error();
+  http.get('/point/reward', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    DeductedPoints.slice(startIndex, startIndex + pageSize);
+    const paginatedData = RewardPoints.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = paginatedData.length === pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage,
+    });
   }),
-  http.get('/point/refund', () => {
-    if (RefundPoints) return HttpResponse.json(RefundPoints);
-    return HttpResponse.error();
+  http.get('/point/refund', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    DeductedPoints.slice(startIndex, startIndex + pageSize);
+    const paginatedData = RefundPoints.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = paginatedData.length === pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage,
+    });
   }),
   http.post('/point/withdraw', async ({ request }) => {
     try {

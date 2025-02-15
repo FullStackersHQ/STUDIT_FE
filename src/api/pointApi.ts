@@ -5,29 +5,47 @@ const pointApi = {
     const { data: response } = await client.get('/point');
     return response;
   },
-  getAllPoints: async () => {
-    const { data: response } = await client.get('/point/all');
-    return response;
+  getAllPoints: async (pageParam: number) => {
+    const { data: response } = await client.get('/point/all', { params: { page: pageParam } });
+    return {
+      data: response.data,
+      hasNextPage: response.data.length === 10,
+    };
   },
-  getToppedUpPoints: async () => {
-    const { data: response } = await client.get('/point/topup');
-    return response;
+  getToppedUpPoints: async (pageParam: number) => {
+    const { data: response } = await client.get('/point/topup', { params: { page: pageParam } });
+    return {
+      data: response.data,
+      hasNextPage: response.data.length === 10,
+    };
   },
-  getDeductedPoints: async () => {
-    const { data: response } = await client.get('/point/deduct');
-    return response;
+  getDeductedPoints: async (pageParam: number) => {
+    const { data: response } = await client.get('/point/deduct', { params: { page: pageParam } });
+    return {
+      data: response.data,
+      hasNextPage: response.data.length === 10,
+    };
   },
-  getWithdrawnPoints: async () => {
-    const { data: response } = await client.get('/point/withdraw');
-    return response;
+  getWithdrawnPoints: async (pageParam: number) => {
+    const { data: response } = await client.get('/point/withdraw', { params: { page: pageParam } });
+    return {
+      data: response.data,
+      hasNextPage: response.data.length === 10,
+    };
   },
-  getRewardPoints: async () => {
-    const { data: response } = await client.get('/point/reward');
-    return response;
+  getRewardPoints: async (pageParam: number) => {
+    const { data: response } = await client.get('/point/reward', { params: { page: pageParam } });
+    return {
+      data: response.data,
+      hasNextPage: response.data.length === 10,
+    };
   },
-  getRefundPoints: async () => {
-    const { data: response } = await client.get('/point/refund');
-    return response;
+  getRefundPoints: async (pageParam: number) => {
+    const { data: response } = await client.get('/point/refund', { params: { page: pageParam } });
+    return {
+      data: response.data,
+      hasNextPage: response.data.length === 10,
+    };
   },
   withdrawPoint: async (withdrawPoint: number) => {
     const { data: response } = await client.post('/point/withdraw', { amount: withdrawPoint });

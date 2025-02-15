@@ -1,10 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, QueryFunctionContext } from '@tanstack/react-query';
 import pointApi from '../../api/pointApi';
 import { PointFilterType, GroupedByDate } from '../../types/interface';
 import { useMemo } from 'react';
 
+type PaginatedDataResponse = {
+  data: GroupedByDate[];
+  hasNextPage: boolean;
+};
+
 export default function useGetPointHistory(selectedFilter: PointFilterType) {
-  const apiFunction: Record<PointFilterType, () => Promise<GroupedByDate[]>> = {
+  const apiFunction: Record<PointFilterType, (pageParam: number) => Promise<PaginatedDataResponse>> = {
     전체: pointApi.getAllPoints,
     충전: pointApi.getToppedUpPoints,
     차감: pointApi.getDeductedPoints,
@@ -13,15 +18,22 @@ export default function useGetPointHistory(selectedFilter: PointFilterType) {
     환불: pointApi.getRefundPoints,
   };
 
-  const { data, isLoading, refetch } = useQuery<GroupedByDate[]>({
+  const { data, isLoading, fetchNextPage, hasNextPage, refetch } = useInfiniteQuery<PaginatedDataResponse, Error>({
     queryKey: [selectedFilter],
-    queryFn: apiFunction[selectedFilter],
+    queryFn: ({ pageParam = 1 }: QueryFunctionContext) => apiFunction[selectedFilter](pageParam as number),
+    getNextPageParam: (lastPage: PaginatedDataResponse, allPages: PaginatedDataResponse[]) => {
+      if (lastPage.hasNextPage) {
+        return allPages.length + 1;
+      }
+      return undefined;
+    },
+    initialPageParam: 1,
   });
 
   const pointHistory = useMemo(() => {
     if (!data) return [];
-    return data;
+    return data.pages.flatMap((page) => page.data);
   }, [data]);
 
-  return { pointHistory, isLoading, refetch };
+  return { pointHistory, isLoading, refetch, fetchNextPage, hasNextPage };
 }

@@ -275,6 +275,113 @@ export const AllPointRecords: GroupedByDate[] = [
       },
     ],
   },
+  {
+    date: '2024.02.07',
+    records: [
+      {
+        id: 6,
+        type: '출금',
+        amount: 25000,
+        total_after: 40000,
+        time: '12:00:00',
+      },
+      {
+        id: 7,
+        type: '보상',
+        amount: 5000,
+        total_after: 45000,
+        time: '15:30:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.25',
+    records: [
+      {
+        id: 8,
+        type: '충전',
+        amount: 20000,
+        total_after: 60000,
+        time: '08:45:00',
+      },
+      {
+        id: 9,
+        type: '차감',
+        amount: 5000,
+        total_after: 55000,
+        time: '17:10:00',
+      },
+      {
+        id: 10,
+        type: '환불',
+        amount: 6000,
+        total_after: 49000,
+        time: '18:20:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.20',
+    records: [
+      {
+        id: 11,
+        type: '환불',
+        amount: 7000,
+        total_after: 43000,
+        time: '13:05:00',
+      },
+      {
+        id: 12,
+        type: '차감',
+        amount: 3000,
+        total_after: 40000,
+        time: '16:25:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.15',
+    records: [
+      {
+        id: 13,
+        type: '출금',
+        amount: 10000,
+        total_after: 20000,
+        time: '09:30:00',
+      },
+      {
+        id: 14,
+        type: '보상',
+        amount: 8000,
+        total_after: 28000,
+        time: '14:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.10',
+    records: [
+      {
+        id: 15,
+        type: '충전',
+        amount: 40000,
+        total_after: 90000,
+        time: '11:00:00',
+      },
+    ],
+  },
+  {
+    date: '2024.01.05',
+    records: [
+      {
+        id: 16,
+        type: '환불',
+        amount: 6000,
+        total_after: 24000,
+        time: '10:00:00',
+      },
+    ],
+  },
 ];
 
 export const ToppedUpPoints: GroupedByDate[] = [
