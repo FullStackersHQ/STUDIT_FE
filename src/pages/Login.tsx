@@ -1,5 +1,5 @@
 import React from 'react';
-import KaKaoImg from '../assets/img/kakao-login-large-wide.png';
+import KaKaoImg from '../assets/imgs/kakao-login-large-wide.png';
 import oauthApi from '../api/oauthApi';
 import HeaderWithBack from '../components/HeaderWithBack';
 import { useAuthStore } from '../store/useAuthStore';

@@ -52,3 +52,17 @@ export const timeStringToDecimal = (time: string): number => {
   const [hours, minutes] = time.split(':').map(Number);
   return Math.ceil((hours + minutes / 60) * 10) / 10;
 };
+export function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  };
+
+  return date.toLocaleString('ko-KR', options);
+}

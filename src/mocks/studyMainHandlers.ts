@@ -155,15 +155,16 @@ const studyMainHandlers = [
   }),
   http.put('/rooms/:studyId/notices', async ({ params, request }) => {
     try {
-      const studyId = params.studyId;
+      const studyId = Number(params.studyId);
       const body = (await request.json()) as NoticeRequest;
-      const notice = dummyNotices[Number(studyId)];
+      const notice = dummyNotices[studyId];
 
       if (!body || !studyId || !notice) {
         return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
           status: 400,
         });
       }
+      console.log(notice);
       const { content } = body;
       notice.content = content;
 
@@ -200,6 +201,30 @@ const studyMainHandlers = [
       return new HttpResponse(
         JSON.stringify({
           message: '공지가 등록되었습니다.',
+        }),
+        { status: 200 },
+      );
+    } catch {
+      return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
+    }
+  }),
+  http.delete('/rooms/:studyId/notices', async ({ params }) => {
+    try {
+      const studyId = Number(params.studyId);
+      const notice = dummyNotices[studyId];
+      const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === studyId);
+
+      if (!studyId || !notice || !targetStudy) {
+        return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), {
+          status: 400,
+        });
+      }
+
+      delete dummyNotices[studyId];
+      targetStudy.hasNotice = false;
+      return new HttpResponse(
+        JSON.stringify({
+          message: '공지가 삭제되었습니다.',
         }),
         { status: 200 },
       );
