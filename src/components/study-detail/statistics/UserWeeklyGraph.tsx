@@ -7,12 +7,12 @@ import React from 'react';
 function UserWeeklyGraph({ weeklyData, todoList }: { weeklyData: UpdatedWeeklyDataItem[]; todoList: string[] }) {
   return (
     <>
-      <h2 className="text-lg font-semibold">주간 그래프</h2>
-      <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={weeklyData}>
-          <CartesianGrid strokeDasharray="3 3" />
+      <h2 className="mb-2 text-lg font-semibold">일별 공부 시간</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={weeklyData} margin={{ left: 0 }}>
+          <CartesianGrid strokeDasharray="4 4" />
           <XAxis dataKey="day" />
-          <YAxis domain={[0, 20]} />
+          <YAxis domain={[0, 16]} />
           <Tooltip
             content={({ payload }) => {
               if (!payload || payload.length === 0) return null;
