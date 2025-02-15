@@ -14,7 +14,7 @@ function StudyDetail() {
   const isLeader = leaderId === userId;
 
   return (
-    <div className="relative">
+    <div className="relative h-screen">
       <HeaderWithBack title={title} isStudyPage action={action} />
       {nav === '스터디' && (
         <>
