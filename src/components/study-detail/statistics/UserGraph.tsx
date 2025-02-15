@@ -4,6 +4,7 @@ import {
   UpdatedWeeklyDataItem,
   WeeklyStudyDataType,
 } from '../../../types/staticInterface';
+import { timeStringToDecimal } from '../../../utils/commonUtils';
 import UserDailyGraph from './UserDailyGraph';
 import UserWeeklyGraph from './UserWeeklyGraph';
 
@@ -42,24 +43,19 @@ const weeklyStudyData: WeeklyStudyDataType = {
       day: '2025-02-19',
       record: {
         할일2: '02:30',
-        할일2_1: '01:00',
+        할일2_1: '01:13',
         할일2_3: '02:00',
       },
     },
     {
       day: '2025-02-20',
       record: {
-        할일1: '03:00',
+        할일1: '03:50',
         할일2: '01:30',
         할일3: '02:00',
       },
     },
   ],
-};
-
-const timeStringToDecimal = (time: string): number => {
-  const [hours, minutes] = time.split(':').map(Number);
-  return hours + minutes / 60;
 };
 
 export default function UserGraph() {

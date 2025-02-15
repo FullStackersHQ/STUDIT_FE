@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import UserGraph from './UserGraph';
+import GroupGraph from './GroupGraph';
 
 export default function Statistics() {
   const [type, setType] = useState<'유저' | '그룹'>('유저');
@@ -20,7 +21,10 @@ export default function Statistics() {
           그룹
         </button>
       </div>
-      <div className="scrollbar-hide h-[calc(100vh-140px)] overflow-auto p-4">{type === '유저' && <UserGraph />}</div>
+      <div className="scrollbar-hide h-[calc(100vh-140px)] overflow-auto p-4">
+        {type === '유저' && <UserGraph />}
+        {type === '그룹' && <GroupGraph />}
+      </div>
     </>
   );
 }
