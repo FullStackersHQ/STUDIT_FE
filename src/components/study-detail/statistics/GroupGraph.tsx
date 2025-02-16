@@ -8,11 +8,13 @@ interface GroupDataItem {
 
 interface GroupDataType {
   averageTime: string;
+  goalTIme: string;
   group: GroupDataItem[];
 }
 
 const groupData: GroupDataType = {
   averageTime: '19:40',
+  goalTIme: '30:00',
   group: [
     { user: 'User A', time: '15:13' },
     { user: 'User B', time: '38:59' },
@@ -23,7 +25,6 @@ const groupData: GroupDataType = {
 };
 
 export default function GroupGraph() {
-  const averageTimeDecimal = timeStringToDecimal(groupData.averageTime);
   const groupStudyRatio: { user: string; time: number; timeLabel: string }[] = groupData.group
     .map((item: GroupDataItem) => ({
       user: item.user,
@@ -58,15 +59,23 @@ export default function GroupGraph() {
             ))}
           </Bar>
           <ReferenceLine
-            x={averageTimeDecimal}
+            x={timeStringToDecimal(groupData.averageTime)}
             stroke="#FF6347"
             strokeDasharray="3 3"
-            isFront
             label={{
-              value: `평균: ${decimalToTimeString(averageTimeDecimal)}`,
+              value: `평균`,
               position: 'insideBottom',
-              fill: '#39cccc',
-              fontWeight: 'bold',
+              fill: '#00b5b5',
+            }}
+          />
+          <ReferenceLine
+            x={timeStringToDecimal(groupData.goalTIme)}
+            stroke="#03a6ff"
+            strokeDasharray="3 3"
+            label={{
+              value: `목표`,
+              position: 'insideBottom',
+              fill: '#00b5b5',
             }}
           />
         </BarChart>
