@@ -18,7 +18,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2025.03.01 ~ 2025.08.01',
     title: '9급 공무원 준비',
     enterPoint: 3000,
-    tag: '공무원시험',
+    tag: '공시',
+    category: '공무원',
     weeklyStudyTime: 10,
   },
   {
@@ -26,7 +27,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2025.04.10 ~ 2025.09.10',
     title: '토익 900 목표반',
     enterPoint: 2500,
-    tag: '어학',
+    tag: '토익',
+    category: '시험',
     weeklyStudyTime: 8,
   },
   {
@@ -34,7 +36,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2025.05.15 ~ 2025.11.15',
     title: '회계 자격증반',
     enterPoint: 2000,
-    tag: '자격증',
+    tag: '회계',
+    category: '시험',
     weeklyStudyTime: 8,
   },
   {
@@ -43,6 +46,7 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     title: '한국사 1급 도전',
     enterPoint: 1500,
     tag: '한국사',
+    category: '시험',
     weeklyStudyTime: 6,
   },
   {
@@ -51,6 +55,7 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     title: '공인중개사 대비',
     enterPoint: 1800,
     tag: '공인중개사',
+    category: '시험',
     weeklyStudyTime: 7,
   },
   {
@@ -58,7 +63,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2025.08.01 ~ 2026.02.01',
     title: '컴활 1급 단기완성',
     enterPoint: 2200,
-    tag: '자격증',
+    tag: '컴활',
+    category: '시험',
     weeklyStudyTime: 9,
   },
   {
@@ -66,7 +72,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2025.09.15 ~ 2026.03.15',
     title: 'JLPT N1 스터디',
     enterPoint: 1700,
-    tag: '어학',
+    tag: 'JLPT',
+    category: '시험',
     weeklyStudyTime: 6,
   },
   {
@@ -74,7 +81,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2025.10.10 ~ 2026.04.10',
     title: '행정법 기출 분석',
     enterPoint: 2000,
-    tag: '공무원시험',
+    tag: '공시',
+    category: '공무원',
     weeklyStudyTime: 8,
   },
   {
@@ -83,6 +91,7 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     title: '독서 & 글쓰기',
     enterPoint: 2500,
     tag: '자기계발',
+    category: '기타',
     weeklyStudyTime: 10,
   },
   {
@@ -91,6 +100,7 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     title: '경제학 기본개념',
     enterPoint: 3000,
     tag: '경제학',
+    category: '기타',
     weeklyStudyTime: 5,
   },
   {
@@ -98,7 +108,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2026.01.15 ~ 2026.07.15',
     title: '한국어능력시험',
     enterPoint: 1800,
-    tag: '어학',
+    tag: '한국어',
+    category: '시험',
     weeklyStudyTime: 7,
   },
   {
@@ -106,7 +117,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2026.02.20 ~ 2026.08.20',
     title: '법원직 시험 준비',
     enterPoint: 2200,
-    tag: '공무원시험',
+    tag: '공시',
+    category: '공무원',
     weeklyStudyTime: 9,
   },
   {
@@ -114,7 +126,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2026.03.10 ~ 2026.09.10',
     title: '독일어 B2 목표',
     enterPoint: 2600,
-    tag: '어학',
+    tag: '독어',
+    category: '어학',
     weeklyStudyTime: 11,
   },
   {
@@ -122,7 +135,8 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     gatherDate: '2026.04.05 ~ 2026.10.05',
     title: '사회복지사 1급',
     enterPoint: 1900,
-    tag: '자격증',
+    tag: '사회복지사',
+    category: '시험',
     weeklyStudyTime: 8,
   },
   {
@@ -131,6 +145,7 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     title: '공기업 NCS 대비',
     enterPoint: 1300,
     tag: '공기업',
+    category: '취업',
     weeklyStudyTime: 4,
   },
 ];
@@ -142,6 +157,7 @@ export const ongoingStudies: OnGoingStudyItem[] = [
     title: 'SAT 준비 스터디',
     enterPoint: 5000,
     tag: 'SAT',
+    category: '시험',
     weeklyStudyTime: 12,
   },
   {
@@ -150,6 +166,7 @@ export const ongoingStudies: OnGoingStudyItem[] = [
     title: '영어 회화 스터디',
     enterPoint: 3000,
     tag: '영어',
+    category: '어학',
     weeklyStudyTime: 6,
   },
   {
@@ -157,7 +174,8 @@ export const ongoingStudies: OnGoingStudyItem[] = [
     gatherDate: '2024.09.15 ~ 2025.03.15',
     title: '공무원 행정법',
     enterPoint: 4000,
-    tag: '공무원시험',
+    tag: '공시',
+    category: '공무원',
     weeklyStudyTime: 10,
   },
   {
@@ -165,7 +183,8 @@ export const ongoingStudies: OnGoingStudyItem[] = [
     gatherDate: '2024.12.01 ~ 2025.06.01',
     title: '토익 스피킹반',
     enterPoint: 3500,
-    tag: '어학',
+    tag: '토익',
+    category: '어학',
     weeklyStudyTime: 8,
   },
   {
@@ -174,6 +193,7 @@ export const ongoingStudies: OnGoingStudyItem[] = [
     title: '데이터 분석 스터디',
     enterPoint: 4500,
     tag: '데이터분석',
+    category: '코딩',
     weeklyStudyTime: 9,
   },
 ];
@@ -187,6 +207,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: 'C++ 프로그래밍',
     enterPoint: 5000,
     tag: 'C++',
+    category: '코딩',
     weeklyStudyTime: 8,
   },
   {
@@ -197,6 +218,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '웹 개발 프로젝트',
     enterPoint: 3000,
     tag: '웹 개발',
+    category: '코딩',
     weeklyStudyTime: 10,
   },
   {
@@ -207,6 +229,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: 'Java 알고리즘',
     enterPoint: 4000,
     tag: 'Java',
+    category: '코딩',
     weeklyStudyTime: 12,
   },
   {
@@ -216,7 +239,8 @@ export const completedStudies: CompletedStudyItem[] = [
     gatherDate: '2024.09.20 ~ 2024.10.20',
     title: '공무원 행정법',
     enterPoint: 2500,
-    tag: '공무원시험',
+    tag: '공시',
+    category: '공무원',
     weeklyStudyTime: 9,
   },
   {
@@ -226,7 +250,8 @@ export const completedStudies: CompletedStudyItem[] = [
     gatherDate: '2024.08.15 ~ 2024.09.15',
     title: '토익 완성반',
     enterPoint: 3200,
-    tag: '어학',
+    tag: '토익',
+    category: '어학',
     weeklyStudyTime: 7,
   },
   {
@@ -237,6 +262,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '데이터 분석 스터디',
     enterPoint: 4500,
     tag: '데이터분석',
+    category: '코딩',
     weeklyStudyTime: 10,
   },
   {
@@ -247,6 +273,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: 'Python 입문',
     enterPoint: 4000,
     tag: 'Python',
+    category: '코딩',
     weeklyStudyTime: 8,
   },
   {
@@ -256,7 +283,8 @@ export const completedStudies: CompletedStudyItem[] = [
     gatherDate: '2024.05.01 ~ 2024.06.01',
     title: '면접 대비반',
     enterPoint: 3800,
-    tag: '취업',
+    tag: '면접',
+    category: '취업',
     weeklyStudyTime: 6,
   },
   {
@@ -267,6 +295,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '컴퓨터 네트워크',
     enterPoint: 4200,
     tag: '네트워크',
+    category: '기타',
     weeklyStudyTime: 9,
   },
   {
@@ -277,6 +306,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '시사 토론반',
     enterPoint: 2800,
     tag: '토론',
+    category: '기타',
     weeklyStudyTime: 7,
   },
   {
@@ -287,6 +317,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '공인중개사 대비',
     enterPoint: 3500,
     tag: '공인중개사',
+    category: '시험',
     weeklyStudyTime: 10,
   },
   {
@@ -297,6 +328,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '기초 통계학',
     enterPoint: 3900,
     tag: '통계',
+    category: '기타',
     weeklyStudyTime: 8,
   },
   {
@@ -307,6 +339,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '독서 토론 스터디',
     enterPoint: 2600,
     tag: '독서',
+    category: '기타',
     weeklyStudyTime: 6,
   },
   {
@@ -316,7 +349,8 @@ export const completedStudies: CompletedStudyItem[] = [
     gatherDate: '2023.11.01 ~ 2023.12.01',
     title: '일본어 초급반',
     enterPoint: 3300,
-    tag: '어학',
+    tag: '일본어',
+    category: '어학',
     weeklyStudyTime: 7,
   },
   {
@@ -327,6 +361,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: 'SQL 마스터 과정',
     enterPoint: 4100,
     tag: '데이터베이스',
+    category: '코딩',
     weeklyStudyTime: 10,
   },
   {
@@ -337,6 +372,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: 'AI 기초 스터디',
     enterPoint: 4300,
     tag: '인공지능',
+    category: '코딩',
     weeklyStudyTime: 9,
   },
   {
@@ -347,6 +383,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '주식 투자 스터디',
     enterPoint: 3700,
     tag: '금융',
+    category: '기타',
     weeklyStudyTime: 8,
   },
   {
@@ -356,7 +393,8 @@ export const completedStudies: CompletedStudyItem[] = [
     gatherDate: '2023.07.10 ~ 2023.08.10',
     title: '여행 영어 회화',
     enterPoint: 2900,
-    tag: '어학',
+    tag: '영어',
+    category: '어학',
     weeklyStudyTime: 6,
   },
   {
@@ -366,7 +404,8 @@ export const completedStudies: CompletedStudyItem[] = [
     gatherDate: '2023.06.05 ~ 2023.07.05',
     title: '공기업 NCS 대비',
     enterPoint: 4500,
-    tag: '취업',
+    tag: '공기업',
+    category: '시험',
     weeklyStudyTime: 10,
   },
   {
@@ -377,6 +416,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: 'GRE 수학 스터디',
     enterPoint: 3500,
     tag: 'GRE',
+    category: '시험',
     weeklyStudyTime: 7,
   },
   {
@@ -387,6 +427,7 @@ export const completedStudies: CompletedStudyItem[] = [
     title: '국제정치학 스터디',
     enterPoint: 3400,
     tag: '정치',
+    category: '기타',
     weeklyStudyTime: 8,
   },
 ];

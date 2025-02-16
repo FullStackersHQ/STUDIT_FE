@@ -4,23 +4,26 @@ import React, { forwardRef } from 'react';
 
 const StudyItem = forwardRef<HTMLDivElement, { study: StudyItemType; studyType: StudyStatusType }>(
   ({ study, studyType }, ref) => {
-    const { gatherDate, title, enterPoint, tag, weeklyStudyTime } = study;
+    const { gatherDate, title, enterPoint, tag, weeklyStudyTime, category } = study;
     const isCompletedStudy = 'studyId' in study;
 
     return (
       <div
         ref={ref}
-        className={`border-light-gray flex w-full flex-col gap-y-1 rounded-sm border px-2.5 py-2 text-sm ${
+        className={`border-main flex w-full flex-col gap-y-1 rounded-sm border px-2.5 py-2 text-sm ${
           studyType === 'completed' ? 'h-[110px]' : 'h-[87px]'
         }`}
       >
-        <div className="flex gap-x-1 text-xs font-medium">
-          <div className="border-light-gray flex items-center gap-x-[2px] rounded-full border px-1 py-[2px]">
-            <PointIcon alt="포인트" className="h-3.5 w-3.5" />
-            <span>{enterPoint.toLocaleString()}</span>
+        <div className="flex justify-between text-xs font-medium">
+          <div className="flex gap-x-1">
+            <div className="border-light-gray flex items-center gap-x-[2px] rounded-full border px-1 py-[2px]">
+              <PointIcon alt="포인트" className="h-3.5 w-3.5" />
+              <span>{enterPoint.toLocaleString()}</span>
+            </div>
+            <span className="border-light-gray rounded-full border px-1 py-[2px]">{category}</span>
+            <span className="border-light-gray rounded-full border px-1 py-[2px]">{tag}</span>
           </div>
-          <span className="border-light-gray rounded-full border px-1 py-[2px]">{tag}</span>
-          <span className="border-light-gray rounded-full border px-1 py-[2px]">{weeklyStudyTime}시간</span>
+          <span className="text-main-text text-sm font-bold">주 {weeklyStudyTime}시간</span>
         </div>
         <p className="font-medium">{title}</p>
         <p className="text-dark-gray">스터디 기간: {gatherDate}</p>
