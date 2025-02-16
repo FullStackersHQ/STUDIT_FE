@@ -1,8 +1,8 @@
-import ModalOverlay from '../ModalOverlay';
-import CloseIcon from '../../assets/icons/close.svg';
-import { NoticeType } from '../../types/interface';
-import { formatDate } from '../../utils/commonUtils';
-import NoticeIcon from '../../assets/icons/notice.svg';
+import ModalOverlay from '../../ModalOverlay';
+import CloseIcon from '../../../assets/icons/close.svg';
+import { NoticeType } from '../../../types/interface';
+import { formatDate } from '../../../utils/commonUtils';
+import NoticeIcon from '../../../assets/icons/notice.svg';
 
 export default function NoticeModal({
   isOpen,

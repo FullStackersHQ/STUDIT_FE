@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HeaderWithBack from '../components/HeaderWithBack';
 import useStudyMain from '../hooks/study-detail/useStudyMain';
 import Study from './Study';
-import StudyMenuList from '../components/study-detail/StudyMenuList';
+import StudyMenuList from '../components/study-detail/main/StudyMenuList';
 import StudyFnb from '../components/StudyFnb';
 import Statistics from '../components/study-detail/statistics/Statistics';
 

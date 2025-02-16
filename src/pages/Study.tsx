@@ -1,5 +1,5 @@
-import Notice from '../components/study-detail/Notice';
-import TodoListSection from '../components/study-detail/TodoListSection';
+import Notice from '../components/study-detail/main/Notice';
+import TodoListSection from '../components/study-detail/main/TodoListSection';
 
 export default function Study({ studyId, hasNotice }: { studyId: number; hasNotice: boolean }) {
   return (

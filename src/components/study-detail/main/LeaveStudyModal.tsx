@@ -1,5 +1,5 @@
-import ModalOverlay from '../ModalOverlay';
-import CloseIcon from '../../assets/icons/close.svg';
+import ModalOverlay from '../../ModalOverlay';
+import CloseIcon from '../../../assets/icons/close.svg';
 
 export default function LeaveStudyModal({ isOpen, close }: { isOpen: boolean; close: () => void }) {
   const handleLeave = () => {
