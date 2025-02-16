@@ -177,6 +177,55 @@ export const upcomingStudies: UpcomingStudyItem[] = [
     tag: '프론트엔드',
     weeklyStudyTime: 8,
   },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
+
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
+  {
+    recruit_id: 2,
+    gatherDate: '2025.05.15 ~ 2025.11.15',
+    title: '프론트엔드 개발 스터디',
+    enterPoint: 2000,
+    tag: '프론트엔드',
+    weeklyStudyTime: 8,
+  },
 ];
 
 export const ongoingStudies: OnGoingStudyItem[] = [
@@ -231,14 +280,14 @@ export const completedStudies: CompletedStudyItem[] = [
   },
 ];
 
-export const UserPoints: IUserPoints = {
+export const userPoints: IUserPoints = {
   totalPoints: 50000,
   totalRewardPoints: 70000,
   totalDeductedPoints: 15000,
   totalWithdrawnPoints: 5000,
 };
 
-export const AllPointRecords: GroupedByDate[] = [
+export const allPointRecords: GroupedByDate[] = [
   {
     date: '2024.02.09',
     records: [
@@ -408,7 +457,7 @@ export const AllPointRecords: GroupedByDate[] = [
   },
 ];
 
-export const ToppedUpPoints: GroupedByDate[] = [
+export const toppedUpPoints: GroupedByDate[] = [
   {
     date: '2024.02.12',
     records: [
@@ -471,7 +520,7 @@ export const ToppedUpPoints: GroupedByDate[] = [
   },
 ];
 
-export const DeductedPoints: GroupedByDate[] = [
+export const deductedPoints: GroupedByDate[] = [
   {
     date: '2024.02.12',
     records: [
@@ -534,7 +583,7 @@ export const DeductedPoints: GroupedByDate[] = [
   },
 ];
 
-export const WithDrawnPoints: GroupedByDate[] = [
+export const withDrawnPoints: GroupedByDate[] = [
   {
     date: '2024.02.12',
     records: [
@@ -596,7 +645,7 @@ export const WithDrawnPoints: GroupedByDate[] = [
     ],
   },
 ];
-export const RewardPoints: GroupedByDate[] = [
+export const rewardPoints: GroupedByDate[] = [
   {
     date: '2024.02.12',
     records: [
@@ -659,7 +708,7 @@ export const RewardPoints: GroupedByDate[] = [
   },
 ];
 
-export const RefundPoints: GroupedByDate[] = [
+export const refundPoints: GroupedByDate[] = [
   {
     date: '2024.02.12',
     records: [
@@ -722,13 +771,13 @@ export const RefundPoints: GroupedByDate[] = [
   },
 ];
 
-export const StudyDetailData: StudyDetail = {
+export const studyDetailData: StudyDetail = {
   title: 'CPA 자격증 준비 스터디',
   description: 'CPA(공인회계사) 자격증 취득을 위한 이론 공부와 문제 풀이를 진행하는 스터디입니다.',
   tags: ['CPA', '회계', '재무관리', '회계학'],
 };
 
-export const TodoListData: TodoListType = {
+export const todoListData: TodoListType = {
   studyTotalTime: '27:51:12',
   todos: [
     {
