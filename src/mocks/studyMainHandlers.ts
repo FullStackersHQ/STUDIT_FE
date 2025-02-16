@@ -164,7 +164,7 @@ const studyMainHandlers = [
           status: 400,
         });
       }
-      console.log(notice);
+
       const { content } = body;
       notice.content = content;
 
