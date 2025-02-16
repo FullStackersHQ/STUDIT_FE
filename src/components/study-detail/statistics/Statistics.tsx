@@ -7,15 +7,15 @@ export default function Statistics() {
 
   return (
     <>
-      <div className="px-4 pt-2">
+      <div className="px-4 py-2">
         <button
-          className={`rounded-[10px] px-[8px] py-[3px] ${type === '유저' ? 'bg-main-text font-bold text-white' : 'border bg-white'} mr-2`}
+          className={`rounded-[10px] px-[8px] py-[3px] ${type === '유저' ? 'bg-main-text font-bold text-white' : 'border-light-gray text-light-gray border bg-white'} mr-2`}
           onClick={() => setType('유저')}
         >
           유저
         </button>
         <button
-          className={`rounded-[10px] px-[8px] py-[3px] ${type === '그룹' ? 'bg-main-text font-bold text-white' : 'border bg-white'} `}
+          className={`rounded-[10px] px-[8px] py-[3px] ${type === '그룹' ? 'bg-main-text font-bold text-white' : 'border-light-gray text-light-gray border bg-white'} `}
           onClick={() => setType('그룹')}
         >
           그룹
