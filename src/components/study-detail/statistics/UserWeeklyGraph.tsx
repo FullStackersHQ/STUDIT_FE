@@ -26,7 +26,7 @@ function UserWeeklyGraph({ weeklyData }: { weeklyData: UpdatedWeeklyDataItem[] }
       <h2 className="mb-2 text-lg font-semibold">일별 공부 시간</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={transformedData}>
-          <XAxis dataKey="dayOfWeek" label={{ value: '요일', position: 'insideBottom', offset: -5 }} />
+          <XAxis dataKey="dayOfWeek" />
           <YAxis
             domain={[0, 16]}
             label={{ value: '공부 시간', angle: -90, position: 'insideLeft', textAnchor: 'middle' }}
@@ -65,11 +65,13 @@ function UserWeeklyGraph({ weeklyData }: { weeklyData: UpdatedWeeklyDataItem[] }
           />
         </BarChart>
       </ResponsiveContainer>
-      <p className="text-sm">{`총 공부 시간 : ${decimalToTimeString(weeklySumTime)}`}분</p>
-      <p className="text-sm">{`최저 공부 시간 : ${decimalToTimeString(sortedByTotalTime[0].totalTime)}`}분</p>
-      <p className="text-sm">
-        {`최고 공부 시간 : ${decimalToTimeString(sortedByTotalTime[sortedByTotalTime.length - 1].totalTime)}`}분
-      </p>
+      <div className="flex flex-col items-end justify-center">
+        <p className="text-sm">{`총 공부 시간 : ${decimalToTimeString(weeklySumTime)}`}분</p>
+        <p className="text-sm">{`최저 공부 시간 : ${decimalToTimeString(sortedByTotalTime[0].totalTime)}`}분</p>
+        <p className="text-sm">
+          {`최고 공부 시간 : ${decimalToTimeString(sortedByTotalTime[sortedByTotalTime.length - 1].totalTime)}`}분
+        </p>
+      </div>
     </>
   );
 }
