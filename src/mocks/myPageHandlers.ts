@@ -28,23 +28,51 @@ const myPageHandlers = [
   http.put('/user/nickname/', async ({ request }) => {
     const { nickName } = (await request.json()) as ModifyNicknameRequest;
     ProfileData.nickName = nickName;
+
     return HttpResponse.json({
       success: true,
       message: '닉네임이 성공적으로 수정되었습니다.',
       nickname: nickName,
     });
   }),
-  http.get('/study-status/registered/', () => {
-    if (upcomingStudies) return HttpResponse.json(upcomingStudies);
-    return HttpResponse.error();
+  http.get('/study-status/registered/', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    const paginatedData = upcomingStudies.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = upcomingStudies.length > startIndex + pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage,
+    });
   }),
-  http.get('/study-status/ongoing/', () => {
-    if (ongoingStudies) return HttpResponse.json(ongoingStudies);
-    return HttpResponse.error();
+  http.get('/study-status/ongoing/', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    const paginatedData = ongoingStudies.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = ongoingStudies.length > startIndex + pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage: hasNextPage,
+    });
   }),
-  http.get('/study-status/completed/', () => {
-    if (completedStudies) return HttpResponse.json(completedStudies);
-    return HttpResponse.error();
+  http.get('/study-status/completed/', ({ request }) => {
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get('page') || 1);
+    const pageSize = 10;
+    const startIndex = (page - 1) * pageSize;
+    const paginatedData = completedStudies.slice(startIndex, startIndex + pageSize);
+    const hasNextPage = completedStudies.length > startIndex + pageSize;
+
+    return HttpResponse.json({
+      data: paginatedData,
+      hasNextPage: hasNextPage,
+    });
   }),
 ];
 export default myPageHandlers;
