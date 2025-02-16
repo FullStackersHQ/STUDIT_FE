@@ -19,7 +19,8 @@ function UserWeeklyGraph({ weeklyData }: { weeklyData: UpdatedWeeklyDataItem[] }
 
   const sortedByTotalTime = [...weeklyData].sort((a, b) => a.totalTime - b.totalTime);
 
-  const weeklyAverageTime = transformedData.reduce((sum, entry) => sum + entry.totalTime, 0) / transformedData.length;
+  const weeklySumTime = transformedData.reduce((sum, entry) => sum + entry.totalTime, 0);
+  const weeklyAverageTime = weeklySumTime / transformedData.length;
   return (
     <>
       <h2 className="mb-2 text-lg font-semibold">일별 공부 시간</h2>
@@ -64,6 +65,7 @@ function UserWeeklyGraph({ weeklyData }: { weeklyData: UpdatedWeeklyDataItem[] }
           />
         </BarChart>
       </ResponsiveContainer>
+      <p className="text-sm">{`총 공부 시간 : ${decimalToTimeString(weeklySumTime)}`}분</p>
       <p className="text-sm">{`최저 공부 시간 : ${decimalToTimeString(sortedByTotalTime[0].totalTime)}`}분</p>
       <p className="text-sm">
         {`최고 공부 시간 : ${decimalToTimeString(sortedByTotalTime[sortedByTotalTime.length - 1].totalTime)}`}분
