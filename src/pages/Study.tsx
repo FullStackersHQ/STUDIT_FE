@@ -1,8 +1,7 @@
-import React from 'react';
 import Notice from '../components/study-detail/Notice';
 import TodoListSection from '../components/study-detail/TodoListSection';
 
-function Study({ studyId, hasNotice }: { studyId: number; hasNotice: boolean }) {
+export default function Study({ studyId, hasNotice }: { studyId: number; hasNotice: boolean }) {
   return (
     <div>
       <Notice studyId={studyId} hasNotice={hasNotice} />
@@ -11,4 +10,3 @@ function Study({ studyId, hasNotice }: { studyId: number; hasNotice: boolean }) 
     </div>
   );
 }
-export default React.memo(Study);
