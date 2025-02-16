@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { ProfileData, AvgStatsData, upcomingStudies, ongoingStudies, completedStudies } from './data/dummy';
+import { profileData, avgStatsData, upcomingStudies, ongoingStudies, completedStudies } from './data/dummy';
 
 interface ModifyNicknameRequest {
   nickName: string;
@@ -7,17 +7,17 @@ interface ModifyNicknameRequest {
 
 const myPageHandlers = [
   http.get('/mypage/study-status/1', () => {
-    if (ProfileData) return HttpResponse.json(ProfileData);
+    if (profileData) return HttpResponse.json(profileData);
     return HttpResponse.error();
   }),
   http.get('/mypage/study-stats/1', () => {
-    if (AvgStatsData) return HttpResponse.json(AvgStatsData);
+    if (avgStatsData) return HttpResponse.json(avgStatsData);
     return HttpResponse.error();
   }),
   http.put('/user/profile-image/', async ({ request }) => {
     const formData = await request.formData();
     const img = formData.get('image') as string;
-    ProfileData.profileImage = img;
+    profileData.profileImage = img;
 
     return HttpResponse.json({
       success: true,
@@ -27,7 +27,7 @@ const myPageHandlers = [
   }),
   http.put('/user/nickname/', async ({ request }) => {
     const { nickName } = (await request.json()) as ModifyNicknameRequest;
-    ProfileData.nickName = nickName;
+    profileData.nickName = nickName;
 
     return HttpResponse.json({
       success: true,
