@@ -65,7 +65,7 @@ function UserWeeklyGraph({ weeklyData }: { weeklyData: UpdatedWeeklyDataItem[] }
           />
         </BarChart>
       </ResponsiveContainer>
-      <div className="flex flex-col items-end justify-center">
+      <div className="flex flex-col items-end justify-center mb-2">
         <p className="text-sm">{`총 공부 시간 : ${decimalToTimeString(weeklySumTime)}`}분</p>
         <p className="text-sm">{`최저 공부 시간 : ${decimalToTimeString(sortedByTotalTime[0].totalTime)}`}분</p>
         <p className="text-sm">
