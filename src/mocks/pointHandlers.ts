@@ -37,7 +37,7 @@ const pointHandlers = [
     const startIndex = (page - 1) * pageSize;
     ToppedUpPoints.slice(startIndex, startIndex + pageSize);
     const paginatedData = ToppedUpPoints.slice(startIndex, startIndex + pageSize);
-    const hasNextPage = paginatedData.length === pageSize;
+    const hasNextPage = ToppedUpPoints.length > startIndex + pageSize;
 
     return HttpResponse.json({
       data: paginatedData,
@@ -51,7 +51,7 @@ const pointHandlers = [
     const startIndex = (page - 1) * pageSize;
     DeductedPoints.slice(startIndex, startIndex + pageSize);
     const paginatedData = DeductedPoints.slice(startIndex, startIndex + pageSize);
-    const hasNextPage = paginatedData.length === pageSize;
+    const hasNextPage = DeductedPoints.length > startIndex + pageSize;
 
     return HttpResponse.json({
       data: paginatedData,
@@ -63,9 +63,9 @@ const pointHandlers = [
     const page = Number(url.searchParams.get('page') || 1);
     const pageSize = 10;
     const startIndex = (page - 1) * pageSize;
-    DeductedPoints.slice(startIndex, startIndex + pageSize);
+    WithDrawnPoints.slice(startIndex, startIndex + pageSize);
     const paginatedData = WithDrawnPoints.slice(startIndex, startIndex + pageSize);
-    const hasNextPage = paginatedData.length === pageSize;
+    const hasNextPage = WithDrawnPoints.length > startIndex + pageSize;
 
     return HttpResponse.json({
       data: paginatedData,
@@ -77,9 +77,9 @@ const pointHandlers = [
     const page = Number(url.searchParams.get('page') || 1);
     const pageSize = 10;
     const startIndex = (page - 1) * pageSize;
-    DeductedPoints.slice(startIndex, startIndex + pageSize);
+    RewardPoints.slice(startIndex, startIndex + pageSize);
     const paginatedData = RewardPoints.slice(startIndex, startIndex + pageSize);
-    const hasNextPage = paginatedData.length === pageSize;
+    const hasNextPage = RewardPoints.length > startIndex + pageSize;
 
     return HttpResponse.json({
       data: paginatedData,
@@ -91,9 +91,9 @@ const pointHandlers = [
     const page = Number(url.searchParams.get('page') || 1);
     const pageSize = 10;
     const startIndex = (page - 1) * pageSize;
-    DeductedPoints.slice(startIndex, startIndex + pageSize);
+    RefundPoints.slice(startIndex, startIndex + pageSize);
     const paginatedData = RefundPoints.slice(startIndex, startIndex + pageSize);
-    const hasNextPage = paginatedData.length === pageSize;
+    const hasNextPage = RefundPoints.length > startIndex + pageSize;
 
     return HttpResponse.json({
       data: paginatedData,
