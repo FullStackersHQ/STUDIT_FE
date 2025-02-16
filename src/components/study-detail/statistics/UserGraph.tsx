@@ -65,6 +65,7 @@ export default function UserGraph() {
     value: timeStringToDecimal(item.time),
   }));
 
+  // 주간 공부 기록
   const updatedWeeklyData: UpdatedWeeklyDataItem[] = weeklyStudyData.weeklyData.map((entry) => {
     // 각 할일 시간을 소수점 시간으로 변환
     const updatedRecord = Object.keys(entry.record).reduce<Record<string, number>>((acc, key) => {
@@ -80,14 +81,10 @@ export default function UserGraph() {
     };
   });
 
-  // 평균 시간 계산
-  console.log('dailyStudy', dailyStudyRatio);
-  console.log('weekStudy', updatedWeeklyData);
-
   return (
     <>
       <UserDailyGraph dailyData={dailyStudyRatio} totalTime={dailyStudyData.dailyTotalStudyTime} />
-      <UserWeeklyGraph todoList={weeklyStudyData.todoList} weeklyData={updatedWeeklyData} />
+      <UserWeeklyGraph weeklyData={updatedWeeklyData} />
     </>
   );
 }

@@ -13,7 +13,7 @@ function UserDailyGraph({ dailyData, totalTime }: { dailyData: { todo: string; v
 
   return (
     <div className="mb-4">
-      <h2 className="text-lg font-semibold">{today}공부 기록</h2>
+      <h2 className="text-lg font-semibold">{today} 공부 기록</h2>
       <ResponsiveContainer className="border-white-gray mb-4 border" width="100%" height={300}>
         <PieChart>
           <Pie

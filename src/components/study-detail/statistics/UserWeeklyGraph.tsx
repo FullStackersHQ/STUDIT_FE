@@ -1,17 +1,29 @@
-import { Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import { Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Legend, ReferenceLine } from 'recharts';
 import { decimalToTimeString } from '../../../utils/commonUtils';
 import { COLORS } from '../../../constants/constants';
 import { UpdatedWeeklyDataItem } from '../../../types/staticInterface';
 import React from 'react';
 
-function UserWeeklyGraph({ weeklyData, todoList }: { weeklyData: UpdatedWeeklyDataItem[]; todoList: string[] }) {
+function UserWeeklyGraph({ weeklyData }: { weeklyData: UpdatedWeeklyDataItem[] }) {
+  const getDayOfWeek = (dateStr: string) => {
+    const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+    const date = new Date(dateStr);
+    return daysOfWeek[date.getDay()];
+  };
+
+  // 데이터를 변환하여 요일 필드를 추가
+  const transformedData = weeklyData.map((entry) => ({
+    ...entry,
+    dayOfWeek: getDayOfWeek(entry.day),
+  }));
+
+  const weeklyAverageTime = transformedData.reduce((sum, entry) => sum + entry.totalTime, 0) / transformedData.length;
   return (
     <>
       <h2 className="mb-2 text-lg font-semibold">일별 공부 시간</h2>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={weeklyData}>
-          <CartesianGrid strokeDasharray="4 4" />
-          <XAxis domain={['월', '화', '수', '목', '금', '토', '일']} />
+        <BarChart data={transformedData}>
+          <XAxis dataKey="dayOfWeek" label={{ value: '요일', position: 'insideBottom', offset: -5 }} />
           <YAxis
             domain={[0, 16]}
             label={{ value: '공부 시간', angle: -90, position: 'insideLeft', textAnchor: 'middle' }}
@@ -24,11 +36,12 @@ function UserWeeklyGraph({ weeklyData, todoList }: { weeklyData: UpdatedWeeklyDa
                 <div className="custom-tooltip">
                   <p>{`Day: ${tooltipData.day}`}</p>
                   {Object.keys(tooltipData)
-                    .filter((key) => key !== 'day' && key !== 'totalTime')
-                    .map((key) => {
+                    .filter((key) => key !== 'day' && key !== 'totalTime' && key !== 'dayOfWeek')
+                    .map((key, index) => {
                       const timeStr = decimalToTimeString(tooltipData[key]);
+                      const color = COLORS[index % COLORS.length];
                       return (
-                        <p key={key} className="tooltip-item">
+                        <p key={key} style={{ color }}>
                           {`${key}: ${timeStr}`}
                         </p>
                       );
@@ -39,18 +52,14 @@ function UserWeeklyGraph({ weeklyData, todoList }: { weeklyData: UpdatedWeeklyDa
           />
           <Legend verticalAlign="top" iconType="circle" iconSize={12} height={40} wrapperStyle={{ fontSize: '12px' }} />
 
-          {/* todoList 배열을 사용하여 각 항목에 대해 누적 막대 그래프 생성 */}
-          {todoList.map((todo, index) => {
-            return (
-              <Bar
-                key={todo}
-                dataKey={todo}
-                stackId="a"
-                fill={COLORS[index % COLORS.length]} // 색상 설정
-                name={todo} // 이름 표시
-              />
-            );
-          })}
+          <Bar dataKey="totalTime" fill="#39cccc" name="총 공부 시간" barSize={30} />
+          <ReferenceLine
+            y={weeklyAverageTime}
+            stroke="#FF6347"
+            isFront
+            strokeDasharray="4 4"
+            label={{ value: `평균 ${decimalToTimeString(weeklyAverageTime)}`, position: 'top' }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </>

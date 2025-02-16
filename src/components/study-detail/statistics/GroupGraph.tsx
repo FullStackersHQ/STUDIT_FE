@@ -32,28 +32,14 @@ export default function GroupGraph() {
     }))
     .sort((a, b) => b.time - a.time);
 
-  const renderLabel = ({
-    x,
-    y,
-    value,
-    width,
-    height,
-  }: {
-    x: number;
-    y: number;
-    value: number;
-    width: number;
-    height: number;
-  }) => {
+  const renderLabel = ({ y, value, height }: { y: number; value: number; height: number }) => {
     const textY = Number(y) + Number(height) / 2;
-    console.log(width, x);
     return (
       <text x={70} y={textY} fill={'#fff'} dominantBaseline="central" fontSize={12}>
         {decimalToTimeString(value)}
       </text>
     );
   };
-  console.log('GroupGraph', groupStudyRatio);
 
   return (
     <div className="mb-4">
@@ -77,9 +63,9 @@ export default function GroupGraph() {
             strokeDasharray="3 3"
             isFront
             label={{
-              value: `평균: ${averageTimeDecimal}`,
+              value: `평균: ${decimalToTimeString(averageTimeDecimal)}`,
               position: 'insideBottom',
-              fill: '#FF6347',
+              fill: '#39cccc',
               fontWeight: 'bold',
             }}
           />
