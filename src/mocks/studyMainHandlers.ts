@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { TodoListData, dummyStudyList, dummyNotices, mockStudyRoomList } from './data/dummy';
+import { todoListData, dummyStudyList, dummyNotices, mockStudyRoomList } from './data/dummy';
 import {
   CreateTodoRequest,
   UpdateStudyRequest,
@@ -61,7 +61,7 @@ const studyMainHandlers = [
     }
   }),
   http.get('/todos/1', () => {
-    if (TodoListData) return HttpResponse.json(TodoListData);
+    if (todoListData) return HttpResponse.json(todoListData);
     return HttpResponse.error();
   }),
   http.post('/todos/new', async ({ request }) => {
@@ -81,7 +81,7 @@ const studyMainHandlers = [
         totalStudyTime: '0:00:00',
       };
 
-      TodoListData.todos.push(newTodo);
+      todoListData.todos.push(newTodo);
 
       return new HttpResponse(
         JSON.stringify({
@@ -104,7 +104,7 @@ const studyMainHandlers = [
       }
       const { todoName, todoId } = body;
 
-      const targetTodo = TodoListData.todos.find((todo) => todo.todoId === todoId);
+      const targetTodo = todoListData.todos.find((todo) => todo.todoId === todoId);
       if (!targetTodo) {
         return new HttpResponse(JSON.stringify({ message: '존재하지 않는 투두입니다.' }), {
           status: 404,
@@ -131,7 +131,7 @@ const studyMainHandlers = [
       }
       const { isCompleted } = body;
 
-      const targetTodo = TodoListData.todos.find((todo) => todo.todoId === Number(todoId));
+      const targetTodo = todoListData.todos.find((todo) => todo.todoId === Number(todoId));
       if (!targetTodo) {
         return new HttpResponse(JSON.stringify({ message: '존재하지 않는 투두입니다.' }), {
           status: 404,
@@ -164,7 +164,7 @@ const studyMainHandlers = [
           status: 400,
         });
       }
-      console.log(notice);
+
       const { content } = body;
       notice.content = content;
 

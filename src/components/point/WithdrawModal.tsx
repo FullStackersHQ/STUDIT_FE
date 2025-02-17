@@ -3,6 +3,7 @@ import CloseIcon from '../../assets/icons/close.svg';
 import Button from '../Button';
 import { handleKeyDown } from '../../utils/commonUtils';
 import useWithdrawModal from '../../hooks/point/useWithdrawModal';
+import Input from '../Input';
 
 export default function WithdrawModal({
   isOpen,
@@ -30,29 +31,16 @@ export default function WithdrawModal({
         </div>
         <div className="mb-3 flex w-full flex-col gap-y-2">
           <label htmlFor="withdrawPoint">출금할 포인트</label>
-          <input
+          <Input
             id="withdrawPoint"
-            type="text"
-            placeholder="출금할 포인트"
             value={inputPoint.toLocaleString()}
+            placeholder="출금할 포인트"
             onChange={(e) => {
               const rawValue = e.target.value.replace(/,/g, '');
               setInputPoint(Number(rawValue) || 0);
             }}
-            className="text-input"
             onKeyDown={(e) => handleKeyDown(e, () => handleInput())}
           />
-          {/*          <Input
-            id="withdrawPoint"
-            value={inputPoint.toLocaleString()}
-            placeholder="태그 입력 후 Enter"
-            onChange={(e) => {
-              const rawValue = e.target.value.replace(/,/g, '');
-              setInputPoint(Number(rawValue) || 0);
-            }}
-            style="text-input"
-            onKeyDown={(e) => handleKeyDown(e, () => handleInput())}
-          /> */}
           <p className={`text-deduct text-xs font-medium ${shaking ? 'shake' : ''}`}>{notification}</p>
         </div>
         <Button text="출금하기" onClick={handleInput} />

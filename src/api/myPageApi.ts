@@ -27,17 +27,32 @@ const myPageApi = {
     );
     return response;
   },
-  getUpcomingList: async () => {
-    const { data: response } = await client.get(`/study-status/registered/`);
-    return response;
+  getUpcomingList: async (pageParam: number) => {
+    const { data: response } = await client.get(`/study-status/registered/`, {
+      params: { page: pageParam },
+    });
+    return {
+      data: response.data,
+      hasNextPage: response.hasNextPage,
+    };
   },
-  getOngoingList: async () => {
-    const { data: response } = await client.get(`/study-status/ongoing/`);
-    return response;
+  getOngoingList: async (pageParam: number) => {
+    const { data: response } = await client.get(`/study-status/ongoing/`, {
+      params: { page: pageParam },
+    });
+    return {
+      data: response.data,
+      hasNextPage: response.hasNextPage,
+    };
   },
-  getCompletedList: async () => {
-    const { data: response } = await client.get(`/study-status/completed/`);
-    return response;
+  getCompletedList: async (pageParam: number) => {
+    const { data: response } = await client.get(`/study-status/completed/`, {
+      params: { page: pageParam },
+    });
+    return {
+      data: response.data,
+      hasNextPage: response.hasNextPage,
+    };
   },
 };
 export default myPageApi;
