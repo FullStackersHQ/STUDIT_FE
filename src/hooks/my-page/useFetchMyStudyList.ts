@@ -1,34 +1,40 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, QueryFunctionContext } from '@tanstack/react-query';
 import { StudyStatusType, StudyItemType } from '../../types/interface';
 import myPageApi from '../../api/myPageApi';
 import { useMemo } from 'react';
 
+type PaginatedDataResponse = {
+  data: StudyItemType[];
+  hasNextPage: boolean;
+};
+
 export default function useFetchMyStudyList(studyType: StudyStatusType) {
-  const apiFunctions: Record<StudyStatusType, () => Promise<StudyItemType[]>> = {
+  const apiFunctions: Record<StudyStatusType, (pageParam: number) => Promise<PaginatedDataResponse>> = {
     upcoming: myPageApi.getUpcomingList,
     ongoing: myPageApi.getOngoingList,
     completed: myPageApi.getCompletedList,
   };
 
-  const { data, refetch, isLoading } = useQuery<StudyItemType[]>({
+  const { data, refetch, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery<PaginatedDataResponse>({
     queryKey: [studyType],
-    queryFn: apiFunctions[studyType],
+    queryFn: ({ pageParam = 1 }: QueryFunctionContext) => apiFunctions[studyType](pageParam as number),
+    getNextPageParam: (lastPage: PaginatedDataResponse, allPages: PaginatedDataResponse[]) => {
+      if (lastPage.hasNextPage) return allPages.length + 1;
+      return undefined;
+    },
+    initialPageParam: 1,
   });
 
   const studyList = useMemo(() => {
     if (!data) return [];
-    const listMapping: Record<StudyStatusType, StudyItemType[]> = {
-      // api 구현될 시 수정 필요
-      upcoming: data,
-      ongoing: data,
-      completed: data,
-    };
-    return listMapping[studyType] || [];
-  }, [data, studyType]);
+    return data.pages.flatMap((page) => page.data);
+  }, [data]);
 
   return {
     studyList,
     refetch,
     isLoading,
+    fetchNextPage,
+    hasNextPage,
   };
 }

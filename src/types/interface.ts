@@ -82,6 +82,7 @@ export interface StudyItem {
   enterPoint: number;
   tag: string;
   weeklyStudyTime: number;
+  category: string;
 }
 export type StudyItemType = UpcomingStudyItem | OnGoingStudyItem | CompletedStudyItem;
 export type StudyStatusType = 'ongoing' | 'upcoming' | 'completed';
