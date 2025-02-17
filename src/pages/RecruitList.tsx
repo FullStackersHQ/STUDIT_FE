@@ -28,7 +28,7 @@ export default function RecruitList(): JSX.Element {
           to={'/create-study'}
           className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
         >
-          <span className="text-sm">'+ 스터디 만들기'</span>
+          <span className="text-sm">+ 스터디 만들기</span>
         </Link>
       )}
     </div>
