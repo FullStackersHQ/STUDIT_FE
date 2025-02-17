@@ -1,13 +1,12 @@
 import useGetTodoList from './useGetTodoList';
 import useTodoState from './useTodoState';
-import useTodoActions from './useTodoActions';
 import useToggleTodo from './useToggleTodo';
 
 export default function useTodoList(studyId: number) {
   const { todoList, todoListLoading } = useGetTodoList(studyId);
   const { todoStates, toggleTodo } = useTodoState(todoList);
-  const todoActions = useTodoActions(studyId);
   const { mutateTodo } = useToggleTodo(studyId);
+
   const handleCheckboxChange = (todoId: number, isCompleted: boolean) => {
     mutateTodo({ todoId, isCompleted });
     toggleTodo(todoId);
@@ -18,6 +17,5 @@ export default function useTodoList(studyId: number) {
     todoListLoading,
     todoStates,
     handleCheckboxChange,
-    ...todoActions,
   };
 }

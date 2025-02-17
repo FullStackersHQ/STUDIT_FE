@@ -7,11 +7,9 @@ export interface UpdateStudyRequest extends Record<string, unknown> {
   description: string;
 }
 export interface CreateTodoRequest extends Record<string, unknown> {
-  studyId: number;
   todoName: string;
 }
 export interface EditTodoRequest extends Record<string, unknown> {
-  studyId: number;
   todoId: number;
   todoName: string;
 }
@@ -21,4 +19,8 @@ export interface ToggleTodoRequest extends Record<string, unknown> {
 }
 export interface NoticeRequest extends Record<string, unknown> {
   content: string;
+}
+export interface TimerRequest extends Record<string, unknown> {
+  todoId: number;
+  userId: number;
 }

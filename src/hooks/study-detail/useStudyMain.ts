@@ -8,6 +8,7 @@ export default function useStudyMain() {
   const studyId = Number(params.studyId);
   const { studyDetail, isDetailLoading } = useGetStudyDetail(studyId);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const userId = 1;
   const action = { icon: MenuIcon, onClick: toggleMenu, ariaLabel: '스터디 메뉴 보기' };
