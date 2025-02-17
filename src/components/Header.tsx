@@ -22,9 +22,9 @@ export default function Header() {
           로그인
         </Link>
       ) : (
-        <div className="text-main-text text-center text-sm font-bold" onClick={logout}>
+        <button className="text-main-text cursor-pointer text-center text-sm font-bold" onClick={logout}>
           로그아웃
-        </div>
+        </button>
       )}
     </header>
   );
