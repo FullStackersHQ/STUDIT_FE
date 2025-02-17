@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-const BACKED_URL = import.meta.env.VITE_BACKEND_SERVER_URL || 'http://localhost:3000';
+const BACKEND_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.VITE_APP_URL;
 
-const client = axios.create({ baseURL: `${BACKED_URL}`, withCredentials: true });
+const client = axios.create({
+  baseURL: BACKEND_URL,
+  withCredentials: true,
+});
 
 client.interceptors.response.use((res) => res);
 export default client;
