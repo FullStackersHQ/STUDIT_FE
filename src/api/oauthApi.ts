@@ -2,7 +2,16 @@ import client from '../utils/client';
 
 const oauthApi = {
   postOauthCode: async (code: string | null) => {
-    const { data: response } = await client.post(`/api/kakao-login?code=${code}`);
+    const { data: response } = await client.post(
+      `/api/kakao-login?code=${code}`,
+      {},
+      {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
+        },
+      },
+    );
     return response;
   },
   getUserLoginInfo: async () => {
