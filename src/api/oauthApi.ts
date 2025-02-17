@@ -19,7 +19,8 @@ const oauthApi = {
     return response;
   },
   logout: async () => {
-    await client.get('/api/auth/kakao-logout');
+    const { data: response } = await client.get('/api/auth/kakao-logout');
+    return response;
   },
   updateJWTToken: async (token: string, userId: string) => {
     const { data: response } = await client.post(`/api/auth/${userId}/refresh`, {

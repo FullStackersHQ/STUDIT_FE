@@ -44,6 +44,7 @@ const kakaoHandler = [
 
   http.get('/api/auth/kakao-logout', () => {
     console.log('로그아웃');
+    return HttpResponse.json({ message: '로그아웃 성공', status: 200 });
   }),
 
   http.get('/api/auth/login', () => {

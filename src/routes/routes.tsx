@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../layouts/Layout';
+import LoginRequiredLayout from '../layouts/LoginRequiredLayout';
 import LoginRedirect from '../pages/LoginRedirect';
 
 const Login = lazy(() => import('../pages/Login'));
@@ -23,11 +24,14 @@ const Router = (): JSX.Element => {
         <Route element={<Layout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/login/oauth2/callback/kakao" element={<LoginRedirect />} />
-          <Route path="/my-page" element={<MyPage />} />
-          <Route path="/point" element={<Point />} />
           <Route path="/search" element={<Search />} />
 
-          <Route path="/create-study" element={<CreateStudy />} />
+          <Route element={<LoginRequiredLayout />}>
+            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/point" element={<Point />} />
+            <Route path="/create-study" element={<CreateStudy />} />
+            <Route path="/my-study" element={<MyStudyList />} />
+          </Route>
 
           <Route path="/" element={<Navigate to="/recruit-list" replace />} />
           <Route path="/recruit-list" element={<RecruitList />} />
@@ -37,8 +41,6 @@ const Router = (): JSX.Element => {
           <Route path="/study-list" element={<StudyList />} />
           <Route path="/study/:studyId" element={<StudyDetail />} />
           <Route path="/edit-study/:studyId" element={<EditStudy />} />
-
-          <Route path="/my-study" element={<MyStudyList />} />
         </Route>
       </Routes>
     </Suspense>

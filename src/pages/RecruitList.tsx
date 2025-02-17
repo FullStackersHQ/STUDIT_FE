@@ -23,12 +23,14 @@ export default function RecruitList(): JSX.Element {
         <FilterList />
         <StudyRecruitList />
       </div>
-      <Link
-        to={id !== -1 ? '/create-study' : '/login'}
-        className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
-      >
-        <span className="text-sm">{id !== -1 ? '+ 스터디 만들기' : '로그인'}</span>
-      </Link>
+      {id !== -1 && (
+        <Link
+          to={'/create-study'}
+          className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
+        >
+          <span className="text-sm">'+ 스터디 만들기'</span>
+        </Link>
+      )}
     </div>
   );
 }

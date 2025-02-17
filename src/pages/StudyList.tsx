@@ -5,7 +5,6 @@ import StudyRoomList from '../components/Study-list/StudyRoomList';
 
 export default function StudyList(): JSX.Element {
   const { filteringInfo } = useSearchStore();
-  const isLogin = true;
 
   return (
     <div className="px-4">
@@ -22,12 +21,6 @@ export default function StudyList(): JSX.Element {
         <FilterList />
         <StudyRoomList />
       </div>
-      <Link
-        to={isLogin ? '/create-study' : '/login'}
-        className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
-      >
-        <span className="text-sm">{isLogin ? '+ 스터디 만들기' : '로그인'}</span>
-      </Link>
     </div>
   );
 }
