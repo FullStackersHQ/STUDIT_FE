@@ -198,3 +198,9 @@
 .slide-down {
   animation: slideDown 0.2s ease-in-out;
 }
+.study-menu {
+  @apply border-light-gray fixed top-0 left-0 z-40 mt-[52px] box-border w-full transform rounded-b-md border-x-2 border-b-2 bg-white drop-shadow-sm;
+}
+.study-menu-md {
+  @apply md:left-1/2 md:w-[766px] md:-translate-x-1/2 md:border-x-0;
+}

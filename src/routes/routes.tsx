@@ -14,6 +14,7 @@ const StudyList = lazy(() => import('../pages/StudyList'));
 const Search = lazy(() => import('../pages/Search'));
 const MyStudyList = lazy(() => import('../pages/MyStudyList'));
 const RecruitList = lazy(() => import('../pages/RecruitList'));
+const Statistics = lazy(() => import('../pages/Statistics'));
 
 const Router = (): JSX.Element => {
   return (
@@ -34,6 +35,7 @@ const Router = (): JSX.Element => {
 
           <Route path="/study-list" element={<StudyList />} />
           <Route path="/study/:studyId" element={<StudyDetail />} />
+          <Route path="/study/statistics/:studyId" element={<Statistics />} />
           <Route path="/edit-study/:studyId" element={<EditStudy />} />
 
           <Route path="/my-study" element={<MyStudyList />} />
