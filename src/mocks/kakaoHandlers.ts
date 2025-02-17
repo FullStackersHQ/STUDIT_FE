@@ -1,8 +1,33 @@
 import { http, HttpResponse } from 'msw';
 
 const kakaoHandler = [
-  http.post('/api/kakao-login', ({ params }) => {
-    console.log('kakao 인가 코드 전송', params);
+  http.post('/api/kakao-login', async ({ request }) => {
+    const code = new URL(request.url).searchParams.get('code');
+    console.log('kakao 인가 코드 전송');
+
+    if (code) {
+      return HttpResponse.json({
+        status: 200,
+        data: {
+          id: 1,
+          connected_at: '2025-02-07T06:32:23Z',
+          properties: {
+            nickname: 'seungmani',
+            profile_image: 'https://via.placeholder.com/150',
+            jwt_token: 'token123',
+          },
+        },
+      });
+    } else {
+      return new HttpResponse(
+        JSON.stringify({
+          message: 'kakao 로그인 실패',
+        }),
+        {
+          status: 400,
+        },
+      );
+    }
   }),
 
   http.get('/api/auth/kakao-login', () => {
@@ -19,6 +44,7 @@ const kakaoHandler = [
 
   http.get('/api/auth/kakao-logout', () => {
     console.log('로그아웃');
+    return HttpResponse.json({ message: '로그아웃 성공', status: 200 });
   }),
 
   http.get('/api/auth/login', () => {
