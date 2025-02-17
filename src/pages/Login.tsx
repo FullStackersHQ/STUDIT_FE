@@ -1,21 +1,10 @@
 import React from 'react';
 import KaKaoImg from '../assets/imgs/kakao-login-large-wide.png';
-import oauthApi from '../api/oauthApi';
 import HeaderWithBack from '../components/HeaderWithBack';
-import { useAuthStore } from '../store/useAuthStore';
-import { useNavigate } from 'react-router-dom';
-// import { KAKAO_AUTH_URL } from '../constants/oauth';
+import { Link } from 'react-router-dom';
+import { KAKAO_AUTH_URL } from '../constants/oauth';
 
 const Login = React.memo((): JSX.Element => {
-  const navigate = useNavigate();
-  const setAuth = useAuthStore((state) => state.setAuth);
-  const login = async () => {
-    const response = await oauthApi.login();
-    console.log(response);
-    setAuth(response.id, response.properties);
-    navigate('/');
-  };
-
   return (
     <>
       <HeaderWithBack title={'로그인'} />
@@ -27,9 +16,9 @@ const Login = React.memo((): JSX.Element => {
           <br />
           <p>목표를 달성하세요.</p>
         </div>
-        <div onClick={login}>
+        <Link to={KAKAO_AUTH_URL}>
           <img src={KaKaoImg} alt="카카오 로그인 버튼" />
-        </div>
+        </Link>
       </div>
     </>
   );
