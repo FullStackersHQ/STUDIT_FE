@@ -9,7 +9,7 @@ import {
   TimerRequest,
 } from '../types/request';
 import { TodoType } from '../types/interface';
-import { mockStudyRoomList } from './data/StudyList';
+import { mockStudyRoomList } from './data/studyList';
 
 const studyMainHandlers = [
   // 스터디룸 목록 조회

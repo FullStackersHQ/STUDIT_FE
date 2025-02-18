@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 import { StudyRoomPostType, StudyRoomPutType } from '../types/interface';
-import { mockStudyRecruitList } from './data/StudyList';
+import { mockStudyRecruitList } from './data/studyList';
 
 const recruitHandlers = [
   // 모집 중인 스터디룸 목록 조회
