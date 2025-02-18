@@ -14,8 +14,8 @@ import { recruitApi } from '../api/recruitApi';
 const studySchema = z.object({
   title: z.string().max(10, '최대 14자까지 입력 가능합니다.'),
   description: z.string(),
-  deposit: z.string().min(1000, '1000보다 작은 값은 불가능합니다.').max(50000, '50000보다 큰 값은 불가능합니다.'),
-  goalTime: z.string().min(1, '최소 1시간 이상 설정해주세요.'),
+  deposit: z.number().min(1000, '1000보다 작은 값은 불가능합니다.').max(50000, '50000보다 큰 값은 불가능합니다.'),
+  goalTime: z.number().min(1, '최소 1시간 이상 설정해주세요.'),
   studyStartDate: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}T\d{2}$/, '올바른 날짜 형식이 아닙니다. (yyyy-mm-dd)')
@@ -36,8 +36,8 @@ export default function CreateStudy(): JSX.Element {
     defaultValues: {
       title: '',
       description: '',
-      deposit: '1000',
-      goalTime: '1',
+      deposit: 1000,
+      goalTime: 1,
       studyStartDate: new Date().toISOString().split('T')[0],
       duration: 1,
       maxMembers: 2,
@@ -92,7 +92,7 @@ export default function CreateStudy(): JSX.Element {
     let value = Number(event.target.value);
     if (value < 1000) value = 1000;
     if (value > 50000) value = 50000;
-    setValue('deposit', String(value));
+    setValue('deposit', value);
   };
 
   const handleDurationChange = (event: React.ChangeEvent<HTMLInputElement>) => {

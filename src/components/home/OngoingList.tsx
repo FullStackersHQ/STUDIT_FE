@@ -3,13 +3,13 @@ import { StudyDetailType } from '../../types/interface';
 import React, { forwardRef } from 'react';
 
 const OngoingList = forwardRef<HTMLAnchorElement, { info: StudyDetailType }>(({ info }, ref) => {
-  const { recruitId, title, category, currentMembers, maxMembers, studyStartAt, studyEndAt, tags } = info;
+  const { roomId, title, category, currentMembers, maxMembers, studyStartAt, studyEndAt, tags } = info;
 
   return (
     <Link
       ref={ref}
-      key={recruitId}
-      to={`/recruit/${recruitId}`}
+      key={roomId}
+      to={`/study/${roomId}`}
       className="border-white-gray w-full rounded-[10px] border bg-white p-3"
     >
       <div className="mb-2">
