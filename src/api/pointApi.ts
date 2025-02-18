@@ -47,8 +47,12 @@ const pointApi = {
       hasNextPage: response.hasNextPage,
     };
   },
-  withdrawPoint: async (withdrawPoint: number) => {
-    const { data: response } = await client.post('/point/withdraw', { amount: withdrawPoint });
+  withdrawPoint: async (amount: number) => {
+    const { data: response } = await client.post('/point/withdraw', { amount: amount });
+    return response;
+  },
+  chargePoint: async (amount: number) => {
+    const { data: response } = await client.post('/point/charge', { amount: amount });
     return response;
   },
 };
