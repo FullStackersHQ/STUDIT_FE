@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../layouts/Layout';
 import LoginRequiredLayout from '../layouts/LoginRequiredLayout';
@@ -32,17 +32,16 @@ const Router = (): JSX.Element => {
             <Route path="/point" element={<Point />} />
             <Route path="/create-study" element={<CreateStudy />} />
             <Route path="/my-study" element={<MyStudyList />} />
+            <Route path="/edit-recruit/:recruitId" element={<EditRecruit />} />
+            <Route path="/edit-study/:studyId" element={<EditStudy />} />
+            <Route path="/study/statistics/:studyId" element={<Statistics />} />
           </Route>
 
-          <Route path="/" element={<Navigate to="/recruit-list" replace />} />
-          <Route path="/recruit-list" element={<RecruitList />} />
+          <Route path="/" element={<RecruitList />} />
           <Route path="/recruit/:recruitId" element={<RecruitDetail />} />
-          <Route path="/edit-recruit/:recruitId" element={<EditRecruit />} />
 
           <Route path="/study-list" element={<StudyList />} />
           <Route path="/study/:studyId" element={<StudyDetail />} />
-          <Route path="/study/statistics/:studyId" element={<Statistics />} />
-          <Route path="/edit-study/:studyId" element={<EditStudy />} />
         </Route>
       </Routes>
     </Suspense>
