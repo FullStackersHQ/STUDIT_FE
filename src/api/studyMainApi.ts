@@ -19,23 +19,20 @@ const studyMainApi = {
     return response;
   },
   createTodo: async (studyId: number, todoName: string) => {
-    const { data: response } = await client.post('/todos/new', {
-      studyId: studyId,
+    const { data: response } = await client.post(`/todos/new/${studyId}`, {
       todoName: todoName,
     });
     return response;
   },
   editTodo: async (studyId: number, todoName: string, todoId: number) => {
-    const { data: response } = await client.patch('/todos/change', {
-      studyId: studyId,
+    const { data: response } = await client.patch(`/todos/change/${studyId}`, {
       todoId: todoId,
       todoName: todoName,
     });
     return response;
   },
   toggleTodoStatus: async (studyId: number, todoId: number, isCompleted: boolean) => {
-    const { data: response } = await client.patch(`/todos/${todoId}/complete`, {
-      studyId: studyId,
+    const { data: response } = await client.patch(`/todos/${todoId}/complete/${studyId}`, {
       isCompleted: isCompleted,
     });
     return response;
@@ -54,6 +51,18 @@ const studyMainApi = {
   },
   deleteNotice: async (studyId: number) => {
     const { data: response } = await client.delete(`/rooms/${studyId}/notices`);
+    return response;
+  },
+  startTimer: async (studyId: number, userId: number, todoId: number) => {
+    const { data: response } = await client.post(`/timer/start/${studyId}`, { userId: userId, todoId: todoId });
+    return response;
+  },
+  stopTimer: async (studyId: number, userId: number, todoId: number) => {
+    const { data: response } = await client.post(`/timer/stop/${studyId}`, { userId: userId, todoId: todoId });
+    return response;
+  },
+  getTimers: async (studyId: number) => {
+    const { data: response } = await client.get(`/timers/${studyId}`);
     return response;
   },
 };

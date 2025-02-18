@@ -115,17 +115,24 @@ export interface ModifyNickNameProps {
   userId: number;
 }
 export interface TodoListType {
-  studyTotalTime: string;
+  studyTotalTime: number;
   todos: TodoType[];
 }
 export interface TodoType {
   todoId: number;
   todoName: string;
   isCompleted: boolean;
-  totalStudyTime: string;
+  studyTime: number;
+  isRunning: boolean;
 }
 export interface NoticeType {
   noticeId: number;
   content: string;
   created: string;
+}
+export interface TimerType {
+  userId: number;
+  nickname: string;
+  timerTime: number;
+  isRunning: boolean;
 }

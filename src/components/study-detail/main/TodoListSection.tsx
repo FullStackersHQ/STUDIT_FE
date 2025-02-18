@@ -1,12 +1,26 @@
-import useTodoList from '../../hooks/study-detail/todo/useTodoList';
-import PlayIcon from '../../assets/icons/play.svg';
-import CloseIcon from '../../assets/icons/close.svg';
+import useTodoList from '../../../hooks/study-detail/todo/useTodoList';
+import PlayIcon from '../../../assets/icons/play.svg';
+import CloseIcon from '../../../assets/icons/close.svg';
+import PauseIcon from '../../../assets/icons/pause.svg';
+import CreateTodo from './CreateTodo';
+import useTodoActions from '../../../hooks/study-detail/todo/useTodoActions';
+import { TodoType } from '../../../types/interface';
+import { formatTime } from '../../../utils/commonUtils';
+import useTodoTimer from '../../../hooks/study-detail/todo/useTodoTimer';
 
-export default function TodoListSection({ studyId }: { studyId: number }) {
+export default function TodoListSection({
+  studyId,
+  userId,
+  activeTodoId,
+  setActiveTodoId,
+}: {
+  studyId: number;
+  userId: number;
+  activeTodoId: number | null;
+  setActiveTodoId: (pre: number | null) => void;
+}) {
+  const { todoList, todoListLoading, todoStates, handleCheckboxChange } = useTodoList(studyId);
   const {
-    todoList,
-    todoListLoading,
-    todoStates,
     isAdding,
     setIsAdding,
     newTodo,
@@ -17,17 +31,16 @@ export default function TodoListSection({ studyId }: { studyId: number }) {
     saveEdit,
     editingTodo,
     setEditingTodo,
-    handleCheckboxChange,
-  } = useTodoList(studyId);
-
-  if (!todoList || todoListLoading) return null;
+  } = useTodoActions(studyId);
+  const { startTimer, stopTimer } = useTodoTimer({ studyId, userId, activeTodoId, setActiveTodoId });
+  if (todoListLoading || !todoList) return null;
   const { studyTotalTime, todos } = todoList;
 
   return (
-    <section className="mt-3 px-4">
+    <section className="px-4">
       <div className="flex items-center justify-between">
         <h1 className="font-medium">
-          총 스터디 시간: <span className="font-bold">{studyTotalTime}</span>
+          총 스터디 시간: <span className="font-bold">{formatTime(studyTotalTime)}</span>
         </h1>
         <button className="btn-sm" onClick={() => setIsAdding(true)}>
           투두 추가
@@ -35,30 +48,15 @@ export default function TodoListSection({ studyId }: { studyId: number }) {
       </div>
       <ul className="mt-3 flex flex-col gap-y-2">
         {isAdding && (
-          <li className="flex items-center gap-x-2.5">
-            <div className="flex items-center gap-x-1.5">
-              <div className="border-white-gray h-[18px] w-[18px] rounded-sm border-2" />
-              <input
-                type="text"
-                value={newTodo}
-                placeholder="생성할 투두 입력"
-                onChange={(e) => setNewTodo(e.target.value)}
-                onKeyDown={handleKeyDown}
-                autoFocus
-                className="border-main w-[196px] border-b p-1"
-              />
-            </div>
-            <button
-              className="text-dark-gray hover:text-gray cursor-pointer transition-colors"
-              onClick={() => setIsAdding(false)}
-              aria-label='lt="투두 생성 취소" '
-            >
-              <CloseIcon alt="투두 생성 취소" className="h-3 w-3" />
-            </button>
-          </li>
+          <CreateTodo
+            newTodo={newTodo}
+            setNewTodo={setNewTodo}
+            setIsAdding={setIsAdding}
+            handleKeyDown={handleKeyDown}
+          />
         )}
-        {todos.map((todo) => {
-          const { todoId, todoName, totalStudyTime } = todo;
+        {todos.map((todo: TodoType) => {
+          const { todoId, todoName, studyTime } = todo;
 
           return (
             <li key={todoId} className="flex items-center justify-between">
@@ -101,8 +99,19 @@ export default function TodoListSection({ studyId }: { studyId: number }) {
                 )}
               </div>
               <div className="flex items-center gap-x-2">
-                <span className="text-sm font-medium">{totalStudyTime}</span>
-                <PlayIcon alt={`${todoName} 타이머 재생`} className="h-10 w-10" />
+                <span className="text-sm font-medium">{formatTime(studyTime)}</span>
+                <button
+                  onClick={() => {
+                    if (activeTodoId === todoId) stopTimer(todoId);
+                    else startTimer(todoId);
+                  }}
+                >
+                  {activeTodoId === todoId ? (
+                    <PauseIcon alt={`${todoName} 타이머 정지`} className="h-10 w-10" />
+                  ) : (
+                    <PlayIcon alt={`${todoName} 타이머 재생`} className="h-10 w-10" />
+                  )}
+                </button>
               </div>
             </li>
           );
