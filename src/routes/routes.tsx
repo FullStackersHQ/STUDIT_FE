@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../layouts/Layout';
 import LoginRequiredLayout from '../layouts/LoginRequiredLayout';
@@ -12,10 +12,9 @@ const MyPage = lazy(() => import('../pages/MyPage'));
 const Point = lazy(() => import('../pages/Point'));
 const StudyDetail = lazy(() => import('../pages/StudyDetail'));
 const EditStudy = lazy(() => import('../pages/EditStudy'));
-const StudyList = lazy(() => import('../pages/StudyList'));
+const Home = lazy(() => import('../pages/Home'));
 const Search = lazy(() => import('../pages/Search'));
 const MyStudyList = lazy(() => import('../pages/MyStudyList'));
-const RecruitList = lazy(() => import('../pages/RecruitList'));
 const Statistics = lazy(() => import('../pages/Statistics'));
 
 const Router = (): JSX.Element => {
@@ -32,17 +31,16 @@ const Router = (): JSX.Element => {
             <Route path="/point" element={<Point />} />
             <Route path="/create-study" element={<CreateStudy />} />
             <Route path="/my-study" element={<MyStudyList />} />
+            <Route path="/edit-recruit/:recruitId" element={<EditRecruit />} />
+            <Route path="/edit-study/:studyId" element={<EditStudy />} />
+            <Route path="/study/statistics/:studyId" element={<Statistics />} />
           </Route>
 
-          <Route path="/" element={<Navigate to="/recruit-list" replace />} />
-          <Route path="/recruit-list" element={<RecruitList />} />
+          <Route path="/" element={<Home type={'recruits'} />} />
           <Route path="/recruit/:recruitId" element={<RecruitDetail />} />
-          <Route path="/edit-recruit/:recruitId" element={<EditRecruit />} />
 
-          <Route path="/study-list" element={<StudyList />} />
+          <Route path="/study-list" element={<Home type={'rooms'} />} />
           <Route path="/study/:studyId" element={<StudyDetail />} />
-          <Route path="/study/statistics/:studyId" element={<Statistics />} />
-          <Route path="/edit-study/:studyId" element={<EditStudy />} />
         </Route>
       </Routes>
     </Suspense>

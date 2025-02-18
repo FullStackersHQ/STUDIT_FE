@@ -24,20 +24,21 @@ export interface StudyRoomPutType {
 }
 
 export interface StudyRoomPostType extends StudyRoomPutType {
-  deposit: string;
-  goalTime: string;
+  deposit: number;
+  goalTime: number;
   recruitEndAt: string;
   studyEndAt: string;
 }
 
 export interface StudyRoomGetType extends StudyRoomPostType {
-  recruitId: number;
   currentMembers: number;
   studyStartAt: string;
   status: string;
+  recruitId?: number;
+  roomId?: number;
 }
 
-export interface StudyRecruitType extends StudyRoomGetType {
+export interface StudyDetailType extends StudyRoomGetType {
   leaderId: number;
   leaderNickName: string;
 }
@@ -65,6 +66,7 @@ export interface FilterType {
   studyTimeRange: [number, number];
   point: [number, number];
 }
+
 export interface UpcomingStudyItem extends StudyItem {
   recruit_id: number;
 }
@@ -136,3 +138,5 @@ export interface TimerType {
   timerTime: number;
   isRunning: boolean;
 }
+
+export type pageType = 'recruits' | 'rooms';

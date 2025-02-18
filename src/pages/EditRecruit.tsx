@@ -2,14 +2,14 @@ import HeaderWithBack from '../components/HeaderWithBack';
 import { CATEGORY } from '../constants/constants';
 import Button from '../components/Button';
 import { useLocation, useParams } from 'react-router-dom';
-import { StudyRecruitType } from '../types/interface';
+import { StudyDetailType } from '../types/interface';
 import { handleMaxLengthChange } from '../utils/commonUtils';
 import useEditRecruit from '../hooks/recruit/useEditRecruit';
 import useRecruitMutation from '../hooks/recruit/useRecruitMutation';
 import Input from '../components/Input';
 
 export default function EditRecruit(): JSX.Element {
-  const post: StudyRecruitType = useLocation().state;
+  const post: StudyDetailType = useLocation().state;
   const params = useParams();
   const recruitId = Number(params.recruitId);
   const { editInfo, setEditInfo, handleAddTag, handleRemoveTag, tagInput, setTagInput } = useEditRecruit(post);
