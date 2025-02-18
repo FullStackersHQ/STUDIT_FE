@@ -1,0 +1,57 @@
+import { Link } from 'react-router-dom';
+import { useSearchStore } from '../store/useSearchStore';
+import { useAuthStore } from '../store/useAuthStore';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import useGetList from '../hooks/home/useGetList';
+import { pageType } from '../types/interface';
+import FilterTags from '../components/home/FilterTags';
+import RecruitList from '../components/home/RecruitList';
+import OngoingList from '../components/home/OngoingList';
+
+export default function Home({ type = 'recruits' }: { type: pageType }): JSX.Element {
+  const { filteringInfo } = useSearchStore();
+  const { id } = useAuthStore();
+  const { lists, isLoading, fetchNextPage, hasNextPage } = useGetList(type);
+
+  const { setTarget } = useIntersectionObserver({
+    hasNextPage,
+    fetchNextPage,
+  });
+
+  if (!lists || isLoading) return <>Loading</>;
+
+  return (
+    <div className="px-4">
+      <div style={{ height: `calc(100vh - 52px - 48px - 50px)` }}>
+        <Link to={'/search'}>
+          <input
+            className="search-input"
+            type="text"
+            placeholder="검색어를 입력하세요."
+            value={filteringInfo.search}
+            readOnly
+          />
+        </Link>
+        <FilterTags filteringInfo={filteringInfo} type={type} />
+        <div
+          className="scrollbar-hide mt-3 flex w-full flex-col items-center gap-[5px] overflow-y-scroll"
+          style={{ height: `calc(100vh - 250px)` }}
+        >
+          {lists.map((list, index) => {
+            const isLastItem = index === lists.length - 1;
+            if (type === 'recruits') return <RecruitList key={index} info={list} ref={isLastItem ? setTarget : null} />;
+            else return <OngoingList key={index} info={list} ref={isLastItem ? setTarget : null} />;
+          })}
+        </div>
+      </div>
+      {id !== -1 && type === 'recruits' && (
+        <Link
+          to={'/create-study'}
+          className="bg-main flex h-[30px] items-center justify-center rounded-[10px] text-center text-white"
+        >
+          <span className="text-sm">+ 스터디 만들기</span>
+        </Link>
+      )}
+    </div>
+  );
+}

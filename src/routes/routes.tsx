@@ -12,10 +12,9 @@ const MyPage = lazy(() => import('../pages/MyPage'));
 const Point = lazy(() => import('../pages/Point'));
 const StudyDetail = lazy(() => import('../pages/StudyDetail'));
 const EditStudy = lazy(() => import('../pages/EditStudy'));
-const StudyList = lazy(() => import('../pages/StudyList'));
+const Home = lazy(() => import('../pages/Home'));
 const Search = lazy(() => import('../pages/Search'));
 const MyStudyList = lazy(() => import('../pages/MyStudyList'));
-const RecruitList = lazy(() => import('../pages/RecruitList'));
 const Statistics = lazy(() => import('../pages/Statistics'));
 
 const Router = (): JSX.Element => {
@@ -37,10 +36,10 @@ const Router = (): JSX.Element => {
             <Route path="/study/statistics/:studyId" element={<Statistics />} />
           </Route>
 
-          <Route path="/" element={<RecruitList />} />
+          <Route path="/" element={<Home type={'recruits'} />} />
           <Route path="/recruit/:recruitId" element={<RecruitDetail />} />
 
-          <Route path="/study-list" element={<StudyList />} />
+          <Route path="/study-list" element={<Home type={'rooms'} />} />
           <Route path="/study/:studyId" element={<StudyDetail />} />
         </Route>
       </Routes>
