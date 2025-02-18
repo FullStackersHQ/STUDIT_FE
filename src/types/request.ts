@@ -1,4 +1,4 @@
-export interface WithdrawRequest extends Record<string, unknown> {
+export interface PointRequest extends Record<string, unknown> {
   amount: number;
 }
 export interface UpdateStudyRequest extends Record<string, unknown> {

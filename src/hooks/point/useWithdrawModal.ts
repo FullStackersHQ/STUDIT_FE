@@ -6,7 +6,7 @@ export default function useWithdrawModal(close: () => void, currentPoint: number
   const [shaking, setShaking] = useState(false);
 
   const { withdrawPoint } = useWithdrawPoint(inputPoint);
-  const isInputInValid = inputPoint < 1000 || (inputPoint !== 0 && inputPoint % 1000 !== 0);
+  const isInputInValid = inputPoint < 1000 || inputPoint % 1000 !== 0;
   const [notification, setNotification] = useState('*출금은 1,000P 단위로 가능해요');
 
   const handleInput = () => {

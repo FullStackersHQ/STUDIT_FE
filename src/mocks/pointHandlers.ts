@@ -7,9 +7,10 @@ import {
   withDrawnPoints,
   refundPoints,
   rewardPoints,
+  profileData,
 } from './data/dummy';
 import { PointFilterType } from '../types/interface';
-import { WithdrawRequest } from '../types/request';
+import { PointRequest } from '../types/request';
 
 const pointHandlers = [
   http.get('/point', () => {
@@ -97,7 +98,7 @@ const pointHandlers = [
   }),
   http.post('/point/withdraw', async ({ request }) => {
     try {
-      const body = (await request.json()) as WithdrawRequest;
+      const body = (await request.json()) as PointRequest;
       if (!body) {
         return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
           status: 400,
@@ -136,6 +137,55 @@ const pointHandlers = [
       return new HttpResponse(
         JSON.stringify({
           message: '출금이 완료되었습니다.',
+          total_after: userPoints.totalPoints,
+        }),
+        { status: 200 },
+      );
+    } catch {
+      return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
+    }
+  }),
+  http.post('/point/charge', async ({ request }) => {
+    try {
+      const body = (await request.json()) as PointRequest;
+      if (!body) {
+        return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
+          status: 400,
+        });
+      }
+      const { amount } = body;
+      userPoints.totalPoints += amount;
+      profileData.points += amount;
+
+      const today = new Date();
+      const formattedDate = today.toISOString().split('T')[0].replace(/-/g, '.');
+      const existingDateIndex = allPointRecords.findIndex((record) => record.date === formattedDate);
+
+      const newRecord = {
+        id: Date.now(),
+        type: '충전' as PointFilterType,
+        amount: amount,
+        total_after: userPoints.totalPoints,
+        time: today.toTimeString().split(' ')[0],
+      };
+
+      if (existingDateIndex !== -1) {
+        allPointRecords[existingDateIndex].records.unshift(newRecord);
+        toppedUpPoints[existingDateIndex].records.unshift(newRecord);
+      } else {
+        allPointRecords.unshift({
+          date: formattedDate,
+          records: [newRecord],
+        });
+        toppedUpPoints.unshift({
+          date: formattedDate,
+          records: [newRecord],
+        });
+      }
+
+      return new HttpResponse(
+        JSON.stringify({
+          message: '충전이 완료되었습니다.',
           total_after: userPoints.totalPoints,
         }),
         { status: 200 },
