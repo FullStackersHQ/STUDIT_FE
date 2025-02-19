@@ -46,7 +46,7 @@ export default function PointShortageModal({
           text="이동하기"
           onClick={() => {
             close();
-            navigate('/');
+            navigate('/my-page');
           }}
         />
         <button aria-label="모달 닫기" className="close-position" onClick={() => close()}>

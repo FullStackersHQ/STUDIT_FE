@@ -9,6 +9,7 @@ import useGetRecruitInfo from '../hooks/recruit/useGetRecruitInfo';
 import MenuIcon from '../assets/icons/hamburger-menu.svg';
 import LeaderMenuList from '../components/recruit/LeaderMenuList';
 import { useAuthStore } from '../store/useAuthStore';
+import RecruitSuccessModal from '../components/recruit/RecruitSuccessModal';
 
 export default function RecruitDetail(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -20,19 +21,16 @@ export default function RecruitDetail(): JSX.Element {
   const recruitId = Number(params.recruitId);
 
   const { recruitInfo: data, isLoading } = useGetRecruitInfo(recruitId);
-  const {
-    id: userId,
-    properties: { point: userDeposit },
-  } = useAuthStore();
+  const { id: userId, properties, setAuth } = useAuthStore();
 
   const onClickJoinBtn = async () => {
     // 유저 deposit이 적다면
-    if (userDeposit < Number(data.result.deposit)) {
+    if (properties.point < Number(data.result.deposit)) {
       overlay.open(({ isOpen, close }) => {
         return (
           <PointShortageModal
             currentPoint={{
-              now: userDeposit,
+              now: properties.point,
               need: Number(data.result.deposit),
             }}
             navigate={navigate}
@@ -43,8 +41,14 @@ export default function RecruitDetail(): JSX.Element {
         );
       });
     } else {
-      const { data: response } = await recruitApi.joinRecruit(recruitId, { deposit: data.result.deposit });
-      console.log(response);
+      const response = await recruitApi.joinRecruit(recruitId, { deposit: data.result.deposit });
+      setAuth(userId, {
+        ...properties,
+        point: properties.point - Number(data.result.deposit),
+      });
+      overlay.open(({ isOpen, close }) => {
+        return <RecruitSuccessModal navigate={navigate} isOpen={isOpen} close={close} text={response.message} />;
+      });
     }
   };
 
