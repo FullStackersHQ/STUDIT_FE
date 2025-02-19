@@ -25,8 +25,6 @@ export default function RecruitDetail(): JSX.Element {
     properties: { point: userDeposit },
   } = useAuthStore();
 
-  // console.log('RecruitDetail', data);
-
   const onClickJoinBtn = async () => {
     // 유저 deposit이 적다면
     if (userDeposit < Number(data.result.deposit)) {
@@ -54,7 +52,7 @@ export default function RecruitDetail(): JSX.Element {
     return <div>Loading...</div>;
   }
   const isLeader = userId === data.result.leaderId;
-  console.log(isLeader, userId, data.result.leaderId);
+
   return (
     <div>
       <HeaderWithBack
@@ -63,7 +61,12 @@ export default function RecruitDetail(): JSX.Element {
         {...(isLeader ? { action } : {})}
       />
       <LeaderMenuList isMenuOpen={isMenuOpen} recruitId={recruitId} data={data.result} />
-      <ul className="overflow-y-auto px-4" style={{ height: `calc(100vh - 52px - 48px - 50px)` }}>
+      <ul
+        className="overflow-y-auto px-4"
+        style={{
+          height: `${isLeader || userId === -1 ? 'calc(100vh - 52px - 48px)' : 'calc(100vh - 52px - 48px - 50px)'}`,
+        }}
+      >
         {/* tags */}
         <li className="scrollbar-hide tag-container mt-5">
           {data.result.tags.map((tag: string) => (
@@ -110,9 +113,11 @@ export default function RecruitDetail(): JSX.Element {
         <li className="recruit-info-list">주당 목표 시간: {data.result.goalTime}</li>
       </ul>
 
-      <div className="fixed bottom-8 left-1/2 w-full max-w-[768px] -translate-x-[50%] px-4">
-        <Button text={'가입하기'} onClick={onClickJoinBtn} ariaLabel={'가입하기 버튼'} />
-      </div>
+      {userId !== -1 && !isLeader && (
+        <div className="fixed bottom-8 left-1/2 w-full max-w-[768px] -translate-x-[50%] px-4">
+          <Button text={'가입하기'} onClick={onClickJoinBtn} ariaLabel={'가입하기 버튼'} />
+        </div>
+      )}
     </div>
   );
 }
