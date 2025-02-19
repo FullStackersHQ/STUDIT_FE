@@ -15,6 +15,7 @@ const kakaoHandler = [
             nickname: 'seungmani',
             profile_image: 'https://via.placeholder.com/150',
             jwt_token: 'token123',
+            point: 41000,
           },
         },
       });
