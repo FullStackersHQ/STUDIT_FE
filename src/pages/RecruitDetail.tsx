@@ -1,22 +1,31 @@
-import { useCallback } from 'react';
+import { useState } from 'react';
 import Button from '../components/Button';
 import HeaderWithBack from '../components/HeaderWithBack';
 import { overlay } from 'overlay-kit';
 import PointShortageModal from '../components/recruit/PointShortageModal';
 import { useNavigate, useParams } from 'react-router-dom';
 import { recruitApi } from '../api/recruitApi';
-import DeleteModal from '../components/recruit/DeleteModal';
 import useGetRecruitInfo from '../hooks/recruit/useGetRecruitInfo';
+import MenuIcon from '../assets/icons/hamburger-menu.svg';
+import LeaderMenuList from '../components/recruit/LeaderMenuList';
+import { useAuthStore } from '../store/useAuthStore';
 
 export default function RecruitDetail(): JSX.Element {
-  const userId: number = 1002;
-  const userDeposit: number = 17000;
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const action = { icon: MenuIcon, onClick: toggleMenu, ariaLabel: '모집 글 메뉴 보기' };
 
   const params = useParams();
   const navigate = useNavigate();
   const recruitId = Number(params.recruitId);
 
   const { recruitInfo: data, isLoading } = useGetRecruitInfo(recruitId);
+  const {
+    id: userId,
+    properties: { point: userDeposit },
+  } = useAuthStore();
+
+  // console.log('RecruitDetail', data);
 
   const onClickJoinBtn = async () => {
     // 유저 deposit이 적다면
@@ -41,36 +50,28 @@ export default function RecruitDetail(): JSX.Element {
     }
   };
 
-  // 스터디장이면 수정, 삭제 기능 추가
-  const deleteStudy = useCallback(async () => {
-    const response = await recruitApi.deleteRecruitInfo(recruitId);
-    if (response.code === 200) {
-      overlay.open(({ isOpen, close }) => {
-        return <DeleteModal navigate={navigate} isOpen={isOpen} close={close} text={response.message} />;
-      });
-    }
-  }, []);
-
-  const editStudy = () => {
-    navigate(`/edit-recruit/${recruitId}`, { replace: true, state: { ...data.result } });
-  };
-
-  if (isLoading) {
+  if (isLoading || !data) {
     return <div>Loading...</div>;
   }
-
+  const isLeader = userId === data.result.leaderId;
+  console.log(isLeader, userId, data.result.leaderId);
   return (
     <div>
-      <HeaderWithBack title={data.result.title + ' (' + data.result.category + ')'} isStudyPage={false} />
+      <HeaderWithBack
+        title={data.result.title + ' (' + data.result.category + ')'}
+        isStudyPage={true}
+        {...(isLeader ? { action } : {})}
+      />
+      <LeaderMenuList isMenuOpen={isMenuOpen} recruitId={recruitId} data={data.result} />
       <ul className="overflow-y-auto px-4" style={{ height: `calc(100vh - 52px - 48px - 50px)` }}>
         {/* tags */}
-        <div className="scrollbar-hide tag-container mt-2">
+        <li className="scrollbar-hide tag-container mt-5">
           {data.result.tags.map((tag: string) => (
             <div key={tag} className="tag">
               # {tag}
             </div>
           ))}
-        </div>
+        </li>
         {/* description */}
         <textarea className="textarea h-[200px]" value={data.result.description} disabled />
 
@@ -107,25 +108,6 @@ export default function RecruitDetail(): JSX.Element {
 
         {/* goalTime */}
         <li className="recruit-info-list">주당 목표 시간: {data.result.goalTime}</li>
-
-        {userId === data.result.leaderId && (
-          <div className="mt-2 flex w-full justify-evenly">
-            <button
-              className={`bg-sub text-main hover:bg-sub-hover hover:text-main-hover h-12 w-[45%] rounded-[5px] text-sm font-bold transition-colors`}
-              aria-label={'삭제하기 버튼'}
-              onClick={deleteStudy}
-            >
-              글 삭제하기
-            </button>
-            <button
-              className={`bg-sub text-main hover:bg-sub-hover hover:text-main-hover h-12 w-[45%] rounded-[5px] text-sm font-bold transition-colors`}
-              aria-label={'수정하기 버튼'}
-              onClick={editStudy}
-            >
-              글 수정하기
-            </button>
-          </div>
-        )}
       </ul>
 
       <div className="fixed bottom-8 left-1/2 w-full max-w-[768px] -translate-x-[50%] px-4">
