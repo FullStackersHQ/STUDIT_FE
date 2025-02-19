@@ -11,7 +11,7 @@ export default function Layout() {
   return (
     <>
       {lastUrl in FNB_LIST && <Header />}
-      <main className="md:before:bg-white-gray md:after:bg-white-gray relative mx-auto flex h-screen w-full max-w-3xl flex-col justify-between pt-[52px] md:before:absolute md:before:right-0 md:before:bottom-0 md:before:h-[calc(100%-52px)] md:before:w-[1px] md:before:content-[''] md:after:absolute md:after:bottom-0 md:after:left-0 md:after:h-[calc(100%-52px)] md:after:w-[1px] md:after:content-['']">
+      <main className="md:before:bg-white-gray md:after:bg-white-gray relative mx-auto flex h-screen w-full max-w-3xl flex-col pt-[52px] md:before:absolute md:before:right-0 md:before:bottom-0 md:before:h-[calc(100%-52px)] md:before:w-[1px] md:before:content-[''] md:after:absolute md:after:bottom-0 md:after:left-0 md:after:h-[calc(100%-52px)] md:after:w-[1px] md:after:content-['']">
         <Outlet key={url} />
       </main>
       {lastUrl in FNB_LIST && <Fnb nav={FNB_LIST[lastUrl]} />}
