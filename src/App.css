@@ -35,7 +35,7 @@
   }
 
   .textarea {
-    @apply border border-white-gray mt-1 w-full rounded-[5px] p-1 px-2 text-sm;
+    @apply border-white-gray mt-1 w-full rounded-[5px] border p-1 px-2 text-sm;
   }
 
   .study-menu {
@@ -57,13 +57,12 @@
 }
 
 .search-input {
-  @apply w-full h-[23px] mb-3 border border-main rounded-[10px] text-black text-sm pl-2 sm:h-[30px] md:h-[40px];
+  @apply border-main mb-3 h-[23px] w-full rounded-[10px] border pl-2 text-sm text-black sm:h-[30px] md:h-[40px];
 }
 
 .modal-container {
   @apply relative flex w-[343px] flex-col items-center rounded-md bg-white p-4;
 }
-
 
 .close-position {
   @apply absolute -top-[26px] right-0 cursor-pointer;
@@ -96,26 +95,24 @@
 }
 
 .range {
-  @apply absolute top-0 w-full h-2 appearance-none pointer-events-none bg-transparent;
+  @apply pointer-events-none absolute top-0 h-2 w-full appearance-none bg-transparent;
 }
 
 .range::-webkit-slider-thumb {
-  @apply h-5 w-5 rounded-full border-2 border-white bg-main pointer-events-auto;
+  @apply bg-main pointer-events-auto h-5 w-5 rounded-full border-2 border-white;
 }
 
 .create-study-label {
-  @apply font-bold mr-2 text-lg flex flex-row;
+  @apply mr-2 flex flex-row text-lg font-bold;
 }
 
 .tag-container {
   @apply mb-3 flex h-6 w-full items-center gap-[5px] overflow-y-auto;
 }
 
-
 .recruit-info-list {
-  @apply mt-2 list-[square] list-inside list-image-[url('https://www.finney-taylor.com/App_Themes/FTaylor/images/bullets/listBullet.gif')];
+  @apply mt-2 list-inside list-[square] list-image-[url('https://www.finney-taylor.com/App_Themes/FTaylor/images/bullets/listBullet.gif')];
 }
-
 
 @keyframes slideUp {
   0% {
@@ -147,4 +144,9 @@
 
 .slide-down {
   animation: slideDown 0.2s ease-in-out;
+}
+.layout-md {
+  @apply md:before:bg-white-gray md:before:absolute md:before:right-0 md:before:bottom-0 md:before:h-[calc(100%-52px)] md:before:w-[1px] md:before:content-[''];
+
+  @apply md:after:bg-white-gray md:after:absolute md:after:bottom-0 md:after:left-0 md:after:h-[calc(100%-52px)] md:after:w-[1px] md:after:content-[''];
 }
