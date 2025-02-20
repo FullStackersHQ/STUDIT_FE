@@ -3,7 +3,7 @@ import useGetNotice from './useGetNotice';
 import useCreateNotice from './useCreateNotice';
 import useEditNotice from './useEditNotice';
 import useDeleteNotice from './useDeleteNotice';
-import useGetStudyDetail from './useGetStudyDetail';
+import useGetStudyDetail from '../useGetStudyDetail';
 
 export default function useManageModal(studyId: number, hasNotice: boolean, close: () => void) {
   const { refetchDetail } = useGetStudyDetail(studyId);

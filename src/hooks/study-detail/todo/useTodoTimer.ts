@@ -1,4 +1,4 @@
-import useToggleTimer from '../useToggleTimer';
+import useToggleTimer from '../timers/useToggleTimer';
 import { useState } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import { TimerType, TodoListType } from '../../../types/interface';

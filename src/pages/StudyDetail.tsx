@@ -5,7 +5,7 @@ import StudyMenuList from '../components/study-detail/main/StudyMenuList';
 import Notice from '../components/study-detail/main/Notice';
 import Timers from '../components/study-detail/main/Timers';
 import TodoListSection from '../components/study-detail/main/TodoListSection';
-import useTimers from '../hooks/study-detail/useTimers';
+import useTimers from '../hooks/study-detail/timers/useTimers';
 
 function StudyDetail() {
   const { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId, toggleMenu } = useStudyMain();

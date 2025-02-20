@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import studyMainApi from '../../api/studyMainApi';
+import studyMainApi from '../../../api/studyMainApi';
 
 export default function useEditNotice({
   studyId,
