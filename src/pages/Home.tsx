@@ -35,7 +35,7 @@ export default function Home({ type = 'recruits' }: { type: pageType }): JSX.Ele
         <FilterTags filteringInfo={filteringInfo} type={type} />
         <div
           className="scrollbar-hide mt-3 flex w-full flex-col items-center gap-[5px] overflow-y-scroll"
-          style={{ height: `calc(100vh - 250px)` }}
+          style={{ height: `${id === -1 ? 'calc(100vh - 200px)' : 'calc(100vh - 250px)'}` }}
         >
           {lists.map((list, index) => {
             const isLastItem = index === lists.length - 1;

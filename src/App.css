@@ -17,135 +17,17 @@
   --color-refund: #ff6b6b;
 }
 
-/* Tailwind의 @layer 사용 */
-@layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .search-input {
-    width: 100%;
-    /* w-full */
-    height: 23px;
-    /* h-[23px] */
-    margin-bottom: 12px;
-    /* mb-3 */
-    border: 1px solid var(--color-main);
-    /* border-main */
-    border-radius: 10px;
-    /* rounded-[10px] */
-    color: var(--color-black);
-    /* text-black */
-    font-size: 14px;
-    /* text-sm */
-    padding-left: 8px;
-    /* placeholder:pl-2 */
-  }
-
-  @media (min-width: 640px) {
-    /* sm */
-    .search-input {
-      height: 30px;
-      /* sm:h-[30px] */
-    }
-  }
-
-  @media (min-width: 768px) {
-    /* md */
-    .search-input {
-      height: 40px;
-      /* md:h-[40px] */
-    }
-  }
-
-  .modal-container {
-    @apply relative flex w-[343px] flex-col items-center rounded-md bg-white p-4;
-  }
-
+@layer components {
   .btn-sm {
     @apply bg-main hover:bg-main-hover cursor-pointer rounded-full px-2 py-1.5 text-sm font-medium text-white transition-colors;
-  }
-
-  .close-position {
-    @apply absolute -top-[26px] right-0 cursor-pointer;
   }
 
   .close-btn {
     @apply hover:text-white-gray h-3.5 w-3.5 text-white transition-colors;
   }
 
-  @keyframes shake {
-    0% {
-      transform: translateX(0);
-    }
-
-    25% {
-      transform: translateX(-5px);
-    }
-
-    50% {
-      transform: translateX(5px);
-    }
-
-    75% {
-      transform: translateX(-5px);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
-
-  .shake {
-    animation: shake 0.3s ease-in-out 1;
-  }
-
-  .range {
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    height: 8px;
-    width: 100%;
-    -webkit-appearance: none;
-    pointer-events: none;
-    background: none;
-
-    &::-webkit-slider-thumb {
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      border: 2px solid var(--color-white);
-      background-color: var(--color-main);
-      -webkit-appearance: none;
-      pointer-events: auto;
-    }
-  }
-
-  .create-study-label {
-    font-weight: bold;
-    margin-right: 8px;
-    font-size: 16px;
-    display: flex;
-    flex-direction: row;
-  }
-
   .text-input {
     @apply border-light-gray rounded border p-2;
-  }
-
-  .tag-container {
-    margin-bottom: 12px;
-    display: flex;
-    height: 24px;
-    width: 100%;
-    align-items: center;
-    gap: 5px;
-    overflow-y: auto;
   }
 
   .tag {
@@ -153,19 +35,87 @@
   }
 
   .textarea {
-    border: 1px solid var(--color-white-gray);
-    margin-top: 4px;
-    width: 100%;
-    border-radius: 5px;
-    padding: 4px 8px;
-    font-size: 0.875rem;
+    @apply border border-white-gray mt-1 w-full rounded-[5px] p-1 px-2 text-sm;
   }
 
-  .recruit-info-list {
-    margin-top: 8px;
-    list-style: square inside url('https://www.finney-taylor.com/App_Themes/FTaylor/images/bullets/listBullet.gif');
+  .study-menu {
+    @apply border-light-gray fixed top-0 left-0 z-40 mt-[52px] box-border w-full transform rounded-b-md border-x-2 border-b-2 bg-white drop-shadow-sm;
+  }
+
+  .study-menu-md {
+    @apply md:left-1/2 md:w-[766px] md:-translate-x-1/2 md:border-x-0;
   }
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.search-input {
+  @apply w-full h-[23px] mb-3 border border-main rounded-[10px] text-black text-sm pl-2 sm:h-[30px] md:h-[40px];
+}
+
+.modal-container {
+  @apply relative flex w-[343px] flex-col items-center rounded-md bg-white p-4;
+}
+
+
+.close-position {
+  @apply absolute -top-[26px] right-0 cursor-pointer;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out 1;
+}
+
+.range {
+  @apply absolute top-0 w-full h-2 appearance-none pointer-events-none bg-transparent;
+}
+
+.range::-webkit-slider-thumb {
+  @apply h-5 w-5 rounded-full border-2 border-white bg-main pointer-events-auto;
+}
+
+.create-study-label {
+  @apply font-bold mr-2 text-lg flex flex-row;
+}
+
+.tag-container {
+  @apply mb-3 flex h-6 w-full items-center gap-[5px] overflow-y-auto;
+}
+
+
+.recruit-info-list {
+  @apply mt-2 list-[square] list-inside list-image-[url('https://www.finney-taylor.com/App_Themes/FTaylor/images/bullets/listBullet.gif')];
+}
+
 
 @keyframes slideUp {
   0% {
@@ -197,10 +147,4 @@
 
 .slide-down {
   animation: slideDown 0.2s ease-in-out;
-}
-.study-menu {
-  @apply border-light-gray fixed top-0 left-0 z-40 mt-[52px] box-border w-full transform rounded-b-md border-x-2 border-b-2 bg-white drop-shadow-sm;
-}
-.study-menu-md {
-  @apply md:left-1/2 md:w-[766px] md:-translate-x-1/2 md:border-x-0;
 }

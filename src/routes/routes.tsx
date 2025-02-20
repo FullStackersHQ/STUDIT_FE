@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import Layout from '../layouts/Layout';
 import LoginRequiredLayout from '../layouts/LoginRequiredLayout';
 import LoginRedirect from '../pages/LoginRedirect';
+import LoadingScreen from '../components/LoadingScreen';
 
 const Login = lazy(() => import('../pages/Login'));
 const CreateStudy = lazy(() => import('../pages/CreateStudy'));
@@ -19,7 +20,7 @@ const Statistics = lazy(() => import('../pages/Statistics'));
 
 const Router = (): JSX.Element => {
   return (
-    <Suspense fallback={''}>
+    <Suspense fallback={<LoadingScreen />}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/login" element={<Login />} />

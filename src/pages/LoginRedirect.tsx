@@ -10,9 +10,7 @@ export default function LoginRedirect() {
 
   useEffect(() => {
     const kakaoLogin = async () => {
-      console.log('코드 전송', code);
       const response = await oauthApi.postOauthCode(code);
-      console.log('코드 전송 결과', response);
       if (response.status === 200) {
         setAuth(response.data.id, response.data.properties);
         navigate('/', { replace: true });

@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { todoListData, dummyStudyList, dummyNotices, timersData } from './data/dummy';
+import { todoListData, dummyStudyList, dummyNotices, timersData } from './data/studyDetailMockData';
 import {
   CreateTodoRequest,
   UpdateStudyRequest,
@@ -9,7 +9,7 @@ import {
   TimerRequest,
 } from '../types/request';
 import { TodoType } from '../types/interface';
-import { mockStudyRoomList } from './data/studyList';
+import { mockStudyRoomList } from './data/studyListMockData';
 
 const studyMainHandlers = [
   // 스터디룸 목록 조회

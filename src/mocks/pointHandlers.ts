@@ -1,16 +1,16 @@
 import { http, HttpResponse } from 'msw';
-import {
-  userPoints,
-  allPointRecords,
-  toppedUpPoints,
-  deductedPoints,
-  withDrawnPoints,
-  refundPoints,
-  rewardPoints,
-  profileData,
-} from './data/dummy';
 import { PointFilterType } from '../types/interface';
 import { PointRequest } from '../types/request';
+import {
+  allPointRecords,
+  deductedPoints,
+  refundPoints,
+  rewardPoints,
+  toppedUpPoints,
+  withDrawnPoints,
+  userPoints,
+} from './data/pointMockData';
+import { profileData } from './data/userMockData';
 
 const pointHandlers = [
   http.get('/point', () => {

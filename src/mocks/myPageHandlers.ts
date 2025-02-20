@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { profileData, avgStatsData, upcomingStudies, ongoingStudies, completedStudies } from './data/dummy';
+import { profileData, avgStatsData, upcomingStudies, ongoingStudies, completedStudies } from './data/userMockData';
 
 interface ModifyNicknameRequest {
   nickName: string;
