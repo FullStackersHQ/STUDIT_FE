@@ -4,22 +4,21 @@ import CloseIcon from '../../../assets/icons/close.svg';
 import PauseIcon from '../../../assets/icons/pause.svg';
 import CreateTodo from './CreateTodo';
 import useTodoActions from '../../../hooks/study-detail/todo/useTodoActions';
-import { TodoType } from '../../../types/interface';
+import { TodoType, TimerType } from '../../../types/interface';
 import { formatTime } from '../../../utils/commonUtils';
 import useTodoTimer from '../../../hooks/study-detail/todo/useTodoTimer';
+import { Dispatch, SetStateAction } from 'react';
 
 export default function TodoListSection({
   studyId,
   userId,
-  activeTodoId,
-  setActiveTodoId,
+  setTimers,
 }: {
   studyId: number;
   userId: number;
-  activeTodoId: number | null;
-  setActiveTodoId: (pre: number | null) => void;
+  setTimers: Dispatch<SetStateAction<TimerType[]>>;
 }) {
-  const { todoList, todoListLoading, todoStates, handleCheckboxChange } = useTodoList(studyId);
+  const { todoList, todoListLoading, todoStates, handleCheckboxChange, setLocalTodoList } = useTodoList(studyId);
   const {
     isAdding,
     setIsAdding,
@@ -32,8 +31,8 @@ export default function TodoListSection({
     editingTodo,
     setEditingTodo,
   } = useTodoActions(studyId);
-  const { startTimer, stopTimer } = useTodoTimer({ studyId, userId, activeTodoId, setActiveTodoId });
-  if (todoListLoading || !todoList) return null;
+  const { startTimer, stopTimer, activeTodoId } = useTodoTimer({ studyId, userId, setTimers, setLocalTodoList });
+  if (todoListLoading || !todoList || !todoList.todos) return null;
   const { studyTotalTime, todos } = todoList;
 
   return (

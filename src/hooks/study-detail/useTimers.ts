@@ -1,13 +1,12 @@
 import useGetTimers from './useGetTimers';
 import { useState, useEffect } from 'react';
 import { TimerType } from '../../types/interface';
-import useGetTodoList from './todo/useGetTodoList';
+import studyMainApi from '../../api/studyMainApi';
+import * as Sentry from '@sentry/react';
 
 export default function useTimers(studyId: number) {
-  const { timers: initialTimers, isTimerLoading, refetchTimers } = useGetTimers(studyId);
+  const { timers: initialTimers, isTimerLoading } = useGetTimers(studyId);
   const [timers, setTimers] = useState<TimerType[]>([]);
-  const { refetchTodoList } = useGetTodoList(studyId);
-  const [activeTodoId, setActiveTodoId] = useState<number | null>(null);
 
   useEffect(() => {
     if (initialTimers) {
@@ -16,18 +15,40 @@ export default function useTimers(studyId: number) {
   }, [initialTimers]);
 
   useEffect(() => {
-    let intervalId: ReturnType<typeof setInterval> | null = null;
-
-    intervalId = setInterval(() => {
-      refetchTimers();
-      if (activeTodoId) refetchTodoList();
+    const intervalId = setInterval(() => {
+      setTimers((prev) =>
+        prev.map((timer) => (timer.isRunning ? { ...timer, timerTime: timer.timerTime + 1 } : timer)),
+      );
     }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTodoId]);
+  useEffect(() => {
+    const syncWithServer = setInterval(async () => {
+      try {
+        const data = await studyMainApi.getTimers(studyId);
+        if (!data) return;
 
-  return { timers, isTimerLoading, activeTodoId, setActiveTodoId };
+        setTimers((prev) =>
+          prev.map((clientTimer) => {
+            const serverTimer = data.find((s: TimerType) => s.userId === clientTimer.userId);
+
+            if (!serverTimer) return clientTimer;
+
+            if (Math.abs(serverTimer.timerTime - clientTimer.timerTime) > 1) {
+              return { ...clientTimer, timerTime: serverTimer.timerTime };
+            }
+
+            return clientTimer;
+          }),
+        );
+      } catch (error) {
+        Sentry.captureException(error);
+      }
+    }, 5000);
+
+    return () => clearInterval(syncWithServer);
+  }, [studyId]);
+
+  return { timers, isTimerLoading, setTimers };
 }

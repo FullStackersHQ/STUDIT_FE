@@ -9,7 +9,7 @@ import useTimers from '../hooks/study-detail/useTimers';
 
 function StudyDetail() {
   const { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId, toggleMenu } = useStudyMain();
-  const { timers, isTimerLoading, activeTodoId, setActiveTodoId } = useTimers(studyId);
+  const { timers, isTimerLoading, setTimers } = useTimers(studyId);
   if (!studyDetail || isDetailLoading || isTimerLoading) return null;
 
   const { title, leaderId, hasNotice } = studyDetail;
@@ -28,12 +28,7 @@ function StudyDetail() {
       <Notice studyId={studyId} hasNotice={hasNotice} />
       <Timers timers={timers} leaderId={leaderId} userId={userId} hasNotice={hasNotice} />
       <div className="bg-main my-3 h-1.5 w-full" />
-      <TodoListSection
-        studyId={studyId}
-        userId={userId}
-        activeTodoId={activeTodoId}
-        setActiveTodoId={setActiveTodoId}
-      />
+      <TodoListSection studyId={studyId} userId={userId} setTimers={setTimers} />
     </div>
   );
 }
