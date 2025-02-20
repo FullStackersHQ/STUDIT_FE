@@ -5,12 +5,21 @@ import StudyMenuList from '../components/study-detail/main/StudyMenuList';
 import Notice from '../components/study-detail/main/Notice';
 import Timers from '../components/study-detail/main/Timers';
 import TodoListSection from '../components/study-detail/main/TodoListSection';
-import useTimers from '../hooks/study-detail/timers/useTimers';
+import useTodoNTimers from '../hooks/study-detail/timers/useTodoNTimers';
 
 function StudyDetail() {
   const { studyDetail, isDetailLoading, studyId, action, isMenuOpen, userId, toggleMenu } = useStudyMain();
-  const { timers, isTimerLoading, setTimers } = useTimers(studyId);
-  if (!studyDetail || isDetailLoading || isTimerLoading) return null;
+  const {
+    todoList,
+    timers,
+    setTimers,
+    todoListLoading,
+    isTimerLoading,
+    todoStates,
+    handleCheckboxChange,
+    setLocalTodoList,
+  } = useTodoNTimers(studyId);
+  if (!studyDetail || isDetailLoading || isTimerLoading || todoListLoading) return null;
 
   const { title, leaderId, hasNotice } = studyDetail;
   const isLeader = leaderId === userId;
@@ -28,7 +37,15 @@ function StudyDetail() {
       <Notice studyId={studyId} hasNotice={hasNotice} />
       <Timers timers={timers} leaderId={leaderId} userId={userId} hasNotice={hasNotice} />
       <div className="bg-main my-3 h-1.5 w-full" />
-      <TodoListSection studyId={studyId} userId={userId} setTimers={setTimers} />
+      <TodoListSection
+        studyId={studyId}
+        userId={userId}
+        todoList={todoList}
+        setTimers={setTimers}
+        todoStates={todoStates}
+        handleCheckboxChange={handleCheckboxChange}
+        setLocalTodoList={setLocalTodoList}
+      />
     </div>
   );
 }
