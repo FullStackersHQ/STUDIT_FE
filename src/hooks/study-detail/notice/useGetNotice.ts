@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import studyMainApi from '../../api/studyMainApi';
+import studyMainApi from '../../../api/studyMainApi';
 
 export default function useGetNotice(studyId: number, hasNotice: boolean) {
   const {

@@ -3,7 +3,7 @@ import Button from '../../Button';
 import CloseIcon from '../../../assets/icons/close.svg';
 import { handleMaxLengthChange } from '../../../utils/commonUtils';
 import NoticeIcon from '../../../assets/icons/notice.svg';
-import useManageModal from '../../../hooks/study-detail/useManageModal';
+import useManageModal from '../../../hooks/study-detail/notice/useManageModal';
 
 export default function ManageNoticeModal({
   isOpen,

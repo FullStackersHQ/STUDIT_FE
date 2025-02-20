@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
@@ -5,19 +6,18 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    svgr({
-      svgrOptions: {
-        exportType: 'default',
-        ref: true,
-        svgo: false,
-        titleProp: true,
-      },
-      include: '**/*.svg',
-    }),
-  ],
+  plugins: [react(), tailwindcss(), svgr({
+    svgrOptions: {
+      exportType: 'default',
+      ref: true,
+      svgo: false,
+      titleProp: true,
+    },
+    include: '**/*.svg',
+  }), sentryVitePlugin({
+    org: "studit-dk",
+    project: "javascript-react"
+  })],
   optimizeDeps: {
     include: ['msw'],
   },
@@ -35,5 +35,7 @@ export default defineConfig({
         assetFileNames: `assets/[name].[hash].[ext]`,
       },
     },
+
+    sourcemap: true
   },
 });

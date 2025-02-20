@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import studyMainApi from '../../api/studyMainApi';
-import useGetStudyDetail from './useGetStudyDetail';
+import studyMainApi from '../../../api/studyMainApi';
+import useGetStudyDetail from '../useGetStudyDetail';
 
 export default function useCreateNotice({
   studyId,

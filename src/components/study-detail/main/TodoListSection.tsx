@@ -1,25 +1,31 @@
-import useTodoList from '../../../hooks/study-detail/todo/useTodoList';
 import PlayIcon from '../../../assets/icons/play.svg';
 import CloseIcon from '../../../assets/icons/close.svg';
 import PauseIcon from '../../../assets/icons/pause.svg';
 import CreateTodo from './CreateTodo';
 import useTodoActions from '../../../hooks/study-detail/todo/useTodoActions';
-import { TodoType } from '../../../types/interface';
+import { TodoListType, TodoType } from '../../../types/interface';
 import { formatTime } from '../../../utils/commonUtils';
 import useTodoTimer from '../../../hooks/study-detail/todo/useTodoTimer';
+import { Dispatch, SetStateAction } from 'react';
+import { TimerType } from '../../../types/interface';
 
 export default function TodoListSection({
   studyId,
   userId,
-  activeTodoId,
-  setActiveTodoId,
+  todoList,
+  setTimers,
+  todoStates,
+  handleCheckboxChange,
+  setLocalTodoList,
 }: {
   studyId: number;
   userId: number;
-  activeTodoId: number | null;
-  setActiveTodoId: (pre: number | null) => void;
+  todoList: TodoListType;
+  setTimers: Dispatch<SetStateAction<TimerType[]>>;
+  todoStates: Record<number, boolean>;
+  handleCheckboxChange: (todoId: number, isCompleted: boolean) => void;
+  setLocalTodoList: Dispatch<SetStateAction<TodoListType>>;
 }) {
-  const { todoList, todoListLoading, todoStates, handleCheckboxChange } = useTodoList(studyId);
   const {
     isAdding,
     setIsAdding,
@@ -32,8 +38,7 @@ export default function TodoListSection({
     editingTodo,
     setEditingTodo,
   } = useTodoActions(studyId);
-  const { startTimer, stopTimer } = useTodoTimer({ studyId, userId, activeTodoId, setActiveTodoId });
-  if (todoListLoading || !todoList) return null;
+  const { startTimer, stopTimer, activeTodoId } = useTodoTimer({ studyId, userId, setTimers, setLocalTodoList });
   const { studyTotalTime, todos } = todoList;
 
   return (
