@@ -10,6 +10,7 @@ import MenuIcon from '../assets/icons/hamburger-menu.svg';
 import LeaderMenuList from '../components/recruit/LeaderMenuList';
 import { useAuthStore } from '../store/useAuthStore';
 import RecruitSuccessModal from '../components/recruit/RecruitSuccessModal';
+import { upcomingStudies } from '../mocks/data/userMockData';
 
 export default function RecruitDetail(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -25,13 +26,13 @@ export default function RecruitDetail(): JSX.Element {
 
   const onClickJoinBtn = async () => {
     // 유저 deposit이 적다면
-    if (properties.point < Number(data.result.deposit)) {
+    if (properties.point < Number(data.deposit)) {
       overlay.open(({ isOpen, close }) => {
         return (
           <PointShortageModal
             currentPoint={{
               now: properties.point,
-              need: Number(data.result.deposit),
+              need: Number(data.deposit),
             }}
             navigate={navigate}
             isOpen={isOpen}
@@ -46,6 +47,18 @@ export default function RecruitDetail(): JSX.Element {
         ...properties,
         point: properties.point - Number(data.result.deposit),
       });
+
+      // 백엔드 연동 시 제거
+      upcomingStudies.push({
+        recruit_id: upcomingStudies.length + 1,
+        gatherDate: `${data.result.studyStartAt.split('T')[0].replaceAll('-', '.')} ~ ${data.result.studyEndAt.split('T')[0].replaceAll('-', '.')}`,
+        title: data.result.title,
+        enterPoint: 3000,
+        tag: data.result.tags.join(' '),
+        category: data.result.category,
+        weeklyStudyTime: data.result.goalTime,
+      });
+
       overlay.open(({ isOpen, close }) => {
         return <RecruitSuccessModal navigate={navigate} isOpen={isOpen} close={close} text={response.message} />;
       });

@@ -6,5 +6,6 @@ export default function useGetRecruitInfo(recruitId: number) {
     queryKey: ['getRecruitInfo', recruitId],
     queryFn: () => recruitApi.getRecruitInfo(recruitId),
   });
+  console.log(recruitInfo);
   return { recruitInfo, isLoading };
 }
