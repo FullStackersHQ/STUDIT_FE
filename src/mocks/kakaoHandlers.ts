@@ -1,4 +1,5 @@
 import { http, HttpResponse } from 'msw';
+import { profileData } from './data/userMockData';
 
 const kakaoHandler = [
   http.post('/api/kakao-login', async ({ request }) => {
@@ -9,13 +10,13 @@ const kakaoHandler = [
       return HttpResponse.json({
         status: 200,
         data: {
-          id: 1,
+          id: profileData.userId,
           connected_at: '2025-02-07T06:32:23Z',
           properties: {
-            nickname: 'seungmani',
-            profile_image: 'https://via.placeholder.com/150',
+            nickname: profileData.nickName,
+            profile_image: profileData.profileImage,
             jwt_token: 'token123',
-            point: 41000,
+            point: profileData.points,
           },
         },
       });
@@ -33,12 +34,13 @@ const kakaoHandler = [
 
   http.get('/api/auth/kakao-login', () => {
     return HttpResponse.json({
-      id: 21123443898,
+      id: profileData.userId,
       connected_at: '2025-02-07T06:32:23Z',
       properties: {
-        nickname: '임현주',
-        profile_image: 'https://img1.kakao.jpeg',
+        nickname: profileData.nickName,
+        profile_image: profileData.profileImage,
         jwt_token: 'token123',
+        point: profileData.points,
       },
     });
   }),
@@ -51,12 +53,13 @@ const kakaoHandler = [
   http.get('/api/auth/login', () => {
     console.log('로그인');
     return HttpResponse.json({
-      id: 21123443898,
+      id: profileData.userId,
       connected_at: '2025-02-07T06:32:23Z',
       properties: {
-        nickname: '임현주',
-        profile_image: 'https://img1.kakao.jpeg',
-        jwt_token: 'sa6g54sa65g46a',
+        nickname: profileData.nickName,
+        profile_image: profileData.profileImage,
+        jwt_token: 'token123',
+        point: profileData.points,
       },
     });
   }),

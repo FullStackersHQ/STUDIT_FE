@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw';
 import { StudyRoomPostType, StudyRoomPutType } from '../types/interface';
-import { mockStudyRecruitList } from './data/studyList';
-import { deductedPoints } from './data/dummy';
+import { mockStudyRecruitList } from './data/studyListMockData';
+import { allPointRecords, deductedPoints } from './data/pointMockData';
 
 const recruitHandlers = [
   // 모집 중인 스터디룸 목록 조회
@@ -83,7 +83,20 @@ const recruitHandlers = [
           },
         ],
       });
-      console.log(deductedPoints);
+
+      allPointRecords.unshift({
+        date: formattedDate,
+        records: [
+          {
+            id: 1,
+            type: '차감',
+            amount: body.deposit,
+            total_after: 35000,
+            time: formattedTime,
+          },
+        ],
+      });
+
       return HttpResponse.json({
         status: 'OK',
         code: 200,
