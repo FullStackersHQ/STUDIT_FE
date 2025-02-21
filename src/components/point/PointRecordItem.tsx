@@ -33,7 +33,7 @@ const PointRecordItem = forwardRef<HTMLLIElement, { record: PointRecord }>(({ re
         <span className={`font-bold ${typeClass}`}>
           {sign} {amount.toLocaleString()} P
         </span>
-        <span className="text-xs">{total_after.toLocaleString()}</span>
+        <span className="text-xs">{total_after.toLocaleString()} P</span>
       </div>
     </li>
   );
