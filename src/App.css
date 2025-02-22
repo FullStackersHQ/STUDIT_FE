@@ -57,7 +57,7 @@
 }
 
 .search-input {
-  @apply border-main mb-3 h-[23px] w-full rounded-[10px] border pl-2 text-sm text-black sm:h-[30px] md:h-[40px];
+  @apply border-gray h-[23px] w-full rounded-[10px] border pl-2 text-sm text-black sm:h-[30px] md:h-[40px];
 }
 
 .modal-container {
@@ -107,7 +107,7 @@
 }
 
 .tag-container {
-  @apply mb-3 flex h-6 w-full items-center gap-[5px] overflow-y-auto;
+  @apply my-3 flex h-6 w-full items-center gap-[5px] overflow-y-auto;
 }
 
 .recruit-info-list {
@@ -145,6 +145,7 @@
 .slide-down {
   animation: slideDown 0.2s ease-in-out;
 }
+
 .layout-md {
   @apply md:before:bg-white-gray md:before:absolute md:before:right-0 md:before:bottom-0 md:before:h-[calc(100%-52px)] md:before:w-[1px] md:before:content-[''];
 

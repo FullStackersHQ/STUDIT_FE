@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react';
-import { useSearchStore } from '../../store/useSearchStore';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 export default function RangeSlider({
   min,
   max,
   priceGap,
+  value,
+  setValue,
 }: {
   min: number;
   max: number;
   priceGap: number;
+  value: [number, number];
+  setValue: Dispatch<SetStateAction<[number, number]>>;
 }): JSX.Element {
-  const [minValue, setMinValue] = useState<number>(min);
-  const [maxValue, setMaxValue] = useState<number>(max);
+  const [minValue, setMinValue] = useState<number>(value[0]);
+  const [maxValue, setMaxValue] = useState<number>(value[1]);
   const [rangeMinPercent, setRangeMinPercent] = useState<number>(0);
   const [rangeMaxPercent, setRangeMaxPercent] = useState<number>(100);
-  const { filteringInfo, setFilteringInfo } = useSearchStore();
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMinValue(parseInt(e.target.value));
@@ -36,10 +38,7 @@ export default function RangeSlider({
   };
 
   useEffect(() => {
-    setFilteringInfo({
-      ...filteringInfo,
-      point: [min, max],
-    });
+    updateRangePercent();
   }, []);
 
   return (
@@ -63,10 +62,7 @@ export default function RangeSlider({
           value={minValue}
           onChange={(e) => {
             handleMinChange(e);
-            setFilteringInfo({
-              ...filteringInfo,
-              point: [Number(e.target.value), filteringInfo.point[1]],
-            });
+            setValue([Number(e.target.value), value[1]]);
             updateRangePercent();
           }}
         />
@@ -79,10 +75,7 @@ export default function RangeSlider({
           value={maxValue}
           onChange={(e) => {
             handleMaxChange(e);
-            setFilteringInfo({
-              ...filteringInfo,
-              point: [filteringInfo.point[0], Number(e.target.value)],
-            });
+            setValue([value[0], Number(e.target.value)]);
             updateRangePercent();
           }}
         />
