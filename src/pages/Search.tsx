@@ -37,7 +37,7 @@ export default function Search() {
     <>
       <HeaderWithBack title={'Search'} isStudyPage={false} />
       <div className="px-4">
-        <div className="mt-3 flex items-center justify-between">
+        <div className="my-4 flex items-center justify-between">
           <button
             className="text-main h-8 w-1/5 rounded-[10px] text-sm font-bold transition-colors"
             onClick={resetFilteringInfo}
@@ -54,30 +54,25 @@ export default function Search() {
             검색하기
           </button>
         </div>
-        <div className="mt-5">
-          <input
-            placeholder="검색어를 입력하세요."
-            className="search-input"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
+        <input
+          placeholder="검색어를 입력하세요."
+          className="search-input"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-        <div className="mt-6">
-          <h3 className="font-bold">주당 공부 시간</h3>
-          <WeekStudyTime value={studyTimeRange} setValue={setStudyTimeRange} />
-        </div>
+        <div className="my-4 h-[1px]"></div>
+        <h3 className="font-bold">주당 공부 시간</h3>
+        <WeekStudyTime value={studyTimeRange} setValue={setStudyTimeRange} />
 
-        <div className="mt-8">
-          <h2 className="font-bold">카테고리</h2>
-          <Select categories={CATEGORY} value={category || CATEGORY[0]} setValue={setCategory} />
-        </div>
+        <div className="my-4 h-[1px]"></div>
+        <h2 className="font-bold">카테고리</h2>
+        <Select categories={CATEGORY} value={category || CATEGORY[0]} setValue={setCategory} />
 
-        <div className="mt-8">
-          <h2 className="font-bold">참여 포인트</h2>
-          <div className="mt-1">
-            <RangeSlider value={point} setValue={setPoint} min={1000} max={50000} priceGap={1000} />
-          </div>
+        <div className="my-4 h-[1px]"></div>
+        <h2 className="font-bold">참여 포인트</h2>
+        <div className="mt-1">
+          <RangeSlider value={point} setValue={setPoint} min={1000} max={50000} priceGap={1000} />
         </div>
       </div>
     </>
