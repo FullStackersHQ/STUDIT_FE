@@ -23,5 +23,6 @@ export default function useMyStudyList() {
           ? '완료한 스터디'
           : '';
   const { studyList, isLoading, fetchNextPage, hasNextPage } = useFetchMyStudyList(studyType);
+
   return { studyType, title, studyList, isLoading, fetchNextPage, hasNextPage, emptyText };
 }

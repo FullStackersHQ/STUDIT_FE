@@ -9,11 +9,13 @@ import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 import banner from '../assets/imgs/banner.png';
 import ChevronRight from '../assets/icons/chevron-right.svg';
+import ScrollToTopBtn from '../components/ScrollToTopBtn';
 
 function MyStudyList() {
   const { studyType, title, studyList, isLoading, fetchNextPage, hasNextPage, emptyText } = useMyStudyList();
   const { setTarget } = useIntersectionObserver({ hasNextPage, fetchNextPage });
   const navigate = useNavigate();
+
   if (!studyList || isLoading) return null;
 
   return (
@@ -57,6 +59,7 @@ function MyStudyList() {
           </div>
         )}
       </section>
+      <ScrollToTopBtn hasBanner />
     </div>
   );
 }
