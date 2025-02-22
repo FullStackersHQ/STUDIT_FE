@@ -110,7 +110,8 @@ const pointHandlers = [
 
       const today = new Date();
       const formattedDate = today.toISOString().split('T')[0].replace(/-/g, '.');
-      const existingDateIndex = allPointRecords.findIndex((record) => record.date === formattedDate);
+      const idxAll = allPointRecords.findIndex((r) => r.date === formattedDate);
+      const idxWithdraw = withDrawnPoints.findIndex((r) => r.date === formattedDate);
 
       const newRecord = {
         id: Date.now(),
@@ -120,14 +121,18 @@ const pointHandlers = [
         time: today.toTimeString().split(' ')[0],
       };
 
-      if (existingDateIndex !== -1) {
-        allPointRecords[existingDateIndex].records.unshift(newRecord);
-        withDrawnPoints[existingDateIndex].records.unshift(newRecord);
+      if (idxAll !== -1) {
+        allPointRecords[idxAll].records.unshift(newRecord);
       } else {
         allPointRecords.unshift({
           date: formattedDate,
           records: [newRecord],
         });
+      }
+
+      if (idxWithdraw !== -1) {
+        withDrawnPoints[idxWithdraw].records.unshift(newRecord);
+      } else {
         withDrawnPoints.unshift({
           date: formattedDate,
           records: [newRecord],
@@ -159,7 +164,8 @@ const pointHandlers = [
 
       const today = new Date();
       const formattedDate = today.toISOString().split('T')[0].replace(/-/g, '.');
-      const existingDateIndex = allPointRecords.findIndex((record) => record.date === formattedDate);
+      const idxAll = allPointRecords.findIndex((record) => record.date === formattedDate);
+      const idxTop = toppedUpPoints.findIndex((record) => record.date === formattedDate);
 
       const newRecord = {
         id: Date.now(),
@@ -169,14 +175,18 @@ const pointHandlers = [
         time: today.toTimeString().split(' ')[0],
       };
 
-      if (existingDateIndex !== -1) {
-        allPointRecords[existingDateIndex].records.unshift(newRecord);
-        toppedUpPoints[existingDateIndex].records.unshift(newRecord);
+      if (idxAll !== -1) {
+        allPointRecords[idxAll].records.unshift(newRecord);
       } else {
         allPointRecords.unshift({
           date: formattedDate,
           records: [newRecord],
         });
+      }
+
+      if (idxTop !== -1) {
+        toppedUpPoints[idxTop].records.unshift(newRecord);
+      } else {
         toppedUpPoints.unshift({
           date: formattedDate,
           records: [newRecord],
