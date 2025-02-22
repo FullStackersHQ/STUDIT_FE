@@ -57,7 +57,7 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
             </p>
           )}
         </div>
-        <div className="flex flex-col items-center gap-y-1.5">
+        <div className="flex flex-col items-center gap-y-1">
           <div className="border-white-gray relative flex h-[152px] w-[152px] grow flex-col items-center justify-center rounded-lg border">
             {userStudyTime ? (
               <>
