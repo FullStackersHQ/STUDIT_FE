@@ -7,7 +7,7 @@ export default function Fnb({ nav }: { nav: string }) {
   const navList = [
     { icon: Home, text: '모집', ariaLabel: '메인 페이지로 이동', path: '/' },
     { icon: Group, text: '진행', ariaLabel: '진행 페이지로 이동', path: '/study-list' },
-    { icon: User, text: '마이', ariaLabel: '마이 페이지로 이동', path: '/my-page' },
+    { icon: User, text: '마이 페이지', ariaLabel: '마이 페이지로 이동', path: '/my-page' },
   ];
   const navigate = useNavigate();
   return (
@@ -26,7 +26,7 @@ export default function Fnb({ nav }: { nav: string }) {
               className="flex cursor-pointer flex-col items-center"
             >
               <navItem.icon alt={navItem.text} />
-              <span className="mt-1">{navItem.text}</span>
+              <span className="mt-1 whitespace-nowrap">{navItem.text}</span>
             </button>
           </li>
         ))}

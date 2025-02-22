@@ -4,5 +4,5 @@ export const COLORS = ['#0074D9', '#FF6347', '#FFCC00', '#3D9970', '#B10DC9', '#
 export const FNB_LIST: { [key: string]: string } = {
   '': '모집',
   'study-list': '진행',
-  'my-page': '마이',
+  'my-page': '마이 페이지',
 };
