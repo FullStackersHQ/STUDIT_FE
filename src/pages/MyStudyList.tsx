@@ -19,10 +19,10 @@ function MyStudyList() {
   if (!studyList || isLoading) return null;
 
   return (
-    <div className={`${!studyList && 'flex h-full w-full items-center justify-between'}`}>
+    <div className={`${studyList.length <= 0 && 'flex h-full w-full items-center justify-between'}`}>
       <HeaderWithBack title={title} />
       <section className="flex w-full flex-col gap-y-2 px-4 pt-3 pb-5">
-        {studyList ? (
+        {studyList.length > 0 ? (
           <div>
             <div className="flex flex-col gap-y-2">
               {studyList.map((studyItem: StudyItemType, index: number) => {

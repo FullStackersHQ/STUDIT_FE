@@ -1,27 +1,26 @@
 import { AvgStats } from '../../types/interface';
 import { BarChart, Bar } from 'recharts';
-import { convertToPercent, convertToHHMM } from '../../utils/commonUtils';
 import ThreeDotsLoader from './ThreeDotsLoader';
 
 export default function AverageStats({ averageStats, nickName }: { averageStats: AvgStats; nickName: string }) {
-  const { averageTodoCompletion, userTodoCompletion, userStudyTime, averageStudyTime } = averageStats;
+  const { averageTodoCompletion, userTodoCompletion, userGoalRate, averageGoalRate } = averageStats;
   const todoData = [
     {
       value1: averageTodoCompletion,
-      value2: userTodoCompletion,
+      value2: userTodoCompletion || 0,
     },
   ];
   const studyTimeData = [
     {
-      value1: convertToPercent(averageStudyTime),
-      value2: convertToPercent(userStudyTime),
+      value1: averageGoalRate,
+      value2: userGoalRate || 0,
     },
   ];
-  const todoDiff = Math.abs(averageTodoCompletion - userTodoCompletion);
-  const studyTimeDiff = convertToHHMM(Math.abs(averageStudyTime - userStudyTime));
+  const todoDiff = Math.abs(averageTodoCompletion - (userTodoCompletion || 0));
+  const studyTimeDiff = Math.abs(averageGoalRate - (userGoalRate || 0));
 
-  const todoComparison = averageTodoCompletion - userTodoCompletion;
-  const studyTimeComparison = averageStudyTime - userStudyTime;
+  const todoComparison = averageTodoCompletion - (userTodoCompletion || 0);
+  const studyTimeComparison = averageGoalRate - (userGoalRate || 0);
 
   return (
     <section className="text-sm">
@@ -42,7 +41,7 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
                 </p>
               </>
             ) : (
-              <div className={`flex flex-col items-center gap-y-12 ${!userStudyTime && 'mt-8'}`}>
+              <div className={`flex flex-col items-center gap-y-12 ${!userGoalRate && 'mt-8'}`}>
                 <ThreeDotsLoader />
                 <p className="text-center">
                   데이터가 <br />
@@ -59,20 +58,21 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
         </div>
         <div className="flex flex-col items-center gap-y-1">
           <div className="border-white-gray relative flex h-[152px] w-[152px] grow flex-col items-center justify-center rounded-lg border">
-            {userStudyTime ? (
+            {userGoalRate ? (
               <>
                 <BarChart data={studyTimeData} width={52} height={100}>
                   <Bar dataKey="value1" className="fill-white-gray" radius={[2, 2, 0, 0]} />
                   <Bar dataKey="value2" className="fill-main" radius={[2, 2, 0, 0]} />
                 </BarChart>
                 <p className="text-center">
-                  <span className="text-main-text font-bold">{studyTimeDiff} </span> <br />
-                  {studyTimeComparison < 0 ? '더 많이 ' : '더 적게 '}
-                  스터디 했어요
+                  <span className="text-main-text font-bold">{studyTimeDiff}% </span>
+                  {studyTimeComparison < 0 ? '더 ' : '적게 '} 목표 시간을
+                  <br />
+                  달성 했어요
                 </p>
               </>
             ) : (
-              <div className={`flex flex-col items-center gap-y-12 ${!userStudyTime && 'mt-8'}`}>
+              <div className={`flex flex-col items-center gap-y-12 ${!userGoalRate && 'mt-8'}`}>
                 <ThreeDotsLoader />
                 <p className="text-center">
                   데이터가 <br />
@@ -81,9 +81,9 @@ export default function AverageStats({ averageStats, nickName }: { averageStats:
               </div>
             )}
           </div>
-          {userStudyTime && (
+          {userGoalRate && (
             <p>
-              나의 스터디 시간: <span className="text-main-text font-bold">{convertToHHMM(userStudyTime)}</span>
+              나의 목표 시간 달성률: <span className="text-main-text font-bold">{userGoalRate}%</span>
             </p>
           )}
         </div>

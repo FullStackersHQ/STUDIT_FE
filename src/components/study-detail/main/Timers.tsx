@@ -29,7 +29,7 @@ function Timers({
             ) : (
               <LightOffIcon alt={timer.nickname + '타이머 측정 중'} />
             )}
-            <span>{timer.nickname}</span>
+            <span className="whitespace-nowrap">{timer.nickname}</span>
             <span className="text-xs font-medium">{formatTime(timer.timerTime)}</span>
           </div>
         );

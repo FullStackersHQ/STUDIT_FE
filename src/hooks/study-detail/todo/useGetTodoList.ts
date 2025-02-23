@@ -8,7 +8,7 @@ export default function useGetTodoList(studyId: number) {
     isLoading: todoListLoading,
     refetch: refetchTodoList,
   } = useQuery<TodoListType>({
-    queryKey: ['getTodoList'],
+    queryKey: ['getTodoList', studyId],
     queryFn: () => studyMainApi.getTodoList(studyId),
   });
   return { todoList, todoListLoading, refetchTodoList };

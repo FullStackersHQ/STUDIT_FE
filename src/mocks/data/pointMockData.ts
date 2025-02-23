@@ -23,11 +23,6 @@ export const allPointRecords: GroupedByDate[] = [
         total_after: 50000,
         time: '16:45:00',
       },
-    ],
-  },
-  {
-    date: '2024.01.30',
-    records: [
       {
         id: 3,
         type: '충전',
@@ -181,11 +176,6 @@ export const toppedUpPoints: GroupedByDate[] = [
         total_after: 35000,
         time: '11:20:00',
       },
-    ],
-  },
-  {
-    date: '2024.02.11',
-    records: [
       {
         id: 4,
         type: '충전',
@@ -217,11 +207,6 @@ export const toppedUpPoints: GroupedByDate[] = [
         total_after: 40000,
         time: '14:15:00',
       },
-    ],
-  },
-  {
-    date: '2024.02.08',
-    records: [
       {
         id: 1,
         type: '충전',
@@ -235,62 +220,26 @@ export const toppedUpPoints: GroupedByDate[] = [
 
 export const deductedPoints: GroupedByDate[] = [
   {
-    date: '2024.02.12',
+    date: '2024.02.14',
     records: [
       {
-        id: 5,
+        id: 2,
         type: '차감',
-        amount: 15000,
-        total_after: 35000,
+        amount: 500,
+        total_after: 3500,
         time: '11:20:00',
       },
     ],
   },
   {
-    date: '2024.02.11',
-    records: [
-      {
-        id: 4,
-        type: '차감',
-        amount: 20000,
-        total_after: 50000,
-        time: '16:45:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.10',
-    records: [
-      {
-        id: 3,
-        type: '차감',
-        amount: 30000,
-        total_after: 70000,
-        time: '09:00:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.09',
-    records: [
-      {
-        id: 2,
-        type: '차감',
-        amount: 10000,
-        total_after: 40000,
-        time: '14:15:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.08',
+    date: '2024.01.12',
     records: [
       {
         id: 1,
         type: '차감',
-        amount: 50000,
-        total_after: 50000,
-        time: '10:30:00',
+        amount: 500,
+        total_after: 10000,
+        time: '16:45:00',
       },
     ],
   },
@@ -298,62 +247,38 @@ export const deductedPoints: GroupedByDate[] = [
 
 export const withDrawnPoints: GroupedByDate[] = [
   {
-    date: '2024.02.12',
+    date: '2025.02.11',
     records: [
       {
-        id: 5,
+        id: 3,
         type: '출금',
-        amount: 15000,
-        total_after: 35000,
-        time: '11:20:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.11',
-    records: [
-      {
-        id: 4,
-        type: '출금',
-        amount: 20000,
-        total_after: 50000,
+        amount: 1000,
+        total_after: 8000,
         time: '16:45:00',
       },
     ],
   },
   {
-    date: '2024.02.10',
+    date: '2025.01.16',
     records: [
       {
-        id: 3,
+        id: 2,
         type: '출금',
-        amount: 30000,
-        total_after: 70000,
+        amount: 1000,
+        total_after: 7000,
         time: '09:00:00',
       },
     ],
   },
   {
-    date: '2024.02.09',
-    records: [
-      {
-        id: 2,
-        type: '출금',
-        amount: 10000,
-        total_after: 40000,
-        time: '14:15:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.08',
+    date: '2025.01.01',
     records: [
       {
         id: 1,
         type: '출금',
-        amount: 50000,
-        total_after: 50000,
-        time: '10:30:00',
+        amount: 2000,
+        total_after: 14000,
+        time: '14:15:00',
       },
     ],
   },
@@ -361,60 +286,31 @@ export const withDrawnPoints: GroupedByDate[] = [
 
 export const rewardPoints: GroupedByDate[] = [
   {
-    date: '2024.02.12',
-    records: [
-      {
-        id: 5,
-        type: '보상',
-        amount: 15000,
-        total_after: 85000,
-        time: '11:20:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.11',
-    records: [
-      {
-        id: 4,
-        type: '보상',
-        amount: 20000,
-        total_after: 70000,
-        time: '16:45:00',
-      },
-    ],
-  },
-  {
     date: '2024.02.10',
     records: [
       {
         id: 3,
         type: '보상',
-        amount: 30000,
-        total_after: 50000,
+        amount: 1000,
+        total_after: 15000,
         time: '09:00:00',
       },
     ],
   },
   {
-    date: '2024.02.09',
+    date: '2024.01.31',
     records: [
       {
         id: 2,
         type: '보상',
-        amount: 10000,
+        amount: 1300,
         total_after: 20000,
         time: '14:15:00',
       },
-    ],
-  },
-  {
-    date: '2024.02.08',
-    records: [
       {
         id: 1,
         type: '보상',
-        amount: 10000,
+        amount: 1000,
         total_after: 10000,
         time: '10:30:00',
       },
@@ -422,72 +318,11 @@ export const rewardPoints: GroupedByDate[] = [
   },
 ];
 
-export const refundPoints: GroupedByDate[] = [
-  {
-    date: '2024.02.12',
-    records: [
-      {
-        id: 5,
-        type: '환불',
-        amount: 15000,
-        total_after: 20000,
-        time: '11:20:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.11',
-    records: [
-      {
-        id: 4,
-        type: '환불',
-        amount: 20000,
-        total_after: 35000,
-        time: '16:45:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.10',
-    records: [
-      {
-        id: 3,
-        type: '환불',
-        amount: 30000,
-        total_after: 55000,
-        time: '09:00:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.09',
-    records: [
-      {
-        id: 2,
-        type: '환불',
-        amount: 10000,
-        total_after: 85000,
-        time: '14:15:00',
-      },
-    ],
-  },
-  {
-    date: '2024.02.08',
-    records: [
-      {
-        id: 1,
-        type: '환불',
-        amount: 50000,
-        total_after: 95000,
-        time: '10:30:00',
-      },
-    ],
-  },
-];
+export const refundPoints: GroupedByDate[] = [];
 
 export const userPoints: IUserPoints = {
-  totalPoints: 50000,
-  totalRewardPoints: 70000,
-  totalDeductedPoints: 15000,
-  totalWithdrawnPoints: 5000,
+  totalPoints: 2000,
+  totalRewardPoints: 3300,
+  totalDeductedPoints: 1000,
+  totalWithdrawnPoints: 4000,
 };
