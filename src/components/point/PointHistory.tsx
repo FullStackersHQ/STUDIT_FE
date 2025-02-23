@@ -16,7 +16,7 @@ export default function PointHistory({ selectedFilter }: { selectedFilter: Point
   return (
     <>
       {pointHistory ? (
-        <ul>
+        <div>
           {pointHistory.map((pointItem, index) => {
             const isLastItem = index === pointHistory.length - 1;
             return (
@@ -32,7 +32,7 @@ export default function PointHistory({ selectedFilter }: { selectedFilter: Point
               </div>
             );
           })}
-        </ul>
+        </div>
       ) : (
         <div className="mt-12 flex h-full items-start justify-center gap-x-2.5">
           <p className="bg-white-gray mt-2 rounded-full px-2 py-1">{selectedFilter} 포인트 내역이 없어요.</p>
