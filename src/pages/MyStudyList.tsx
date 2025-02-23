@@ -17,7 +17,7 @@ function MyStudyList() {
   const navigate = useNavigate();
 
   if (!studyList || isLoading) return null;
-  console.log(studyList.length);
+
   return (
     <div className={`${studyList.length <= 0 && 'flex h-full w-full items-center justify-between'}`}>
       <HeaderWithBack title={title} />
