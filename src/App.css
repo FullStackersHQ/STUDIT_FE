@@ -35,7 +35,7 @@
   }
 
   .textarea {
-    @apply border-white-gray mt-1 w-full rounded-[5px] border p-1 px-2 text-sm;
+    @apply border-white-gray mt-1 w-full rounded-[5px] border p-1 px-2 text-sm/6;
   }
 
   .study-menu {
@@ -44,6 +44,14 @@
 
   .study-menu-md {
     @apply md:left-1/2 md:w-[766px] md:-translate-x-1/2 md:border-x-0;
+  }
+
+  .card {
+    @apply border-light-gray mb-2 w-full rounded-md border bg-white p-3 shadow-md text-black
+  }
+
+  .study-tag {
+    @apply bg-white-gray rounded-md px-2 py-1 text-sm text-black whitespace-nowrap
   }
 }
 

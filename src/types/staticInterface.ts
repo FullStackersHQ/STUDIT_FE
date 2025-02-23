@@ -24,7 +24,7 @@ export interface WeeklyStudyDataType {
 }
 
 export interface UpdatedWeeklyDataItem {
-  day: string; // 날짜 (YYYY-MM-DD 형식)
-  totalTime: number; // 해당 날짜의 총 공부 시간 (소수점으로 표시)
-  [key: string]: string | number; // 동적 키: 할일과 그에 대한 공부 시간
+  day: string;
+  totalTime: number;
+  [key: string]: string | number;
 }
