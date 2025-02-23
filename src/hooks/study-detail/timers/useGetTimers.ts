@@ -7,7 +7,7 @@ export default function useGetTimers(studyId: number) {
     isLoading: isTimerLoading,
     refetch: refetchTimers,
   } = useQuery({
-    queryKey: ['getTimers'],
+    queryKey: ['getTimers', studyId],
     queryFn: () => studyMainApi.getTimers(studyId),
   });
   return { timers, isTimerLoading, refetchTimers };
