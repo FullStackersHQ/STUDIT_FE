@@ -7,7 +7,6 @@ import { pageType } from '../types/interface';
 import FilterTags from '../components/home/FilterTags';
 import RecruitList from '../components/home/RecruitList';
 import OngoingList from '../components/home/OngoingList';
-import ScrollToTopBtn from '../components/ScrollToTopBtn';
 
 export default function Home({ type = 'recruits' }: { type: pageType }): JSX.Element {
   const { filteringInfo } = useSearchStore();
@@ -38,7 +37,6 @@ export default function Home({ type = 'recruits' }: { type: pageType }): JSX.Ele
           className="scrollbar-hide mt-3 flex w-full flex-col items-center gap-[5px] overflow-y-scroll"
           style={{ height: `${id === -1 ? 'calc(100vh - 200px)' : 'calc(100vh - 250px)'}`, minHeight: '400px' }}
         >
-          <ScrollToTopBtn />
           {lists.map((list, index) => {
             const isLastItem = index === lists.length - 1;
             return type === 'recruits' ? (
