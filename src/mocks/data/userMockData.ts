@@ -178,8 +178,8 @@ export const profileData: UserProfile = {
 
 export const avgStatsData: AvgStats = {
   userId: 1,
-  userTodoCompletion: 100,
-  averageTodoCompletion: 65,
-  userStudyTime: 100,
-  averageStudyTime: 352,
+  userTodoCompletion: 67,
+  averageTodoCompletion: 70,
+  userGoalRate: 80,
+  averageGoalRate: 60,
 };
