@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Fnb({ nav }: { nav: string }) {
   const navList = [
-    { icon: Home, text: '모집', ariaLabel: '메인 페이지로 이동', path: '/' },
-    { icon: Group, text: '진행', ariaLabel: '진행 페이지로 이동', path: '/study-list' },
+    { icon: Home, text: '모집 목록', ariaLabel: '메인 페이지로 이동', path: '/' },
+    { icon: Group, text: '진행 목록', ariaLabel: '진행 페이지로 이동', path: '/study-list' },
     { icon: User, text: '마이 페이지', ariaLabel: '마이 페이지로 이동', path: '/my-page' },
   ];
   const navigate = useNavigate();
