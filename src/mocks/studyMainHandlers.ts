@@ -19,16 +19,16 @@ const studyMainHandlers = [
     });
   }),
   http.get(`/rooms/:studyId`, ({ params }) => {
-    const studyId = params.studyId;
-    const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === Number(studyId));
+    const studyId = Number(params.studyId);
+    const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === studyId);
     if (dummyStudyList && targetStudy) return HttpResponse.json(targetStudy);
     return HttpResponse.error();
   }),
   http.put(`/rooms/:studyId`, async ({ params, request }) => {
     try {
-      const studyId = params.studyId;
+      const studyId = Number(params.studyId);
       const body = (await request.json()) as UpdateStudyRequest;
-      const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === Number(studyId));
+      const targetStudy = mockStudyRoomList.find((dummyStudy) => dummyStudy.roomId === studyId);
       if (!body || !targetStudy) {
         return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
           status: 400,
@@ -50,8 +50,8 @@ const studyMainHandlers = [
   }),
 
   http.get(`/rooms/:studyId/notices`, ({ params }) => {
-    const studyId = params.studyId;
-    const notice = dummyNotices[Number(studyId)];
+    const studyId = Number(params.studyId);
+    const notice = dummyNotices[studyId];
     if (notice && studyId) return HttpResponse.json(notice);
     return HttpResponse.error();
   }),

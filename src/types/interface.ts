@@ -46,7 +46,7 @@ export interface StudyDetailType extends StudyRoomGetType {
 export interface StudyOngoingType {
   roomId: number;
   leaderId: number;
-  leaderNickname: string;
+  leaderNickName: string;
   title: string;
   description: string;
   category: string;

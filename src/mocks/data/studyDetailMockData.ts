@@ -1,120 +1,179 @@
-import { StudyDetail, TodoListType, StudyOngoingType, NoticeType, TimerType } from '../../types/interface';
-
-export const studyDetailData: StudyDetail = {
-  title: 'CPA 자격증 준비 스터디',
-  description: 'CPA(공인회계사) 자격증 취득을 위한 이론 공부와 문제 풀이를 진행하는 스터디입니다.',
-  tags: ['CPA', '회계', '재무관리', '회계학'],
-};
+import { TodoListType, StudyOngoingType, NoticeType, TimerType } from '../../types/interface';
 
 export const todoListData: { [studyId: number]: TodoListType } = {
-  1: {
-    studyTotalTime: 12000,
+  14: {
+    studyTotalTime: 12004,
     todos: [
       {
-        todoId: 10,
-        todoName: 'JAVA 공부하기',
-        isCompleted: true,
-        studyTime: 7200,
-        isRunning: false,
-      },
-      {
-        todoId: 12,
-        todoName: '알고리즘 공부하기',
-        isCompleted: false,
-        studyTime: 4800,
-        isRunning: false,
-      },
-    ],
-  },
-  2: {
-    studyTotalTime: 8000,
-    todos: [
-      {
-        todoId: 13,
-        todoName: 'React 공부하기',
+        todoId: 1,
+        todoName: '행정법 핵심 개념 정리',
         isCompleted: true,
         studyTime: 5000,
         isRunning: false,
       },
       {
-        todoId: 14,
-        todoName: 'TypeScript 공부하기',
+        todoId: 2,
+        todoName: '행정학 기출 문제 풀이',
         isCompleted: false,
-        studyTime: 3000,
+        studyTime: 7004,
         isRunning: false,
       },
     ],
   },
+  // 15: {
+  //   studyTotalTime: 3245,
+  //   todos: [
+  //     {
+  //       todoId: 10,
+  //       todoName: 'HSK 5급 듣기 연습',
+  //       isCompleted: true,
+  //       studyTime: 3200,
+  //       isRunning: false,
+  //     },
+  //     {
+  //       todoId: 12,
+  //       todoName: 'HSK 5급 독해 연습',
+  //       isCompleted: false,
+  //       studyTime: 45,
+  //       isRunning: false,
+  //     },
+  //   ],
+  // },
 };
 
 export const dummyStudyList: StudyOngoingType[] = [
   {
-    roomId: 1,
+    roomId: 14,
+    title: '9급 행정직 스터디',
+    category: '공무원',
+    tags: ['행정법', '행정학', '국어'],
+    studyStartAt: '2025-02-19T17',
+    studyEndAt: '2025-06-18T17',
+    currentMembers: 3,
+    deposit: 10000,
+    goalTime: 50,
+    status: 'ACTIVE',
     leaderId: 1,
-    leaderNickname: '코딩마스터',
-    title: '알고리즘 스터디',
-    description: '매일 한 문제씩 풀며 알고리즘 실력을 키웁니다.',
-    category: '코딩',
-    tags: ['Python', 'Java', '코딩테스트'],
-    goalTime: 90,
-    deposit: 30000,
-    studyStartAt: '2024-02-10T10:00:00Z',
-    studyEndAt: '2024-05-10T20:00:00Z',
-    currentMembers: 8,
-    status: 'ACTIVE',
+    leaderNickName: '지식 헌터',
     hasNotice: false,
+    description:
+      '9급 공무원 행정직 시험 준비를 위한 스터디입니다. 스터디원들은 필요한 과목을 학습하고, 시험 준비에 필요한 자료를 정리하며 학습합니다.',
   },
-  {
-    roomId: 2,
-    leaderId: 102,
-    leaderNickname: '디자이너김',
-    title: 'UI/UX 디자인 스터디',
-    description: '매주 트렌드를 분석하고 피드백을 주고받는 디자인 스터디입니다.',
-    category: '취업',
-    tags: ['Figma', 'UX', 'UI'],
-    goalTime: 60,
-    deposit: 20000,
-    studyStartAt: '2024-03-01T14:00:00Z',
-    studyEndAt: '2024-06-01T17:00:00Z',
-    currentMembers: 6,
-    status: 'ACTIVE',
-    hasNotice: true,
-  },
+  // {
+  //   roomId: 15,
+  //   title: 'HSK 5급 스터디',
+  //   category: '어학',
+  //   tags: ['중국어', 'HSK'],
+  //   studyStartAt: '2025-02-18T16',
+  //   studyEndAt: '2025-04-22T16',
+  //   currentMembers: 4,
+  //   deposit: 8000,
+  //   goalTime: 30,
+  //   status: 'ACTIVE',
+  //   leaderId: 16,
+  //   hasNotice: false,
+  //   leaderNickName: '중궈고수',
+  //   description:
+  //     'HSK 5급 시험 대비를 위한 듣기 및 독해 연습을 중심으로 공부하는 스터디입니다. 스터디원들은 듣기 연습과 독해 연습을 통해 실력을 향상시키고 시험 준비를 진행합니다.',
+  // },
 ];
 
 export const dummyNotices: { [studyId: number]: NoticeType } = {
-  2: {
-    noticeId: 2,
-    content: '이번 주는 팀 프로젝트 발표가 있습니다. 발표 준비를 철저히 해 주세요.',
-    created: '2025-02-05T12:00:00',
+  14: {
+    noticeId: 1,
+    content:
+      '안녕하세요, 9급 행정직 스터디입니다! 🚀 우리는 꾸준한 학습과 목표 달성을 위해 함께 노력하는 스터디입니다. 매주 월요일 아침 8시부터 학습을 시작하는 것이 암묵적인 약속이며, 각자 계획에 따라 성실히 공부합니다.',
+    created: '2025-02-19T12:00:00',
   },
 };
 
 export const timersData: { [studyId: number]: TimerType[] } = {
-  1: [
+  14: [
     {
       userId: 1,
       nickname: '지식 헌터',
-      timerTime: 12000,
+      timerTime: 12004,
       isRunning: false,
     },
     {
       userId: 2,
-      nickname: '지식의 기사',
-      timerTime: 1800,
+      nickname: '행정마스터',
+      timerTime: 22326,
       isRunning: true,
     },
     {
       userId: 3,
-      nickname: '책속지식인',
-      timerTime: 356,
+      nickname: '끝까지가자',
+      timerTime: 10353,
       isRunning: true,
     },
     {
       userId: 4,
-      nickname: '공부 마스터',
-      timerTime: 0,
+      nickname: '공시대장',
+      timerTime: 1000,
+      isRunning: false,
+    },
+    {
+      userId: 5,
+      nickname: '합격러쉬',
+      timerTime: 18745,
+      isRunning: true,
+    },
+    {
+      userId: 6,
+      nickname: '공부의신',
+      timerTime: 7560,
+      isRunning: true,
+    },
+    {
+      userId: 7,
+      nickname: '패스메이커',
+      timerTime: 13450,
+      isRunning: true,
+    },
+    {
+      userId: 8,
+      nickname: '목표달성',
+      timerTime: 2950,
+      isRunning: false,
+    },
+    {
+      userId: 9,
+      nickname: '노력천재',
+      timerTime: 16500,
+      isRunning: true,
+    },
+    {
+      userId: 10,
+      nickname: '포기없다',
+      timerTime: 9400,
       isRunning: false,
     },
   ],
+  // 15: [
+  //   {
+  //     userId: 15,
+  //     nickname: '니하오마스터',
+  //     timerTime: 5040,
+  //     isRunning: false,
+  //   },
+  //   {
+  //     userId: 16,
+  //     nickname: '중궈고수',
+  //     timerTime: 3245,
+  //     isRunning: false,
+  //   },
+  //   {
+  //     userId: 17,
+  //     nickname: '열정만렙',
+  //     timerTime: 500,
+  //     isRunning: true,
+  //   },
+  //   {
+  //     userId: 18,
+  //     nickname: '레드불 중독',
+  //     timerTime: 1032,
+  //     isRunning: false,
+  //   },
+  // ],
 };

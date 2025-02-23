@@ -15,7 +15,7 @@ export default function PointHistory({ selectedFilter }: { selectedFilter: Point
 
   return (
     <>
-      {pointHistory ? (
+      {pointHistory.length > 0 ? (
         <div>
           {pointHistory.map((pointItem, index) => {
             const isLastItem = index === pointHistory.length - 1;
