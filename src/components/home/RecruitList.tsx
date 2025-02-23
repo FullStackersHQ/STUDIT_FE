@@ -5,30 +5,36 @@ import React, { forwardRef } from 'react';
 const RecruitList = forwardRef<HTMLAnchorElement, { info: StudyDetailType }>(({ info }, ref) => {
   const { recruitId, title, category, currentMembers, maxMembers, studyStartAt, studyEndAt, recruitEndAt, tags } = info;
   return (
-    <Link
-      ref={ref}
-      key={recruitId}
-      to={`/recruit/${recruitId}`}
-      className="border-white-gray w-full rounded-[10px] border bg-white p-3"
-    >
-      <div className="mb-2">
-        <p className="font-bold">{title + ' (' + category + ')'}</p>
-        <p className="text-gray text-sm">
-          스터디원 ( {currentMembers} / {maxMembers} ) 명
-        </p>
+    <Link ref={ref} key={recruitId} to={`/recruit/${recruitId}`} className="card">
+      <div className="mb-2 flex items-center justify-between border-b pb-1">
+        <h2 className="font-bold">{title}</h2>
+        <span className={`text-sm font-bold ${currentMembers === maxMembers ? 'text-deduct' : 'text-main-text'}`}>
+          {currentMembers === maxMembers ? '모집 종료' : '모집중'}
+        </span>
       </div>
-      <div className="text-gray text-sm">
+
+      <div className="text-sm/5">
         <p>
-          스터디 기간: {studyStartAt.split('T')[0]} ~ {studyEndAt.split('T')[0]}
+          카테고리: <span className="font-semibold">{category}</span>
         </p>
-        <p>모집 기간 ~{recruitEndAt.split('T')[0]}</p>
-        <p>모집중</p>
+        <p>
+          스터디 기간:{' '}
+          <span className="font-semibold">
+            {studyStartAt.split('T')[0]} ~ {studyEndAt.split('T')[0]}
+          </span>
+        </p>
+        <p>
+          모집 기간: ~ <span className="font-semibold">{recruitEndAt.split('T')[0]}</span>
+        </p>
+        <p>
+          스터디원: {currentMembers} / {maxMembers}명
+        </p>
       </div>
-      <div className="mt-2 flex gap-2">
+      <div className="scrollbar-hide mt-2 flex gap-2 overflow-x-scroll">
         {tags.map((tag: string) => (
-          <p key={tag} className="bg-white-gray rounded-md px-2 py-1 text-xs">
-            #{tag}
-          </p>
+          <div key={tag} className="study-tag">
+            # {tag}
+          </div>
         ))}
       </div>
     </Link>
