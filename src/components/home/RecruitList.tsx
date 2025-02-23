@@ -6,7 +6,7 @@ const RecruitList = forwardRef<HTMLAnchorElement, { info: StudyDetailType }>(({ 
   const { recruitId, title, category, currentMembers, maxMembers, studyStartAt, studyEndAt, recruitEndAt, tags } = info;
   return (
     <Link ref={ref} key={recruitId} to={`/recruit/${recruitId}`} className="card">
-      <div className="mb-2 flex items-center justify-between border-b pb-1">
+      <div className="mb-2 flex items-center justify-between pb-1">
         <h2 className="font-bold">{title}</h2>
         <span className={`text-sm font-bold ${currentMembers === maxMembers ? 'text-deduct' : 'text-main-text'}`}>
           {currentMembers === maxMembers ? '모집 종료' : '모집중'}

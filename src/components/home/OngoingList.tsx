@@ -7,7 +7,7 @@ const OngoingList = forwardRef<HTMLAnchorElement, { info: StudyDetailType }>(({ 
 
   return (
     <Link ref={ref} key={roomId} to={`/study/${roomId}`} className="card">
-      <div className="mb-2 flex items-center justify-between border-b pb-1">
+      <div className="mb-2 flex items-center justify-between pb-1">
         <h2 className="font-bold">{title + ' (' + category + ')'}</h2>
       </div>
       <div className="text-sm/5">
