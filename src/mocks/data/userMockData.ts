@@ -1,4 +1,5 @@
 import { AvgStats, CompletedStudyItem, OnGoingStudyItem, UpcomingStudyItem, UserProfile } from '../../types/interface';
+import defaultProfile from '../../assets/imgs/default-profile.webp';
 
 export const upcomingStudies: UpcomingStudyItem[] = [
   {
@@ -427,7 +428,7 @@ export const profileData: UserProfile = {
   applied: upcomingStudies.length,
   in_progress: ongoingStudies.length,
   completed: completedStudies.length,
-  profileImage: 'https://placehold.co/48x48',
+  profileImage: defaultProfile,
 };
 
 export const avgStatsData: AvgStats = {

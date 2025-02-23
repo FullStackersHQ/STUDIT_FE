@@ -1,17 +1,31 @@
-import { StudyItemType, StudyStatusType } from '../../types/interface';
+import { StudyItemType, StudyStatusType, CompletedStudyItem } from '../../types/interface';
 import PointIcon from '../../assets/icons/point.svg';
 import React, { forwardRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const StudyItem = forwardRef<HTMLDivElement, { study: StudyItemType; studyType: StudyStatusType }>(
+const StudyItem = forwardRef<HTMLButtonElement, { study: StudyItemType; studyType: StudyStatusType }>(
   ({ study, studyType }, ref) => {
+    const navigate = useNavigate();
     const { gatherDate, title, enterPoint, tag, weeklyStudyTime, category } = study;
-    const isCompletedStudy = 'studyId' in study;
+    const isCompletedStudy = (study: StudyItemType): study is CompletedStudyItem => {
+      return 'studyId' in study;
+    };
 
-    return (
+    const getStudyItemId = (studyItem: StudyItemType): number | undefined => {
+      if ('recruit_id' in studyItem) {
+        return studyItem.recruit_id;
+      } else if ('registerId' in studyItem) {
+        return studyItem.registerId;
+      } else if ('studyId' in studyItem) {
+        return studyItem.studyId;
+      }
+      return undefined;
+    };
+
+    const studyItemContent = (
       <div
-        ref={ref}
         className={`border-main flex w-full flex-col gap-y-1 rounded-sm border px-2.5 py-2 text-sm ${
-          studyType === 'completed' ? 'h-[110px]' : 'h-[87px]'
+          isCompletedStudy(study) ? 'h-[110px]' : 'h-[87px]'
         }`}
       >
         <div className="flex justify-between text-xs font-medium">
@@ -25,9 +39,9 @@ const StudyItem = forwardRef<HTMLDivElement, { study: StudyItemType; studyType: 
           </div>
           <span className="text-main-text text-sm font-bold">주 {weeklyStudyTime}시간</span>
         </div>
-        <p className="font-medium">{title}</p>
-        <p className="text-dark-gray">스터디 기간: {gatherDate}</p>
-        {isCompletedStudy && (
+        <p className="text-left font-medium">{title}</p>
+        <p className="text-dark-gray text-left">스터디 기간: {gatherDate}</p>
+        {isCompletedStudy(study) ? (
           <div className="flex gap-x-2.5">
             <span>
               획득한 포인트: <span className="text-topup font-bold">{study.obtainedPoint.toLocaleString()} P</span>
@@ -36,8 +50,27 @@ const StudyItem = forwardRef<HTMLDivElement, { study: StudyItemType; studyType: 
               차감된 포인트: <span className="text-deduct font-bold">{study.deductedPoint.toLocaleString()} P</span>
             </span>
           </div>
+        ) : (
+          ''
         )}
       </div>
+    );
+
+    if (isCompletedStudy(study)) {
+      return <>{studyItemContent}</>;
+    }
+
+    return (
+      <button
+        ref={ref}
+        onClick={() => {
+          if (studyType === 'upcoming') navigate(`../recruit/${getStudyItemId(study)}`);
+          else if (studyType === 'ongoing') navigate(`../study/${getStudyItemId(study)}`);
+        }}
+        className="cursor-pointer"
+      >
+        {studyItemContent}
+      </button>
     );
   },
 );

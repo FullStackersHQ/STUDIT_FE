@@ -5,6 +5,7 @@ import HeaderWithBack from '../components/HeaderWithBack';
 import PointCheck from '../components/point/PointCheck';
 import PointHistory from '../components/point/PointHistory';
 import { useState } from 'react';
+import ScrollToTopBtn from '../components/ScrollToTopBtn';
 
 function Point() {
   const [selectedFilter, setSelectedFilter] = useState<PointFilterType>('전체');
@@ -19,6 +20,7 @@ function Point() {
           <PointHistory selectedFilter={selectedFilter} />
         </section>
       </div>
+      <ScrollToTopBtn />
     </div>
   );
 }

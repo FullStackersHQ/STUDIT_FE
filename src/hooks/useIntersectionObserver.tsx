@@ -8,7 +8,9 @@ interface useIntersectionObserverProps {
 }
 
 export function useIntersectionObserver({ threshold = 0, hasNextPage, fetchNextPage }: useIntersectionObserverProps) {
-  const [target, setTarget] = useState<HTMLDivElement | null | undefined | HTMLLIElement | HTMLAnchorElement>(null);
+  const [target, setTarget] = useState<
+    HTMLDivElement | null | undefined | HTMLLIElement | HTMLAnchorElement | HTMLButtonElement
+  >(null);
 
   const observerCallback = useCallback<IntersectionObserverCallback>(
     (entries) => {
