@@ -8,7 +8,7 @@ export default function useGetStudyDetail(studyId: number) {
     isLoading: isDetailLoading,
     refetch: refetchDetail,
   } = useQuery<StudyOngoingType>({
-    queryKey: ['getStudyDetail'],
+    queryKey: ['getStudyDetail', studyId],
     queryFn: () => studyMainApi.getStudyDetail(studyId),
   });
   return { studyDetail, isDetailLoading, refetchDetail };

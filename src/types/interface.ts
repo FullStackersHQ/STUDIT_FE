@@ -7,12 +7,13 @@ export interface UserProfile {
   completed: number;
   profileImage: string;
 }
+
 export interface AvgStats {
   userId: number;
-  userTodoCompletion: number;
+  userTodoCompletion: number | null;
   averageTodoCompletion: number;
-  userStudyTime: number;
-  averageStudyTime: number;
+  userGoalRate: number | null;
+  averageGoalRate: number;
 }
 
 export interface StudyRoomPutType {
@@ -46,7 +47,7 @@ export interface StudyDetailType extends StudyRoomGetType {
 export interface StudyOngoingType {
   roomId: number;
   leaderId: number;
-  leaderNickname: string;
+  leaderNickName: string;
   title: string;
   description: string;
   category: string;
