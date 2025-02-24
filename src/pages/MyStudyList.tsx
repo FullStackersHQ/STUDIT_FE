@@ -35,13 +35,13 @@ function MyStudyList() {
             <button
               aria-label="스터디 목록으로 이동"
               onClick={() => navigate('/')}
-              className="bg-light-gray mt-6 flex w-full justify-between rounded px-4 py-2 text-white"
+              className="mt-6 flex w-full cursor-pointer justify-between rounded bg-gradient-to-tr from-[#C2FBDB] to-[#EBC9E9] px-4 py-2 text-[#000000]"
             >
               <div className="flex flex-col justify-between py-2">
                 <p className="text-left text-2xl font-bold">입금해라 공부할 것이다</p>
-                <div className="flex items-center">
+                <div className="flex items-center gap-x-1">
                   <span className="text-sm"> 스터디 목록 보러가기 </span>
-                  <ChevronRight alt="스터디 목록 화살표" className="h-auto w-5" />
+                  <ChevronRight alt="스터디 목록 화살표" className="h-auto w-1.5" />
                 </div>
               </div>
               <img src={banner} alt="배너" className="h-auto w-[54px]" />
