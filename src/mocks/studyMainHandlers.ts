@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { dummyStudyList, dummyNotices } from './data/studyDetailMockData';
+import { dummyNotices } from './data/studyDetailMockData';
 import { UpdateStudyRequest, NoticeRequest } from '../types/request';
 import { mockStudyRoomList } from './data/studyListMockData';
 
@@ -20,8 +20,8 @@ const studyMainHandlers = [
   }),
   http.get(`/rooms/:studyId`, ({ params }) => {
     const studyId = Number(params.studyId);
-    const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === studyId);
-    if (dummyStudyList && targetStudy) return HttpResponse.json(targetStudy);
+    const targetStudy = mockStudyRoomList.find((dummyStudy) => dummyStudy.roomId === studyId);
+    if (targetStudy) return HttpResponse.json(targetStudy);
     return HttpResponse.error();
   }),
   http.put(`/rooms/:studyId`, async ({ params, request }) => {
@@ -29,6 +29,7 @@ const studyMainHandlers = [
       const studyId = Number(params.studyId);
       const body = (await request.json()) as UpdateStudyRequest;
       const targetStudy = mockStudyRoomList.find((dummyStudy) => dummyStudy.roomId === studyId);
+
       if (!body || !targetStudy) {
         return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
           status: 400,
@@ -38,6 +39,7 @@ const studyMainHandlers = [
       targetStudy.description = description;
       targetStudy.tags = tags;
       targetStudy.title = title;
+
       return new HttpResponse(
         JSON.stringify({
           message: '스터디가 수정되었습니다.',
@@ -48,7 +50,6 @@ const studyMainHandlers = [
       return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
     }
   }),
-
   http.get(`/rooms/:studyId/notices`, ({ params }) => {
     const studyId = Number(params.studyId);
     const notice = dummyNotices[studyId];
@@ -84,7 +85,7 @@ const studyMainHandlers = [
     try {
       const studyId = Number(params.studyId);
       const body = (await request.json()) as NoticeRequest;
-      const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === studyId);
+      const targetStudy = mockStudyRoomList.find((dummyStudy) => dummyStudy.roomId === studyId);
       const { content } = body;
 
       if (!body || !studyId || !targetStudy) {
@@ -114,7 +115,7 @@ const studyMainHandlers = [
     try {
       const studyId = Number(params.studyId);
       const notice = dummyNotices[studyId];
-      const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === studyId);
+      const targetStudy = mockStudyRoomList.find((dummyStudy) => dummyStudy.roomId === studyId);
 
       if (!studyId || !notice || !targetStudy) {
         return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), {

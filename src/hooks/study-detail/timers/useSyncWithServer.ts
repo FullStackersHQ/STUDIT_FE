@@ -5,8 +5,10 @@ import * as Sentry from '@sentry/react';
 
 export default function useSyncWithServer(
   studyId: number,
+  localTodoList: TodoListType,
   setLocalTodoList: React.Dispatch<React.SetStateAction<TodoListType>>,
   setTimers: React.Dispatch<React.SetStateAction<TimerType[]>>,
+  userId: number,
 ) {
   useEffect(() => {
     const syncWithServer = setInterval(async () => {
@@ -40,6 +42,13 @@ export default function useSyncWithServer(
           prev.map((clientTimer) => {
             const serverTimer = timerData.find((s: TimerType) => s.userId === clientTimer.userId);
             if (serverTimer) {
+              if (clientTimer.userId === userId) {
+                const totalTimeDiff = Math.abs(todoData.studyTotalTime - localTodoList.studyTotalTime);
+                return {
+                  ...clientTimer,
+                  timerTime: totalTimeDiff > 1 ? todoData.studyTotalTime : localTodoList.studyTotalTime,
+                };
+              }
               if (Math.abs(serverTimer.timerTime - clientTimer.timerTime) > 1) {
                 return { ...clientTimer, timerTime: serverTimer.timerTime };
               }
@@ -53,5 +62,5 @@ export default function useSyncWithServer(
     }, 5000);
 
     return () => clearInterval(syncWithServer);
-  }, [studyId, setLocalTodoList, setTimers]);
+  }, [studyId, setLocalTodoList, setTimers, userId, localTodoList.studyTotalTime]);
 }

@@ -32,7 +32,8 @@ const studyMainApi = {
     return response;
   },
   toggleTodoStatus: async (studyId: number, todoId: number, isCompleted: boolean) => {
-    const { data: response } = await client.patch(`/todos/${todoId}/complete/${studyId}`, {
+    const { data: response } = await client.patch(`/todos/complete/${studyId}`, {
+      todoId: todoId,
       isCompleted: isCompleted,
     });
     return response;

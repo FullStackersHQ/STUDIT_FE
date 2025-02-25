@@ -87,8 +87,9 @@ export default function TodoListSection({
                     />
                   </div>
                 ) : (
-                  <>
+                  <label htmlFor={`todo-${todoId}`} className="flex cursor-pointer items-center gap-2">
                     <input
+                      id={`todo-${todoId}`}
                       onChange={() => handleCheckboxChange(todoId, !todoStates[todoId])}
                       checked={todoStates[todoId] || false}
                       type="checkbox"
@@ -100,12 +101,13 @@ export default function TodoListSection({
                     >
                       {todoName}
                     </button>
-                  </>
+                  </label>
                 )}
               </div>
               <div className="flex items-center gap-x-2">
                 <span className="text-sm font-medium">{formatTime(studyTime)}</span>
                 <button
+                  aria-label={activeTodoId === todoId ? `${todoName} 타이머 중지` : `${todoName} 타이머 시작`}
                   onClick={() => {
                     if (activeTodoId === todoId) stopTimer(todoId);
                     else startTimer(todoId);
