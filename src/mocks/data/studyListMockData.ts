@@ -228,7 +228,7 @@ export const mockStudyRecruitList: StudyDetailType[] = [
     studyStartAt: '2025-03-03T17',
     studyEndAt: '2025-06-29T17',
     recruitEndAt: '2025-03-03T17',
-    currentMembers: 2,
+    currentMembers: 10,
     maxMembers: 10,
     status: 'ACTIVE',
     deposit: 10000,
