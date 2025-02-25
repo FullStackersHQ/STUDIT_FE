@@ -24,7 +24,7 @@ const todoHandlers = [
       }
       const { todoName } = body;
       const newTodo: TodoType = {
-        todoId: todoList.todos.length,
+        todoId: todoList.todos.length + 1,
         todoName: todoName as string,
         isCompleted: false,
         studyTime: 0,
