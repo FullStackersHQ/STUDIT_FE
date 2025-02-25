@@ -5,19 +5,9 @@ import { TimerType } from '../../../types/interface';
 import { formatTime } from '../../../utils/commonUtils';
 import LeaderIcon from '../../../assets/icons/leader.svg';
 
-function Timers({
-  timers,
-  leaderId,
-  userId,
-  hasNotice,
-}: {
-  timers: TimerType[];
-  leaderId: number;
-  userId: number;
-  hasNotice: boolean;
-}) {
+function Timers({ timers, leaderId, userId }: { timers: TimerType[]; leaderId: number; userId: number }) {
   return (
-    <section className={`${hasNotice ? 'mt-4' : 'mt-7'} grid h-[254px] grid-cols-4 gap-x-4 px-4`}>
+    <section className="mt-4 grid h-[254px] grid-cols-4 gap-x-4 px-4">
       {timers.map((timer: TimerType) => {
         const isLeader = leaderId === timer.userId;
         const savedData = localStorage.getItem('activeTodo') && timer.userId === userId;

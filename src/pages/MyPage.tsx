@@ -11,7 +11,7 @@ function MyPage() {
   if (!userData || isUserDataLoading || !averageStats || isAvgLoading) return null;
 
   return (
-    <div className="flex h-[calc(100%-60px)] flex-col justify-between px-4 py-7">
+    <div className="flex h-[calc(100%-60px)] flex-col justify-between overflow-y-hidden px-4 pt-3.5 pb-7">
       <div>
         <ProfileSection userData={userData} userId={userId} />
         <AverageStats averageStats={averageStats} nickName={userData.nickName} />
