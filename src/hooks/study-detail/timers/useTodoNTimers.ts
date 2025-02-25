@@ -6,7 +6,7 @@ import useSyncWithServer from './useSyncWithServer';
 import useTodoState from '../todo/useTodoState';
 import useToggleTodo from '../todo/useToggleTodo';
 
-export default function useTodoNTimers(studyId: number) {
+export default function useTodoNTimers(studyId: number, userId: number) {
   const { todoList, todoListLoading } = useGetTodoList(studyId);
   const { todoStates, toggleTodo } = useTodoState(todoList);
   const { mutateTodo } = useToggleTodo(studyId);
@@ -25,7 +25,7 @@ export default function useTodoNTimers(studyId: number) {
     }
   }, [initialTimers]);
 
-  useSyncWithServer(studyId, setLocalTodoList, setTimers);
+  useSyncWithServer(studyId, localTodoList, setLocalTodoList, setTimers, userId);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -18,7 +18,7 @@ function StudyDetail() {
     todoStates,
     handleCheckboxChange,
     setLocalTodoList,
-  } = useTodoNTimers(studyId);
+  } = useTodoNTimers(studyId, userId);
   if (!studyDetail || isDetailLoading || isTimerLoading || todoListLoading) return null;
 
   const { title, leaderId, hasNotice } = studyDetail;
