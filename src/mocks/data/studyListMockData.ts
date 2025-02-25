@@ -34,6 +34,7 @@ export const mockStudyRoomList: StudyDetailType[] = [
     status: 'ACTIVE',
     leaderId: 1,
     leaderNickName: '지식 헌터',
+    hasNotice: true,
     description:
       '9급 공무원 행정직 시험 준비를 위한 스터디입니다. 스터디원들은 필요한 과목을 학습하고, 시험 준비에 필요한 자료를 정리하며 학습합니다.',
   },
