@@ -32,7 +32,7 @@ export default function StudyMenuList({
 
   return (
     <section
-      className={`${isMenuOpen ? 'slide-down visible opacity-100 transition-all duration-300 ease-in-out' : 'invisible opacity-0'} study-menu study-menu-md`}
+      className={`${isMenuOpen ? 'slide-down transition-transform duration-300 ease-in-out' : 'invisible'} study-menu study-menu-md`}
     >
       <button
         className="border-light-gray flex w-full cursor-pointer items-center justify-between gap-x-1.5 border-b px-4 py-2"
