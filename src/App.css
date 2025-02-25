@@ -47,11 +47,11 @@
   }
 
   .card {
-    @apply border-light-gray mb-2 w-full rounded-md border bg-white p-3 shadow-md text-black
+    @apply border-light-gray mb-2 w-full rounded-md border bg-white p-3 text-black shadow-md;
   }
 
   .study-tag {
-    @apply bg-white-gray rounded-md px-2 py-1 text-sm text-black whitespace-nowrap
+    @apply bg-white-gray rounded-md px-2 py-1 text-sm whitespace-nowrap text-black;
   }
 }
 
@@ -158,4 +158,32 @@
   @apply md:before:bg-white-gray md:before:absolute md:before:right-0 md:before:bottom-0 md:before:h-[calc(100%-52px)] md:before:w-[1px] md:before:content-[''];
 
   @apply md:after:bg-white-gray md:after:absolute md:after:bottom-0 md:after:left-0 md:after:h-[calc(100%-52px)] md:after:w-[1px] md:after:content-[''];
+}
+
+@keyframes toastSlideIn {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastSlideOut {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.toast-slide-in {
+  animation: toastSlideIn 0.1s ease-out forwards;
+}
+
+.toast-slide-out {
+  animation: toastSlideOut 0.1s ease-in forwards;
 }

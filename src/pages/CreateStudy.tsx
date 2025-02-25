@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
 import { recruitApi } from '../api/recruitApi';
+import useToastStore from '../store/useToastStore';
 
 const studySchema = z.object({
   title: z.string().max(10, '최대 14자까지 입력 가능합니다.'),
@@ -51,6 +52,7 @@ export default function CreateStudy(): JSX.Element {
   const duration = watch('duration');
   const formValues = watch();
   const navigate = useNavigate();
+  const { showToast } = useToastStore();
 
   const handleOnClickBtn = async () => {
     const response = await recruitApi.postRecruitInfo({
@@ -65,7 +67,10 @@ export default function CreateStudy(): JSX.Element {
       tags: formValues.tags.split(' '),
     });
     console.log(response.code);
-    if (response.code === 200) navigate('/', { replace: true });
+    if (response.code === 200) {
+      navigate('/', { replace: true });
+      showToast('스터디가 성공적으로 생성됐어요 !', true);
+    }
   };
 
   const handleOnItemAdded = (newValue: MultiValue<{ label: string; value: string }>) => {
