@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import PointScore from './PointScore';
 
 export default function RangeSlider({
   min,
@@ -82,15 +83,9 @@ export default function RangeSlider({
       </div>
       {/* 값 보여주기 */}
       <div className="text-gray mt-2 flex w-full items-center justify-evenly">
-        <div className="w-[40%] rounded-[10px] border p-2">
-          <p className="items-start text-[12px]">최저 포인트</p>
-          <span className="text-[14px] text-black">{minValue.toLocaleString()}점</span>
-        </div>
+        <PointScore text="최저 포인트" value={minValue} />
         <p className="text-[18px]">~</p>
-        <div className="w-[40%] rounded-[10px] border p-2">
-          <p className="text-[12px]">최대 포인트</p>
-          <span className="text-[14px] text-black">{maxValue.toLocaleString()}점</span>
-        </div>
+        <PointScore text="최대 포인트" value={maxValue} />
       </div>
     </>
   );
