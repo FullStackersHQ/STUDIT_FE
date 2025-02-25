@@ -12,6 +12,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      - name: .env setting
+        run: |
+          echo "VITE_SERVER_URL=${{ secrets.SERVER_URL }}" >> .env
+          echo "VITE_KAKAO_API=${{ secrets.KAKAO_API_KEY }}" >> .env
+
       - name: Install dependencies
         run: yarn install
 
