@@ -43,7 +43,7 @@ const todoHandlers = [
       return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
     }
   }),
-  http.patch('/todos/change/studyId', async ({ params, request }) => {
+  http.patch('/todos/change/:studyId', async ({ params, request }) => {
     try {
       const studyId = Number(params.studyId);
       const todoList = todoListData[studyId];
@@ -72,19 +72,17 @@ const todoHandlers = [
       return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
     }
   }),
-  http.patch(`/todos/:todoId/complete`, async ({ params, request }) => {
+  http.patch(`/todos/complete/:studyId`, async ({ params, request }) => {
     try {
-      const todoId = Number(params.todoId);
       const studyId = Number(params.studyId);
       const body = (await request.json()) as ToggleTodoRequest;
       const todoList = todoListData[studyId];
-      if (!body || !todoId || !studyId || !todoList) {
+      if (!body || !studyId || !todoList) {
         return new HttpResponse(JSON.stringify({ message: '잘못된 요청 본문이거나 body가 없습니다.' }), {
           status: 400,
         });
       }
-      const { isCompleted } = body;
-
+      const { todoId, isCompleted } = body;
       const targetTodo = todoList.todos.find((todo) => todo.todoId === todoId);
       if (!targetTodo) {
         return new HttpResponse(JSON.stringify({ message: '존재하지 않는 투두입니다.' }), {

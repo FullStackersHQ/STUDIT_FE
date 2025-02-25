@@ -20,7 +20,7 @@ const studyMainHandlers = [
   }),
   http.get(`/rooms/:studyId`, ({ params }) => {
     const studyId = Number(params.studyId);
-    const targetStudy = dummyStudyList.find((dummyStudy) => dummyStudy.roomId === studyId);
+    const targetStudy = mockStudyRoomList.find((dummyStudy) => dummyStudy.roomId === studyId);
     if (dummyStudyList && targetStudy) return HttpResponse.json(targetStudy);
     return HttpResponse.error();
   }),
@@ -38,6 +38,7 @@ const studyMainHandlers = [
       targetStudy.description = description;
       targetStudy.tags = tags;
       targetStudy.title = title;
+
       return new HttpResponse(
         JSON.stringify({
           message: '스터디가 수정되었습니다.',
@@ -48,7 +49,6 @@ const studyMainHandlers = [
       return new HttpResponse(JSON.stringify({ message: '잘못된 요청입니다.' }), { status: 400 });
     }
   }),
-
   http.get(`/rooms/:studyId/notices`, ({ params }) => {
     const studyId = Number(params.studyId);
     const notice = dummyNotices[studyId];
