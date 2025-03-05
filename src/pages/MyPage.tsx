@@ -11,12 +11,12 @@ function MyPage() {
   if (!userData || isUserDataLoading || !averageStats || isAvgLoading) return null;
 
   return (
-    <div className="flex h-[calc(100%-60px)] flex-col justify-between px-4 py-7">
+    <div className="flex h-[calc(100%-60px)] flex-col overflow-y-hidden px-4 pt-2 pb-7">
       <div>
         <ProfileSection userData={userData} userId={userId} />
         <AverageStats averageStats={averageStats} nickName={userData.nickName} />
       </div>
-      <Button text="포인트 출금하고 내역을 볼 수 있어요" onClick={() => navigate('/point')} />
+      <Button text="포인트 출금하고 내역을 볼 수 있어요" onClick={() => navigate('/point')} extraClass="mt-4" />
     </div>
   );
 }

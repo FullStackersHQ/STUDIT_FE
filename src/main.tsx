@@ -15,7 +15,7 @@ Sentry.init({
   integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
   tracesSampleRate: 1.0,
   tracePropagationTargets: ['localhost', import.meta.env.VITE_SERVER_URL],
-  replaysSessionSampleRate: 0.1,
+  replaysSessionSampleRate: 0,
   replaysOnErrorSampleRate: 1.0,
 });
 deferRender().then(() => {

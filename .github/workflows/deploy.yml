@@ -17,6 +17,7 @@ jobs:
           echo "VITE_SERVER_URL=${{ secrets.SERVER_URL }}" >> .env
           echo "VITE_KAKAO_API=${{ secrets.KAKAO_API_KEY }}" >> .env
           echo "VITE_REDIRECT_URL=${{ secrets.KAKAO_REDIRECT_URI}}" >> .env
+          echo "VITE_SENTRY_DNS=${{ secrets.SENTRY_DNS }}" >> .env
 
       - name: Install dependencies
         run: yarn install

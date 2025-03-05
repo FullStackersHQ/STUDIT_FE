@@ -18,7 +18,7 @@ function StudyDetail() {
     todoStates,
     handleCheckboxChange,
     setLocalTodoList,
-  } = useTodoNTimers(studyId);
+  } = useTodoNTimers(studyId, userId);
   if (!studyDetail || isDetailLoading || isTimerLoading || todoListLoading) return null;
 
   const { title, leaderId, hasNotice } = studyDetail;
@@ -35,7 +35,7 @@ function StudyDetail() {
         toggleMenu={toggleMenu}
       />
       <Notice studyId={studyId} hasNotice={hasNotice} />
-      <Timers timers={timers} leaderId={leaderId} userId={userId} hasNotice={hasNotice} />
+      <Timers timers={timers} leaderId={leaderId} userId={userId} />
       <div className="bg-main my-3 h-1.5 w-full" />
       <TodoListSection
         studyId={studyId}

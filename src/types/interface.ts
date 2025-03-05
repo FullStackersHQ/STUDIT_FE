@@ -42,6 +42,7 @@ export interface StudyRoomGetType extends StudyRoomPostType {
 export interface StudyDetailType extends StudyRoomGetType {
   leaderId: number;
   leaderNickName: string;
+  hasNotice?: boolean;
 }
 
 export interface StudyOngoingType {
