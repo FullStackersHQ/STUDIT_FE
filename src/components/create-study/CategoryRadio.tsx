@@ -8,7 +8,7 @@ export default function CategoryRadio(form: TitleProps) {
   const { register } = form;
 
   return (
-    <div className="mt-5">
+    <div>
       <label className="font-medium" aria-label="스터디 카테고리">
         카테고리
       </label>

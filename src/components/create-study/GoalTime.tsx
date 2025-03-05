@@ -7,7 +7,7 @@ export default function GoalTime(form: TitleProps) {
   const { register } = form;
 
   return (
-    <div className="mt-5 flex items-center">
+    <div className="flex">
       <label className="font-medium">주당 목표 시간</label>
       <input type="number" {...register('goalTime')} className="bottom-line-input-sm" />
       시간

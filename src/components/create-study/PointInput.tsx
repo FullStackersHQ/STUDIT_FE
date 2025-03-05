@@ -10,7 +10,7 @@ export default function PointInput(form: TitleProps) {
   } = form;
 
   return (
-    <div className="mt-5">
+    <>
       <div className="gap-y-1">
         <div className="flex items-center">
           <label htmlFor="point" className="font-medium">
@@ -26,7 +26,11 @@ export default function PointInput(form: TitleProps) {
                 inputMode="numeric"
                 className="border-light-gray mx-2 w-15 border-b text-center text-sm"
                 value={field.value.toLocaleString()}
-                onChange={field.onChange}
+                onChange={(e) => {
+                  const onlyNumber = e.target.value.replace(/,/g, '');
+                  const numberValue = Number(onlyNumber);
+                  field.onChange(isNaN(numberValue) ? 0 : numberValue);
+                }}
               />
             )}
           />
@@ -36,6 +40,6 @@ export default function PointInput(form: TitleProps) {
           <ErrorMessage name="deposit" errors={errors} className="text-sm text-red-500" as="span" />
         )}
       </div>
-    </div>
+    </>
   );
 }

@@ -11,7 +11,7 @@ export default function DescriptionInput(form: TitleProps) {
   } = form;
 
   return (
-    <div className="mt-3">
+    <div>
       <label className="align-center flex text-[16px] font-bold" aria-label="스터디 내용">
         내용
       </label>

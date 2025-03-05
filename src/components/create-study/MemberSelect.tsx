@@ -7,7 +7,7 @@ export default function MemberSelect(form: TitleProps) {
   const { register } = form;
 
   return (
-    <div className="mt-5 flex">
+    <div className="flex">
       <label className="mr-2 font-medium">모집 인원</label>
       <select {...register('maxMembers')} className="border-light-gray border text-center text-sm">
         {[...Array(9)].map((_, i) => (
