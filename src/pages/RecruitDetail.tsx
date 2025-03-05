@@ -11,6 +11,7 @@ import LeaderMenuList from '../components/recruit/LeaderMenuList';
 import { useAuthStore } from '../store/useAuthStore';
 import RecruitSuccessModal from '../components/recruit/RecruitSuccessModal';
 import { upcomingStudies } from '../mocks/data/userMockData';
+import Tag from '../components/home/Tag';
 
 export default function RecruitDetail(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -87,9 +88,7 @@ export default function RecruitDetail(): JSX.Element {
         {/* tags */}
         <li className="scrollbar-hide tag-container mt-5">
           {data.result.tags.map((tag: string) => (
-            <div key={tag} className="tag">
-              # {tag}
-            </div>
+            <Tag text={`# ${tag}`} />
           ))}
         </li>
         {/* description */}
@@ -124,10 +123,10 @@ export default function RecruitDetail(): JSX.Element {
         <li className="recruit-info-list">스터디장: {data.result.leaderNickName}</li>
 
         {/* deposit */}
-        <li className="recruit-info-list">포인트: {data.result.deposit}</li>
+        <li className="recruit-info-list">포인트: {data.result.deposit} 포인트</li>
 
         {/* goalTime */}
-        <li className="recruit-info-list">주당 목표 시간: {data.result.goalTime}</li>
+        <li className="recruit-info-list">주당 목표 시간: {data.result.goalTime} 시간</li>
       </ul>
 
       {userId !== -1 && !isLeader && (

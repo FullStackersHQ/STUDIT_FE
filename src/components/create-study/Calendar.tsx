@@ -1,24 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
+import { MONTH_LIST } from '../../constants/constants';
 
 type CalendarProps = {
   date: string | number;
   setDate: (date: string) => void;
 };
-
-const monthList = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
 
 export default function Calendar({ date, setDate }: CalendarProps) {
   const [today] = useState<Date>(new Date());
@@ -68,7 +54,7 @@ export default function Calendar({ date, setDate }: CalendarProps) {
 
     for (let i = firstDay; i > 0; i--) {
       days.push(
-        <div key={'bp' + i} className="text-gray flex items-center justify-center text-center">
+        <div key={'bp' + i} className="text-white-gray flex items-center justify-center text-center">
           {prevLastDate - i + 1}
         </div>,
       );
@@ -96,7 +82,7 @@ export default function Calendar({ date, setDate }: CalendarProps) {
     if (nextDays < 7) {
       for (let i = 1; i <= nextDays; i++) {
         days.push(
-          <div key={'ap' + i} className="text-gray flex items-center justify-center text-center">
+          <div key={'ap' + i} className="text-white-gray flex items-center justify-center text-center">
             {i}
           </div>,
         );
@@ -113,7 +99,7 @@ export default function Calendar({ date, setDate }: CalendarProps) {
         value={date}
         readOnly
         onFocus={() => setShow(true)}
-        className="border-light-gray w-24 cursor-pointer border-b text-center text-sm"
+        className="border-light-gray mr-2 w-24 cursor-pointer border-b text-center text-sm"
       />
       {show && (
         <div className="absolute top-full left-0 z-10 w-60 rounded-lg border bg-white shadow-lg">
@@ -122,7 +108,7 @@ export default function Calendar({ date, setDate }: CalendarProps) {
               ◀
             </button>
             <span>
-              {monthList[month]} {year}
+              {MONTH_LIST[month]} {year}
             </span>
             <button className="text-main" onClick={() => changeMonth(1)}>
               ▶
