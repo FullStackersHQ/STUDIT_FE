@@ -6,3 +6,17 @@ export const FNB_LIST: { [key: string]: string } = {
   'study-list': '진행 목록',
   'my-page': '마이 페이지',
 };
+export const MONTH_LIST = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+] as const;

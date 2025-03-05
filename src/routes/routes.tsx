@@ -6,7 +6,7 @@ import LoginRedirect from '../pages/LoginRedirect';
 import LoadingScreen from '../components/LoadingScreen';
 
 const Login = lazy(() => import('../pages/Login'));
-const CreateStudy = lazy(() => import('../pages/CreateStudy'));
+const CreateStudyForm = lazy(() => import('../pages/CreateStudyForm'));
 const RecruitDetail = lazy(() => import('../pages/RecruitDetail'));
 const EditRecruit = lazy(() => import('../pages/EditRecruit'));
 const MyPage = lazy(() => import('../pages/MyPage'));
@@ -30,7 +30,7 @@ const Router = (): JSX.Element => {
           <Route element={<LoginRequiredLayout />}>
             <Route path="/my-page" element={<MyPage />} />
             <Route path="/point" element={<Point />} />
-            <Route path="/create-study" element={<CreateStudy />} />
+            <Route path="/create-study" element={<CreateStudyForm />} />
             <Route path="/my-study" element={<MyStudyList />} />
             <Route path="/edit-recruit/:recruitId" element={<EditRecruit />} />
             <Route path="/edit-study/:studyId" element={<EditStudy />} />

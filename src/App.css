@@ -64,6 +64,10 @@
   scrollbar-width: none;
 }
 
+.bottom-line-input-sm {
+  @apply border-light-gray mx-2 w-8 border-b text-center text-sm
+}
+
 .search-input {
   @apply border-gray h-[23px] w-full rounded-[10px] border pl-2 text-sm text-black sm:h-[30px] md:h-[40px];
 }
@@ -108,10 +112,6 @@
 
 .range::-webkit-slider-thumb {
   @apply bg-main pointer-events-auto h-5 w-5 rounded-full border-2 border-white;
-}
-
-.create-study-label {
-  @apply mr-2 flex flex-row text-lg font-bold;
 }
 
 .tag-container {
