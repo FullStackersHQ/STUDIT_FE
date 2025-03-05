@@ -7,7 +7,7 @@ type TitleProps = UseFormReturn<StudyFormData>;
 export default function StudyStartInput(form: TitleProps) {
   const { control, register } = form;
   return (
-    <div className="mt-5">
+    <div>
       <label className="font-medium">스터디 시작 날짜(모집 마감 날짜)</label>
       <div className="flex items-center">
         <Controller

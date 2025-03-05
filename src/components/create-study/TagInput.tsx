@@ -21,7 +21,7 @@ export default function TagInput(form: TitleProps) {
   };
 
   return (
-    <div className="mt-5">
+    <div>
       <label className="font-medium" aria-label="스터디 태그">
         태그
       </label>
