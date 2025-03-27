@@ -5,4 +5,5 @@ export interface ButtonProps {
   extraClass?: string;
   isSmall?: boolean;
   disabled?: boolean;
+  type?: 'submit' | 'button' | 'reset';
 }

@@ -1,14 +1,15 @@
-import { UseFormReturn } from 'react-hook-form';
+import { Control, UseFormRegister, useFormState } from 'react-hook-form';
 import { StudyFormData } from '../../pages/CreateStudyForm';
 import { ErrorMessage } from '@hookform/error-message';
 
-type TitleProps = UseFormReturn<StudyFormData>;
-
-export default function DescriptionInput(form: TitleProps) {
-  const {
-    register,
-    formState: { errors },
-  } = form;
+export default function DescriptionInput({
+  control,
+  register,
+}: {
+  control: Control<StudyFormData>;
+  register: UseFormRegister<StudyFormData>;
+}) {
+  const { errors } = useFormState({ control });
 
   return (
     <div>

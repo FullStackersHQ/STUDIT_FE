@@ -41,7 +41,7 @@ const studySchema = z.object({
 export type StudyFormData = z.infer<typeof studySchema>;
 
 export default function CreateStudyForm(): JSX.Element {
-  const methods = useForm<StudyFormData>({
+  const { control, handleSubmit, register, watch } = useForm<StudyFormData>({
     resolver: zodResolver(studySchema),
     mode: 'onChange',
     defaultValues: {
@@ -58,22 +58,20 @@ export default function CreateStudyForm(): JSX.Element {
     },
   });
 
-  const { watch, handleSubmit } = methods;
   const { showToast } = useToastStore();
   const navigate = useNavigate();
-  const formValues = watch();
 
-  const handleOnClickBtn = async () => {
+  const handleOnClickBtn = async (data: StudyFormData) => {
     const response = await recruitApi.postRecruitInfo({
-      title: formValues.title,
-      description: formValues.description,
-      deposit: formValues.deposit,
-      goalTime: formValues.goalTime,
-      recruitEndAt: formValues.studyStartDate + 'T' + String(formValues.hour).padStart(2, '0'),
-      studyEndAt: formValues.studyEndDate + 'T' + String(formValues.hour).padStart(2, '0'),
-      maxMembers: formValues.maxMembers,
-      category: formValues.category,
-      tags: formValues.tags,
+      title: data.title,
+      description: data.description,
+      deposit: data.deposit,
+      goalTime: data.goalTime,
+      recruitEndAt: data.studyStartDate + 'T' + String(data.hour).padStart(2, '0'),
+      studyEndAt: data.studyEndDate + 'T' + String(data.hour).padStart(2, '0'),
+      maxMembers: data.maxMembers,
+      category: data.category,
+      tags: data.tags,
     });
     console.log(response.code);
     if (response.code === 200) {
@@ -90,19 +88,19 @@ export default function CreateStudyForm(): JSX.Element {
         className="flex flex-col gap-y-5 overflow-y-auto px-4"
         style={{ height: `calc(100vh - 52px - 48px - 50px)` }}
       >
-        <TitleInput {...methods} />
-        <DescriptionInput {...methods} />
-        <PointInput {...methods} />
-        <StudyStartInput {...methods} />
-        <DurationInput {...methods} />
-        <StudyEndData {...methods} />
-        <GoalTime {...methods} />
-        <MemberSelect {...methods} />
-        <CategoryRadio {...methods} />
-        <TagInput {...methods} />
+        <TitleInput control={control} />
+        <DescriptionInput control={control} register={register} />
+        <PointInput control={control} />
+        <StudyStartInput control={control} />
+        <DurationInput control={control} register={register} />
+        <StudyEndData control={control} watch={watch} />
+        <GoalTime control={control} />
+        <MemberSelect control={control} />
+        <CategoryRadio register={register} />
+        <TagInput control={control} />
       </form>
       <div className="fixed bottom-8 left-1/2 w-full max-w-[768px] -translate-x-[50%] px-4">
-        <Button text={'생성하기'} onClick={handleOnClickBtn} ariaLabel={'생성하기 버튼'} />
+        <Button text={'생성하기'} type={'submit'} onClick={() => {}} ariaLabel={'생성하기 버튼'} />
       </div>
     </>
   );
