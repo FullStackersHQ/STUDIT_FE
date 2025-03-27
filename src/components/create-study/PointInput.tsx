@@ -1,13 +1,9 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { Controller, UseFormReturn } from 'react-hook-form';
+import { Controller, useFormState, Control } from 'react-hook-form';
 import { StudyFormData } from '../../pages/CreateStudyForm';
-type TitleProps = UseFormReturn<StudyFormData>;
 
-export default function PointInput(form: TitleProps) {
-  const {
-    control,
-    formState: { errors },
-  } = form;
+export default function PointInput({ control }: { control: Control<StudyFormData> }) {
+  const { errors } = useFormState({ control });
 
   return (
     <>

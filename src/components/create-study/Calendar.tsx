@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { MONTH_LIST } from '../../constants/constants';
 
 type CalendarProps = {
@@ -6,7 +6,7 @@ type CalendarProps = {
   setDate: (date: string) => void;
 };
 
-export default function Calendar({ date, setDate }: CalendarProps) {
+const Calendar = memo(({ date, setDate }: CalendarProps) => {
   const [today] = useState<Date>(new Date());
   const [month, setMonth] = useState<number>(today.getMonth());
   const [year, setYear] = useState<number>(today.getFullYear());
@@ -126,4 +126,6 @@ export default function Calendar({ date, setDate }: CalendarProps) {
       )}
     </div>
   );
-}
+});
+
+export default Calendar;

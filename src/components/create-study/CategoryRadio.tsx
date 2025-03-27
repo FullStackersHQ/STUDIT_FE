@@ -1,12 +1,8 @@
-import { UseFormReturn } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 import { StudyFormData } from '../../pages/CreateStudyForm';
 import { CATEGORY } from '../../constants/constants';
 
-type TitleProps = UseFormReturn<StudyFormData>;
-
-export default function CategoryRadio(form: TitleProps) {
-  const { register } = form;
-
+export default function CategoryRadio({ register }: { register: UseFormRegister<StudyFormData> }) {
   return (
     <div>
       <label className="font-medium" aria-label="스터디 카테고리">
